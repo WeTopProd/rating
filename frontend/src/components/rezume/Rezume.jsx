@@ -6,7 +6,7 @@ import m from '../rezume/rezume.module.scss'
 
 
 import Poisk from '../poisk/Poisk';
-import HeaderTho from '../headerTho/HeaderTho';
+import Header from '../header/Header';
 import KompCard from './KompCard';
 import KompDatacard from './Komp.data'
 import Port from '../port/Port';
@@ -21,7 +21,24 @@ function Rezume() {
 
   <>
 
-  <HeaderTho />
+<Header
+
+link='rezume/#rezume'
+title='Резюме'
+
+link2='rezume/#poisk' 
+title2='Поиск'
+
+link3='rezume/#reyting' 
+title3='Рейтинг'
+
+link4='rezume/#abu' 
+title4='Обучение'
+
+link5='rezume/#footer' 
+title5='Контакты'
+
+ />
   
     <div className={m.section__rezume} id='rezume'>
         <div className={h.container}>

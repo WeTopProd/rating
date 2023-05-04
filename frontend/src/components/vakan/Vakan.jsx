@@ -6,7 +6,7 @@ import m from '../vakan/vakan.module.scss'
 
 
 import Poisk from '../poisk/Poisk';
-import HeaderThree from '../headerThree/HeaderTho';
+import Header from '../header/Header';
 
 import VakanDataCard from './Vakan.data'
 import VakanCard from './VakanCard';
@@ -20,7 +20,21 @@ function Vakan () {
 
         <>
 
-    <HeaderThree />
+<Header
+
+link='vakan/#vakan'
+title='Разместить вакансию'
+
+link2='vakan/#poisk' 
+title2='Резюме'
+
+link3='vakan/#reyting' 
+title3='Рейтинг работников'
+
+link4='vakan/#obuch' 
+title4='Обучение'
+
+ />
     
     <div className={m.section__rezume} id='vakan'>
         <div className={h.container}>

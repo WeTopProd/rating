@@ -7,10 +7,13 @@ import Rezume from './components/rezume/Rezume'
 import Vakan from './components/vakan/Vakan';
 
 import ScrollToTop from './components/utils/scrollTop'
+import RegAuth from './auth/Reg';
+
+import RequireAuth from './hoc/PrivateAuth';
+import LoginAuth from './auth/Login';
+
 
 function App() {
-
-  const auth = true
 
 
   return (
@@ -26,12 +29,19 @@ function App() {
 
           <Route path='/'  element={<Home />} />
 
-
           <Route path='/rezume'  element={<Rezume />} />
 
+          <Route path='/vakan'  element={
 
-          <Route path='/vakan'  element={<Vakan />} />
+            <RequireAuth>
+              <Vakan />
+            </RequireAuth>
+            
+          } />
 
+          <Route path='/reg'  element={<RegAuth />} />
+
+          <Route path='/login'  element={<LoginAuth />} />
 
 
         </Routes>  

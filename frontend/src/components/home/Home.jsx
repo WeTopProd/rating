@@ -16,14 +16,31 @@ import Port from '../port/Port'
 
 
 
-
 function Home () {
 
     return (
 
         <>
 
-       <Header />
+       <Header
+
+        link='#onas'
+        title='О нас'
+
+        link2='#info' 
+        title2='Предложения'
+
+        link3='#kval' 
+        title3='Обучение'
+
+        link4='#novos' 
+        title4='Новости и статьи '
+
+        link5='#footer' 
+        title5='Контакты'
+
+
+         />
         
         <section className={m.section__home}>
             <div className={h.container}>

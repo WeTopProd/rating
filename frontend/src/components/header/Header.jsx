@@ -1,9 +1,8 @@
 import { HashLink } from 'react-router-hash-link';
-
-
 import { useState, useEffect } from 'react'
+import { useLocation } from 'react-router-dom';
 
-import { NavLink, Link } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import h from '../header/header.module.scss'
 
 import svg from '../img/logo.png'
@@ -14,7 +13,20 @@ import like from '../img/user_like.svg'
 import chat from '../img/user_chat.svg'
 import nast from '../img/user_nast.svg'
 
-function Header () {
+
+
+function Header (
+    {
+     
+     link, title, 
+     link2, title2, 
+     link3, title3,
+     link4, title4,
+     link5, title5,
+
+     
+    
+    }) {
 
     const [nav, setNav] = useState(false)
 
@@ -64,6 +76,10 @@ function Header () {
         const yOffset = -85; 
         window.scrollTo({ top: yCoordinate + yOffset, behavior: 'smooth' }); 
     } 
+
+    const location = useLocation()
+
+    const auth = true
       
 
 
@@ -84,51 +100,59 @@ function Header () {
 
             <p  >
             <HashLink
-                 to="/#onas"
+
+                 to={`/${link}`}
+                 className={h.nav__ul__link} onClick={closeSideBar}
+                 scroll={el => scrollWithOffset(el)}
+                 >
+
+                   {title}
+                    
+                  
+            </HashLink>
+            </p>
+            <p>
+            <HashLink
+                 to={`/${link2}`}
                  className={h.nav__ul__link} onClick={closeSideBar}
                  scroll={el => scrollWithOffset(el)}
                  >
                     
-                  О нас
+                    {title2} 
             </HashLink>
             </p>
 
             <p>
             <HashLink
-                 to="/#info"
+
+                 to={`/${link3}`}
                  className={h.nav__ul__link} onClick={closeSideBar}
                  scroll={el => scrollWithOffset(el)}
                  >
                     
-                    Предложения 
+                    {title3} 
+
             </HashLink>
             </p>
 
             <p>
             <HashLink
-                 to="/#kval"
-                 className={h.nav__ul__link} onClick={closeSideBar}
-                 scroll={el => scrollWithOffset(el)}
-                 >
-                    
-                    Обучение 
-            </HashLink>
-            </p>
 
-            <p>
-            <HashLink
-                 to="/#novos"
+                 to={`/${link4}`}
+                 
                  className={h.nav__ul__link} onClick={closeSideBar}
                  scroll={el => scrollWithOffset(el)}
                  >
                     
-                    Новости и статьи 
+                    {title4}
             </HashLink>       
             </p>
 
             <p >
-                 <HashLink  scroll={el => scrollWithOffset(el)}  to='/#footer' className={h.nav__ul__link}  onClick={closeSideBar}>
-                 Контакты 
+                 <HashLink  scroll={el => scrollWithOffset(el)}  to={`/${link5}`} className={h.nav__ul__link}  onClick={closeSideBar}>
+
+                 {title5} 
+
                  </HashLink>
             </p>
 
@@ -146,8 +170,11 @@ function Header () {
                      
               
                     <div className={ UserNav ? [h.nav__admin_user_info ,h.nav__admin_user_info_active].join(' ') : [h.nav__admin_user_info] } >
-                       
 
+                    {auth ?
+                    
+                   <>
+                   
                         <div className={h.user}>
                             <img src={mail} alt="svg" />
                             <Link to=''>Чаты</Link>
@@ -172,6 +199,29 @@ function Header () {
                             <img src={nast} alt="svg" />
                             <Link to=''>Настройки</Link>
                         </div>
+                        
+                   </>
+                    
+                    :
+
+                    <>
+
+                <div className={h.user}>
+                    <img src={nast} alt="svg" />
+                    <Link to='/login'>Вход</Link>
+                </div>
+
+                <div className={h.user}>
+                    <img src={nast} alt="svg" />
+                    <Link to='/reg'>Зарегистрироваться</Link>
+                </div>
+                    
+                    </>
+                    
+            }
+
+                       
+
 
                     </div>
                     
