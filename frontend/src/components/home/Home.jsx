@@ -41,6 +41,36 @@ function Home () {
 
 
          />
+
+{/* <>
+ 
+                    
+ <div className={h.user}  >
+     <img src={mail} alt="svg" />
+     <Link to=''>Чаты</Link>
+ </div>
+ 
+ <div className={h.user}>
+     <img src={chat} alt="svg" />
+     <Link to=''>Тарифы</Link>
+ </div>
+ 
+ <div className={h.user}>
+     <img src={contact} alt="svg" />
+     <Link to=''>Мои резюме</Link>
+ </div>
+ 
+ <div className={h.user}>
+     <img src={like} alt="svg" />
+     <Link to=''>Мои избранные вакансии</Link>
+ </div>
+ 
+ <div className={h.user}>
+     <img src={nast} alt="svg" />
+     <Link to='/nast'>Настройки</Link>
+ </div>
+ 
+                 </> */}
         
         <section className={m.section__home}>
             <div className={h.container}>

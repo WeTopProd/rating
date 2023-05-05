@@ -1,9 +1,7 @@
-
-
 .section__form{
     height: 100vh;
     width: 100%;
-    display: flex; 
+    display: flex;
     align-items: center;
     justify-content: center;
 
@@ -11,7 +9,6 @@
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
-
     
 
     & .form{    
@@ -21,48 +18,15 @@
         border-radius: 60px;
         
         display: flex;
+        flex-direction: column;
         justify-content: center;
         align-items: center;
 
-        flex-direction: column;
-
-       padding: 50px 100px;
-
-       position: relative;
+        padding: 80px 70px !important;
 
         @media screen and (max-width: 700px) {
             padding: 40px;
-            max-width: 100%;
-            padding: 50px 20px;
 
-        }
-
-
-        & .info{
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 95px;
-
-            @media screen and (max-width: 700px) {
-               flex-direction: column;
-               gap: 0px;
-               width: 100%;
-    
-            }
-
-            &__item{
-                display: flex;
-                flex-direction: column;
-                flex: 0 1 45%;
-
-                
-            @media screen and (max-width: 700px) {
-                flex: 0 0 100%;
-                width: 100%;
-     
-             }
-            }
         }
 
         &__title{
@@ -81,46 +45,33 @@
             font-size: 20px;
 
         }
-
         }
 
-        
         &__input{
             padding: 10px 12px;
-            width: 90%;
-            margin-bottom: 10px;
+            margin-bottom: 3%;
             display: block;
             position: relative;
+            width: 90%;
             box-shadow: 0px 10px 5px rgba(0, 0, 0, 0.1);
             
             background: #FFFFFF;
+            color: #000000 !important;
             border-radius: 60px;
             border: 0;
             outline: none;
             margin-top: 12px;
-            &::-webkit-inner-spin-button {
-                -webkit-appearance: none;
-                margin: 0; 
-            }
-
-                           
-            @media screen and (max-width: 700px) {
-                width: 95%;
-                margin-top: 10px;
-     
-             }
         }
 
         &__footer{
             display: flex;
             align-items: center;
-            justify-content: flex-start;
-            gap: 10px;
-            margin-top: 10px;
+            justify-content: space-between;
+            gap: 40px;
 
             @media screen and (max-width: 480px) {
                gap: 10px;
-               margin-top: 15px;
+               margin-top: 30px;
     
             }
 
@@ -141,9 +92,8 @@
             }
 
             &_link{
-                text-decoration: dashed;
                 
-                font-family: 'Poppins';
+                font-family: 'Montserrat';
                 font-style: normal;
                 font-weight: 400;
                 font-size: 20px;
@@ -153,14 +103,14 @@
             }
 
             &_link2{
-                font-family: 'Poppins';
+                font-family: 'Montserrat';
                 font-style: normal;
                 font-weight: 400;
                 font-size: 20px;
                 line-height: 30px;
                 color: #1877EE;
-                text-decoration: dashed;
                 transition: ALL ease-in-out .5s;
+                text-decoration: none;
 
 
                 
@@ -190,21 +140,14 @@
             font-family: 'Montserrat';
             font-style: normal;
             font-weight: 700;
-            font-size: 21.68px;
-            line-height: 22px;
+            font-size: 16px;
+            line-height: 16px; 
             text-transform: uppercase;
             color: #FFFFFF;
 
             &:hover{
                 background: #ffa908;
             }
-
-            @media screen and (max-width: 700px) {
-                font-size: 17px;
-    
-            }
-
-
         }
 
         
@@ -213,6 +156,3 @@
 
 
 }
-
-
-

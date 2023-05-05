@@ -35,8 +35,15 @@ title3='Рейтинг'
 link4='rezume/#abu' 
 title4='Обучение'
 
-link5='rezume/#footer' 
-title5='Контакты'
+link5='rezume/#port' 
+title5='Партнеры'
+
+myRezume = 'Мои резюме'
+myRezume_link = '/fd'
+
+tarif_link= '/tarifrezume'
+
+myLiveVakan = '/myLiveVakan'
 
  />
   
@@ -50,7 +57,7 @@ title5='Контакты'
                     <p className={m.rezume__subtitle}>Работа найдется для каждого.</p>
 
                         
-                        <Link to='/' className={m.rezume__link}>
+                        <Link to='/addrezume' className={m.rezume__link}>
                         Разместить
                         </Link>
 

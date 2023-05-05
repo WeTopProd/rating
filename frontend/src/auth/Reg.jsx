@@ -1,4 +1,7 @@
-import '../auth/Reg.scss'
+import { useState } from 'react';
+
+
+import f from '../auth/Reg.module.scss'
 import h from '../components/header/header.module.scss'
 
 import { Link} from 'react-router-dom';
@@ -6,71 +9,89 @@ import { Link} from 'react-router-dom';
 
 function RegAuth () {
     
-    
-    // const navigete = useLocation()
-    
-    // const location = useLocation()
+    const [ValueFerst, setValueFerst] = useState('');
 
-    // const fromPage = location.state?.from?.pathname || '/'
+    const [ValueLast, setValueLast] = useState(''); 
+
+    const [ValuePocht, setValuePocht] = useState('');
+
+    const [ValuePassw, setValuePassw] = useState(''); 
+
+    const [ValuePasswEnd, setValuePasswEnd] = useState(''); 
+    
+    const [ValueTel, setValueTel] = useState('');   
+
+    console.log(ValuePocht)
+    
+
 
     
     
     return (
         
-        <section className="section__form">
+        <section className={f.section__form}>
 
             <div className={h.container}>
 
-        <div className="form">
+        <div className={f.form}>
 
-            <p className="form__title">Регистрация</p>
-
-
-            <form className="info">
+            <p className={f.form__title}>Регистрация</p>
 
 
-            <div className="info__item">
+            <form className={f.info}>
 
-            <input type="text" className="form__input" placeholder="Фамилия" />
 
-            <input type="text" className="form__input" placeholder="Имя"/>
+            <div className={f.info__item}>
 
-            <input type="number" className="form__input" placeholder="Телефон"/>
+            <input type="text" className={f.form__input} placeholder="Фамилия" 
+            value={ValueFerst} onChange={event => setValueFerst(event.target.value)}
+            />
+
+            <input type="text" className={f.form__input}  placeholder="Имя"
+            value={ValueLast} onChange={event => setValueLast(event.target.value)}
+            />
+
+            <input type="number" className={f.form__input}  placeholder="Телефон"
+            value={ValueTel} onChange={event => setValueTel(event.target.value)}
+            />
 
             </div>
 
 
-            <div class="info__item">
+            <div class={f.info__item}>
             
-            <input type="email" className="form__input" placeholder="Почта"/>
+            <input type="email" className={f.form__input} placeholder="Почта"
+            value={ValuePocht} onChange={event => setValuePocht(event.target.value)}
+            />
 
-            <input type="password" className="form__input" placeholder="Пароль"/>
+            <input type="password" className={f.form__input} placeholder="Пароль"
+            value={ValuePassw} onChange={event => setValuePassw(event.target.value)}
+            />
 
-            <input type="password" className="form__input" placeholder="Повторите пароль"/>
+            <input type="password" className={f.form__input} placeholder="Повторите пароль"
+            value={ValuePasswEnd} onChange={event => setValuePasswEnd(event.target.value)}
+            />
 
             </div>
             
             </form>
 
 
-            <div className="form__footer">
+            <div className={f.form__footer}>
 
-                <p className="form__footer_link">Есть аккаунт?</p>
+                <p className={f.form__footer_link}>Есть аккаунт?</p>
 
-                <Link to='/login' className="form__footer_link2" >Войдите! </Link>
-
-            </div>
-
-            <input type="submit" value='Зарегистрироваться' className="form__link"/>
-
-            <Link to='/' className="form__footer_exit">Назад</Link>
-
-        </div>
+                <Link to='/login' className={f.form__footer_link2} >Войдите! </Link>
 
             </div>
 
-            
-        
+            <input type="submit" value='Зарегистрироваться' className={f.form__link}/>
+
+            <Link to='/' className={f.form__footer_exit}>Назад</Link>
+
+            </div>
+
+        </div>  
 
 </section>
 

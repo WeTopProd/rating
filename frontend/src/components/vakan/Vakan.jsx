@@ -34,6 +34,12 @@ title3='Рейтинг работников'
 link4='vakan/#obuch' 
 title4='Обучение'
 
+myRezume = 'Мои вакасии'
+myRezume_link = '/fefe'
+
+tarif_link= '/tarifVakan'
+
+
  />
     
     <div className={m.section__rezume} id='vakan'>

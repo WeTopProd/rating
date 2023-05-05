@@ -9,9 +9,14 @@ import Vakan from './components/vakan/Vakan';
 import ScrollToTop from './components/utils/scrollTop'
 import RegAuth from './auth/Reg';
 
-import RequireAuth from './hoc/PrivateAuth';
+// import RequireAuth from './hoc/PrivateAuth';
 import LoginAuth from './auth/Login';
+import Nast from './nast/Nast';
+import AddRezume from './AddRezume/AddRezume';
+import TarifRezume from './tarifRezume/TarifRezume';
+// import Danie from './nast/Danie';
 
+// </RequireAuth>
 
 function App() {
 
@@ -31,13 +36,14 @@ function App() {
 
           <Route path='/rezume'  element={<Rezume />} />
 
-          <Route path='/vakan'  element={
+          <Route path='/vakan'  element={<Vakan />} />
 
-            <RequireAuth>
-              <Vakan />
-            </RequireAuth>
-            
-          } />
+          <Route path='/nast'  element={<Nast />} />
+
+          <Route path='/addrezume'  element={<AddRezume />} />
+          
+          <Route path='/tarifrezume'  element={<TarifRezume />} />
+
 
           <Route path='/reg'  element={<RegAuth />} />
 

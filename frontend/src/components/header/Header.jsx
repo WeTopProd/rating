@@ -12,10 +12,13 @@ import contact from '../img/user_contact.svg'
 import like from '../img/user_like.svg'
 import chat from '../img/user_chat.svg'
 import nast from '../img/user_nast.svg'
+import reg from '../img/reg.svg'
+import log from '../img/log.svg'
 
 
 
 function Header (
+    
     {
      
      link, title, 
@@ -23,8 +26,9 @@ function Header (
      link3, title3,
      link4, title4,
      link5, title5,
-
-     
+     myRezume,myRezume_link,
+     tarif_link,
+     myLiveVakan
     
     }) {
 
@@ -77,9 +81,17 @@ function Header (
         window.scrollTo({ top: yCoordinate + yOffset, behavior: 'smooth' }); 
     } 
 
-    const location = useLocation()
+    const location = useLocation();
 
-    const auth = true
+    
+    console.log(location.pathname)
+
+    // const homeLoc = location.pathname = '/'
+
+
+    // console.log(homeLoc)
+
+    const auth = false
       
 
 
@@ -166,61 +178,98 @@ function Header (
                 </Link>
 
                 <div className={h.nav__admin_user} onClick={TogglehandleClick}>
+
                     {UserNav ? false : true }
                      
               
                     <div className={ UserNav ? [h.nav__admin_user_info ,h.nav__admin_user_info_active].join(' ') : [h.nav__admin_user_info] } >
 
-                    {auth ?
+            
+
+                {location.pathname === '/' ? <> {
+
+                    !!auth ? <>
                     
-                   <>
-                   
-                        <div className={h.user}>
-                            <img src={mail} alt="svg" />
-                            <Link to=''>Чаты</Link>
-                        </div>
+                    <div className={h.user}>
 
-                        <div className={h.user}>
-                            <img src={chat} alt="svg" />
-                            <Link to=''>Тарифы</Link>
-                        </div>
-
-                        <div className={h.user}>
-                            <img src={contact} alt="svg" />
-                            <Link to=''>Мои резюме</Link>
-                        </div>
-
-                        <div className={h.user}>
-                            <img src={like} alt="svg" />
-                            <Link to=''>Мои избранные вакансии</Link>
-                        </div>
-
-                        <div className={h.user}>
-                            <img src={nast} alt="svg" />
-                            <Link to=''>Настройки</Link>
-                        </div>
-                        
-                   </>
-                    
-                    :
-
-                    <>
-
-                <div className={h.user}>
                     <img src={nast} alt="svg" />
-                    <Link to='/login'>Вход</Link>
-                </div>
+                    <Link to='/login'>Выход</Link>
 
-                <div className={h.user}>
-                    <img src={nast} alt="svg" />
-                    <Link to='/reg'>Зарегистрироваться</Link>
-                </div>
-                    
-                    </>
-                    
-            }
+                    </div>
 
-                       
+                    
+
+                    </>                   
+                     :
+                     <>
+
+<div className={h.user}>
+    <img src={log} alt="svg" />
+    <Link to='/login'>вход</Link>
+</div>
+
+<div className={h.user}>
+    <img src={reg} alt="svg" />
+    <Link to='/reg'>Зарегистрироваться</Link>
+</div>
+    
+</>  
+
+                }</> 
+                
+                :
+                
+                <>{
+                    !!auth ? <>
+ 
+                    
+                    <div className={h.user}  >
+                        <img src={mail} alt="svg" />
+                        <Link to=''>Чаты</Link>
+                    </div>
+                    
+                    <div className={h.user}>
+                        <img src={chat} alt="svg" />
+                        <Link to={tarif_link}>Тарифы</Link>
+                    </div>
+                    
+                    <div className={h.user}>
+                        <img src={contact} alt="svg" />
+                        <Link to={myRezume_link}>{myRezume}</Link>
+                    </div>
+                    
+                    <div className={h.user}>
+                        <img src={like} alt="svg" />
+                        <Link to={myLiveVakan}>Мои избранные вакансии</Link>
+                    </div>
+                    
+                    <div className={h.user}>
+                        <img src={nast} alt="svg" />
+                        <Link to='/nast'>Настройки</Link>
+                    </div>
+                    
+                                    </> 
+                                    
+                                    : 
+
+
+<>
+
+<div className={h.user}>
+    <img src={log} alt="svg" />
+    <Link to='/login'>вход</Link>
+</div>
+
+<div className={h.user}>
+    <img src={reg} alt="svg" />
+    <Link to='/reg'>Зарегистрироваться</Link>
+</div>
+    
+</> 
+
+
+
+                }</> }  
 
 
                     </div>
