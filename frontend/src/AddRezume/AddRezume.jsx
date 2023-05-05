@@ -30,6 +30,13 @@ function AddRezume () {
         link5='rezume/#port' 
         title5='Партнеры'
 
+        myRezume = 'Мои резюме'
+        myRezume_link = '/fd'
+        
+        tarif_link= '/tarifrezume'
+        
+        myLiveVakan = '/myLiveVakan'
+
         />
         
     <section className={l.section__form}>

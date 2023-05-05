@@ -14,6 +14,7 @@ import LoginAuth from './auth/Login';
 import Nast from './nast/Nast';
 import AddRezume from './AddRezume/AddRezume';
 import TarifRezume from './tarifRezume/TarifRezume';
+import TarifVakan from './tarifVakan/TarifVakan';
 // import Danie from './nast/Danie';
 
 // </RequireAuth>
@@ -41,8 +42,10 @@ function App() {
           <Route path='/nast'  element={<Nast />} />
 
           <Route path='/addrezume'  element={<AddRezume />} />
-          
+
           <Route path='/tarifrezume'  element={<TarifRezume />} />
+
+          <Route path='/tarifvakan'  element={<TarifVakan />} />
 
 
           <Route path='/reg'  element={<RegAuth />} />

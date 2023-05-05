@@ -6,7 +6,7 @@ import l from '../tarifRezume/TarifRezume.module.scss'
 import cv from '../components/img/cv.png'
 import gal from '../components/img/galka.png'
 
-function TarifRezume () {
+function TarifVakan() {
 
     return (
 
@@ -14,27 +14,18 @@ function TarifRezume () {
 
         <Header
         
-        link='rezume/#rezume'
-        title='Резюме'
+        link='tarifVakan'
+        title='Разместить вакансию'
         
-        link2='rezume/#poisk' 
-        title2='Поиск'
+        link2='rezume' 
+        title2='Резюме'
         
-        link3='rezume/#reyting' 
-        title3='Рейтинг'
+        link3='vakan/#reyting' 
+        title3='Рейтинг работников'
         
         link4='rezume/#abu' 
         title4='Обучение'
-        
-        link5='rezume/#port' 
-        title5='Партнеры'
-
-        myRezume = 'Мои резюме'
-        myRezume_link = '/fd'
-        
-        tarif_link= '/tarifrezume'
-        
-        myLiveVakan = '/myLiveVakan'
+    
 
         />
         
@@ -60,12 +51,21 @@ function TarifRezume () {
     
                                 <img src={gal} alt="" width="30px" height="30px" />
     
-                                <p className={l.form__item__text}>Составляем за вас правильное  резюме
+                                <p className={l.form__item__text}>Вы выбираете из тех, кто откликнулся, и оплачиваете только публикацию на 30 дней
+                                </p>
+    
+                            </div> 
+
+                            <div className={l.form__item__middle}>
+    
+                                <img src={gal} alt="" width="30px" height="30px" />
+    
+                                <p className={l.form__item__text}>Дополнительно до 15 подходящих кандидатов, которых можно пригласить на собеседование
                                 </p>
     
                             </div> 
     
-                            <button className={l.form__item__link}>200 руб</button>
+                            <button className={l.form__item__link}>350 руб</button>
     
                             
                         </div>
@@ -90,7 +90,7 @@ function TarifRezume () {
     
                                 <img src={gal} alt="" width="30px" height="30px" />
     
-                                <p className={l.form__item__text}>Составляем за вас правильное  резюме</p>
+                                <p className={l.form__item__text}>Вы выбираете из тех, кто откликнулся, и оплачиваете только публикацию на 30 дней</p>
 
                                 </div>
     
@@ -99,7 +99,7 @@ function TarifRezume () {
                                 
                                 <img src={gal} alt="" width="30px" height="30px" />
     
-                                <p className={l.form__item__text}>Дополнительно продвигаем ваше резюме в поиске</p>
+                                <p className={l.form__item__text}>Дополнительно до 15 подходящих кандидатов, которых можно пригласить на собеседование</p>
     
                                 </div>
                             
@@ -129,7 +129,14 @@ function TarifRezume () {
     
                                 <img src={gal} alt="" width="30px" height="30px" />
     
-                                <p className={l.form__item__text}>Составляем продвигаем ваше  резюме до того как вы найдете работу</p>
+                                <p className={l.form__item__text}>Вы выбираете из тех, кто откликнулся, и оплачиваете только публикацию на 30 дней</p>
+                            </div>
+
+                            <div className={l.form__item__middle}>
+    
+                                <img src={gal} alt="" width="30px" height="30px" />
+    
+                                <p className={l.form__item__text}>Дополнительно до 15 подходящих кандидатов, которых можно пригласить на собеседование</p>
                             </div>
     
     
@@ -160,4 +167,4 @@ function TarifRezume () {
     )
 }
 
-export default TarifRezume
+export default TarifVakan
