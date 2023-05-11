@@ -85,6 +85,11 @@
 
             position: relative;
 
+            @media screen and (max-width: 480px) {
+                max-width: 90%;
+               padding: 30px 10px ;
+            }
+
 
 
             &__titleI {
@@ -131,6 +136,7 @@
                 border-radius: 12px;
                 cursor: pointer;
                 transition: ALL ease-in-out .5s;
+                text-decoration: none;
                 
 
                 font-family: 'Montserrat';
@@ -179,6 +185,8 @@
                 color: #1262B3;
 
                 padding: 0px 48px;
+                text-decoration: none;
+
                 margin-top: 30px;
                 
 

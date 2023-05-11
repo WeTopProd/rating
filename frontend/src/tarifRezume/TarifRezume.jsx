@@ -1,12 +1,17 @@
 import Header from '../components/header/Header'
 
+
+import { Link } from 'react-router-dom'
+
 import h from '../components/header/header.module.scss'
 import l from '../tarifRezume/TarifRezume.module.scss'
 
 import cv from '../components/img/cv.png'
 import gal from '../components/img/galka.png'
 
-function TarifRezume () {
+
+
+function TarifRezume ({setPrice}) {
 
     return (
 
@@ -60,17 +65,19 @@ function TarifRezume () {
     
                                 <img src={gal} alt="" width="30px" height="30px" />
     
-                                <p className={l.form__item__text}>Составляем за вас правильное  резюме
-                                </p>
-    
+                                <p className={l.form__item__text}>Составляем за вас правильное  резюме</p>
+
                             </div> 
     
-                            <button className={l.form__item__link}>200 руб</button>
+                            <input type='submit'
+                             value="200 Руб"
+                             className={l.form__item__link}
+                              />
     
                             
                         </div>
                         
-                        <button className={l.form__item__link2}>Выбрать</button>
+                        <Link  to="/oplatarezume" onClick={() => setPrice('200')}  className={l.form__item__link2}>Выбрать</Link>
 
                     </div>
 
@@ -106,12 +113,15 @@ function TarifRezume () {
                             </div>
     
     
-                            <button className={l.form__item__link}>700 руб</button>
+                             <input type='submit'
+                             value="700 Руб"
+                             className={l.form__item__link}
+                              />
     
     
                         </div>
 
-                        <button className={l.form__item__link2}>Выбрать</button>
+                        <Link to="/oplatarezume" onClick={() => setPrice('700')} className={l.form__item__link2}>Выбрать</Link>
 
 
                     </div>
@@ -133,12 +143,16 @@ function TarifRezume () {
                             </div>
     
     
-                            <button className={l.form__item__link}>2000 руб</button>
+    
+                            <input type='submit'
+                             value="2000 Руб"
+                             className={l.form__item__link}
+                            />
     
     
                         </div>
 
-                        <button className={l.form__item__link2}>Выбрать</button>
+                        <Link to="/oplatarezume" onClick={() => setPrice('2000')} className={l.form__item__link2}>Выбрать</Link>
 
 
                     </div>

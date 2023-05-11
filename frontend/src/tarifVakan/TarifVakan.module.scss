@@ -85,6 +85,11 @@
 
             position: relative;
 
+            @media screen and (max-width: 480px) {
+                max-width: 90%;
+               padding: 30px 10px ;
+            }
+
 
 
             &__titleI {

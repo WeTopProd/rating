@@ -37,7 +37,7 @@ title4='Обучение'
 myRezume = 'Мои вакасии'
 myRezume_link = '/fefe'
 
-tarif_link= '/tarifVakan'
+tarif_link= '/tarifvakan'
 
 
  />
@@ -52,7 +52,7 @@ tarif_link= '/tarifVakan'
                     <p className={m.rezume__subtitle}>И находите сотрудников среди тех, кто хочет у вас работать.</p>
 
                         
-                        <Link to='/' className={m.rezume__link}>
+                        <Link to='/tarifvakan' className={m.rezume__link}>
                         Разместить
                         </Link>
 

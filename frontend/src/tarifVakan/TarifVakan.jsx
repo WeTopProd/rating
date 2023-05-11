@@ -14,7 +14,7 @@ function TarifVakan() {
 
         <Header
         
-        link='tarifVakan'
+        link='vakan'
         title='Разместить вакансию'
         
         link2='rezume' 

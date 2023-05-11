@@ -1,0 +1,298 @@
+.sectionmini {
+    padding: 150px 0px;
+
+    @media screen and (max-width: 800px) {
+        padding: 100px 0px;
+    }
+
+    & .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0px 20px;
+    }
+
+
+    .mini {
+
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+
+        &__title {
+            font-family: 'Montserrat';
+            font-style: normal;
+            font-weight: 400;
+            font-size: 72px;
+            line-height: 83px;
+            color: #000000;
+            margin: 0;
+
+            @media screen and (max-width: 700px) {
+                font-size: 50px;
+            }
+        }
+
+        &__outer {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            margin-top: 50px;
+            max-width: 870px;
+            min-height: 260px;
+
+            
+            @media screen and (max-width: 600px) {
+                margin-top: 25px;
+                 width: 90%;
+
+
+             }
+
+            &_inside {
+                display: flex;
+                flex-direction: column;
+                position: relative;
+                border: 2px solid rgba(0, 0, 0);
+                border-radius: 12px;
+                padding: 15px 20px;
+
+                &_blueTitle {
+                    font-family: 'Montserrat';
+                    font-style: normal;
+                    font-weight: 700;
+                    font-size: 30px;
+                    line-height: 50px;
+                    letter-spacing: 0.02em;
+                    color: #1262B3;
+                    margin: 0;
+
+                    @media screen and (max-width: 800px) {
+                        font-size: 24px;
+                        }
+                }
+
+                &_avatar {
+                    position: absolute;
+                    right: 19px;
+                    top: 13px;
+                    width: 160px;
+                    height: 110px;
+
+                    @media screen and (max-width: 700px) {
+                        
+                        height: auto;
+                        max-width: 43%;
+                        right: 5px;
+
+                    }
+
+                    @media screen and (max-width: 600px) {
+                        max-width: 150px;
+                        width: 100%;
+                        top: 80px;
+        
+        
+                     }
+
+                }
+
+                &_near {
+                    display: flex;
+                    gap: 103px;
+                    
+                    @media screen and (max-width: 800px) {
+                        display: flex;
+                        flex-direction: column;
+                        gap: 0px;
+
+                        }
+
+
+                    &_age {
+                        display: flex;
+                        flex-direction: column;
+                        justify-content: flex-start;
+
+
+
+                        &_pshka {
+                            font-family: 'Montserrat';
+                            font-style: normal;
+                            font-weight: 700;
+                            font-size: 15px;
+                            line-height: 30px;
+                            color: #282828;
+                            margin: 0;
+                             
+                            
+                        }
+
+                        &_pshka2 {
+                            font-family: 'Montserrat';
+                            font-style: normal;
+                            font-weight: 700;
+                            font-size: 10px;
+                            line-height: 30px;
+                            color: rgba(40, 40, 40, 0.7);
+                            margin: 0;
+                             
+
+                        }
+                    }
+
+
+                    &_spec {
+                        display: flex;
+                        flex-direction: column;
+                        justify-content: flex-start;
+
+
+                        &_bold {
+                            font-family: 'Montserrat';
+                            font-style: normal;
+                            font-weight: 700;
+                            font-size: 15px;
+                            line-height: 36px;
+                            letter-spacing: 0.02em;
+                            color: #000000;
+                            margin: 0;
+                             
+
+                            
+                            @media screen and (max-width: 620px) {
+                                font-size: 14px;
+                                }
+                        }
+                    }
+                }
+
+            }
+
+
+            &_botline {
+                display: flex;
+                justify-content: space-between;
+                width: 100%;
+                margin-top: 10px;
+
+                &_eyeDiv{
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    margin-left: 5px;
+
+                    &_eye {
+                        width: 30px;
+                        height: 25px;
+                    }
+
+                    &_245 {
+
+                        font-family: 'Montserrat';
+                        font-style: normal;
+                        font-weight: 700;
+                        font-size: 16px;
+                        line-height: 19px;
+                        color: rgba(0, 0, 0, 0.6);
+                        margin: 0;
+
+                    }
+                }
+
+                &_change {
+                    
+                    display: flex;
+                    gap: 22px;
+
+                    &_pics {
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        gap: 5px;
+
+                        &_blue {
+                            font-family: 'Montserrat';
+                            font-style: normal;
+                            font-weight: 400;
+                            font-size: 14px;
+                            line-height: 16px;
+                            color: #1877EE;
+                            cursor: pointer;
+                            margin: 0;
+                            transition: .4s all ease;
+                            text-decoration: none;
+
+
+                            &:hover {
+                                color: #0b4489;
+                            }
+                        }
+
+                        &_delete {
+                            font-family: 'Montserrat';
+                            font-style: normal;
+                            font-weight: 400;
+                            font-size: 14px;
+                            line-height: 16px;
+                            color: #282828;
+                            cursor: pointer;
+                            margin: 0;
+                            transition: .4s all ease;
+
+                            &:hover {
+                                color: #000000;
+                            }
+                        }
+
+                        &_other {
+                            width: 15px;
+                            height: 15px;
+                        }
+                    }
+                }
+            }
+
+            &_cross{
+                margin-top: 72.5px;
+                display: flex;
+                justify-content: center;
+
+                @media screen and (max-width: 700px) {
+                    margin-top: 47.5px;
+                    }
+
+                &_line1{
+                    position: absolute;
+                    margin-left: 22.5px;
+                    margin-top: -22.5px;
+                    height: 50px;
+                    width: 5px;
+
+                    @media screen and (max-width: 700px) {
+                        margin-left: 17.5px;
+                        margin-top: -17.5px;
+                        height: 40px;
+                        width: 5px;
+                        }
+                }
+                &_line2{
+                    width: 50px;
+                    height: 5px;
+
+                    @media screen and (max-width: 700px) {
+                        height: 5px;
+                        width: 40px;
+                        }
+                }
+            }
+        }
+    }
+}
+
+.plus{
+    margin: 0 auto;
+    padding-top: 50px;
+    cursor: pointer;
+}

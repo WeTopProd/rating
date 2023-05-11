@@ -61,6 +61,8 @@ myLiveVakan = '/myLiveVakan'
                         Разместить
                         </Link>
 
+                        
+
             </div> 
 
             <Link to='/' className={m.rezume__exit}>

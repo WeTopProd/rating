@@ -64,7 +64,7 @@ function AddRezume () {
 
                         </div>
 
-                        <Link to='' className={l.form__item__link}>Выбрать</Link>
+                        <Link to='/preap' className={l.form__item__link}>Выбрать</Link>
 
                     </div>
 
@@ -104,3 +104,4 @@ function AddRezume () {
 }
 
 export default AddRezume
+

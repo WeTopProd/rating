@@ -30,6 +30,7 @@
 
         @media screen and (max-width: 850px) {
             width: 100%;
+            margin-top: 0px;
         }
 
         &__title {
@@ -84,6 +85,12 @@
             flex-direction: column;
             justify-content: flex-start;
             align-items: center;
+
+            @media screen and (max-width: 480px) {
+               max-width: 100%;
+               width: 100%;
+               padding: 30px 20px ;
+            }
 
 
 

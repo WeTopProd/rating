@@ -84,14 +84,13 @@ function Header (
     const location = useLocation();
 
     
-    console.log(location.pathname)
 
     // const homeLoc = location.pathname = '/'
 
 
     // console.log(homeLoc)
 
-    const auth = false
+    const auth = true
       
 
 
@@ -193,7 +192,8 @@ function Header (
                     <div className={h.user}>
 
                     <img src={nast} alt="svg" />
-                    <Link to='/login'>Выход</Link>
+                    
+                    <Link to='/'>Выход</Link>
 
                     </div>
 
