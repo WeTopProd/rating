@@ -3,33 +3,62 @@ import Header from '../components/header/Header';
 import h from '../components/header/header.module.scss'
 
 import '../nast/naststyle.scss'
+import './modalNast.scss'
 
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs'
+
+import useModal from "../Myrezume/useModal";
+import ModalNast from './ModalNast';
+
+import ModalNastTwo from './ModalNastTwo';
+
 
 
 
 function Nast () {
+
+    const [isShowingModal, toggleModal] = useModal();
+
+    const [isShowingModalTwo, toggleModalTwo] = useModal();
+
     return (
 
         <>
 
         <Header
+        
+        link='rezume/#rezume'
+        title='Резюме'
+        
+        link2='rezume/#poisk' 
+        title2='Поиск'
+        
+        link3='rezume/#reyting' 
+        title3='Рейтинг'
+        
+        link4='rezume/#abu' 
+        title4='Обучение'
+        
+        link5='rezume/#port' 
+        title5='Партнеры'
 
+        myRezume = 'Мои резюме'
+        myRezume_link = '/fd'
         
-                link2='' 
-                title2='Поиск'
+        tarif_link= '/tarifrezume'
         
-                link3='' 
-                title3='Рейтинг'
+        myLiveVakan = '/myLiveVakan'
         
-                link4='#kval' 
-                title4='Обучение'
-        
-                link5='#port' 
-                title5='Партнеры'
         />
 
-        <div className={h.container}>
+        
+
+    <div className={h.container}>
+
+<ModalNast show={isShowingModal} onCloseButtonClick={toggleModal} />
+
+<ModalNastTwo show={isShowingModalTwo} onCloseButtonClick={toggleModalTwo} />
+
 
 <Tabs className='section__nast'>
 
@@ -53,10 +82,13 @@ function Nast () {
 <p className="form__info__item_part">Фамилия:Иван</p>
 <p className="form__info__item_part">Отчество:Иванович</p>
 <p className="form__info__item_part">Дата рождения:12.04.1999</p>
-<p className="form__info__item_blue">Редактировать</p>
+<div onClick={toggleModalTwo} className="form__info__item_blue">Редактировать</div>
+
+
 <p className="form__info__item_part">Телефон: +79546327593</p>
 <p className="form__info__item_part">Пароль: ******************</p>
-<p className="form__info__item_blue">Изменить пароль</p>
+
+<div onClick={toggleModal} className="form__info__item_blue">Изменить пароль</div>
 
 </div>
 

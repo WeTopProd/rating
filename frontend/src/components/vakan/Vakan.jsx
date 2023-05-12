@@ -43,7 +43,7 @@ tarif_link= '/tarifvakan'
  />
     
     <div className={m.section__rezume} id='vakan'>
-        <div className={h.container}>
+        <div className={m.container}>
             
              <div className={m.rezume}>
 
@@ -52,7 +52,7 @@ tarif_link= '/tarifvakan'
                     <p className={m.rezume__subtitle}>И находите сотрудников среди тех, кто хочет у вас работать.</p>
 
                         
-                        <Link to='/tarifvakan' className={m.rezume__link}>
+                        <Link to='/addvakan' className={m.rezume__link}>
                         Разместить
                         </Link>
 

@@ -3,7 +3,7 @@ import InputMask from "react-input-mask";
 import { useState } from "react";
 import {   useNavigate } from "react-router-dom";
 
-import o from '../OplataRezume/OplataRezume.module.scss'
+import o from '../Oplata/OplataRezume.module.scss'
 import Header from '../components/header/Header'
 import h from '../components/header/header.module.scss'
 

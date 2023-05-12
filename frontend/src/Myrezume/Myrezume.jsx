@@ -1,16 +1,20 @@
 
 
-import '../Myrezume/Myrezume.scss'
-
 import Header from '../components/header/Header'
 import Mycard from './Mycard'
 import MyDataCard from './my.data.card'
+import '../Myrezume/Myrezume.scss'
+
+
+
 
 
 import plus from '../components/img/+.svg'
+import { Link } from 'react-router-dom'
 
 
 export default function MyRezume() {
+
     return(
 
        <>
@@ -41,6 +45,8 @@ export default function MyRezume() {
         
         />
 
+
+
 <section class="sectionmini">
  
  <div class="container">
@@ -55,15 +61,16 @@ export default function MyRezume() {
                     return <Mycard {...info}  key={index} />
          } ) }
 
-         <div className='plus'>
+         <Link to='/preap' className='plus'>
                 <img src={plus} alt="svg" />
-        </div>
+        </Link>
 
      </div>
 
  </div>
 
 </section>
+
 
        </>
 

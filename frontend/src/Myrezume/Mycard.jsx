@@ -3,6 +3,10 @@
 import { Link } from 'react-router-dom'
 import '../Myrezume/Myrezume.scss'
 
+import useModal from "./useModal";
+import Modal from './Modal'
+
+
 
 
 export default function Mycard(
@@ -20,13 +24,18 @@ export default function Mycard(
         prossmotreno,
         izmen,
         deletet,
-
     }
 
 ) {
+
+    const [isShowingModal, toggleModal] = useModal();
+
+
     return(
 
        <>
+
+   <Modal show={isShowingModal} onCloseButtonClick={toggleModal} />
 
 
     <div class="mini__outer">
@@ -111,7 +120,7 @@ export default function Mycard(
 
             <img class="mini__outer_botline_change_pics_other" src={izmen} alt="" />
 
-            <Link to='/preapload' class="mini__outer_botline_change_pics_blue">
+            <Link  to='/preapload' class="mini__outer_botline_change_pics_blue">
                 Изменить
             </Link>
 
@@ -121,7 +130,7 @@ export default function Mycard(
 
             <img class="mini__outer_botline_change_pics_other" src={deletet} alt="" />
 
-            <div class="mini__outer_botline_change_pics_delete">
+            <div onClick={toggleModal} class="mini__outer_botline_change_pics_delete">
                 Удалить
             </div>
 

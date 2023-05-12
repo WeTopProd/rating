@@ -5,29 +5,35 @@ import l from '../tarifRezume/TarifRezume.module.scss'
 
 import cv from '../components/img/cv.png'
 import gal from '../components/img/galka.png'
+import { Link } from 'react-router-dom'
 
-function TarifVakan() {
+function TarifVakan({setPriceTwo}) {
 
     return (
 
         <>
 
-        <Header
-        
-        link='vakan'
-        title='Разместить вакансию'
-        
-        link2='rezume' 
-        title2='Резюме'
-        
-        link3='vakan/#reyting' 
-        title3='Рейтинг работников'
-        
-        link4='rezume/#abu' 
-        title4='Обучение'
-    
+<Header
 
-        />
+link='vakan/#vakan'
+title='Разместить вакансию'
+
+link2='vakan/#poisk' 
+title2='Резюме'
+
+link3='vakan/#reyting' 
+title3='Рейтинг работников'
+
+link4='vakan/#obuch' 
+title4='Обучение'
+
+myRezume = 'Мои вакасии'
+myRezume_link = '/fefe'
+
+tarif_link= '/tarifvakan'
+
+
+ />
         
         <section className={l.section__form}>
 
@@ -70,7 +76,7 @@ function TarifVakan() {
                             
                         </div>
                         
-                        <button className={l.form__item__link2}>Выбрать</button>
+                        <Link to='/oplatavakan' onClick={() => setPriceTwo('350')} className={l.form__item__link2}>Выбрать</Link>
 
                     </div>
 
@@ -107,11 +113,11 @@ function TarifVakan() {
     
     
                             <button className={l.form__item__link}>700 руб</button>
-    
+
     
                         </div>
 
-                        <button className={l.form__item__link2}>Выбрать</button>
+                        <Link to='/oplatavakan' onClick={() => setPriceTwo('700')} className={l.form__item__link2}>Выбрать</Link>
 
 
                     </div>
@@ -145,7 +151,7 @@ function TarifVakan() {
     
                         </div>
 
-                        <button className={l.form__item__link2}>Выбрать</button>
+                        <Link to='/oplatavakan' onClick={() => setPriceTwo('2000')} className={l.form__item__link2}>Выбрать</Link>
 
 
                     </div>

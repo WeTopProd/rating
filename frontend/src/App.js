@@ -14,18 +14,24 @@ import Nast from './nast/Nast';
 import AddRezume from './AddRezume/AddRezume';
 import TarifRezume from './tarifRezume/TarifRezume';
 import TarifVakan from './tarifVakan/TarifVakan';
-import OplataRezume from './OplataRezume/OplataRezume';
+import OplataRezume from './Oplata/OplataRezume';
 import Success from './success/Success';
 import Preap from './preparning/Preap';
 import SuccessTwo from './preparning/Success';
 import MyRezume from './Myrezume/Myrezume';
 import SuccessThree from './preparning/SuccessThree';
 import PreapLoad from './preparning/PreapLoad';
+import AddVakan from './AddVakan/AddVakan';
+import OplataVakan from './Oplata/OplataVakan';
+import SuccessFour from './success/SuccessFour';
 
 
 function App() {
 
   const [price, setPrice] = useState('')
+
+  const [priceTwo, setPriceTwo] = useState('')
+
 
   return (
 
@@ -44,7 +50,10 @@ function App() {
 
           <Route path='/vakan'  element={<Vakan />} />
 
+
           <Route path='/nast'  element={<Nast />} />
+          
+          <Route path='/addvakan'  element={<AddVakan />} />
 
           <Route path='/addrezume'  element={<AddRezume />} />
 
@@ -53,8 +62,12 @@ function App() {
             price={price} setPrice={setPrice}
            
            />} />
+           
 
           <Route path='/oplatarezume'  element={<OplataRezume price={price} />} />
+
+          <Route path='/oplatavakan'  element={<OplataVakan priceTwo={priceTwo} />} />
+
 
 
           <Route path='/preap'  element={<Preap />} />
@@ -63,7 +76,11 @@ function App() {
 
           <Route path='/myrezume'  element={<MyRezume />} />
 
-          <Route path='/tarifvakan'  element={<TarifVakan />} />
+          <Route path='/tarifvakan'  element={<TarifVakan
+          
+          priceTwo={priceTwo} setPriceTwo={setPriceTwo}
+          
+          />} />
 
           <Route path='/reg'  element={<RegAuth />} />
 
@@ -74,6 +91,8 @@ function App() {
           <Route path='/successtwo'  element={<SuccessTwo />} />
 
           <Route path='/successthree'  element={<SuccessThree />} />
+
+          <Route path='/successfour'  element={<SuccessFour />} />
 
         </Routes>  
 

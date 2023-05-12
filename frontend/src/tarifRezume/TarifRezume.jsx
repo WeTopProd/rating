@@ -139,7 +139,7 @@ function TarifRezume ({setPrice}) {
     
                                 <img src={gal} alt="" width="30px" height="30px" />
     
-                                <p className={l.form__item__text}>Составляем продвигаем ваше  резюме до того как вы найдете работу</p>
+                                <p className={l.form__item__text}>Составляем продвигаем ваше резюме сроком до 6 месяцев</p>
                             </div>
     
     

@@ -34,13 +34,22 @@
             line-height: 50px;
             text-align: center;
             color: #282828;
-            padding: 0px 88px;
+            
             background: #FFD600;
             border-radius: 100px;
             transition: all ease .3s;
             margin: 0 auto;       
             cursor: pointer;
             display: flex;
+            border: none;
+
+            width: 300px;
+            height: 55px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
 
             &:hover{
                 background: #e1bc00;

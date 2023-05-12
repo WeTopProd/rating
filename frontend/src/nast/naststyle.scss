@@ -119,6 +119,12 @@
     padding-right: 15px;
     white-space: nowrap;
     cursor: pointer;
+    transition: all ease .3s;
+
+    &:hover{
+    color: #1877EE;
+      
+    }
   }
   @media screen and (max-width: 992px) {
     .form__three {
