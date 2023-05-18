@@ -12,7 +12,7 @@ export default function AddVakan () {
     const [
 
         NameVakan, setNameVakan,
-        Spec, setSpec,
+        Spec, 
         NameKompany, setNameKompany,
         AboutKompany, setAboutKompany,
         Requirement, setRequirement,
@@ -23,7 +23,8 @@ export default function AddVakan () {
         ExperienceDo, setExperienceDo,
 
         Type, setType,
-        TypeDo, setTypeDo,
+        Grafic, SetGrafic,
+        Logo, setLogo ,
     
     ] = useContext(contextVakan)
 
@@ -42,16 +43,16 @@ export default function AddVakan () {
             Experience: Experience  ,
             ExperienceDo: ExperienceDo  ,
             Type: Type  ,
-            TypeDo: TypeDo  ,
+            Grafic: Grafic ,
+            Logo: setLogo ,
+      
+   
             
         }
 
         setNotesTwo(...notesTwo, objTwo)
 
     }
-
-
-
 
     return(
 
@@ -104,8 +105,6 @@ tarif_link= '/tarifvakan'
                             <input value={NameVakan} onChange={(event) => setNameVakan(event.target.value)} type="text" className={m.sectionCreateVaccancy__outer_inner_form_top2_left}
                                 placeholder="Название вакансии*" />
 
-                            <input value={Spec} onChange={(event) => setSpec(event.target.value)} type="text" className={m.sectionCreateVaccancy__outer_inner_form_top2_left}
-                                placeholder="Специальность*" />
 
 
                         </div>
@@ -127,7 +126,7 @@ tarif_link= '/tarifvakan'
 
                         <div className={m.sectionCreateVaccancy__outer_inner_right_logo}>
 
-                            <input type="file" />
+                            <input type="file" onChange={Logo}  />
 
                             <p className={m.sectionCreateVaccancy__outer_inner_right_logo_textLogo}>
                                 Логотип компании*
@@ -181,14 +180,29 @@ tarif_link= '/tarifvakan'
                             <div className={m.sectionCreateVaccancy__outer_inner_right_otDo_input}>
 
                                 <input value={Type} onChange={(event) => setType(event.target.value)} type="number" className={m.sectionCreateVaccancy__outer_inner_right_otDo_input_inp}
-                                    placeholder="От" />
-
-                                <input value={TypeDo} onChange={(event) => setTypeDo(event.target.value)} type="number" className={m.sectionCreateVaccancy__outer_inner_right_otDo_input_inp}
-                                    placeholder="До" />
+                                    placeholder="" />
 
                             </div>
 
                         </div>
+
+                        <div className={m.sectionCreateVaccancy__outer_inner_right_otDo}>
+
+<p className={m.sectionCreateVaccancy__outer_inner_right_otDo_para}>
+    График Работы*
+</p>
+
+
+<div className={m.sectionCreateVaccancy__outer_inner_right_otDo_input}>
+
+<input value={Grafic} onChange={(event) => SetGrafic(event.target.value)} type="number" className={m.sectionCreateVaccancy__outer_inner_right_otDo_input_inp}
+    placeholder="" />
+
+</div>
+
+</div>
+
+
 
 
 

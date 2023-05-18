@@ -30,6 +30,12 @@ export default function ContextTwo(props) {
 
     const [TypeDo, setTypeDo] = useState('')
 
+    const [Grafic, setGrafic] = useState('')
+
+    const [Logo, setLogo] = useState ()
+
+
+
     return <contextVakan.Provider value={[
 
         NameVakan, setNameVakan,
@@ -44,6 +50,9 @@ export default function ContextTwo(props) {
         ExperienceDo, setExperienceDo,
         Type, setType,
         TypeDo, setTypeDo,
+        Grafic, setGrafic,
+        Logo, setLogo,
+       
 
     
     ]}>{props.children}</contextVakan.Provider>

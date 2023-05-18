@@ -29,7 +29,9 @@ import LeadVakan from './AddVakan/leadVakan';
 import RezumeUser from './Myrezume/User/RezumeUser';
 import { myContext } from './Context';
 import MyDataCard from './Myrezume/my.data.card';
+import MyDataCardTwo from './Myvakan/my.data.card'
 import ContextTwo from './ContextVakan';
+import UserVakan from './Myvakan/User/UserVakan';
 
 
 function App() {
@@ -37,7 +39,6 @@ function App() {
   const [price, setPrice] = useState('')
 
   const [priceTwo, setPriceTwo] = useState('')
-
 
   const [
 
@@ -58,6 +59,12 @@ function App() {
 
 ] = useContext(myContext)
 
+const [cardMassiv, setCardMassiv] = useState(MyDataCard)
+
+const [cardMassivTwo, setCardMassivTwo] = useState(MyDataCardTwo)
+
+console.log(cardMassiv);
+
  
 
 const ClickId = (id) => {
@@ -68,7 +75,15 @@ const ClickId = (id) => {
  
 };
 
-const [cardMassiv, setCardMassiv] = useState()
+const ClickIdTwo = (id) => {
+          
+             
+  setCardMassivTwo(MyDataCardTwo.filter((info) => info.CardIdTwo === +id ) )
+      
+ 
+};
+
+
 
 
 
@@ -114,7 +129,7 @@ const [cardMassiv, setCardMassiv] = useState()
 
           <Route path='/myrezume'  element={<MyRezume onClick={ClickId} />} />
 
-          <Route path='/myvakan' element={<MyVakan  onClick={ClickId}  />} />
+          <Route path='/myvakan' element={<MyVakan  onClick={ClickIdTwo}  />} />
         
           <Route path='/tarifvakan'  element={<TarifVakan
           
@@ -138,14 +153,19 @@ const [cardMassiv, setCardMassiv] = useState()
 
           <Route path='/rezumeuser'  element={<RezumeUser  cardMassiv={cardMassiv} />} />
 
+          <Route path='/vakanuser'  element={<UserVakan  cardMassivTwo={cardMassivTwo} />} />
+
+
         </Routes>  
 
          <Footer  />
 
+        
+
     </div>
     
     </BrowserRouter>
-    
+
     </ContextTwo>
   );
 }

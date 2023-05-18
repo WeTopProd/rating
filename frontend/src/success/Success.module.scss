@@ -39,8 +39,8 @@
         }
         @media screen and (max-width: 700px) {
             margin-top: 50px;
-            padding: 0px 0px;
-            }
+            padding: 20px;
+        }
 
        img{
         width: 120px;
@@ -69,6 +69,12 @@
             background-color: rgba(0, 0, 0, 0.692);
         }
 
+
+        @media screen and (max-width: 700px) {
+            padding: 10px 20px;
+            font-size: 15px;
+        }
+
        }
         
 
@@ -94,10 +100,7 @@
 
         }
 
-        @media screen and (max-width: 700px) {
-            font-size: 16px;
 
-        }
         }
 
     }

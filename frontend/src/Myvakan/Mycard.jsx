@@ -20,7 +20,7 @@ export default function Mycard ({
     izmen,
     deletet,
     onClick,
-    CardId
+    CardIdTwo
 
 }) {
 
@@ -38,10 +38,10 @@ export default function Mycard ({
         
         <div className='container'>
 
-        <div className="VAC" id={CardId}  onClick={ (event) => onClick(event.currentTarget.id)}>
+        <div className="VAC" id={CardIdTwo}  onClick={ (event) => onClick(event.currentTarget.id)}>
             <div className="VAC__out"  >
 
-                <Link to='/' className="VAC__out_in">
+                <Link to='/vakanuser' className="VAC__out_in">
                     <p className="VAC__out_in_title">
                         {vakan}
                     </p>
