@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
+import Context from './Context';
 
  
 
@@ -11,7 +12,13 @@ root.render(
 
   <React.StrictMode>
 
+
+    <Context>
+      
     <App />
+
+    </Context>
+
 
 
   </React.StrictMode>

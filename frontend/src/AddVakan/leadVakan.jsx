@@ -5,7 +5,7 @@ import Header from '../components/header/Header'
 import { Link } from 'react-router-dom'
 import { contextVakan } from '../ContextVakan'
 
-export default function AddVakan () {
+export default function LeadVakan () {
 
     const [notesTwo, setNotesTwo] = useState([])
 
@@ -50,9 +50,6 @@ export default function AddVakan () {
 
     }
 
-
-
-
     return(
 
         <>
@@ -88,7 +85,7 @@ tarif_link= '/tarifvakan'
             <div className={m.sectionCreateVaccancy__outer}>
 
                 <p className={m.sectionCreateVaccancy__outer_title}>
-                    Создание вакансии
+                    Изменения вакансии
                 </p>
 
                 <p className={m.sectionCreateVaccancy__outer_punkts}>
@@ -219,7 +216,7 @@ tarif_link= '/tarifvakan'
                 </div>
             </div>
 
-            <Link to='/tarifvakan' onClick={formVakan} className={m.sectionCreateVaccancy__link}>Разместить</Link>
+            <Link to='/myvakan' onClick={formVakan} className={m.sectionCreateVaccancy__link}>Изменить</Link>
             
         </div>
     </div>

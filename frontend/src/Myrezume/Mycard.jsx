@@ -9,6 +9,8 @@ import Modal from './Modal'
 
 
 
+
+
 export default function Mycard(
 
     {
@@ -24,12 +26,18 @@ export default function Mycard(
         prossmotreno,
         izmen,
         deletet,
-    }
+        CardId,
+        onClick,
+ 
+        
+    }, 
+
+    
 
 ) {
 
+    
     const [isShowingModal, toggleModal] = useModal();
-
 
     return(
 
@@ -38,63 +46,63 @@ export default function Mycard(
    <Modal show={isShowingModal} onCloseButtonClick={toggleModal} />
 
 
-    <div class="mini__outer">
+    <div id={CardId} className="mini__outer" onClick={ (event) => onClick(event.currentTarget.id) } >
+        
+        <Link to='/rezumeuser' className="mini__outer_inside">
 
-        <div class="mini__outer_inside">
-
-    <p class="mini__outer_inside_blueTitle">
+    <p className="mini__outer_inside_blueTitle">
         {proves}
     </p>
 
-    <img class="mini__outer_inside_avatar" src={avatar} alt="" />
+    <img className="mini__outer_inside_avatar" src={avatar} alt="" />
 
 
-    <div class="mini__outer_inside_near">
+    <div className="mini__outer_inside_near">
 
 
-        <div class="mini__outer_inside__near_age">
+        <div className="mini__outer_inside__near_age">
 
-            <p class="mini__outer_inside_near_age_pshka">
+            <p className="mini__outer_inside_near_age_pshka">
                 {years}
             </p>
 
-            <p class="mini__outer_inside_near_age_pshka">
+            <p className="mini__outer_inside_near_age_pshka">
                 {zp}
             </p>
 
-            <p class="mini__outer_inside_near_age_pshka2">
+            <p className="mini__outer_inside_near_age_pshka2">
                 Опыт работы
             </p>
 
-            <p class="mini__outer_inside_near_age_pshka">
+            <p className="mini__outer_inside_near_age_pshka">
                 {opetrabot}
             </p>
 
-            <p class="mini__outer_inside_near_age_pshka2">
+            <p className="mini__outer_inside_near_age_pshka2">
                 Предыдущее место работы
             </p>
 
-            <p class="mini__outer_inside_near_age_pshka">
+            <p className="mini__outer_inside_near_age_pshka">
                 {exitrabot}
             </p>
 
         </div>
 
-        <div class="mini__outer_inside_near_spec">
+        <div className="mini__outer_inside_near_spec">
 
-            <p class="mini__outer_inside_near_spec_bold">
+            <p className="mini__outer_inside_near_spec_bold">
                 Специализация:
             </p>
 
-            <p class="mini__outer_inside_near_spec_bold">
+            <p className="mini__outer_inside_near_spec_bold">
                 {proves}
             </p>
 
-            <p class="mini__outer_inside_near_spec_bold">
+            <p className="mini__outer_inside_near_spec_bold">
                 Занятость: {zynytost}
             </p>
 
-            <p class="mini__outer_inside_near_spec_bold">
+            <p className="mini__outer_inside_near_spec_bold">
                 График работы: {grafik}
             </p>
 
@@ -102,35 +110,35 @@ export default function Mycard(
     </div>
 
 
-        </div>
+        </Link>
 
-        <div class="mini__outer_botline">
+        <div className="mini__outer_botline">
 
-    <div class="mini__outer_botline_eyeDiv">
-        <img class="mini__outer_botline_eyeDiv_eye" src={glaz} alt="" />
+    <div className="mini__outer_botline_eyeDiv">
+        <img className="mini__outer_botline_eyeDiv_eye" src={glaz} alt="" />
 
-        <p class="mini__outer_botline_eyeDiv_245">
+        <p className="mini__outer_botline_eyeDiv_245">
             {prossmotreno}
         </p>
 
     </div>
 
-    <div class="mini__outer_botline_change">
-        <div class="mini__outer_botline_change_pics">
+    <div className="mini__outer_botline_change">
+        <div className="mini__outer_botline_change_pics">
 
-            <img class="mini__outer_botline_change_pics_other" src={izmen} alt="" />
+            <img className="mini__outer_botline_change_pics_other" src={izmen} alt="" />
 
-            <Link  to='/preapload' class="mini__outer_botline_change_pics_blue">
+            <Link  to='/preapload' className="mini__outer_botline_change_pics_blue">
                 Изменить
             </Link>
 
         </div>
 
-        <div class="mini__outer_botline_change_pics">
+        <div className="mini__outer_botline_change_pics">
 
-            <img class="mini__outer_botline_change_pics_other" src={deletet} alt="" />
+            <img className="mini__outer_botline_change_pics_other" src={deletet} alt="" />
 
-            <div onClick={toggleModal} class="mini__outer_botline_change_pics_delete">
+            <div onClick={toggleModal} className="mini__outer_botline_change_pics_delete">
                 Удалить
             </div>
 

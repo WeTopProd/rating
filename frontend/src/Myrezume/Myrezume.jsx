@@ -5,15 +5,11 @@ import Mycard from './Mycard'
 import MyDataCard from './my.data.card'
 import '../Myrezume/Myrezume.scss'
 
-
-
-
-
 import plus from '../components/img/+.svg'
 import { Link } from 'react-router-dom'
 
 
-export default function MyRezume() {
+export default function MyRezume({onClick}) {
 
     return(
 
@@ -47,18 +43,18 @@ export default function MyRezume() {
 
 
 
-<section class="sectionmini">
+<section className="sectionmini">
  
- <div class="container">
+ <div className="container">
 
-     <div class="mini">
+     <div className="mini">
 
-         <p class="mini__title">
+         <p className="mini__title">
              Мои резюме
          </p>
 
          {MyDataCard.map( (info, index) => { 
-                    return <Mycard {...info}  key={index} />
+                return <Mycard onClick={onClick} {...info}  key={index} />
          } ) }
 
          <Link to='/preap' className='plus'>

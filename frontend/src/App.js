@@ -1,6 +1,5 @@
-import React from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 
 
 import Home from './components/home/Home'
@@ -24,6 +23,13 @@ import PreapLoad from './preparning/PreapLoad';
 import AddVakan from './AddVakan/AddVakan';
 import OplataVakan from './Oplata/OplataVakan';
 import SuccessFour from './success/SuccessFour';
+import MyVakan from './Myvakan/Myvakan';
+import SuccessVakan from './preparning/SuccessVakan';
+import LeadVakan from './AddVakan/leadVakan';
+import RezumeUser from './Myrezume/User/RezumeUser';
+import { myContext } from './Context';
+import MyDataCard from './Myrezume/my.data.card';
+import ContextTwo from './ContextVakan';
 
 
 function App() {
@@ -33,9 +39,43 @@ function App() {
   const [priceTwo, setPriceTwo] = useState('')
 
 
+  const [
+
+    FullName, setFullName,
+    data , setData,
+    city , setCity,
+    address , setAddress,
+    education , setEducation,
+    AddEducation , setAddEducation,
+    placeWork , setPlaceWork,
+    postwork , setPostwork,
+    DataStart , setDataStart,
+    DataEnd , setDataEnd,
+    About , setAbout,
+    skills , setSkills,
+    startSalary , setStartSalary,
+    endSalary , setEndSalary,
+
+] = useContext(myContext)
+
+ 
+
+const ClickId = (id) => {
+          
+             
+  setCardMassiv(MyDataCard.filter((info) => info.CardId === +id ) )
+      
+ 
+};
+
+const [cardMassiv, setCardMassiv] = useState()
+
+
+
   return (
 
-  
+    <ContextTwo>
+
     <BrowserRouter>
 
     <div className="app" >
@@ -50,7 +90,6 @@ function App() {
 
           <Route path='/vakan'  element={<Vakan />} />
 
-
           <Route path='/nast'  element={<Nast />} />
           
           <Route path='/addvakan'  element={<AddVakan />} />
@@ -63,19 +102,20 @@ function App() {
            
            />} />
            
-
           <Route path='/oplatarezume'  element={<OplataRezume price={price} />} />
 
           <Route path='/oplatavakan'  element={<OplataVakan priceTwo={priceTwo} />} />
 
-
+          <Route path='/leadvakan'  element={<LeadVakan/>} />
 
           <Route path='/preap'  element={<Preap />} />
 
           <Route path='/preapload'  element={<PreapLoad />} />
 
-          <Route path='/myrezume'  element={<MyRezume />} />
+          <Route path='/myrezume'  element={<MyRezume onClick={ClickId} />} />
 
+          <Route path='/myvakan' element={<MyVakan  onClick={ClickId}  />} />
+        
           <Route path='/tarifvakan'  element={<TarifVakan
           
           priceTwo={priceTwo} setPriceTwo={setPriceTwo}
@@ -94,6 +134,10 @@ function App() {
 
           <Route path='/successfour'  element={<SuccessFour />} />
 
+          <Route path='/successvakan'  element={<SuccessVakan />} />
+
+          <Route path='/rezumeuser'  element={<RezumeUser  cardMassiv={cardMassiv} />} />
+
         </Routes>  
 
          <Footer  />
@@ -101,6 +145,8 @@ function App() {
     </div>
     
     </BrowserRouter>
+    
+    </ContextTwo>
   );
 }
 
