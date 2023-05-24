@@ -56,7 +56,7 @@ export default function Mycard ({
 
                 <div className="VAC__out_in">
 
-                    {heartLove.pathname === '/poiksvakan' || '/myLiveVakan' ?
+                    {heartLove.pathname === '/poiksvakan' || footerCard.pathname === '/myLiveVakan' ?
 
                     <div>
 

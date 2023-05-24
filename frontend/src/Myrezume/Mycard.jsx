@@ -60,7 +60,7 @@ export default function Mycard(
         <div className="mini__outer_inside">
 
              
-                    {heartLove.pathname === '/poiksrezume' || '/myliverezume' ?
+                    {heartLove.pathname === '/poiksrezume' || location.pathname === '/myliverezume' ?
 
                     <div>
 
