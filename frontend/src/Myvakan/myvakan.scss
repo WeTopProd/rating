@@ -31,7 +31,6 @@
             position: absolute;
             bottom: 10px;
             right: 20px;
-            z-index: 9999 !important;
         }
 
 
@@ -48,7 +47,7 @@
 
             @media screen and (max-width: 750px) {
                 height: fit-content;
-                padding: 50px 0px 50px 20px;
+                padding: 70px 0px 50px 20px;
             }
 
             &_title {
@@ -121,7 +120,7 @@
                         
                         height: auto;
                         max-width: 100px;
-                        top: 60px;
+                        top: 10px;
                         right: 5px;
     
                         }

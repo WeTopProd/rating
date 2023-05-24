@@ -31,10 +31,13 @@ title3='Рейтинг работников'
 link4='vakan/#obuch' 
 title4='Обучение'
 
-myRezume = 'Мои вакасии'
-myRezume_link = '/fefe'
+myRezume = 'Мои вакансии'
+
+myRezume_link = '/myvakan'
 
 tarif_link= '/tarifvakan'
+
+myLiveVakan = '/myliverezume'
 
 
  />

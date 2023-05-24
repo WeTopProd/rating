@@ -56,7 +56,7 @@ export default function Mycard ({
 
                 <div className="VAC__out_in">
 
-                    {heartLove.pathname === '/poiksvakan' ?
+                    {heartLove.pathname === '/poiksvakan' || '/myLiveVakan' ?
 
                     <div>
 
@@ -112,11 +112,15 @@ export default function Mycard ({
 
                 </div>
 
-                {footerCard.pathname !== '/poiksvakan' ?
+                {footerCard.pathname === '/poiksvakan' || footerCard.pathname === '/myLiveVakan'   ?
 
-                <FooterCard glaz={glaz} pros={pros} izmen={izmen} deletet={deletet} toggleModal={toggleModal}  />
+              ''     
+              
+                :
+                            
+            <FooterCard glaz={glaz} pros={pros} izmen={izmen} deletet={deletet} toggleModal={toggleModal}  />
                 
-                : '' }
+                }
 
 
 
@@ -135,3 +139,5 @@ export default function Mycard ({
 
     )
 }
+
+

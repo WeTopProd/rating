@@ -36,6 +36,8 @@ import Otziv from './Myrezume/User/Otziv';
 import OtzivVakan from './Myvakan/User/Otziv';
 import PoiksVakan from './PoiskVakan/PoiskVakan';
 import PoiksRezume from './PoiskRezume/PoiskRezume';
+import MyLiveVakan from './myLiveVakan/MyLiveVakan';
+import MyLiveRezume from './myLiveRezume/MyLiveRezume';
 
 
 function App() {
@@ -143,13 +145,9 @@ const ClickIdTwo = (id) => {
 
           <Route path='/myrezume'  element={<MyRezume onClick={ClickId} />} />
 
-
           <Route path='/poiksvakan'  element={<PoiksVakan cardMassivTwo={cardMassivTwo} onClick={ClickIdTwo} />} /> 
 
-          <Route path='/poiksrezume'  element={<PoiksRezume cardMassiv={cardMassiv} onClick={ClickId} />} /> 
-
-
-
+          <Route path='/poiksrezume'  element={<PoiksRezume  cardMassiv={cardMassiv} onClick={ClickId} />} /> 
 
           <Route path='/myvakan' element={<MyVakan  onClick={ClickIdTwo}  />} />
         
@@ -181,11 +179,13 @@ const ClickIdTwo = (id) => {
 
           <Route path='/otzivuservakan'  element={<OtzivVakan  cardMassivTwo={cardMassivTwo} />} />
 
+          <Route path='/mylivevakan'  element={<MyLiveVakan onClick={ClickIdTwo} />} />
+
+          <Route path='/myliverezume'  element={<MyLiveRezume   onClick={ClickId} />} />
+
         </Routes>  
 
          <Footer  />
-
-        
 
     </div>
     

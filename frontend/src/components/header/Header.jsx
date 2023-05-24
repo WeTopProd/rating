@@ -28,7 +28,7 @@ function Header (
      link5, title5,
      myRezume,myRezume_link,
      tarif_link,
-     myLiveVakan
+     myLiveVakan,mylive
     
     }) {
 
@@ -223,10 +223,6 @@ function Header (
                     !!auth ? <>
  
                     
-                    <div className={h.user}  >
-                        <img src={mail} alt="svg" />
-                        <Link to=''>Чаты</Link>
-                    </div>
                     
                     <div className={h.user}>
                         <img src={chat} alt="svg" />
@@ -240,13 +236,21 @@ function Header (
                     
                     <div className={h.user}>
                         <img src={like} alt="svg" />
-                        <Link to={myLiveVakan}>Мои избранные вакансии</Link>
+                        <Link to={myLiveVakan}>Мои избранные {mylive}</Link>
                     </div>
+
+                    {location.pathname === '/vakan' ?
+
+                    ''
+                    :
                     
                     <div className={h.user}>
                         <img src={nast} alt="svg" />
                         <Link to='/nast'>Настройки</Link>
                     </div>
+
+                    }
+                    
                     
                                     </> 
                                     

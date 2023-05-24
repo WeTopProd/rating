@@ -80,8 +80,10 @@ import { myContext } from '../Context'
         link5='rezume/#port' 
         title5='Партнеры'
 
+        
         myRezume = 'Мои резюме'
-        myRezume_link = '/fd'
+
+        myRezume_link = '/myrezume'
         
         tarif_link= '/tarifrezume'
         

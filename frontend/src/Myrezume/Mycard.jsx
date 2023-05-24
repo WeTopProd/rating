@@ -60,7 +60,7 @@ export default function Mycard(
         <div className="mini__outer_inside">
 
              
-                    {heartLove.pathname === '/poiksrezume' ?
+                    {heartLove.pathname === '/poiksrezume' || '/myliverezume' ?
 
                     <div>
 
@@ -136,8 +136,12 @@ export default function Mycard(
 
         </div>
 
-        {location.pathname !== '/poiksrezume' ? 
+        {location.pathname === '/poiksrezume' || location.pathname === '/myliverezume' ? 
         
+        ''
+        
+        :
+
         <div className="mini__outer_botline">
 
     <div className="mini__outer_botline_eyeDiv">
@@ -174,9 +178,8 @@ export default function Mycard(
 
 
         </div>
-        
-        :
-        ''
+       
+
         }
 
 
