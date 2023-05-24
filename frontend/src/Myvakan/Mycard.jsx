@@ -2,7 +2,10 @@ import './myvakan.scss'
 
 import useModal from "../Myrezume/useModal";
 import Modal from './Modal'
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom'
+;
+import FooterCard from './FooterCard';
+import { useState } from 'react';
 
 export default function Mycard ({
 
@@ -26,6 +29,16 @@ export default function Mycard ({
 
     const [isShowingModal, toggleModal] = useModal();
 
+    const [heart, setHeart] = useState(false)
+    
+    const footerCard = useLocation();
+
+    const heartLove = useLocation();
+
+    const history = useNavigate();
+
+
+
     
 
 
@@ -36,15 +49,31 @@ export default function Mycard ({
       <Modal show={isShowingModal} onCloseButtonClick={toggleModal} />
 
         
-        <div className='container'>
+        
 
         <div className="VAC" id={CardIdTwo}  onClick={ (event) => onClick(event.currentTarget.id)}>
             <div className="VAC__out"  >
 
-                <Link to='/vakanuser' className="VAC__out_in">
-                    <p className="VAC__out_in_title">
+                <div className="VAC__out_in">
+
+                    {heartLove.pathname === '/poiksvakan' ?
+
+                    <div>
+
+<svg  onClick={() => setHeart(!heart)} fill={heart ? '#ce1616' : '000'} className='svg' width="30px" height="30px" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.808,11.079C19.829,16.132,12,20.5,12,20.5s-7.829-4.368-8.808-9.421C2.227,6.1,5.066,3.5,8,3.5a4.444,4.444,0,0,1,4,2,4.444,4.444,0,0,1,4-2C18.934,3.5,21.773,6.1,20.808,11.079Z"/></svg>
+
+                    </div>
+
+                     :
+                     
+                     ''
+                    
+                }
+                    
+
+                    <Link to='/vakanuser'  className="VAC__out_in_title">
                         {vakan}
-                    </p>
+                    </Link>
 
                     <div className="VAC__out_in_two">
                          
@@ -79,50 +108,25 @@ export default function Mycard ({
 
                     <img className='VAC__out_in_logo' src={logo} alt=""/>
 
-                </Link>
-
-                <div className="VAC__out_botline">
-
-                    <div className="VAC__out_botline_eyeDiv">
-
-                             <img className="mini__outer_botline_eyeDiv_eye" src={glaz} alt="" />
-
-                        <p className="VAC__out_botline_eyeDiv_245">
-                            {pros}
-                        </p>
-
-                    </div>
-
-                    <div className="VAC__out_botline_change">
-                        <div className="VAC__out_botline_change_pics">
-
-                        <img className="mini__outer_botline_change_pics_other" src={izmen} alt="" />
-
-                            <Link to='/leadvakan' className="VAC__out_botline_change_pics_blue">
-                                Изменить
-                            </Link>
-
-                        </div>
-
-                        <div className="VAC__out_botline_change_pics">
-
-                        <img className="mini__outer_botline_change_pics_other" src={deletet} alt="" />
-
-                            <div  onClick={toggleModal} className="VAC__out_botline_change_pics_delete">
-                                Удалить
-                            </div>
-
-                        </div>
-                    </div>
-
-
+                    
 
                 </div>
+
+                {footerCard.pathname !== '/poiksvakan' ?
+
+                <FooterCard glaz={glaz} pros={pros} izmen={izmen} deletet={deletet} toggleModal={toggleModal}  />
+                
+                : '' }
+
+
+
+
+
             </div>
 
         </div>
 
-        </div>
+        
 
         
         </>

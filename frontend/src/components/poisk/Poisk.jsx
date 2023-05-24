@@ -4,11 +4,14 @@ import p from '../poisk/poisk.module.scss'
 import h from '../header/header.module.scss'
 
 import svg from '../img/search-normal.svg'
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
 
 
 function Poisk() {
+
+    const textPoisk = useLocation()
+
   return (
 
   <>
@@ -23,12 +26,12 @@ function Poisk() {
              <div className={p.poisk}>
             
             <p className={p.poisk__subtitle}>
-            Найди подходящую для себя вакансию!
+            {textPoisk.pathname === '/rezume' ? 'Найди подходящую для себя вакансию! ' : 'Не ждите откликов — найдите идеального сотрудника сами'}
             </p>
 
             <form className={p.poisk__form}>
 
-                <Link to='/'>
+                <Link to={textPoisk.pathname === '/rezume' ? '/poiksvakan' : '/poiksrezume'}>
 
                 <input name='poisk' type="text" placeholder='Специальность' className={p.poisk__form_input} />
 
@@ -40,14 +43,14 @@ function Poisk() {
 
             <div className={p.poisk__footer}>
 
-                <Link to='/' className={p.poisk__footer_button}>
-                Все вакансии
+                <Link to={textPoisk.pathname === '/rezume' ? '/poiksvakan' : '/poiksrezume'} className={p.poisk__footer_button}>
+                {textPoisk.pathname === '/rezume' ? 'Все вакансии' : 'Все резюме'}
                 </Link>
 
                 <div className={p.poisk__footer_ishut}>
                     <p className={p.poisk__footer_ishut_text}>Часто ищут:</p>
-                    <Link to='/' className={p.poisk__footer_ishut_link}>web-designer</Link>
-                    <Link to='/' className={p.poisk__footer_ishut_link}>web-developer</Link>
+                    <Link to={textPoisk.pathname === '/rezume' ? '/poiksvakan' : '/poiksrezume'} className={p.poisk__footer_ishut_link}>web-designer</Link>
+                    <Link to={textPoisk.pathname === '/rezume' ? '/poiksvakan' : '/poiksrezume'} className={p.poisk__footer_ishut_link}>web-developer</Link>
                 </div>
 
             </div>

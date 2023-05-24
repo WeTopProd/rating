@@ -3,12 +3,15 @@ import Header from '../components/header/Header'
 
 import h from '../components/header/header.module.scss'
 import l from '../preparning/preap.module.scss'
-import { useContext } from 'react'
+import { useContext, useState } from 'react'
 import { myContext } from '../Context'
 
 
 
  export default function PreapLoad () {
+
+    const [notes, setNotes] = useState([])
+
 
 
     const [
@@ -27,8 +30,33 @@ import { myContext } from '../Context'
         skills , setSkills,
         startSalary , setStartSalary,
         endSalary , setEndSalary,
+        PhoneNumber, setPhoneNumber,
     
     ] = useContext(myContext)
+
+    function formHandler (){
+        let obj = {
+            FullName: FullName,
+            PhoneNumber: PhoneNumber ,
+            data: data,
+            city: city,
+            address: address,
+            education: education,
+            AddEducation: AddEducation,
+
+            placeWork: placeWork,
+            postwork: postwork,
+            DataStart: DataStart,
+            DataEnd: DataEnd,
+            About: About,
+            skills: skills,
+            startSalary: startSalary,
+            endSalary: endSalary,
+        }
+
+        setNotes(...notes, obj)
+
+    }
 
 
     return (
@@ -71,6 +99,9 @@ import { myContext } from '../Context'
                     <form onSubmit={(event) => event.preventDefault()} className={l.preap__form}>
                         
                         <input value={FullName} onChange={(event) => setFullName(event.target.value)} type="text" placeholder='Ф.И.О' className={l.preap__form_input} />
+
+
+                        <input value={PhoneNumber} onChange={(event) => setPhoneNumber(event.target.value)} type="text" placeholder='Телефон' className={l.preap__form_input} />
 
                         <input value={data} type="text" onChange={(event) => setData(event.target.value)} placeholder='Ваш возраст' className={l.preap__form_input} />
 
@@ -168,7 +199,7 @@ import { myContext } from '../Context'
 
                 </div>
 
-                <Link to='/successtwo'  className={l.preap__button}>Разместить</Link>
+                <Link to='/successtwo' onClick={formHandler}  className={l.preap__button}>Разместить</Link>
                                
 
             </div>

@@ -16,7 +16,7 @@ import Port from '../port/Port'
 
 
 
-function Home () {
+function Home ({applicants,employer}) {
 
     return (
 
@@ -84,11 +84,11 @@ function Home () {
 
                     <div className={m.home__buttons}>
                         
-                        <Link to='/rezume' className={m.home__buttons__link}>
+                        <Link to='/rezume' onClick={applicants} className={m.home__buttons__link}>
                         Соискателям
                         </Link>
 
-                        <Link to='/vakan' className={m.home__buttons__link}>
+                        <Link to='/vakan' onClick={employer} className={m.home__buttons__link}>
                         Работодателям
                         </Link>
 

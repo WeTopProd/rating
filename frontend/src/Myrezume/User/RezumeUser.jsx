@@ -3,7 +3,7 @@ import Header from '../../components/header/Header'
 import './RezumeUser.scss' 
 import { Link } from 'react-router-dom';
 
-export default function RezumeUser (cardMassiv) {
+export default function RezumeUser ({uservaka, ...cardMassiv}) {
 
     const [mas, setMas] = useState(cardMassiv.cardMassiv)
     const [result, setResult] = useState(null)
@@ -24,27 +24,31 @@ export default function RezumeUser (cardMassiv) {
         <>
         
 
-<Header
+        <Header
+        
+        link='rezume/#rezume'
+        title='Резюме'
+        
+        link2='rezume/#poisk' 
+        title2='Поиск'
+        
+        link3='rezume/#reyting' 
+        title3='Рейтинг'
+        
+        link4='rezume/#abu' 
+        title4='Обучение'
+        
+        link5='rezume/#port' 
+        title5='Партнеры'
 
-link='vakan/#vakan'
-title='Разместить вакансию'
-
-link2='vakan/#poisk' 
-title2='Резюме'
-
-link3='vakan/#reyting' 
-title3='Рейтинг работников'
-
-link4='vakan/#obuch' 
-title4='Обучение'
-
-myRezume = 'Мои вакасии'
-myRezume_link = '/fefe'
-
-tarif_link= '/tarifvakan'
-
-
- />
+        myRezume = 'Мои резюме'
+        myRezume_link = '/fd'
+        
+        tarif_link= '/tarifrezume'
+        
+        myLiveVakan = '/myLiveVakan'
+        
+        />
 
 
  <section className="sectionRec">
@@ -62,8 +66,8 @@ tarif_link= '/tarifvakan'
                     {result === null ? '' : result.name} {result === null ? '' : result.surname}, {result === null ? '' : result.years}, город {result === null ? '' : result.gorod}
                     </p>
     
-                    <Link to='/' className="recomendation__top_left_blue">
-                        Рекомендации
+                    <Link to='/otzivuser' className="recomendation__top_left_blue">
+                    РЕКОМЕНДАЦИИ 
                     </Link>
     
                 </div>
@@ -202,12 +206,42 @@ tarif_link= '/tarifvakan'
     
             
     
-            <div className="recomendation__number">
+            {/* <div className="recomendation__number">
                 <p className="recomendation__number_text">
                     Телефон {result === null ? '' : result.number}
                 </p>
                
+            </div> */}
+
+            {!uservaka ? 
+            <>
+
+            <div class="recomendation__number">
+                <p class="recomendation__number_text">
+                    Телефон +7
+                </p>
+                <span class="recomendation__number_blur">
+                    #########
+                </span>
             </div>
+    
+            <div class="recomendation__access">
+                <p class="recomendation__access_text">
+                    Для получения доступа к номеру телефона требуется оплата
+                </p>
+            </div>
+
+            <Link to='' className='recomendation__link'>
+            Получить доступ
+            </Link>
+            
+
+            </>
+
+            :
+            ''
+            
+        }
     
           
         </div>

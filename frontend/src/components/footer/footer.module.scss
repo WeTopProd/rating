@@ -1,10 +1,8 @@
 .section__footer{
-    padding: 70px 0px;
+    padding: 30px 0px;
     background-color: #1D1D1D;
 
-    @media screen and (max-width: 550px){
-        padding: 40px 0px;
-     }
+
 
 
     & .footer{
@@ -23,7 +21,7 @@
             justify-content: space-between;
             gap: 40px;
 
-            margin-top: 80px;
+            margin-top: 40px;
 
             @media screen and (max-width: 900px){
                 flex-direction: column-reverse;
@@ -60,7 +58,7 @@
                     display: flex;
                     gap: 40px;
                     align-items: center;
-                    margin-top: 80px;
+                    margin-top: 40px;
 
                     @media screen and (max-width: 900px){
                         margin-top: 20px;
@@ -128,7 +126,7 @@
                     display: flex;
                     align-items: center;
                     gap: 23px;
-                    margin-top: 40px;
+                    margin-top: 20px;
 
                     &_text{
                         font-family: 'Montserrat';
@@ -151,7 +149,7 @@
                     display: flex;
                     align-items: center;
                     gap: 23px;
-                    margin-top: 40px;
+                    margin-top: 20px;
 
                     @media screen and (max-width: 550px){
                        gap: 10px;
@@ -209,24 +207,30 @@
                     display: flex;
                     flex-wrap: wrap;
                     justify-content: space-around;
+                    align-items: center;
                     gap: 40px;
-                    margin-top: 80px;
+                    margin-top: 20px;
                     width: 100%;
 
-                    @media screen and (max-width: 900px){
-                        margin-top: 20px;
-                    }
 
-                    & img{
+                    &_img{
+
+                        
                          
                     @media screen and (max-width: 550px){
                         width: 100px;
                      }
 
                     }
+
+                    &_img2{
+                        max-width: 120px;
+                    }
                      
 
                 }
+
+
             }
 
         }
@@ -243,7 +247,7 @@
 
      
 
-    padding: 40px 0px;
+    padding: 20px 0px;
 
     border-top: 1px solid #606060;
 

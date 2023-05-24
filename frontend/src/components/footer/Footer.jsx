@@ -20,6 +20,7 @@ import img7 from '../img/footer__img7.png'
 import img8 from '../img/footer__img8.png'
 import img9 from '../img/footer__img9.png'
 import img10 from '../img/footer__img10.png'
+import img11 from '../img/reyting.png'
 
 
 
@@ -115,45 +116,49 @@ function Footer () {
 
                    <div className={f.footer__info_port_imgs}>
 
-                    <Link to=''>
+                    <Link to='https://шашландия.рф/'>
                     <img src={img1} alt="img" className={f.footer__info_port_imgs_img} />
                     </Link>
 
-                    <Link to=''>
+                    <Link to='https://frantsuz-club.ru/'>
                     <img src={img2} alt="img" className={f.footer__info_port_imgs_img} />
                     </Link>
 
-                    <Link to=''>
+                    <Link to='https://frantsuz.ru/'>
                     <img src={img3} alt="img" className={f.footer__info_port_imgs_img} />
                     </Link>
 
-                    <Link to=''>
+                    <Link to='https://wetop.ru/'>
                     <img src={img4} alt="img" className={f.footer__info_port_imgs_img} />
                     </Link>
 
-                    <Link to=''>
+                    <Link to='http://comicadze.ru/'>
                     <img src={img5} alt="img" className={f.footer__info_port_imgs_img} />
                     </Link>
 
-                    <Link to=''>
+                    <Link to='https://tyteda.ru/'>
                     <img src={img6} alt="img" className={f.footer__info_port_imgs_img} />
                     </Link>
 
-                    <Link to=''>
+                    <Link to='/'>
                     <img src={img7} alt="img" className={f.footer__info_port_imgs_img} />
                     </Link>
 
-                    <Link to=''>
+                    <Link to='https://corp-pitanie.tyteda.ru/'>
                     <img src={img8} alt="img" className={f.footer__info_port_imgs_img} />
                     </Link>
 
-                    <Link to=''>
+                    <Link to='https://poyuvsegda.ru/'>
                     <img src={img9} alt="img" className={f.footer__info_port_imgs_img} />
                     </Link>
 
-                    <Link to=''>
+                    <Link to='https://pominki-dostavka.ru/'>
                     <img src={img10} alt="img" className={f.footer__info_port_imgs_img} />
                     </Link>
+
+                    {/* <Link to='/'>
+                    <img src={img11} alt="img" className={f.footer__info_port_imgs_img2} />
+                    </Link> */}
 
 
                    </div>

@@ -26,6 +26,7 @@ import { myContext } from '../Context'
         skills , setSkills,
         startSalary , setStartSalary,
         endSalary , setEndSalary,
+        PhoneNumber, setPhoneNumber,
     
     ] = useContext(myContext)
 
@@ -34,6 +35,7 @@ import { myContext } from '../Context'
     function formHandler (){
         let obj = {
             FullName: FullName,
+            PhoneNumber: PhoneNumber ,
             data: data,
             city: city,
             address: address,
@@ -96,6 +98,8 @@ import { myContext } from '../Context'
                     <form onSubmit={formHandler} className={l.preap__form}>
                         
                         <input value={FullName} onChange={(event) => setFullName(event.target.value)} type="text" placeholder='Ф.И.О' className={l.preap__form_input} />
+
+                        <input value={PhoneNumber} onChange={(event) => setPhoneNumber(event.target.value)} type="text" placeholder='Телефон' className={l.preap__form_input} />
 
                         <input value={data} type="text" onChange={(event) => setData(event.target.value)} placeholder='Ваш возраст' className={l.preap__form_input} />
 

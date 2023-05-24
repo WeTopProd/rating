@@ -1,6 +1,7 @@
 import React from 'react';
 import {Link} from 'react-router-dom'
 
+
 import h from '../header/header.module.scss'
 import m from '../vakan/vakan.module.scss'
 
@@ -15,10 +16,12 @@ import VakanCard from './VakanCard';
 
 
 
+
 function Vakan () {
     return(
 
         <>
+    
 
 <Header
 
@@ -112,6 +115,8 @@ tarif_link= '/tarifvakan'
 
         </div>
     </div>
+
+
         
         </>
 

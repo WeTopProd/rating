@@ -4,11 +4,14 @@ import '../Myrezume/Myrezume.scss'
 
 import plus from '../components/img/+.svg'
 import { Link } from 'react-router-dom'
+
 import MyDataCard from './my.data.card'
 import Mycard from './Mycard'
 
 
 export default function MyVakan({onClick}) {
+
+    
 
     return(
 
@@ -67,3 +70,5 @@ tarif_link= '/tarifvakan'
 
     )
 }
+
+

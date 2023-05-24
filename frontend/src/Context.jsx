@@ -9,6 +9,8 @@ export default function Context (props) {
 
    const [ FullName , setFullName ] = useState('')
 
+   const [ PhoneNumber , setPhoneNumber ] = useState('')
+
    const [ data , setData ] = useState('')
 
    const [ city , setCity ] = useState('')
@@ -47,6 +49,7 @@ export default function Context (props) {
     <myContext.Provider value={[
 
 FullName, setFullName,
+PhoneNumber, setPhoneNumber,
 data , setData,
 city , setCity,
 address , setAddress,

@@ -58,6 +58,8 @@ tarif_link= '/tarifvakan'
                 <p className="bigTheater__top_title">
                 
                 {result === null ? '' : result.NameKopmany}
+                <br />
+                <Link to='/otzivuservakan' className='' >Отзывы  сотрудников</Link>
 
                 </p>
                 <img className="bigTheater__top_pic" src={result === null ? '' : result.logo}  alt="" />
@@ -140,9 +142,10 @@ tarif_link= '/tarifvakan'
                 
             </div>
 
-            <Link to='/' className="bigTheater__link">
-                Получить доступ
-            </Link>
+
+    
+
+
         </div>
     </div>
 

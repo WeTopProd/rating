@@ -1,5 +1,4 @@
 import React from "react"
-import InputMask from "react-input-mask";
 import { useState } from "react";
 import {   useNavigate } from "react-router-dom";
 
@@ -38,21 +37,26 @@ function OplataRezume ({price}) {
         e.preventDefault();
 
         if (
+            
+        (CardName.length > 0) && 
         
-        (CardNum.split('').filter(item => +item).length === 16) && 
+        (CardNum.length === 16) && 
 
-        (CardGod.split('').filter(item => +item).length === 4)&& 
+        (CardGod.length === 4)&& 
 
-        (CardKod.split('').filter(item => +item).length === 3) ) {
+        (CardKod.length === 3) ) {
 
           return navigate('/success')
 
         } else {
 
-          return  navigate('/oplatarezume')
+          return  alert('Неправильно ввели данные')
 
         }
     };
+
+
+
 
 
     return (
@@ -146,13 +150,13 @@ function OplataRezume ({price}) {
                             <input type="text" placeholder='Имя владельца карты' className={o.oplata__item_form_input} onChange={event => setCardName(event.target.value)}  />
 
 
-                            <InputMask mask="9999/9999/9999/9999" type="text" placeholder='Номер карты' className={o.oplata__item_form_input} onChange={event => setCardNum(event.target.value)}  />
+                            <input type="text" placeholder='Номер карты' className={o.oplata__item_form_input} onChange={event => setCardNum(event.target.value)}  />
                             
                             <div className={o.oplata__item_form_flex}>
 
-                                <InputMask  mask="99/99" type="text" placeholder='срок действия' className={o.oplata__item_form_flex_input} onChange={event => setCardGod(event.target.value)}  />
+                                <input type="text" placeholder='срок действия' className={o.oplata__item_form_flex_input} onChange={event => setCardGod(event.target.value)}  />
 
-                                <InputMask mask="999" type="text" placeholder='cvc код' onChange={event => setCardKod(event.target.value)} className={o.oplata__item_form_flex_input}  />
+                                <input  placeholder='cvc код' onChange={event => setCardKod(event.target.value)} className={o.oplata__item_form_flex_input}  />
 
                             </div>
                             

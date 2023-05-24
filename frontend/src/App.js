@@ -32,6 +32,10 @@ import MyDataCard from './Myrezume/my.data.card';
 import MyDataCardTwo from './Myvakan/my.data.card'
 import ContextTwo from './ContextVakan';
 import UserVakan from './Myvakan/User/UserVakan';
+import Otziv from './Myrezume/User/Otziv';
+import OtzivVakan from './Myvakan/User/Otziv';
+import PoiksVakan from './PoiskVakan/PoiskVakan';
+import PoiksRezume from './PoiskRezume/PoiskRezume';
 
 
 function App() {
@@ -83,8 +87,18 @@ const ClickIdTwo = (id) => {
  
 };
 
+  const [uservaka,setUservakan] = useState(false)
 
 
+  function applicants () {
+    setUservakan(true)
+
+  }
+
+  function employer () {
+    setUservakan(false)
+
+  }
 
 
   return (
@@ -99,9 +113,9 @@ const ClickIdTwo = (id) => {
 
         <Routes>
 
-          <Route path='/'  element={<Home />} />
+          <Route path='/'  element={<Home employer={employer} applicants={applicants} />} />
 
-          <Route path='/rezume'  element={<Rezume/>} />
+          <Route path='/rezume'  element={<Rezume  />} />
 
           <Route path='/vakan'  element={<Vakan />} />
 
@@ -129,6 +143,14 @@ const ClickIdTwo = (id) => {
 
           <Route path='/myrezume'  element={<MyRezume onClick={ClickId} />} />
 
+
+          <Route path='/poiksvakan'  element={<PoiksVakan cardMassivTwo={cardMassivTwo} onClick={ClickIdTwo} />} /> 
+
+          <Route path='/poiksrezume'  element={<PoiksRezume cardMassiv={cardMassiv} onClick={ClickId} />} /> 
+
+
+
+
           <Route path='/myvakan' element={<MyVakan  onClick={ClickIdTwo}  />} />
         
           <Route path='/tarifvakan'  element={<TarifVakan
@@ -151,10 +173,13 @@ const ClickIdTwo = (id) => {
 
           <Route path='/successvakan'  element={<SuccessVakan />} />
 
-          <Route path='/rezumeuser'  element={<RezumeUser  cardMassiv={cardMassiv} />} />
+          <Route path='/rezumeuser'  element={<RezumeUser uservaka={uservaka} cardMassiv={cardMassiv} />} />
+
+          <Route path='/otzivuser'  element={<Otziv  cardMassiv={cardMassiv} />} />
 
           <Route path='/vakanuser'  element={<UserVakan  cardMassivTwo={cardMassivTwo} />} />
 
+          <Route path='/otzivuservakan'  element={<OtzivVakan  cardMassivTwo={cardMassivTwo} />} />
 
         </Routes>  
 

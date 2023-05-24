@@ -1,10 +1,11 @@
 
 
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 import '../Myrezume/Myrezume.scss'
 
 import useModal from "./useModal";
 import Modal from './Modal'
+import { useState } from 'react';
 
 
 
@@ -39,6 +40,13 @@ export default function Mycard(
     
     const [isShowingModal, toggleModal] = useModal();
 
+    const location = useLocation ()
+
+    const heartLove = useLocation();
+
+    const [heart, setHeart] = useState(false)
+
+
     return(
 
        <>
@@ -48,11 +56,27 @@ export default function Mycard(
 
     <div id={CardId} className="mini__outer" onClick={ (event) => onClick(event.currentTarget.id) } >
         
-        <Link to='/rezumeuser' className="mini__outer_inside">
+        
+        <div className="mini__outer_inside">
 
-    <p className="mini__outer_inside_blueTitle">
+             
+                    {heartLove.pathname === '/poiksrezume' ?
+
+                    <div>
+
+<svg  onClick={() => setHeart(!heart)} fill={heart ? '#ce1616' : '000'} className='svg' width="30px" height="30px" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.808,11.079C19.829,16.132,12,20.5,12,20.5s-7.829-4.368-8.808-9.421C2.227,6.1,5.066,3.5,8,3.5a4.444,4.444,0,0,1,4,2,4.444,4.444,0,0,1,4-2C18.934,3.5,21.773,6.1,20.808,11.079Z"/></svg>
+
+                    </div>
+
+                     :
+                     
+                     ''
+                    
+                }  
+
+    <Link to='/rezumeuser' className="mini__outer_inside_blueTitle">
         {proves}
-    </p>
+    </Link>
 
     <img className="mini__outer_inside_avatar" src={avatar} alt="" />
 
@@ -110,8 +134,10 @@ export default function Mycard(
     </div>
 
 
-        </Link>
+        </div>
 
+        {location.pathname !== '/poiksrezume' ? 
+        
         <div className="mini__outer_botline">
 
     <div className="mini__outer_botline_eyeDiv">
@@ -148,6 +174,11 @@ export default function Mycard(
 
 
         </div>
+        
+        :
+        ''
+        }
+
 
     </div>
 

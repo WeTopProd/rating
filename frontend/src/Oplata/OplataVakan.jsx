@@ -39,18 +39,20 @@ function OplataVakan({priceTwo}) {
         e.preventDefault();
 
         if (
+            
+        (CardName.length > 0) && 
         
-        (CardNum.split('').filter(item => +item).length === 16) && 
+        (CardNum.length === 16) && 
 
-        (CardGod.split('').filter(item => +item).length === 4)&& 
+        (CardGod.length === 4)&& 
 
-        (CardKod.split('').filter(item => +item).length === 3) ) {
+        (CardKod.length === 3) ) {
 
           return navigate('/successfour')
 
         } else {
 
-          return  navigate('/oplatavakan')
+          return  alert('Неправильно ввели данные')
 
         }
     };
@@ -143,13 +145,13 @@ tarif_link= '/tarifvakan'
                             <input type="text" placeholder='Имя владельца карты' className={o.oplata__item_form_input} onChange={event => setCardName(event.target.value)}  />
 
 
-                            <InputMask mask="9999/9999/9999/9999" type="text" placeholder='Номер карты' className={o.oplata__item_form_input} onChange={event => setCardNum(event.target.value)}  />
+                            <input type="text" placeholder='Номер карты' className={o.oplata__item_form_input} onChange={event => setCardNum(event.target.value)}  />
                             
                             <div className={o.oplata__item_form_flex}>
 
-                                <InputMask  mask="99/99" type="text" placeholder='срок действия' className={o.oplata__item_form_flex_input} onChange={event => setCardGod(event.target.value)}  />
+                                <input   type="text" placeholder='срок действия' className={o.oplata__item_form_flex_input} onChange={event => setCardGod(event.target.value)}  />
 
-                                <InputMask mask="999" type="text" placeholder='cvc код' onChange={event => setCardKod(event.target.value)} className={o.oplata__item_form_flex_input}  />
+                                <input type="text" placeholder='cvc код' onChange={event => setCardKod(event.target.value)} className={o.oplata__item_form_flex_input}  />
 
                             </div>
                             
