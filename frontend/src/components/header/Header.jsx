@@ -7,7 +7,6 @@ import h from '../header/header.module.scss'
 
 import svg from '../img/logo.png'
 
-import mail from '../img/user_mail.svg'
 import contact from '../img/user_contact.svg'
 import like from '../img/user_like.svg'
 import chat from '../img/user_chat.svg'
@@ -83,14 +82,7 @@ function Header (
 
     const location = useLocation();
 
-    
-
-    // const homeLoc = location.pathname = '/'
-
-
-    // console.log(homeLoc)
-
-    const auth = true
+    const auth = false
       
 
 
