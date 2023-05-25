@@ -24,7 +24,7 @@ import k from '../kval/kval.module.scss'
                 
                 <div className={k.kval__item}>
                     <p className={k.kval__item_title}>Повышайте свой профессиональный уровень</p>
-                    <Link to='/' className={k.kval__item_link}>Подробнее</Link>
+                    <Link to='https://frantsuz.ru/' className={k.kval__item_link}>Подробнее</Link>
                 </div>
 
                 <p className={k.kval__item_subtitle}>Обучайте своих сотрудников</p>

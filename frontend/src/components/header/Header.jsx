@@ -239,7 +239,11 @@ function Header (
                         <Link to={myLiveVakan}>Мои избранные {mylive}</Link>
                     </div>
 
-                    {location.pathname === '/vakan' ?
+                    {location.pathname === '/vakan'||
+                     location.pathname === '/tarifvakan' ||
+                     location.pathname === '/myliverezume'  ||
+                     location.pathname === '/myvakan' 
+                    ?
 
                     ''
                     :

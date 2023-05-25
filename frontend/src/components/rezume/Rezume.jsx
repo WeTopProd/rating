@@ -108,7 +108,7 @@ myLiveVakan = '/myLiveVakan'
           <p className={m.abu__item_subtitle}>Не хватает опыта?</p>
           
           <div className={m.abu__item_buttons}>
-            <Link to=''className={m.abu__item_buttons_link}>Подробнее</Link>
+            <Link to='https://frantsuz.ru/' className={m.abu__item_buttons_link}>Подробнее</Link>
             <img src={ster} className={m.abu__item_buttons_svg} alt="svg" />
           </div>
 

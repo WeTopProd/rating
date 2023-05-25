@@ -232,7 +232,7 @@ export default function RezumeUser ({uservaka, ...cardMassiv}) {
                 </p>
             </div>
 
-            <Link to='' className='recomendation__link'>
+            <Link to='/tarifnumber' className='recomendation__link'>
             Получить доступ
             </Link>
             

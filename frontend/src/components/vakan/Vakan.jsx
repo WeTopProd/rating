@@ -111,7 +111,7 @@ myLiveVakan = '/myliverezume'
 
                 </div>
 
-                <Link to='/' className={m.obuch__link}>
+                <Link to='https://frantsuz.ru/' className={m.obuch__link}>
                 Подробнее
                 </Link>
 

@@ -38,6 +38,9 @@ import PoiksVakan from './PoiskVakan/PoiskVakan';
 import PoiksRezume from './PoiskRezume/PoiskRezume';
 import MyLiveVakan from './myLiveVakan/MyLiveVakan';
 import MyLiveRezume from './myLiveRezume/MyLiveRezume';
+import TarifNumber from './Myrezume/tarifnumber/TarifNumber';
+import OplataNumber from './Myrezume/tarifnumber/OplataNumber';
+import SuccessFive from './Myrezume/tarifnumber/seccessFive';
 
 
 function App() {
@@ -45,6 +48,9 @@ function App() {
   const [price, setPrice] = useState('')
 
   const [priceTwo, setPriceTwo] = useState('')
+
+  const [priceThree, setPriceThree] = useState('')
+
 
   const [
 
@@ -68,9 +74,6 @@ function App() {
 const [cardMassiv, setCardMassiv] = useState(MyDataCard)
 
 const [cardMassivTwo, setCardMassivTwo] = useState(MyDataCardTwo)
-
-console.log(cardMassiv);
-
  
 
 const ClickId = (id) => {
@@ -137,6 +140,9 @@ const ClickIdTwo = (id) => {
 
           <Route path='/oplatavakan'  element={<OplataVakan priceTwo={priceTwo} />} />
 
+          <Route path='/oplatanumber'  element={<OplataNumber priceThree={priceThree} />} />
+
+
           <Route path='/leadvakan'  element={<LeadVakan/>} />
 
           <Route path='/preap'  element={<Preap />} />
@@ -167,6 +173,8 @@ const ClickIdTwo = (id) => {
 
           <Route path='/successthree'  element={<SuccessThree />} />
 
+          <Route path='/successfive'  element={<SuccessFive />} />
+
           <Route path='/successfour'  element={<SuccessFour />} />
 
           <Route path='/successvakan'  element={<SuccessVakan />} />
@@ -182,6 +190,8 @@ const ClickIdTwo = (id) => {
           <Route path='/mylivevakan'  element={<MyLiveVakan onClick={ClickIdTwo} />} />
 
           <Route path='/myliverezume'  element={<MyLiveRezume   onClick={ClickId} />} />
+
+          <Route path='/tarifnumber'  element={<TarifNumber priceThree={priceThree} setPriceThree={setPriceThree}  />} />
 
         </Routes>  
 
