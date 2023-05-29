@@ -9,7 +9,7 @@ import plus from '../components/img/+.svg'
 import { Link } from 'react-router-dom'
 
 
-export default function MyRezume({onClick}) {
+export default function MyRezume({onClick, setAuth, auth}) {
 
     return(
 
@@ -39,7 +39,8 @@ export default function MyRezume({onClick}) {
         tarif_link= '/tarifrezume'
         
         myLiveVakan = '/myLiveVakan'
-        
+        auth={auth}
+        setAuth={setAuth}
         />
 
 

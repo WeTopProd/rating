@@ -8,7 +8,7 @@ import { myContext } from '../Context'
 
 
 
- export default function PreapLoad () {
+ export default function PreapLoad ({auth,setAuth}) {
 
     const [notes, setNotes] = useState([])
 
@@ -88,6 +88,8 @@ import { myContext } from '../Context'
         tarif_link= '/tarifrezume'
         
         myLiveVakan = '/myLiveVakan'
+        auth={auth}
+        setAuth={setAuth}
 
         />
 

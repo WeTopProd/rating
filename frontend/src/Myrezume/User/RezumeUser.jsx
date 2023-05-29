@@ -3,7 +3,7 @@ import Header from '../../components/header/Header'
 import './RezumeUser.scss' 
 import { Link } from 'react-router-dom';
 
-export default function RezumeUser ({uservaka, ...cardMassiv}) {
+export default function RezumeUser ({auth, setAuth ,uservaka , ...cardMassiv }) {
 
     const [mas, setMas] = useState(cardMassiv.cardMassiv)
     const [result, setResult] = useState(null)
@@ -48,6 +48,8 @@ export default function RezumeUser ({uservaka, ...cardMassiv}) {
         tarif_link= '/tarifrezume'
         
         myLiveVakan = '/myLiveVakan'
+        auth={auth}
+        setAuth={setAuth}
         
         />
 

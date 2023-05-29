@@ -6,7 +6,7 @@ import l from '../preparning/preap.module.scss'
 import { useContext, useState } from 'react'
 import { myContext } from '../Context'
 
- export default function Preap () {
+ export default function Preap ({auth, setAuth}) {
 
     const [notes, setNotes] = useState([])
     
@@ -86,7 +86,8 @@ import { myContext } from '../Context'
         tarif_link= '/tarifrezume'
         
         myLiveVakan = '/myLiveVakan'
-
+        auth={auth}
+        setAuth={setAuth}
         />
 
         <div className={l.section__preap}>

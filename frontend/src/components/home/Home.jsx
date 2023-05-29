@@ -16,7 +16,7 @@ import Port from '../port/Port'
 
 
 
-function Home ({applicants,employer}) {
+function Home ({applicants,employer, auth, setAuth}) {
 
     return (
 
@@ -38,6 +38,9 @@ function Home ({applicants,employer}) {
 
         link5='#footer' 
         title5='Контакты'
+
+        auth={auth}
+        setAuth={setAuth}
 
 
          />

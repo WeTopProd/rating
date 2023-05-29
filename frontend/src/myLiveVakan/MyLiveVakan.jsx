@@ -6,7 +6,7 @@ import './MyLiveVakan.scss'
 
 
 
-export default function MyLiveVakan({onClick}) {
+export default function MyLiveVakan({auth, setAuth ,onClick}) {
     return (
         <>
 
@@ -32,6 +32,9 @@ export default function MyLiveVakan({onClick}) {
 myRezume_link = '/myrezume'
 
 tarif_link= '/tarifrezume'
+
+auth={auth}
+setAuth={setAuth}
 
 myLiveVakan = '/myLiveVakan'
 

@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react'
 import Header from '../../components/header/Header'
 import './Otziv.scss'
 
-export default function Otziv (cardMassiv) {
+export default function Otziv ({auth, setAuth, ...cardMassiv}) {
 
     const [mas, setMas] = useState(cardMassiv.cardMassiv)
     const [result, setResult] = useState(null)
@@ -45,6 +45,8 @@ export default function Otziv (cardMassiv) {
         tarif_link= '/tarifrezume'
         
         myLiveVakan = '/myLiveVakan'
+        auth={auth}
+        setAuth={setAuth}
         
         />
 

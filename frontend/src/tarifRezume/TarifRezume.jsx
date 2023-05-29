@@ -11,13 +11,16 @@ import gal from '../components/img/galka.png'
 
 
 
-function TarifRezume ({setPrice}) {
+function TarifRezume ({setPrice, auth, setAuth}) {
 
     return (
 
         <>
 
         <Header
+        
+        auth={auth}
+        setAuth={setAuth}
         
         link='rezume/#rezume'
         title='Резюме'

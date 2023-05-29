@@ -4,7 +4,7 @@ import Header from '../../components/header/Header'
 import './userVakan.scss' 
 import { Link } from 'react-router-dom';
 
-export default function UserVakan (cardMassivTwo) {
+export default function UserVakan ({auth, setAuth , ...cardMassivTwo}) {
 
     const [mas, setMas] = useState(cardMassivTwo.cardMassivTwo)
     const [result, setResult] = useState(null)
@@ -50,6 +50,8 @@ tarif_link= '/tarifvakan'
 
 myLiveVakan = '/myliverezume'
 
+auth={auth}
+setAuth={setAuth}
 
  />
 

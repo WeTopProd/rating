@@ -11,7 +11,7 @@ import p from '../components/img/card_p.svg'
 
 
 
-function OplataRezume ({price}) {
+function OplataRezume ({price, auth, setAuth}) {
 
     const [CardNum, setCardNum] = useState('');
 
@@ -87,6 +87,9 @@ function OplataRezume ({price}) {
         tarif_link= '/tarifrezume'
         
         myLiveVakan = '/myLiveVakan'
+
+        auth={auth}
+        setAuth={setAuth}        
         
         />
         

@@ -9,7 +9,7 @@ import MyDataCard from './my.data.card'
 import Mycard from './Mycard'
 
 
-export default function MyVakan({onClick}) {
+export default function MyVakan({onClick, setAuth, auth}) {
 
     
 
@@ -39,7 +39,8 @@ tarif_link= '/tarifvakan'
 
 myLiveVakan = '/myliverezume'
 
-
+auth={auth}
+setAuth={setAuth}
  />
 
 

@@ -14,7 +14,7 @@ import { Link } from "react-router-dom";
 
 
 
- export default function OplataNumber({priceThree}) {
+ export default function OplataNumber({priceThree, auth, setAuth}) {
 
     const [CardNum, setCardNum] = useState('');
 
@@ -84,7 +84,8 @@ myRezume_link = '/myvakan'
 tarif_link= '/tarifvakan'
 
 myLiveVakan = '/myliverezume'
-
+auth={auth}
+setAuth={setAuth}
 
  />
         

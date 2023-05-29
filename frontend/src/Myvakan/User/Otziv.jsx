@@ -5,7 +5,7 @@ import Header from '../../components/header/Header'
 
 import '../../Myrezume/User/Otziv.scss'
 
-export default function OtzivVakan (cardMassivTwo) {
+export default function OtzivVakan ({ auth, setAuth, ...cardMassivTwo}) {
 
     const [mas, setMas] = useState(cardMassivTwo.cardMassivTwo)
     const [result, setResult] = useState(null)
@@ -45,7 +45,8 @@ export default function OtzivVakan (cardMassivTwo) {
         tarif_link= '/tarifrezume'
         
         myLiveVakan = '/myLiveVakan'
-        
+        auth={auth}
+        setAuth={setAuth}
         />
 
 <section className="sectionRecomendation">

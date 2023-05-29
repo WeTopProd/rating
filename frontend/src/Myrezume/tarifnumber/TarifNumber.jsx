@@ -9,7 +9,7 @@ import gal from '../../components/img/galka.png'
 
 import { Link } from 'react-router-dom'
 
-export default function TarifNumber({setPriceThree}) {
+export default function TarifNumber({ auth, setAuth , setPriceThree}) {
 
     return (
 
@@ -36,6 +36,9 @@ myRezume_link = '/myvakan'
 tarif_link= '/tarifvakan'
 
 myLiveVakan = '/myliverezume'
+
+auth={auth}
+setAuth={setAuth}
 
 
  />

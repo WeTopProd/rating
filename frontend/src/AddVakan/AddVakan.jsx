@@ -5,7 +5,7 @@ import Header from '../components/header/Header'
 import { Link } from 'react-router-dom'
 import { contextVakan } from '../ContextVakan'
 
-export default function AddVakan () {
+export default function AddVakan ({auth, setAuth}) {
 
     const [notesTwo, setNotesTwo] = useState([])
 
@@ -79,6 +79,9 @@ myRezume_link = '/myvakan'
 tarif_link= '/tarifvakan'
 
 myLiveVakan = '/myliverezume'
+
+auth={auth}
+setAuth={setAuth}
 
 
  />

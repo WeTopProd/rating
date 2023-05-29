@@ -17,7 +17,7 @@ import VakanCard from './VakanCard';
 
 
 
-function Vakan () {
+function Vakan ({auth, setAuth}) {
     return(
 
         <>
@@ -46,6 +46,9 @@ myRezume_link = '/myvakan'
 tarif_link= '/tarifvakan'
 
 myLiveVakan = '/myliverezume'
+
+auth={auth}
+setAuth={setAuth}
 
  />
     

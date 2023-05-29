@@ -6,7 +6,7 @@ import Mycard from '../Myrezume/Mycard';
 
 
 
-export default function MyLiveRezume ({onClick}) {
+export default function MyLiveRezume ({auth,setAuth, onClick}) {
     return (
         <>
 
@@ -31,6 +31,8 @@ myRezume_link = '/myvakan'
 tarif_link= '/tarifvakan'
 
 myLiveVakan = '/myliverezume'
+auth={auth}
+setAuth={setAuth}
 
 
 

@@ -10,7 +10,7 @@ import { AiOutlineMenu } from "react-icons/ai";
 
 import './Poisk.scss'
 
-export default function PoiksVakan ({onClick}) {
+export default function PoiksVakan ({onClick, auth, setAuth}) {
 
     const [show, setShow] = useState(false);
 
@@ -107,6 +107,8 @@ export default function PoiksVakan ({onClick}) {
         
         myLiveVakan = '/myLiveVakan'
         
+        auth={auth}
+        setAuth={setAuth}
         />
 
         <section className='section__posk'>

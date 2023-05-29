@@ -15,7 +15,7 @@ import ModalNastTwo from './ModalNastTwo';
 
 
 
-function Nast () {
+function Nast ({auth, setAuth}) {
 
     const [isShowingModal, toggleModal] = useModal();
 
@@ -49,6 +49,9 @@ function Nast () {
         tarif_link= '/tarifrezume'
         
         myLiveVakan = '/myLiveVakan'
+
+        auth={auth}
+        setAuth={setAuth}
         
         />
 

@@ -4,7 +4,7 @@ import vector from '../components/img/Vector.png'
 import Header from '../components/header/Header'
 import { Link } from 'react-router-dom'
 
- export default function SuccessFour () {
+ export default function SuccessFour ({auth, setAuth}) {
     return (
 
         <>
@@ -30,6 +30,8 @@ myRezume_link = '/myvakan'
 tarif_link= '/tarifvakan'
 
 myLiveVakan = '/myliverezume'
+auth={auth}
+setAuth={setAuth}
 
 
  />

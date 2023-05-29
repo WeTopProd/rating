@@ -1,5 +1,5 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import { useContext, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 
 
 import Home from './components/home/Home'
@@ -44,6 +44,23 @@ import SuccessFive from './Myrezume/tarifnumber/seccessFive';
 
 
 function App() {
+
+  const [auth, setAuth] = useState(false)
+
+  useEffect(() => {
+    
+   
+    if(auth) {
+      localStorage.setItem('auth', JSON.stringify(auth))
+    } else
+    if(localStorage.getItem('auth') !== 'undefined'){
+
+
+      setAuth(JSON.parse(localStorage.getItem('auth')))
+    }
+
+
+  }, [auth])
 
   const [price, setPrice] = useState('')
 
@@ -118,80 +135,82 @@ const ClickIdTwo = (id) => {
 
         <Routes>
 
-          <Route path='/'  element={<Home employer={employer} applicants={applicants} />} />
+          <Route path='/'  element={<Home employer={employer} applicants={applicants} auth={auth} setAuth={setAuth} />} />
 
-          <Route path='/rezume'  element={<Rezume  />} />
+          <Route path='/rezume'  element={<Rezume auth={auth} setAuth={setAuth}  />} />
 
-          <Route path='/vakan'  element={<Vakan />} />
+          <Route path='/vakan'  element={<Vakan auth={auth} setAuth={setAuth} />} />
 
-          <Route path='/nast'  element={<Nast />} />
+          <Route path='/nast'  element={<Nast auth={auth} setAuth={setAuth} />} />
           
-          <Route path='/addvakan'  element={<AddVakan />} />
+          <Route path='/addvakan'  element={<AddVakan auth={auth} setAuth={setAuth} />} />
 
-          <Route path='/addrezume'  element={<AddRezume />} />
+          <Route path='/addrezume'  element={<AddRezume auth={auth} setAuth={setAuth} />} />
 
           <Route path='/tarifrezume'  element={<TarifRezume
 
             price={price} setPrice={setPrice}
+            auth={auth} setAuth={setAuth}
            
            />} />
            
-          <Route path='/oplatarezume'  element={<OplataRezume price={price} />} />
+          <Route path='/oplatarezume'  element={<OplataRezume price={price} auth={auth} setAuth={setAuth} />} />
 
-          <Route path='/oplatavakan'  element={<OplataVakan priceTwo={priceTwo} />} />
+          <Route path='/oplatavakan'  element={<OplataVakan priceTwo={priceTwo} auth={auth} setAuth={setAuth} />} />
 
-          <Route path='/oplatanumber'  element={<OplataNumber priceThree={priceThree} />} />
+          <Route path='/oplatanumber'  element={<OplataNumber priceThree={priceThree} auth={auth} setAuth={setAuth} />} />
 
 
-          <Route path='/leadvakan'  element={<LeadVakan/>} />
+          <Route path='/leadvakan'  element={<LeadVakan auth={auth} setAuth={setAuth}/>} />
 
-          <Route path='/preap'  element={<Preap />} />
+          <Route path='/preap'  element={<Preap  auth={auth} setAuth={setAuth}/>} />
 
-          <Route path='/preapload'  element={<PreapLoad />} />
+          <Route path='/preapload'  element={<PreapLoad auth={auth} setAuth={setAuth} />} />
 
-          <Route path='/myrezume'  element={<MyRezume onClick={ClickId} />} />
+          <Route path='/myrezume'  element={<MyRezume onClick={ClickId} auth={auth} setAuth={setAuth} />} />
 
-          <Route path='/poiksvakan'  element={<PoiksVakan cardMassivTwo={cardMassivTwo} onClick={ClickIdTwo} />} /> 
+          <Route path='/poiksvakan'  element={<PoiksVakan auth={auth} setAuth={setAuth} cardMassivTwo={cardMassivTwo} onClick={ClickIdTwo} />} /> 
 
-          <Route path='/poiksrezume'  element={<PoiksRezume  cardMassiv={cardMassiv} onClick={ClickId} />} /> 
+          <Route path='/poiksrezume'  element={<PoiksRezume auth={auth} setAuth={setAuth}  cardMassiv={cardMassiv} onClick={ClickId} />} /> 
 
-          <Route path='/myvakan' element={<MyVakan  onClick={ClickIdTwo}  />} />
+          <Route path='/myvakan' element={<MyVakan auth={auth} setAuth={setAuth}  onClick={ClickIdTwo}  />} />
         
           <Route path='/tarifvakan'  element={<TarifVakan
           
           priceTwo={priceTwo} setPriceTwo={setPriceTwo}
+          auth={auth} setAuth={setAuth}
           
           />} />
 
-          <Route path='/reg'  element={<RegAuth />} />
+          <Route path='/reg'  element={<RegAuth  auth={auth} setAuth={setAuth}/>} />
 
-          <Route path='/login'  element={<LoginAuth />} />
+          <Route path='/login'  element={<LoginAuth auth={auth} setAuth={setAuth} />} />
 
-          <Route path='/success'  element={<Success />} />
+          <Route path='/success'  element={<Success auth={auth} setAuth={setAuth} />} />
 
-          <Route path='/successtwo'  element={<SuccessTwo />} />
+          <Route path='/successtwo'  element={<SuccessTwo auth={auth} setAuth={setAuth} />} />
 
-          <Route path='/successthree'  element={<SuccessThree />} />
+          <Route path='/successthree'  element={<SuccessThree auth={auth} setAuth={setAuth} />} />
 
-          <Route path='/successfive'  element={<SuccessFive />} />
+          <Route path='/successfive'  element={<SuccessFive auth={auth} setAuth={setAuth} />} />
 
-          <Route path='/successfour'  element={<SuccessFour />} />
+          <Route path='/successfour'  element={<SuccessFour auth={auth} setAuth={setAuth} />} />
 
-          <Route path='/successvakan'  element={<SuccessVakan />} />
+          <Route path='/successvakan'  element={<SuccessVakan auth={auth} setAuth={setAuth} />} />
 
-          <Route path='/rezumeuser'  element={<RezumeUser uservaka={uservaka} cardMassiv={cardMassiv} />} />
+          <Route path='/rezumeuser'  element={<RezumeUser  auth={auth} setAuth={setAuth} uservaka={uservaka} cardMassiv={cardMassiv} />} />
 
-          <Route path='/otzivuser'  element={<Otziv  cardMassiv={cardMassiv} />} />
+          <Route path='/otzivuser'  element={<Otziv auth={auth} setAuth={setAuth}  cardMassiv={cardMassiv} />} />
 
-          <Route path='/vakanuser'  element={<UserVakan  cardMassivTwo={cardMassivTwo} />} />
+          <Route path='/vakanuser'  element={<UserVakan auth={auth} setAuth={setAuth}  cardMassivTwo={cardMassivTwo} />} />
 
-          <Route path='/otzivuservakan'  element={<OtzivVakan  cardMassivTwo={cardMassivTwo} />} />
+          <Route path='/otzivuservakan'  element={<OtzivVakan auth={auth} setAuth={setAuth}  cardMassivTwo={cardMassivTwo} />} />
 
-          <Route path='/mylivevakan'  element={<MyLiveVakan onClick={ClickIdTwo} />} />
+          <Route path='/mylivevakan'  element={<MyLiveVakan auth={auth} setAuth={setAuth} onClick={ClickIdTwo} />} />
 
-          <Route path='/myliverezume'  element={<MyLiveRezume   onClick={ClickId} />} />
+          <Route path='/myliverezume'  element={<MyLiveRezume auth={auth} setAuth={setAuth}   onClick={ClickId} />} />
 
-          <Route path='/tarifnumber'  element={<TarifNumber priceThree={priceThree} setPriceThree={setPriceThree}  />} />
+          <Route path='/tarifnumber'  element={<TarifNumber auth={auth} setAuth={setAuth} priceThree={priceThree} setPriceThree={setPriceThree}  />} />
 
         </Routes>  
 

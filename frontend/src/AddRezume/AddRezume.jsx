@@ -7,13 +7,16 @@ import cv from '../components/img/cv.png'
 import gal from '../components/img/galka.png'
 import { Link } from 'react-router-dom'
 
-function AddRezume () {
+function AddRezume ({auth, setAuth}) {
 
     return (
 
         <>
 
         <Header
+
+        auth={auth}
+        setAuth={setAuth}
         
         link='rezume/#rezume'
         title='Резюме'

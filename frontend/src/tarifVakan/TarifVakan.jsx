@@ -7,7 +7,7 @@ import cv from '../components/img/cv.png'
 import gal from '../components/img/galka.png'
 import { Link } from 'react-router-dom'
 
-function TarifVakan({setPriceTwo}) {
+function TarifVakan({setPriceTwo, setAuth, auth}) {
 
     return (
 
@@ -34,6 +34,8 @@ myRezume_link = '/myvakan'
 tarif_link= '/tarifvakan'
 
 myLiveVakan = '/myliverezume'
+auth={auth}
+setAuth={setAuth}
 
 
  />

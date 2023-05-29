@@ -1,10 +1,11 @@
 import { useState } from 'react';
-
+import axios from 'axios'
 
 import f from '../auth/Reg.module.scss'
 import h from '../components/header/header.module.scss'
 
-import { Link} from 'react-router-dom';
+import { Link, useNavigate} from 'react-router-dom';
+import { useEffect } from 'react';
 
 
 function RegAuth () {
@@ -21,24 +22,77 @@ function RegAuth () {
     
     const [ValueTel, setValueTel] = useState('');   
 
-    console.log(ValuePocht)
-    
+    const [modal, setmodal] = useState(false)
+
+   
+
+    const navigate = useNavigate ('')  
 
 
+    useEffect (() => {
+
+        
+
+    }, [])
+
+    const hanClick =  (e) => {
+
+        e.preventDefault()
+        axios.post('http://localhost:8001/api/users/', {
+
+       phone: ValueTel ,
+       first_name: ValueLast,
+       last_name: ValueFerst,
+       email: ValuePocht,
+       password: ValuePassw,
+       re_password: ValuePasswEnd,
+
+    },  {
+
+        headers: {
+            'Content-Type': 'application/json',
+        }
+
+    })
+
+    .then(res => res.request.status == 201 ? navigate('/login') : navigate('') )
+
+    .catch(err => {
     
-    
+    err.message === 'Request failed with status code 400' ? setmodal(true) : setmodal(false) } )
+}
+
+
+
+
+
+ 
     return (
         
         <section className={f.section__form}>
 
             <div className={h.container}>
 
-        <div className={f.form}>
+            {modal ?
+
+                <div className={f.form__modal}>
+                    <p>не правильно ввели данные</p>
+                </div>
+
+                :
+
+                ''             
+            }
+                    
+
+
+
+        <div className={f.form} >
 
             <p className={f.form__title}>Регистрация</p>
 
 
-            <form className={f.info}>
+            <form className={f.info} onSubmit={hanClick}>
 
 
             <div className={f.info__item}>
@@ -51,7 +105,7 @@ function RegAuth () {
             value={ValueLast} onChange={event => setValueLast(event.target.value)}
             />
 
-            <input type="number" className={f.form__input}  placeholder="Телефон"
+            <input type="tel" className={f.form__input}  placeholder="Телефон"
             value={ValueTel} onChange={event => setValueTel(event.target.value)}
             />
 
@@ -85,7 +139,7 @@ function RegAuth () {
 
             </div>
 
-            <input type="submit" value='Зарегистрироваться' className={f.form__link}/>
+            <input type="submit" onClick={hanClick} value='Зарегистрироваться' className={f.form__link}/>
 
             <Link to='/' className={f.form__footer_exit}>Назад</Link>
 

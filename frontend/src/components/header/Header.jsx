@@ -27,7 +27,7 @@ function Header (
      link5, title5,
      myRezume,myRezume_link,
      tarif_link,
-     myLiveVakan,mylive
+     myLiveVakan,mylive,auth, setAuth
     
     }) {
 
@@ -82,7 +82,12 @@ function Header (
 
     const location = useLocation();
 
-    const auth = false
+    const signOut = () => {
+        localStorage.setItem('auth', JSON.stringify(setAuth(false)))
+    }
+
+    // useEffect(() => signOut, [auth])
+    
       
 
 
@@ -164,7 +169,7 @@ function Header (
 
             <div className={h.nav__admin}>
                 
-                <Link to="tel:+79999999999" className={h.nav__admin_button}>
+                <Link to="tel:+79680915552" className={h.nav__admin_button}>
                 Обратный звонок
                 </Link>
 
@@ -179,20 +184,22 @@ function Header (
 
                 {location.pathname === '/' ? <> {
 
-                    !!auth ? <>
+                    auth ? <>
                     
                     <div className={h.user}>
 
                     <img src={nast} alt="svg" />
                     
-                    <Link to='/'>Выход</Link>
+                    <Link to='/' onClick={signOut}>Выход</Link>
 
                     </div>
 
                     
 
-                    </>                   
+                    </>  
+
                      :
+
                      <>
 
 <div className={h.user}>
@@ -207,7 +214,7 @@ function Header (
     
 </>  
 
-                }</> 
+                } </> 
                 
                 :
                 
@@ -234,7 +241,11 @@ function Header (
                     {location.pathname === '/vakan'||
                      location.pathname === '/tarifvakan' ||
                      location.pathname === '/myliverezume'  ||
-                     location.pathname === '/myvakan' 
+                     location.pathname === '/myvakan' ||
+                     location.pathname === '/oplatavakan' ||
+                     location.pathname === '/successfour' ||
+                     location.pathname === '/vakanuser' ||
+                     location.pathname === '/addvakan' 
                     ?
 
                     ''

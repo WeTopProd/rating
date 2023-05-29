@@ -12,7 +12,7 @@ import Mycard from '../Myrezume/Mycard';
 // import Mycard from '../Myvakan/Mycard';
 
 
-export default function PoiksRezume ({onClick}) {
+export default function PoiksRezume ({onClick, setAuth, auth}) {
 
     const [show, setShow] = useState(false);
 
@@ -108,6 +108,9 @@ export default function PoiksRezume ({onClick}) {
         tarif_link= '/tarifvakan'
         
         myLiveVakan = '/myliverezume'
+
+        auth={auth}
+        setAuth={setAuth}
         
         />
 

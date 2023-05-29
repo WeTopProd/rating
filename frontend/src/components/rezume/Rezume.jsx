@@ -16,7 +16,7 @@ import abu from '../img/abu.png'
 
 
 
-function Rezume() {
+function Rezume({auth, setAuth}) {
   return (
 
   <>
@@ -40,6 +40,8 @@ title5='Партнеры'
 
 
 
+
+
 myRezume = 'Мои резюме'
 
 myRezume_link = '/myrezume'
@@ -47,6 +49,9 @@ myRezume_link = '/myrezume'
 tarif_link= '/tarifrezume'
 
 myLiveVakan = '/myLiveVakan'
+
+auth={auth}
+setAuth={setAuth}
 
  />
   
