@@ -151,7 +151,7 @@ else:
 DJOSER = {
     'LOGIN_FIELD': 'email',
     'USER_CREATE_PASSWORD_RETYPE': True,
-    'ACTIVATION_URL': 'activation/{uid}/{token}',
+    'ACTIVATION_URL': 'api/users/activation/{uid}/{token}',
     'PASSWORD_RESET_CONFIRM_URL': 'reset_password_confirm/?uid={uid}&token={token}',
     'PASSWORD_CHANGED_EMAIL_CONFIRMATION': True,
     'SEND_ACTIVATION_EMAIL': True,
