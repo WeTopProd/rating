@@ -15,6 +15,12 @@ class Resume(models.Model):
         ('candidate_science_edu', 'Кандидат наук'),
         ('doctor_science_edu', 'Доктор наук')
     )
+    user = models.OneToOneField(
+        'users.User',
+        verbose_name='Пользователь',
+        related_name='resume_user',
+        on_delete=models.CASCADE
+    )
     FullName = models.CharField('Ф.И.О.', max_length=255)
     PhoneNumber = PhoneNumberField(
         'Телефон',

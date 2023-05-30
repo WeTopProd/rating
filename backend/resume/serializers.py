@@ -10,6 +10,7 @@ class ResumeSerializer(serializers.ModelSerializer):
         model = Resume
         fields = (
             'id',
+            'user',
             'FullName',
             'PhoneNumber',
             'data',

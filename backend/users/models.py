@@ -6,6 +6,7 @@ from phonenumber_field.modelfields import PhoneNumberField
 
 from .managers import UserManager
 from .validators import validate_phone_number
+from resume.models import Resume
 
 
 class User(AbstractBaseUser, PermissionsMixin):
@@ -38,6 +39,15 @@ class User(AbstractBaseUser, PermissionsMixin):
     is_active = models.BooleanField(default=True)
     is_staff = models.BooleanField(default=False)
     date_joined = models.DateTimeField(auto_now_add=True)
+
+    resume = models.OneToOneField(
+        Resume,
+        verbose_name='Резюме',
+        related_name='user_resume',
+        on_delete=models.CASCADE,
+        blank=True,
+        null=True
+    )
 
     objects = UserManager()
 
