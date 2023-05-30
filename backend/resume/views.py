@@ -2,7 +2,7 @@ from rest_framework import viewsets
 
 from .models import Resume
 from .serializers import ResumeSerializer
-from users.permissions import IsOwnerOrReadOnly
+from .permissions import IsOwnerOrReadOnly
 
 
 class ResumeViewSet(viewsets.ModelViewSet):
