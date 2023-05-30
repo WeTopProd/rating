@@ -50,14 +50,17 @@ function App() {
   useEffect(() => {
     
    
-    if(auth) {
+  if(auth) {
+
       localStorage.setItem('auth', JSON.stringify(auth))
+
     } else
+
     if(localStorage.getItem('auth') !== 'undefined'){
 
-
-      setAuth(JSON.parse(localStorage.getItem('auth')))
-    }
+    setAuth(JSON.parse(localStorage.getItem('auth')))
+   
+  }
 
 
   }, [auth])

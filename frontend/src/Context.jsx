@@ -44,6 +44,21 @@ export default function Context (props) {
    const [certificate, setCertificate] = useState([]);
 
 
+   const [secondary_edu, setsecondary_edu] = useState([]);
+
+   const [secondary_special_edu, setsecondary_special_edu] = useState([]);
+
+   const [incomplete_higher_edu, setincomplete_higher_edu] = useState([]);
+
+   const [higher_edu, sethigher_edu] = useState([]);
+
+   const [bachelor_edu, setbachelor_edu] = useState([]);
+
+   const [master_edu, setmaster_edu] = useState([]);
+
+   const [candidate_science_edu, setcandidate_science_edu] = useState([]);
+
+   const [doctor_science_edu, setdoctor_science_edu] = useState([]);
 
    
 
@@ -71,7 +86,16 @@ endSalary , setEndSalary,
 
 foto, setFoto,
 recommendation, setRecommendation,
-certificate, setCertificate
+certificate, setCertificate,
+
+secondary_edu, setsecondary_edu,
+secondary_special_edu, setsecondary_special_edu,
+incomplete_higher_edu,setincomplete_higher_edu,
+higher_edu,sethigher_edu,
+bachelor_edu,setbachelor_edu,
+master_edu,setmaster_edu,
+candidate_science_edu,setcandidate_science_edu,
+doctor_science_edu,setdoctor_science_edu
 
 
 ]} >

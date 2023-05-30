@@ -5,6 +5,7 @@ import h from '../components/header/header.module.scss'
 import l from '../preparning/preap.module.scss'
 import { useContext, useState } from 'react'
 import { myContext } from '../Context'
+import axios from 'axios'
 
  export default function Preap ({auth, setAuth}) {
 
@@ -30,43 +31,52 @@ import { myContext } from '../Context'
 
         foto, setFoto,
         recommendation, setRecommendation,
-        certificate, setCertificate
+        certificate, setCertificate,
+
+        secondary_edu, setsecondary_edu,
+        secondary_special_edu, setsecondary_special_edu,
+        incomplete_higher_edu,setincomplete_higher_edu,
+        higher_edu,sethigher_edu,
+        bachelor_edu,setbachelor_edu,
+        master_edu,setmaster_edu,
+        candidate_science_edu,setcandidate_science_edu,
+        doctor_science_edu,setdoctor_science_edu,
     
     ] = useContext(myContext)
 
     
 
-    function formHandler (){
-        let obj = {
+    // function formHandler (){
+    //     let obj = {
 
-            //input
-            FullName: FullName,
-            PhoneNumber: PhoneNumber ,
-            data: data,
-            city: city,
-            address: address,
-            education: education,
-            AddEducation: AddEducation,
+    //         //input
+    //         FullName: FullName,
+    //         PhoneNumber: PhoneNumber ,
+    //         data: data,
+    //         city: city,
+    //         address: address,
+    //         education: education,
+    //         AddEducation: AddEducation,
 
-            placeWork: placeWork,
-            postwork: postwork,
-            DataStart: DataStart,
-            DataEnd: DataEnd,
-            About: About,
-            skills: skills,
-            startSalary: startSalary,
-            endSalary: endSalary,
+    //         placeWork: placeWork,
+    //         postwork: postwork,
+    //         DataStart: DataStart,
+    //         DataEnd: DataEnd,
+    //         About: About,
+    //         skills: skills,
+    //         startSalary: startSalary,
+    //         endSalary: endSalary,
 
-            //file
-            foto: foto, 
-            recommendation: recommendation,
-            certificate: certificate,
+    //         //file
+    //         foto: foto, 
+    //         recommendation: recommendation,
+    //         certificate: certificate,
 
-        }
+    //     }
 
-        setNotes(...notes, obj)
+    //     setNotes(...notes, obj)
 
-    }
+    // }
 
     const onChangePicture = e => {
         setFoto([...foto, e.target.files[0]]);
@@ -79,6 +89,56 @@ import { myContext } from '../Context'
     const onChangePictureThree = e => {
         setCertificate([...certificate, e.target.files[0]]);
     };
+
+    const PreapRezume = (event) => {
+
+        event.preventDefault();
+
+       
+    
+        axios.post('http://localhost:8001/api/resume/', {
+
+            FullName: FullName,
+            PhoneNumber: PhoneNumber,
+            data: data,
+            city: city,
+            address: address,
+            education: education,
+            AddEducation: AddEducation,
+            placeWork: placeWork,
+            postWork: postwork,
+            DataStart: DataStart,
+            DataEnd: DataEnd,
+            About: About,
+            skills: skills,
+            startSalary: startSalary,
+            endSalary: endSalary,
+            foto: foto, 
+            recommendation: recommendation,
+            certificate: certificate,
+
+            secondary_edu: secondary_edu,
+            secondary_special_edu: secondary_special_edu,
+            incomplete_higher_edu:incomplete_higher_edu,
+            higher_edu:higher_edu,
+            bachelor_edu:bachelor_edu,
+            master_edu:master_edu,
+            candidate_science_edu:candidate_science_edu,
+            doctor_science_edu:doctor_science_edu,
+
+        },
+        
+        {
+            headers : {
+            'Content-Type': 'application/json',
+            }
+            
+        }
+        )
+
+        .catch(err => console.error(err))
+
+      };
 
 
 
@@ -122,15 +182,15 @@ import { myContext } from '../Context'
 
                 <p className={l.preap__title}>Составление резюме</p>
                 
-                <div className={l.preap}>
+                <form onSubmit={PreapRezume} className={l.preap}>
                     
-                    <form onSubmit={formHandler} className={l.preap__form}>
+                    <div  className={l.preap__form}>
                         
                         <input value={FullName} onChange={(event) => setFullName(event.target.value)} type="text" placeholder='Ф.И.О' className={l.preap__form_input} />
 
                         <input value={PhoneNumber} onChange={(event) => setPhoneNumber(event.target.value)} type="text" placeholder='Телефон' className={l.preap__form_input} />
 
-                        <input value={data} type="text" onChange={(event) => setData(event.target.value)} placeholder='Ваш возраст' className={l.preap__form_input} />
+                        <input value={data} type="number" onChange={(event) => setData(event.target.value)} placeholder='Ваш возраст' className={l.preap__form_input} />
 
 
                         <div  className={l.preap__form_flex}>
@@ -141,13 +201,35 @@ import { myContext } from '../Context'
                             
                         </div>
 
+
                         <div className={l.preap__form_flex}>
                             
-                        <input value={education} onChange={(event) => setEducation(event.target.value)} type="text"  placeholder='Образование' className={l.preap__form_flex_arr} />
-
-                        <input value={AddEducation} onChange={(event) => setAddEducation(event.target.value)}  type="text" placeholder='Доп. oбразование' className={l.preap__form_flex_arr} />
-                            
+<select className={l.preap__form_flex_select} >
+    <option onChange={(event) => setEducation(event.target.value)} value={education} >Образование</option>
+    <option onChange={(event) => setsecondary_edu(event.target.value)} value={secondary_edu} >Среднее</option>
+    <option onChange={(event) => setsecondary_special_edu(event.target.value)} value={secondary_special_edu}>Среднее специальное</option>
+    <option onChange={(event) => setincomplete_higher_edu(event.target.value)} value={incomplete_higher_edu}>Неоконченное высшее'</option>
+    <option onChange={(event) => sethigher_edu(event.target.value)} value={higher_edu}>Высшее</option>
+    <option onChange={(event) => setbachelor_edu(event.target.value)} value={bachelor_edu}>Бакалавр</option>
+    <option onChange={(event) => setmaster_edu(event.target.value)} value={master_edu}>Магистр</option>
+    <option onChange={(event) => setcandidate_science_edu(event.target.value)} value={candidate_science_edu}>Кандидат наук</option>
+    <option onChange={(event) => setdoctor_science_edu(event.target.value)} value={doctor_science_edu}>Доктор наук</option>
+</select>
+    
+<select className={l.preap__form_flex_select}>
+    <option value={AddEducation} onChange={(event) => setAddEducation(event.target.value)}>Доп. oбразование</option>
+    <option onChange={(event) => setsecondary_edu(event.target.value)} value={secondary_edu} >Среднее</option>
+    <option onChange={(event) => setsecondary_special_edu(event.target.value)} value={secondary_special_edu}>Среднее специальное</option>
+    <option onChange={(event) => setincomplete_higher_edu(event.target.value)} value={incomplete_higher_edu}>Неоконченное высшее'</option>
+    <option onChange={(event) => sethigher_edu(event.target.value)} value={higher_edu}>Высшее</option>
+    <option onChange={(event) => setbachelor_edu(event.target.value)} value={bachelor_edu}>Бакалавр</option>
+    <option onChange={(event) => setmaster_edu(event.target.value)} value={master_edu}>Магистр</option>
+    <option onChange={(event) => setcandidate_science_edu(event.target.value)} value={candidate_science_edu}>Кандидат наук</option>
+    <option onChange={(event) => setdoctor_science_edu(event.target.value)} value={doctor_science_edu}>Доктор наук</option>
+</select>
+                                
                         </div>
+
 
                         <div className={l.preap__form_flex}>
                             
@@ -159,9 +241,9 @@ import { myContext } from '../Context'
 
                         <div className={l.preap__form_flex}>
                             
-                            <input value={DataStart} onChange={(event) => setDataStart(event.target.value)} type="text" placeholder='Дата начало рабты' className={l.preap__form_flex_arr} />
+                            <input value={DataStart} onChange={(event) => setDataStart(event.target.value)} type="date" placeholder='Дата начало работы' className={l.preap__form_flex_arr} />
     
-                            <input value={DataEnd} onChange={(event) => setDataEnd(event.target.value)} type="text" placeholder='Дата окончания работы' className={l.preap__form_flex_arr} />
+                            <input value={DataEnd} onChange={(event) => setDataEnd(event.target.value)} type="date" placeholder='Дата окончания работы' className={l.preap__form_flex_arr} />
                                 
                         </div>
 
@@ -174,17 +256,17 @@ import { myContext } from '../Context'
                             
                             <p className={l.preap__form_footer_text}>Желаемая зарплата</p>
 
-                            <input value={startSalary} onChange={(event) => setStartSalary(event.target.value)} type="text" placeholder='от' className={l.preap__form_footer_input} />
+                            <input value={startSalary} onChange={(event) => setStartSalary(event.target.value)} type="number" placeholder='от' className={l.preap__form_footer_input} />
 
-                            <input value={endSalary} onChange={(event) => setEndSalary(event.target.value)} type="text" placeholder='до' className={l.preap__form_footer_input} />
+                            <input value={endSalary} onChange={(event) => setEndSalary(event.target.value)} type="number" placeholder='до' className={l.preap__form_footer_input} />
 
                         </div>
 
 
-                    </form>
+                    </div>
 
 
-    <div className={l.preap__info}>
+                    <div className={l.preap__info}>
                     
         <div className={l.file__info}>
             
@@ -222,11 +304,11 @@ import { myContext } from '../Context'
 
         </div>
 
-    </div>
+                    </div>
 
-                </div>
+                </form>
 
-                <Link to='/successtwo' onClick={formHandler} className={l.preap__button}>Разместить</Link>
+                <button  onClick={PreapRezume} className={l.preap__button}>Разместить</button>
                                
 
             </div>
