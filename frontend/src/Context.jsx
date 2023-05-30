@@ -37,7 +37,11 @@ export default function Context (props) {
 
    const [ endSalary , setEndSalary ] = useState('')
 
+   const [foto, setFoto] = useState([]);
 
+   const [recommendation, setRecommendation] = useState([]);
+
+   const [certificate, setCertificate] = useState([]);
 
 
 
@@ -46,6 +50,7 @@ export default function Context (props) {
 
    return (
     <>
+
     <myContext.Provider value={[
 
 FullName, setFullName,
@@ -63,6 +68,11 @@ About , setAbout,
 skills , setSkills,
 startSalary , setStartSalary,
 endSalary , setEndSalary,
+
+foto, setFoto,
+recommendation, setRecommendation,
+certificate, setCertificate
+
 
 ]} >
 

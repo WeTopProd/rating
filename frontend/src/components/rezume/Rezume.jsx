@@ -64,10 +64,21 @@ setAuth={setAuth}
 
                     <p className={m.rezume__subtitle}>Работа найдется для каждого.</p>
 
+                
                         
+                      {auth ?
+
                         <Link to='/addrezume' className={m.rezume__link}>
                         Разместить
                         </Link>
+                        
+                      :
+
+                      <Link to='/reg' className={m.rezume__link}>
+                      Разместить
+                      </Link>
+                             
+                      }
 
                         
 

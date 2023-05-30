@@ -47,8 +47,8 @@ tarif_link= '/tarifvakan'
 
 myLiveVakan = '/myliverezume'
 
-auth={auth}
-setAuth={setAuth}
+        auth={auth}
+        setAuth={setAuth}
 
  />
     
@@ -62,9 +62,21 @@ setAuth={setAuth}
                     <p className={m.rezume__subtitle}>И находите сотрудников среди тех, кто хочет у вас работать.</p>
 
                         
-                        <Link to='/addvakan' className={m.rezume__link}>
+
+
+                        {auth ?
+
+                         <Link to='/addvakan' className={m.rezume__link}>
+                         Разместить
+                         </Link>  
+
+                        :
+
+                        <Link to='/reg' className={m.rezume__link}>
                         Разместить
-                        </Link>
+                        </Link>  
+                        
+                        }
 
             </div> 
 

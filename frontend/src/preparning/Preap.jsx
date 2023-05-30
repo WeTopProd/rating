@@ -27,6 +27,10 @@ import { myContext } from '../Context'
         startSalary , setStartSalary,
         endSalary , setEndSalary,
         PhoneNumber, setPhoneNumber,
+
+        foto, setFoto,
+        recommendation, setRecommendation,
+        certificate, setCertificate
     
     ] = useContext(myContext)
 
@@ -34,6 +38,8 @@ import { myContext } from '../Context'
 
     function formHandler (){
         let obj = {
+
+            //input
             FullName: FullName,
             PhoneNumber: PhoneNumber ,
             data: data,
@@ -50,15 +56,35 @@ import { myContext } from '../Context'
             skills: skills,
             startSalary: startSalary,
             endSalary: endSalary,
+
+            //file
+            foto: foto, 
+            recommendation: recommendation,
+            certificate: certificate,
+
         }
 
         setNotes(...notes, obj)
 
     }
 
+    const onChangePicture = e => {
+        setFoto([...foto, e.target.files[0]]);
+    };
+
+    const onChangePictureTwo = e => {
+        setRecommendation([...recommendation, e.target.files[0]]);
+    };
+
+    const onChangePictureThree = e => {
+        setCertificate([...certificate, e.target.files[0]]);
+    };
+
 
 
     return (
+
+        
 
         <>
 
@@ -86,6 +112,7 @@ import { myContext } from '../Context'
         tarif_link= '/tarifrezume'
         
         myLiveVakan = '/myLiveVakan'
+        
         auth={auth}
         setAuth={setAuth}
         />
@@ -161,7 +188,7 @@ import { myContext } from '../Context'
                     
         <div className={l.file__info}>
             
-            <input type="file" className={l.input_file} />
+            <input type="file" className={l.input_file} onChange={e => onChangePicture(e)} />
 
             <p className={l.file__info_text}>
 
@@ -173,7 +200,7 @@ import { myContext } from '../Context'
         
         <div className={l.file__info}>
             
-            <input type="file" className={l.input_file} />
+            <input type="file" className={l.input_file} onChange={e => onChangePictureTwo(e)} />
 
             <p className={l.file__info_text}>
             Загрузить
@@ -184,7 +211,7 @@ import { myContext } from '../Context'
         
         <div className={l.file__info}>
             
-            <input type="file" className={l.input_file} />
+            <input type="file" className={l.input_file} onChange={e => onChangePictureThree(e)}/>
 
             <p className={l.file__info_text}>
 
