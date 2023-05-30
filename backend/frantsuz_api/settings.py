@@ -37,9 +37,9 @@ INSTALLED_APPS = [
     'rest_framework.authtoken',
     'djoser',
     'corsheaders',
-    'drf_yasg',
     'phonenumber_field',
     'users.apps.UsersConfig',
+    'resume.apps.ResumeConfig',
 ]
 
 MIDDLEWARE = [
@@ -85,8 +85,8 @@ else:
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.postgresql',
-            'NAME': 'academy',
-            'USER': 'academy_user',
+            'NAME': 'rating',
+            'USER': 'rating_user',
             'PASSWORD': '20031956tAA',
             'HOST': 'db',
             'PORT': '5432'
