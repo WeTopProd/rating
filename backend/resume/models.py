@@ -18,10 +18,6 @@ class Resume(models.Model):
     FullName = models.CharField('Ф.И.О.', max_length=255)
     PhoneNumber = PhoneNumberField(
         'Телефон',
-        unique=True,
-        error_messages={
-            'unique': 'Пользователь с таким номером телефона уже существует.',
-        },
         validators=[validate_phone_number]
     )
     data = models.IntegerField(
@@ -39,7 +35,9 @@ class Resume(models.Model):
         'Доп. образование',
         max_length=50,
         choices=EDUCATIONS,
-        default='secondary_edu'
+        default='secondary_edu',
+        blank=True,
+        null=True
     )
     placeWork = models.CharField(
         'Прошлое место работы',
@@ -57,17 +55,22 @@ class Resume(models.Model):
     endSalary = models.IntegerField('Зарплата до')
     foto = models.ImageField(
         'Изображение',
-        upload_to='backend_media/photo/'
+        upload_to='backend_media/photo/',
+        default='Applicant.jpg',
+        blank=True,
+        null=True
     )
     recommendation = models.FileField(
         'Файл рекомендации',
         upload_to='backend_media/recommendation/',
-        blank=True
+        blank=True,
+        null=True
     )
     certificate = models.FileField(
         'Файл сертификата',
         upload_to='backend_media/certificate/',
-        blank=True
+        blank=True,
+        null=True
     )
 
     class Meta:
