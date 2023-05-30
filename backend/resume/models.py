@@ -15,9 +15,9 @@ class Resume(models.Model):
         ('candidate_science_edu', 'Кандидат наук'),
         ('doctor_science_edu', 'Доктор наук')
     )
-    full_name = models.CharField(max_length=255)
+    FullName = models.CharField('Ф.И.О.', max_length=255)
     PhoneNumber = PhoneNumberField(
-        verbose_name='Телефон',
+        'Телефон',
         unique=True,
         error_messages={
             'unique': 'Пользователь с таким номером телефона уже существует.',
@@ -25,36 +25,39 @@ class Resume(models.Model):
         validators=[validate_phone_number]
     )
     data = models.IntegerField(
-        verbose_name='Возраст',
+        'Возраст',
     )
-    city = models.CharField(max_length=255)
-    address = models.CharField(max_length=500)
+    city = models.CharField('Город', max_length=255)
+    address = models.CharField('Адрес', max_length=500)
     education = models.CharField(
+        'Образование',
         max_length=50,
         choices=EDUCATIONS,
         default='secondary_edu'
     )
     AddEducation = models.CharField(
+        'Доп. образование',
         max_length=50,
         choices=EDUCATIONS,
         default='secondary_edu'
     )
     placeWork = models.CharField(
+        'Прошлое место работы',
         max_length=500
     )
     postWork = models.CharField(
-        verbose_name='Должность',
+        'Должность',
         max_length=500
     )
-    DataStart = models.DateTimeField(verbose_name='Дата начала')
-    DataEnd = models.DateTimeField(verbose_name='Дата окончания')
-    About = models.CharField(verbose_name='О себе', max_length=500)
-    skills = models.CharField(verbose_name='Ключевые навыки', max_length=500)
-    startSalary = models.IntegerField(verbose_name='Зарплата от')
-    endSalary = models.IntegerField(verbose_name='Зарплата до')
+    DataStart = models.DateField('Дата начала')
+    DataEnd = models.DateField('Дата окончания')
+    About = models.CharField('О себе', max_length=500)
+    skills = models.CharField('Ключевые навыки', max_length=500)
+    startSalary = models.IntegerField('Зарплата от')
+    endSalary = models.IntegerField('Зарплата до')
     foto = models.ImageField(
-        upload_to='backend_media/photo',
-        verbose_name='Изображение'
+        'Изображение',
+        upload_to='backend_media/photo/'
     )
     recommendation = models.FileField(
         'Файл рекомендации',
@@ -66,3 +69,10 @@ class Resume(models.Model):
         upload_to='backend_media/certificate/',
         blank=True
     )
+
+    class Meta:
+        verbose_name = 'Резюме'
+        ordering = ('PhoneNumber',)
+
+    def __str__(self):
+        return self.FullName

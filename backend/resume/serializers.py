@@ -8,7 +8,27 @@ class ResumeSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Resume
-        fields = '__all__'
+        fields = (
+            'id',
+            'FullName',
+            'PhoneNumber',
+            'data',
+            'city',
+            'address',
+            'education',
+            'AddEducation',
+            'placeWork',
+            'postWork',
+            'DataStart',
+            'DataEnd',
+            'About',
+            'skills',
+            'startSalary',
+            'endSalary',
+            'foto',
+            'recommendation',
+            'certificate'
+        )
 
 
 class PhoneNumberSerializerField(PhoneNumberField):

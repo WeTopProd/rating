@@ -8,4 +8,4 @@ from .permissions import IsOwnerOrReadOnly
 class ResumeViewSet(viewsets.ModelViewSet):
     queryset = Resume.objects.all()
     serializer_class = ResumeSerializer
-    permission_classes = (IsOwnerOrReadOnly, )
+    # permission_classes = (IsOwnerOrReadOnly, )
