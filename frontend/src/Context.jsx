@@ -44,21 +44,21 @@ export default function Context (props) {
    const [certificate, setCertificate] = useState([]);
 
 
-   const [secondary_edu, setsecondary_edu] = useState([]);
+   const [secondary_edu, setsecondary_edu] = useState(['Среднее']);
 
-   const [secondary_special_edu, setsecondary_special_edu] = useState([]);
+   const [secondary_special_edu, setsecondary_special_edu] = useState(['Среднее специальное']);
 
-   const [incomplete_higher_edu, setincomplete_higher_edu] = useState([]);
+   const [incomplete_higher_edu, setincomplete_higher_edu] = useState(['Неоконченное высшее']);
 
-   const [higher_edu, sethigher_edu] = useState([]);
+   const [higher_edu, sethigher_edu] = useState(['Высшее']);
 
-   const [bachelor_edu, setbachelor_edu] = useState([]);
+   const [bachelor_edu, setbachelor_edu] = useState(['Бакалавр']);
 
-   const [master_edu, setmaster_edu] = useState([]);
+   const [master_edu, setmaster_edu] = useState(['Магистр']);
 
-   const [candidate_science_edu, setcandidate_science_edu] = useState([]);
+   const [candidate_science_edu, setcandidate_science_edu] = useState(['Кандидат наук']);
 
-   const [doctor_science_edu, setdoctor_science_edu] = useState([]);
+   const [doctor_science_edu, setdoctor_science_edu] = useState(['Доктор наук']);
 
    
 

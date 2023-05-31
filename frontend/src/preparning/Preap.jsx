@@ -3,13 +3,12 @@ import Header from '../components/header/Header'
 
 import h from '../components/header/header.module.scss'
 import l from '../preparning/preap.module.scss'
-import { useContext, useState } from 'react'
+import { useContext, useRef } from 'react'
 import { myContext } from '../Context'
 import axios from 'axios'
 
  export default function Preap ({auth, setAuth}) {
 
-    const [notes, setNotes] = useState([])
     
     const [
 
@@ -32,69 +31,33 @@ import axios from 'axios'
         foto, setFoto,
         recommendation, setRecommendation,
         certificate, setCertificate,
-
-        secondary_edu, setsecondary_edu,
-        secondary_special_edu, setsecondary_special_edu,
-        incomplete_higher_edu,setincomplete_higher_edu,
-        higher_edu,sethigher_edu,
-        bachelor_edu,setbachelor_edu,
-        master_edu,setmaster_edu,
-        candidate_science_edu,setcandidate_science_edu,
-        doctor_science_edu,setdoctor_science_edu,
     
     ] = useContext(myContext)
 
+    const fotoUpload = (e) => {
+        setFoto(e.target.files[0])
+    }
+
+    const recommendationUpload = (e) => {
+        setRecommendation(e.target.files[0])
+    }
+
+    const certificateUpload = (e) => {
+        setCertificate(e.target.files[0])
+    }
+
+  
+
+    const fotoRef = useRef(null)
+
+    const FormDataFoto = new FormData();
+
+    FormDataFoto.append('foto', foto)
+  
     
-
-    // function formHandler (){
-    //     let obj = {
-
-    //         //input
-    //         FullName: FullName,
-    //         PhoneNumber: PhoneNumber ,
-    //         data: data,
-    //         city: city,
-    //         address: address,
-    //         education: education,
-    //         AddEducation: AddEducation,
-
-    //         placeWork: placeWork,
-    //         postwork: postwork,
-    //         DataStart: DataStart,
-    //         DataEnd: DataEnd,
-    //         About: About,
-    //         skills: skills,
-    //         startSalary: startSalary,
-    //         endSalary: endSalary,
-
-    //         //file
-    //         foto: foto, 
-    //         recommendation: recommendation,
-    //         certificate: certificate,
-
-    //     }
-
-    //     setNotes(...notes, obj)
-
-    // }
-
-    const onChangePicture = e => {
-        setFoto([...foto, e.target.files[0]]);
-    };
-
-    const onChangePictureTwo = e => {
-        setRecommendation([...recommendation, e.target.files[0]]);
-    };
-
-    const onChangePictureThree = e => {
-        setCertificate([...certificate, e.target.files[0]]);
-    };
-
     const PreapRezume = (event) => {
 
-        event.preventDefault();
-
-       
+        event.preventDefault();       
     
         axios.post('http://localhost:8001/api/resume/', {
 
@@ -103,7 +66,9 @@ import axios from 'axios'
             data: data,
             city: city,
             address: address,
+
             education: education,
+
             AddEducation: AddEducation,
             placeWork: placeWork,
             postWork: postwork,
@@ -113,33 +78,29 @@ import axios from 'axios'
             skills: skills,
             startSalary: startSalary,
             endSalary: endSalary,
-            foto: foto, 
+            foto: FormDataFoto, 
             recommendation: recommendation,
             certificate: certificate,
-
-            secondary_edu: secondary_edu,
-            secondary_special_edu: secondary_special_edu,
-            incomplete_higher_edu:incomplete_higher_edu,
-            higher_edu:higher_edu,
-            bachelor_edu:bachelor_edu,
-            master_edu:master_edu,
-            candidate_science_edu:candidate_science_edu,
-            doctor_science_edu:doctor_science_edu,
-
         },
         
         {
             headers : {
             'Content-Type': 'application/json',
-            }
-            
+            }            
         }
+
+        
         )
 
         .catch(err => console.error(err))
 
       };
 
+
+
+    
+      
+       
 
 
     return (
@@ -201,34 +162,34 @@ import axios from 'axios'
                             
                         </div>
 
-
                         <div className={l.preap__form_flex}>
-                            
-<select className={l.preap__form_flex_select} >
-    <option onChange={(event) => setEducation(event.target.value)} value={education} >Образование</option>
-    <option onChange={(event) => setsecondary_edu(event.target.value)} value={secondary_edu} >Среднее</option>
-    <option onChange={(event) => setsecondary_special_edu(event.target.value)} value={secondary_special_edu}>Среднее специальное</option>
-    <option onChange={(event) => setincomplete_higher_edu(event.target.value)} value={incomplete_higher_edu}>Неоконченное высшее'</option>
-    <option onChange={(event) => sethigher_edu(event.target.value)} value={higher_edu}>Высшее</option>
-    <option onChange={(event) => setbachelor_edu(event.target.value)} value={bachelor_edu}>Бакалавр</option>
-    <option onChange={(event) => setmaster_edu(event.target.value)} value={master_edu}>Магистр</option>
-    <option onChange={(event) => setcandidate_science_edu(event.target.value)} value={candidate_science_edu}>Кандидат наук</option>
-    <option onChange={(event) => setdoctor_science_edu(event.target.value)} value={doctor_science_edu}>Доктор наук</option>
-</select>
-    
-<select className={l.preap__form_flex_select}>
-    <option value={AddEducation} onChange={(event) => setAddEducation(event.target.value)}>Доп. oбразование</option>
-    <option onChange={(event) => setsecondary_edu(event.target.value)} value={secondary_edu} >Среднее</option>
-    <option onChange={(event) => setsecondary_special_edu(event.target.value)} value={secondary_special_edu}>Среднее специальное</option>
-    <option onChange={(event) => setincomplete_higher_edu(event.target.value)} value={incomplete_higher_edu}>Неоконченное высшее'</option>
-    <option onChange={(event) => sethigher_edu(event.target.value)} value={higher_edu}>Высшее</option>
-    <option onChange={(event) => setbachelor_edu(event.target.value)} value={bachelor_edu}>Бакалавр</option>
-    <option onChange={(event) => setmaster_edu(event.target.value)} value={master_edu}>Магистр</option>
-    <option onChange={(event) => setcandidate_science_edu(event.target.value)} value={candidate_science_edu}>Кандидат наук</option>
-    <option onChange={(event) => setdoctor_science_edu(event.target.value)} value={doctor_science_edu}>Доктор наук</option>
-</select>
-                                
+
+      <select onChange={(event) => setEducation(event.target.value)} value={education}  className={l.preap__form_flex_select} >
+        <option value="Образование">Образование</option>
+        <option value="Среднее">Среднее</option>
+        <option value="Среднее специальное">Среднее специальное</option>
+        <option value="Неоконченное высшее">Неоконченное высшее</option>
+        <option value="Высшее">Высшее</option>
+        <option value="Бакалавр">Бакалавр</option>
+        <option value="Магистр">Магистр</option>
+        <option value="Кандидат наук">Кандидат наук</option>
+        <option value="Доктор наук">Доктор наук</option>
+      </select>
+
+      <select onChange={(event) => setAddEducation(event.target.value)} value={AddEducation}  className={l.preap__form_flex_select} >
+        <option value="Образование">Образование</option>
+        <option value="Среднее">Среднее</option>
+        <option value="Среднее специальное">Среднее специальное</option>
+        <option value="Неоконченное высшее">Неоконченное высшее</option>
+        <option value="Высшее">Высшее</option>
+        <option value="Бакалавр">Бакалавр</option>
+        <option value="Магистр">Магистр</option>
+        <option value="Кандидат наук">Кандидат наук</option>
+        <option value="Доктор наук">Доктор наук</option>
+      </select>
+
                         </div>
+
 
 
                         <div className={l.preap__form_flex}>
@@ -270,7 +231,7 @@ import axios from 'axios'
                     
         <div className={l.file__info}>
             
-            <input type="file" className={l.input_file} onChange={e => onChangePicture(e)} />
+            <input type="file" ref={fotoRef} className={l.input_file} onChange={fotoUpload} />
 
             <p className={l.file__info_text}>
 
@@ -282,7 +243,7 @@ import axios from 'axios'
         
         <div className={l.file__info}>
             
-            <input type="file" className={l.input_file} onChange={e => onChangePictureTwo(e)} />
+            <input type="file" className={l.input_file} onChange={recommendationUpload} />
 
             <p className={l.file__info_text}>
             Загрузить
@@ -293,7 +254,7 @@ import axios from 'axios'
         
         <div className={l.file__info}>
             
-            <input type="file" className={l.input_file} onChange={e => onChangePictureThree(e)}/>
+            <input type="file" className={l.input_file} onChange={certificateUpload}/>
 
             <p className={l.file__info_text}>
 
