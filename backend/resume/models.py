@@ -5,16 +5,6 @@ from users.validators import validate_phone_number
 
 
 class Resume(models.Model):
-    EDUCATIONS = (
-        ('secondary_edu', 'Среднее'),
-        ('secondary_special_edu', 'Среднее специальное'),
-        ('incomplete_higher_edu', 'Неоконченное высшее'),
-        ('higher_edu', 'Высшее'),
-        ('bachelor_edu', 'Бакалавр'),
-        ('master_edu', 'Магистр'),
-        ('candidate_science_edu', 'Кандидат наук'),
-        ('doctor_science_edu', 'Доктор наук')
-    )
     user = models.OneToOneField(
         'users.User',
         verbose_name='Пользователь',
@@ -34,14 +24,12 @@ class Resume(models.Model):
     education = models.CharField(
         'Образование',
         max_length=50,
-        choices=EDUCATIONS,
-        default='secondary_edu'
+        default='Среднее'
     )
     AddEducation = models.CharField(
         'Доп. образование',
         max_length=50,
-        choices=EDUCATIONS,
-        default='secondary_edu',
+        default='Среднее',
         blank=True,
         null=True
     )
