@@ -51,11 +51,12 @@ function RegAuth () {
 
         headers: {
             'Content-Type': 'application/json',
+
         }
 
     })
 
-    .then(res => res.request.status == 201 ? navigate('/login') : navigate('') )
+    .then(res => { res.request.status == 201 ? navigate('/login') : navigate('') } )
 
     .catch(err => {
     

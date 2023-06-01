@@ -1,9 +1,9 @@
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import Header from '../components/header/Header'
 
 import h from '../components/header/header.module.scss'
 import l from '../preparning/preap.module.scss'
-import { useContext, useRef } from 'react'
+import { useContext, useEffect, useRef, useState } from 'react'
 import { myContext } from '../Context'
 import axios from 'axios'
 
@@ -46,18 +46,35 @@ import axios from 'axios'
         setCertificate(e.target.files[0])
     }
 
+
+    const token = JSON.parse(localStorage.getItem('token'))
+
+    const [userId, setUserId] = useState()
+
   
+    useEffect(() => {
+        axios.get('http://localhost:8001/api/users/',{
+
+             headers: {
+                'Content-Type': 'application/json ',
+                authorization: `Token ${token}`
+             }
+            
+            })
+        .then(res => {setUserId(res.data[0].id)
+        })
+
+    }, [])
 
     const fotoRef = useRef(null)
 
-    const FormDataFoto = new FormData();
+    const navigate = useNavigate('')
 
-    FormDataFoto.append('foto', foto)
-  
+
+
+
     
-    const PreapRezume = (event) => {
-
-        event.preventDefault();       
+    const PreapRezume = () => {       
     
         axios.post('http://localhost:8001/api/resume/', {
 
@@ -78,31 +95,31 @@ import axios from 'axios'
             skills: skills,
             startSalary: startSalary,
             endSalary: endSalary,
-            foto: FormDataFoto, 
+            user: userId,
+            foto: foto , 
             recommendation: recommendation,
             certificate: certificate,
         },
         
         {
             headers : {
-            'Content-Type': 'application/json',
+            'Content-Type': 'application/json , multipart/form-data',
             }            
         }
 
         
         )
 
+        .then(res => { res.request.status === 201 ? navigate('/successtwo') : navigate('/preap')
+        } )
+        
         .catch(err => console.error(err))
 
-      };
 
 
+    };
 
-    
-      
-       
-
-
+  
     return (
 
         

@@ -47,18 +47,23 @@ function App() {
 
   const [auth, setAuth] = useState(false)
 
+  const [token, setToken] = useState('')
+
   useEffect(() => {
     
    
   if(auth) {
 
       localStorage.setItem('auth', JSON.stringify(auth))
+      localStorage.setItem('token', JSON.stringify(token))
+
 
     } else
 
     if(localStorage.getItem('auth') !== 'undefined'){
 
     setAuth(JSON.parse(localStorage.getItem('auth')))
+    setToken(JSON.parse(localStorage.getItem('token')))
    
   }
 
@@ -126,6 +131,8 @@ const ClickIdTwo = (id) => {
   }
 
 
+
+
   return (
 
     <ContextTwo>
@@ -187,7 +194,7 @@ const ClickIdTwo = (id) => {
 
           <Route path='/reg'  element={<RegAuth  auth={auth} setAuth={setAuth}/>} />
 
-          <Route path='/login'  element={<LoginAuth auth={auth} setAuth={setAuth} />} />
+          <Route path='/login'  element={<LoginAuth token={token} setToken={setToken} auth={auth} setAuth={setAuth} />} />
 
           <Route path='/success'  element={<Success auth={auth} setAuth={setAuth} />} />
 

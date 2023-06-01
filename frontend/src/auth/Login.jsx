@@ -9,7 +9,9 @@ import l from '../auth/login.module.scss'
 import { Link, useNavigate } from 'react-router-dom';
 
 
-function LoginAuth ({setAuth, auth}) {   
+function LoginAuth ({
+     token, setToken ,setAuth, auth
+    }) {   
 
     
 
@@ -22,6 +24,7 @@ function LoginAuth ({setAuth, auth}) {
     const navigate = useNavigate('')
 
     const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+
 
     
     const Login = (e) => {
@@ -41,6 +44,7 @@ function LoginAuth ({setAuth, auth}) {
 
             'Content-Type': 'application/json',
 
+
             }
             
         }
@@ -50,6 +54,7 @@ function LoginAuth ({setAuth, auth}) {
         .then(res => {
             res.request.status == 200 ? navigate('/') : navigate('')
             setAuth(true)
+            setToken(res.data.auth_token)
         } )
 
         .catch(err => console.log(err))
