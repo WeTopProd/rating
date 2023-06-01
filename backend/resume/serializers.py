@@ -5,6 +5,10 @@ from .models import Resume
 
 
 class ResumeSerializer(serializers.ModelSerializer):
+    user = serializers.PrimaryKeyRelatedField(
+        default=serializers.CurrentUserDefault(),
+        read_only=True
+    )
 
     class Meta:
         model = Resume
