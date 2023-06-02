@@ -40,10 +40,10 @@ class User(AbstractBaseUser, PermissionsMixin):
     is_staff = models.BooleanField(default=False)
     date_joined = models.DateTimeField(auto_now_add=True)
 
-    resume = models.OneToOneField(
+    resume = models.ForeignKey(
         Resume,
         verbose_name='Резюме',
-        related_name='user_resume',
+        related_name='user_resumes',
         on_delete=models.CASCADE,
         blank=True,
         null=True
