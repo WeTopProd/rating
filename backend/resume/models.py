@@ -5,7 +5,7 @@ from users.validators import validate_phone_number
 
 
 class Resume(models.Model):
-    user = models.OneToOneField(
+    user = models.ForeignKey(
         'users.User',
         verbose_name='Пользователь',
         related_name='resume_user',
