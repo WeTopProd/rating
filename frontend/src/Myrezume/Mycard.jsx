@@ -11,7 +11,8 @@ import { useState } from 'react';
 import deletet from '../components/img/delete.svg'
 import izmen from '../components/img/izmen.svg'
 
-export default function Mycard({onClick, CardId ,...info}) {
+export default function Mycard({onClick, CardId, deletePost, applicants, ...info}) {
+
 
     
     const [isShowingModal, toggleModal] = useModal();
@@ -22,14 +23,19 @@ export default function Mycard({onClick, CardId ,...info}) {
 
     const [heart, setHeart] = useState(false)
 
+    const [currentId, setCurrentId] = useState('')
+
+
     console.log(info.id);
+
+
 
 
     return(
 
        <>
 
-   <Modal show={isShowingModal} onCloseButtonClick={toggleModal} />
+   <Modal show={isShowingModal} onCloseButtonClick={toggleModal} currentId={currentId} deletePost={deletePost} />
 
 
     <div  className="mini__outer"   >
@@ -52,7 +58,7 @@ export default function Mycard({onClick, CardId ,...info}) {
                     
                 }  
 
-    <Link to={`/rezumeuser/${info.id}`} className="mini__outer_inside_blueTitle">
+    <Link to={`/rezumeuser/${info.id}`} onClick={applicants} className="mini__outer_inside_blueTitle">
         {info.postWork}
     </Link>
 
@@ -143,7 +149,10 @@ export default function Mycard({onClick, CardId ,...info}) {
 
             <img className="mini__outer_botline_change_pics_other" src={deletet} alt="" />
 
-            <div onClick={toggleModal} className="mini__outer_botline_change_pics_delete">
+            {/* <div onClick={toggleModal} className="mini__outer_botline_change_pics_delete">
+                <span id={info.id} onClick={(e) => setCurrentId(e.currentTarget.id)}>Удалить</span>
+            </div> */}
+            <div id={info.id} onClick={(event) => deletePost(event.currentTarget.id)} className="mini__outer_botline_change_pics_delete">
                 Удалить
             </div>
 

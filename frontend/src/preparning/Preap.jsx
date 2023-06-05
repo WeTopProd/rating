@@ -31,6 +31,8 @@ import axios from 'axios'
         foto, setFoto,
         recommendation, setRecommendation,
         certificate, setCertificate,
+
+        busyness, setbusyness
     
     ] = useContext(myContext)
 
@@ -63,6 +65,8 @@ import axios from 'axios'
             
             })
         .then(res => {setUserId(res.data[0].id)
+            // window.location.reload()
+            
         })
 
     }, [])
@@ -95,6 +99,7 @@ import axios from 'axios'
             foto: foto , 
             recommendation: recommendation,
             certificate: certificate,
+            busyness: busyness, //Занятость 
             
         },
         
@@ -109,6 +114,7 @@ import axios from 'axios'
         )
 
         .then(res => { res.request.status === 201 ? navigate('/successtwo') : navigate('/preap')
+        window.location.reload()
         } )
 
         .catch(err => alert('Неправильно ввели данные или не до конца заполнили форму'));
@@ -223,6 +229,17 @@ import axios from 'axios'
                                 
                         </div>
 
+
+                        <select value={busyness} onChange={(event) => setbusyness(event.target.value)} type="text" placeholder='Занятость' className={l.preap__form_input_selec}>
+                            
+        <option value="Полная занятость">Полная занятость</option>
+        <option value="Частичная занятость">Частичная занятость</option>
+        <option value="Среднее специальное">Среднее специальное</option>
+        <option value="Проектная работа">Проектная работа</option>
+        <option value="Волонтерство">Волонтерство</option>
+        <option value="Стажировка">Стажировка</option>
+                        </select>
+
                         <textarea value={About} onChange={(event) => setAbout(event.target.value)} className={l.preap__form_textarea} placeholder='Расскажите о себе'></textarea>
 
                         <textarea value={skills} onChange={(event) => setSkills(event.target.value)} className={l.preap__form_textarea} placeholder='Ключевые навыки'></textarea>
@@ -234,7 +251,7 @@ import axios from 'axios'
 
                             <input value={startSalary} onChange={(event) => setStartSalary(event.target.value)} type="number" placeholder='от' className={l.preap__form_footer_input} />
 
-                            <input value={endSalary} onChange={(event) => setEndSalary(event.target.value)} type="number" placeholder='до' className={l.preap__form_footer_input} />
+                            <input value={endSalary} onChange={(event) => setEndSalary(event.target.value)} type="number" placeholder='до' className={l.preap__form_footer_input} /> 
 
                         </div>
 

@@ -46,6 +46,8 @@ import axios from 'axios';
 
 function App() {
 
+  const [mycardId , setMycardId] = useState([])
+
   useEffect(() => {
 
     axios.get('http://localhost:8001/api/resume/', {
@@ -57,10 +59,34 @@ function App() {
 
     })
 
-    .then((res) => setMycardId(res.data))
+    .then((res) => {
+       setMycardId(res.data)
+      //  window.location.reload()
+      })
     .catch((err) => console.error(err))
 
 }, [])
+
+
+const deletePost = (id) => {
+
+  axios.delete(`http://localhost:8001/api/resume/${id}`,
+  
+  {
+
+    headers: {
+      'Content-Type': 'application/json',
+      'authorization': `Token ${tokenTwo}`
+
+  }
+
+
+  }
+
+  )
+    .then(() => window.location.reload() )
+    .catch(err => console.error(err))
+};
 
 
 
@@ -115,9 +141,7 @@ function App() {
 
 ] = useContext(myContext)
 
-const [mycardId , setMycardId] = useState([])
 
-console.log(mycardId);
 
 // const [cardMassiv, setCardMassiv] = useState(mycardId)
 
@@ -207,7 +231,13 @@ const ClickIdTwo = (id) => {
 
           <Route path='/preapload'  element={<PreapLoad auth={auth} setAuth={setAuth} />} />
 
-          <Route path='/myrezume'  element={<MyRezume  auth={auth} setAuth={setAuth}  mycardId={mycardId} />} />
+
+
+          <Route path='/myrezume'  element={<MyRezume  applicants={applicants} deletePost={deletePost}  auth={auth} setAuth={setAuth}  mycardId={mycardId} />} />
+
+
+
+
 
           <Route path='/poiksvakan'  element={<PoiksVakan auth={auth} setAuth={setAuth} cardMassivTwo={cardMassivTwo} onClick={ClickIdTwo} />} /> 
 
@@ -238,9 +268,9 @@ const ClickIdTwo = (id) => {
 
           <Route path='/successvakan'  element={<SuccessVakan auth={auth} setAuth={setAuth} />} />
 
-          <Route path='/rezumeuser/:userId'  element={<RezumeUser mycardId={mycardId}  auth={auth} setAuth={setAuth} uservaka={uservaka}  />} />
+          <Route path='/rezumeuser/:userId'   element={<RezumeUser mycardId={mycardId}  auth={auth} setAuth={setAuth} uservaka={uservaka}  />} />
 
-          <Route path='/otzivuser'  element={<Otziv auth={auth} setAuth={setAuth} mycardId={mycardId}   />} />
+          <Route path='/otzivuser/:userId'  element={<Otziv auth={auth} setAuth={setAuth} mycardId={mycardId}   />} />
 
           <Route path='/vakanuser'  element={<UserVakan auth={auth} setAuth={setAuth}  cardMassivTwo={cardMassivTwo} />} />
 

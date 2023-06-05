@@ -60,6 +60,9 @@ export default function Context (props) {
 
    const [doctor_science_edu, setdoctor_science_edu] = useState(['Доктор наук']);
 
+
+   const [busyness, setbusyness] = useState('')
+
    
 
 
@@ -95,7 +98,9 @@ higher_edu,sethigher_edu,
 bachelor_edu,setbachelor_edu,
 master_edu,setmaster_edu,
 candidate_science_edu,setcandidate_science_edu,
-doctor_science_edu,setdoctor_science_edu
+doctor_science_edu,setdoctor_science_edu,
+
+busyness, setbusyness
 
 
 ]} >
