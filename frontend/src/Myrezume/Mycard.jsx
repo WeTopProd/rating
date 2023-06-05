@@ -8,34 +8,10 @@ import Modal from './Modal'
 import { useState } from 'react';
 
 
+import deletet from '../components/img/delete.svg'
+import izmen from '../components/img/izmen.svg'
 
-
-
-
-export default function Mycard(
-
-    {
-        proves,
-        avatar,
-        years,
-        zp,
-        opetrabot,
-        exitrabot,
-        zynytost,
-        grafik,
-        glaz,
-        prossmotreno,
-        izmen,
-        deletet,
-        CardId,
-        onClick,
- 
-        
-    }, 
-
-    
-
-) {
+export default function Mycard({onClick, CardId ,...info}) {
 
     
     const [isShowingModal, toggleModal] = useModal();
@@ -46,6 +22,8 @@ export default function Mycard(
 
     const [heart, setHeart] = useState(false)
 
+    console.log(info.id);
+
 
     return(
 
@@ -54,7 +32,7 @@ export default function Mycard(
    <Modal show={isShowingModal} onCloseButtonClick={toggleModal} />
 
 
-    <div id={CardId} className="mini__outer" onClick={ (event) => onClick(event.currentTarget.id) } >
+    <div  className="mini__outer"   >
         
         
         <div className="mini__outer_inside">
@@ -74,11 +52,11 @@ export default function Mycard(
                     
                 }  
 
-    <Link to='/rezumeuser' className="mini__outer_inside_blueTitle">
-        {proves}
+    <Link to={`/rezumeuser/${info.id}`} className="mini__outer_inside_blueTitle">
+        {info.postWork}
     </Link>
 
-    <img className="mini__outer_inside_avatar" src={avatar} alt="" />
+    <img className="mini__outer_inside_avatar" src={info.foto} alt="" />
 
 
     <div className="mini__outer_inside_near">
@@ -87,11 +65,12 @@ export default function Mycard(
         <div className="mini__outer_inside__near_age">
 
             <p className="mini__outer_inside_near_age_pshka">
-                {years}
+                {info.data} лет
             </p>
 
             <p className="mini__outer_inside_near_age_pshka">
-                {zp}
+                 Желаемая зарплата <br />
+                от {info.startSalary} до {info.endSalary} 
             </p>
 
             <p className="mini__outer_inside_near_age_pshka2">
@@ -99,7 +78,7 @@ export default function Mycard(
             </p>
 
             <p className="mini__outer_inside_near_age_pshka">
-                {opetrabot}
+                {/* {opetrabot} */}
             </p>
 
             <p className="mini__outer_inside_near_age_pshka2">
@@ -107,7 +86,7 @@ export default function Mycard(
             </p>
 
             <p className="mini__outer_inside_near_age_pshka">
-                {exitrabot}
+                {info.placeWork}
             </p>
 
         </div>
@@ -119,15 +98,11 @@ export default function Mycard(
             </p>
 
             <p className="mini__outer_inside_near_spec_bold">
-                {proves}
+                {info.postWork}
             </p>
 
             <p className="mini__outer_inside_near_spec_bold">
-                Занятость: {zynytost}
-            </p>
-
-            <p className="mini__outer_inside_near_spec_bold">
-                График работы: {grafik}
+                {/* Занятость: {zynytost} */}
             </p>
 
         </div>
@@ -145,10 +120,10 @@ export default function Mycard(
         <div className="mini__outer_botline">
 
     <div className="mini__outer_botline_eyeDiv">
-        <img className="mini__outer_botline_eyeDiv_eye" src={glaz} alt="" />
+        {/* <img className="mini__outer_botline_eyeDiv_eye" src={glaz} alt="" /> */}
 
         <p className="mini__outer_botline_eyeDiv_245">
-            {prossmotreno}
+            {/* {prossmotreno} */}
         </p>
 
     </div>

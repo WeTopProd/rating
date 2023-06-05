@@ -41,9 +41,28 @@ import MyLiveRezume from './myLiveRezume/MyLiveRezume';
 import TarifNumber from './Myrezume/tarifnumber/TarifNumber';
 import OplataNumber from './Myrezume/tarifnumber/OplataNumber';
 import SuccessFive from './Myrezume/tarifnumber/seccessFive';
+import axios from 'axios';
 
 
 function App() {
+
+  useEffect(() => {
+
+    axios.get('http://localhost:8001/api/resume/', {
+    
+    headers: {
+        'Content-Type': 'application/json , multipart/form-data',
+        'authorization': `Token ${tokenTwo}`
+    }
+
+    })
+
+    .then((res) => setMycardId(res.data))
+    .catch((err) => console.error(err))
+
+}, [])
+
+
 
   const [auth, setAuth] = useState(false)
 
@@ -96,18 +115,28 @@ function App() {
 
 ] = useContext(myContext)
 
-const [cardMassiv, setCardMassiv] = useState(MyDataCard)
+const [mycardId , setMycardId] = useState([])
+
+console.log(mycardId);
+
+// const [cardMassiv, setCardMassiv] = useState(mycardId)
 
 const [cardMassivTwo, setCardMassivTwo] = useState(MyDataCardTwo)
+
+
+
+
+
  
 
-const ClickId = (id) => {
-          
-             
-  setCardMassiv(MyDataCard.filter((info) => info.CardId === +id ) )
-      
+// const ClickId = (id) => {
+
+//   setMycardId(mycardId.filter((info) => info.id === +id ) )
  
-};
+// };
+
+
+
 
 const ClickIdTwo = (id) => {
           
@@ -131,6 +160,7 @@ const ClickIdTwo = (id) => {
   }
 
 
+  const tokenTwo = JSON.parse(localStorage.getItem('token'))
 
 
   return (
@@ -177,11 +207,11 @@ const ClickIdTwo = (id) => {
 
           <Route path='/preapload'  element={<PreapLoad auth={auth} setAuth={setAuth} />} />
 
-          <Route path='/myrezume'  element={<MyRezume onClick={ClickId} auth={auth} setAuth={setAuth} />} />
+          <Route path='/myrezume'  element={<MyRezume  auth={auth} setAuth={setAuth}  mycardId={mycardId} />} />
 
           <Route path='/poiksvakan'  element={<PoiksVakan auth={auth} setAuth={setAuth} cardMassivTwo={cardMassivTwo} onClick={ClickIdTwo} />} /> 
 
-          <Route path='/poiksrezume'  element={<PoiksRezume auth={auth} setAuth={setAuth}  cardMassiv={cardMassiv} onClick={ClickId} />} /> 
+          <Route path='/poiksrezume'  element={<PoiksRezume auth={auth} setAuth={setAuth}  />} /> 
 
           <Route path='/myvakan' element={<MyVakan auth={auth} setAuth={setAuth}  onClick={ClickIdTwo}  />} />
         
@@ -208,9 +238,9 @@ const ClickIdTwo = (id) => {
 
           <Route path='/successvakan'  element={<SuccessVakan auth={auth} setAuth={setAuth} />} />
 
-          <Route path='/rezumeuser'  element={<RezumeUser  auth={auth} setAuth={setAuth} uservaka={uservaka} cardMassiv={cardMassiv} />} />
+          <Route path='/rezumeuser/:userId'  element={<RezumeUser mycardId={mycardId}  auth={auth} setAuth={setAuth} uservaka={uservaka}  />} />
 
-          <Route path='/otzivuser'  element={<Otziv auth={auth} setAuth={setAuth}  cardMassiv={cardMassiv} />} />
+          <Route path='/otzivuser'  element={<Otziv auth={auth} setAuth={setAuth} mycardId={mycardId}   />} />
 
           <Route path='/vakanuser'  element={<UserVakan auth={auth} setAuth={setAuth}  cardMassivTwo={cardMassivTwo} />} />
 
@@ -218,7 +248,7 @@ const ClickIdTwo = (id) => {
 
           <Route path='/mylivevakan'  element={<MyLiveVakan auth={auth} setAuth={setAuth} onClick={ClickIdTwo} />} />
 
-          <Route path='/myliverezume'  element={<MyLiveRezume auth={auth} setAuth={setAuth}   onClick={ClickId} />} />
+          <Route path='/myliverezume'  element={<MyLiveRezume auth={auth} setAuth={setAuth}  />} />
 
           <Route path='/tarifnumber'  element={<TarifNumber auth={auth} setAuth={setAuth} priceThree={priceThree} setPriceThree={setPriceThree}  />} />
 

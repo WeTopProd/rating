@@ -1,21 +1,12 @@
 
-
-import { useEffect, useState } from 'react'
 import Header from '../../components/header/Header'
 import './Otziv.scss'
 
-export default function Otziv ({auth, setAuth, ...cardMassiv}) {
+export default function Otziv ({auth, setAuth, ...mycardId}) {
 
-    const [mas, setMas] = useState(cardMassiv.cardMassiv)
-    const [result, setResult] = useState(null)
+    const mas = mycardId.mycardId[0]
 
-    // setMas(cardMassiv)
-
-    useEffect(() => {
-        if(mas) {
-            setResult(mas[0]) 
-        }
-    }, [mas])
+    console.log(mas);
 
     return (
 
@@ -50,6 +41,8 @@ export default function Otziv ({auth, setAuth, ...cardMassiv}) {
         
         />
 
+        {mas && 
+        
 <section className="sectionRecomendation">
 
     <div className="container">
@@ -60,16 +53,20 @@ export default function Otziv ({auth, setAuth, ...cardMassiv}) {
 
                 <div className="recomendation__box_avatarAnd">
 
-                    <img className="recomendation__box_avatarAnd_avatar" src={result === null ? '' : result.avatar} alt="" />
+                    <img className="recomendation__box_avatarAnd_avatar"  src={mas.foto} alt="" />
 
                     <div className="recomendation__box_avatarAnd_pshki">
 
                     <p className="recomendation__box_avatarAnd_pshki_bold">
-                        {result === null ? '' : result.name}  {result === null ? '' : result.surname}
+                        {mas.FullName}
                     </p>
 
                     <p className="recomendation__box_avatarAnd_pshki_text">
-                    {result === null ? '' : result.years} {result === null ? '' : result.proves}
+                    {mas.data} лет
+                    </p>
+
+                    <p className="recomendation__box_avatarAnd_pshki_text">
+                    {mas.postWork}
                     </p>
                     
                     </div>
@@ -173,6 +170,9 @@ export default function Otziv ({auth, setAuth, ...cardMassiv}) {
     </div>
 
 </section>
+
+        }
+
 
 </>
 

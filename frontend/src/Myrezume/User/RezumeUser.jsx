@@ -1,23 +1,13 @@
+
 import { useEffect, useState } from 'react';
 import Header from '../../components/header/Header'
 import './RezumeUser.scss' 
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 
-export default function RezumeUser ({auth, setAuth ,uservaka , ...cardMassiv }) {
-
-    const [mas, setMas] = useState(cardMassiv.cardMassiv)
-    const [result, setResult] = useState(null)
-
-    // setMas(cardMassiv)
-
-    useEffect(() => {
-        if(mas) {
-            setResult(mas[0]) 
-        }
-    }, [mas])
-
-
-    // console.log(mas[0].zp);
+export default function RezumeUser ({auth, setAuth , uservaka , ...mycardId }) {
+    const params = useParams()
+    const userId = mycardId.mycardId.findIndex(user => user.id === +params.userId)
+    const mas = mycardId.mycardId[userId]   
 
     return (
 
@@ -54,6 +44,8 @@ export default function RezumeUser ({auth, setAuth ,uservaka , ...cardMassiv }) 
         />
 
 
+        {mas &&
+        
  <section className="sectionRec">
 
     <div className="container">
@@ -66,7 +58,7 @@ export default function RezumeUser ({auth, setAuth ,uservaka , ...cardMassiv }) 
     
                     <p className="recomendation__top_left_name">
 
-                    {result === null ? '' : result.name} {result === null ? '' : result.surname}, {result === null ? '' : result.years}, город {result === null ? '' : result.gorod}
+                    {mas.FullName} {mas.data} лет, город {mas.city}
                     </p>
     
                     <Link to='/otzivuser' className="recomendation__top_left_blue">
@@ -75,7 +67,7 @@ export default function RezumeUser ({auth, setAuth ,uservaka , ...cardMassiv }) 
     
                 </div>
 
-                <img src={result === null ? '' : result.avatar} alt="svg" />
+                <img src={mas.foto} width='120px'  alt="svg" />
 
     
             </div>
@@ -88,7 +80,7 @@ export default function RezumeUser ({auth, setAuth ,uservaka , ...cardMassiv }) 
                     <div>
     
                         <p className="recomendation__top_title">
-                            {result === null ? '' : result.proves}
+                            {mas.postWork}
                         </p>
     
                     </div>
@@ -96,7 +88,8 @@ export default function RezumeUser ({auth, setAuth ,uservaka , ...cardMassiv }) 
                     <div>
     
                         <p className="recomendation__top_title">
-                           {result === null ? '' : result.zp} на руки
+                           Желаемая зарплата <br />
+                           от {mas.startSalary} до {mas.endSalary}
                         </p>
     
                     </div>
@@ -115,10 +108,7 @@ export default function RezumeUser ({auth, setAuth ,uservaka , ...cardMassiv }) 
                         <p className="recomendation__speciality_leftS_specializ_text1">
                             Тип занятости
                         </p>
-    
-                        <p className="recomendation__speciality_leftS_specializ_text1">
-                            График работы
-                        </p>
+
     
                     </div>
     
@@ -126,17 +116,14 @@ export default function RezumeUser ({auth, setAuth ,uservaka , ...cardMassiv }) 
                     <div className="recomendation__speciality_description">
     
                         <p className="recomendation__top_left_text">
-                        {result === null ? '' : result.proves}
+                        {mas.postWork}
 
                         </p>
     
                         <p className="recomendation__top_left_text">
-                             {result === null ? '' : result.zynytost}
+                             {/* {result === null ? '' : result.zynytost} */}
                         </p>
-    
-                        <p className="recomendation__top_left_text">
-                              {result === null ? '' : result.grafik}
-                        </p>
+
     
                     </div>
     
@@ -155,7 +142,7 @@ export default function RezumeUser ({auth, setAuth ,uservaka , ...cardMassiv }) 
         
                     
                     <p className="recomendation__experience_vi_exp1">
-                        {result === null ? '' : result.opetrabot}
+                        {/* {result === null ? '' : result.opetrabot} */}
                     </p>
     
                 </div>
@@ -167,23 +154,19 @@ export default function RezumeUser ({auth, setAuth ,uservaka , ...cardMassiv }) 
 
                     <div> <p className="recomendation__speciality_leftS_specializ_text1">Прошлое место работы:</p> </div>
         
-                    <div><p className="recomendation__top_left_text">{result === null ? '' : result.exitrabot} От {result === null ? '' : result.setStartSalary} До  {result === null ? '' : result.setEndSalary}</p> </div>
+                    <div><p className="recomendation__top_left_text">{mas.placeWork} От {mas.DataStart} До  {mas.DataEnd}</p> </div>
         
                     <div><p className="recomendation__speciality_leftS_specializ_text1">Ключевые навыки:</p></div>
         
                     <div className="recomendation__experience_info_grids"> 
 
-                    <p className="recomendation__experience_info_grids_skills">{result === null ? '' : result.skills}</p> 
+                    <p className="recomendation__experience_info_grids_skills">{mas.skills}</p> 
                     
                      </div>
-        
-                    <div><p className="recomendation__speciality_leftS_specializ_text1">Категория прав</p></div>
-        
-                    <div> <p className="recomendation__top_left_text">{result === null ? '' : result.prava}</p> </div>
                     
-                    <div><p className="recomendation__speciality_leftS_specializ_text1">{result === null ? '' : result.education}</p></div>
+                    <div><p className="recomendation__speciality_leftS_specializ_text1">{mas.education}</p></div>
         
-                    <div> <p className="recomendation__top_left_text"> {result === null ? '' : result.dopeducation}</p></div>
+                    <div> <p className="recomendation__top_left_text"> {mas.AddEducation}</p></div>
     
                 </div>
     
@@ -202,34 +185,26 @@ export default function RezumeUser ({auth, setAuth ,uservaka , ...cardMassiv }) 
             О себе
         </p>
 
-        <p className='recomendation__speciality_leftS_specializ_text1' > {result === null ? '' : result.About}</p>
+        <p  className='recomendation__speciality_leftS_specializ_text1' > {mas.About}</p>
 
     </div>
 
     
-            
-    
-            {/* <div className="recomendation__number">
-                <p className="recomendation__number_text">
-                    Телефон {result === null ? '' : result.number}
-                </p>
-               
-            </div> */}
 
             {!uservaka ? 
             <>
 
-            <div class="recomendation__number">
-                <p class="recomendation__number_text">
+            <div className="recomendation__number">
+                <p className="recomendation__number_text">
                     Телефон +7
                 </p>
-                <span class="recomendation__number_blur">
+                <span className="recomendation__number_blur">
                     #########
                 </span>
             </div>
     
-            <div class="recomendation__access">
-                <p class="recomendation__access_text">
+            <div className="recomendation__access">
+                <p className="recomendation__access_text">
                     Для получения доступа к номеру телефона требуется оплата
                 </p>
             </div>
@@ -242,6 +217,7 @@ export default function RezumeUser ({auth, setAuth ,uservaka , ...cardMassiv }) 
             </>
 
             :
+
             ''
             
         }
@@ -253,6 +229,12 @@ export default function RezumeUser ({auth, setAuth ,uservaka , ...cardMassiv }) 
 
 
 </section>
+        
+        }
+ 
+ 
+
+ 
 
 </>
 

@@ -99,8 +99,10 @@
                 position: absolute;
                 right: 19px;
                 top: 13px;
-                width: 160px;
-                height: 110px;
+                width: 100px;
+                height: auto;
+                border-radius: 20px;
+               
 
                 @media screen and (max-width: 700px) {
                     
@@ -111,7 +113,7 @@
                 }
 
                 @media screen and (max-width: 600px) {
-                    max-width: 150px;
+                    max-width: 100px;
                     width: 100%;
                     top: 80px;
     
@@ -197,7 +199,7 @@
             display: flex;
             justify-content: space-between;
             width: 100%;
-            margin-top: 10px;
+            margin-top: 25px;
 
             &_eyeDiv{
                 display: flex;

@@ -51,6 +51,7 @@ import axios from 'axios'
 
     const [userId, setUserId] = useState()
 
+    const navigate = useNavigate('')
   
     useEffect(() => {
         axios.get('http://localhost:8001/api/users/',{
@@ -67,11 +68,6 @@ import axios from 'axios'
     }, [])
 
     const fotoRef = useRef(null)
-
-    const navigate = useNavigate('')
-
-
-
 
     
     const PreapRezume = () => {       
@@ -99,11 +95,13 @@ import axios from 'axios'
             foto: foto , 
             recommendation: recommendation,
             certificate: certificate,
+            
         },
         
         {
             headers : {
             'Content-Type': 'application/json , multipart/form-data',
+            authorization: `Token ${token}`
             }            
         }
 
@@ -112,8 +110,8 @@ import axios from 'axios'
 
         .then(res => { res.request.status === 201 ? navigate('/successtwo') : navigate('/preap')
         } )
-        
-        .catch(err => console.error(err))
+
+        .catch(err => alert('Неправильно ввели данные или не до конца заполнили форму'));
 
 
 
