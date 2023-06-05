@@ -9,7 +9,7 @@ import { Link } from 'react-router-dom'
 
 
 
-export default function MyRezume({onClick, setAuth, auth, mycardId}) {
+export default function MyRezume({onClick, setAuth, auth, mycardId, deletePost, applicants}) {
 
 
 
@@ -60,7 +60,7 @@ export default function MyRezume({onClick, setAuth, auth, mycardId}) {
          </p>
 
          {mycardId.map( (info, index) => { 
-                return <Mycard  onClick={onClick} {...info}  key={index} />
+                return <Mycard deletePost={deletePost} applicants={applicants}  onClick={onClick} {...info}  key={index} />
          } ) }
 
          <Link to='/preap' className='plus'>

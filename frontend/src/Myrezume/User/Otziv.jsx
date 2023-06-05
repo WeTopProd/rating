@@ -1,12 +1,16 @@
 
+import { useParams } from 'react-router-dom';
 import Header from '../../components/header/Header'
+
 import './Otziv.scss'
 
 export default function Otziv ({auth, setAuth, ...mycardId}) {
 
-    const mas = mycardId.mycardId[0]
+    const params = useParams()
+    const userId = mycardId.mycardId.findIndex(user => user.id === +params.userId)
+    const mas = mycardId.mycardId[userId]
 
-    console.log(mas);
+    console.log(mycardId);
 
     return (
 
@@ -40,8 +44,6 @@ export default function Otziv ({auth, setAuth, ...mycardId}) {
         setAuth={setAuth}
         
         />
-
-        {mas && 
         
 <section className="sectionRecomendation">
 
@@ -170,9 +172,6 @@ export default function Otziv ({auth, setAuth, ...mycardId}) {
     </div>
 
 </section>
-
-        }
-
 
 </>
 

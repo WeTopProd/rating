@@ -111,6 +111,18 @@
                 padding: 0px 15px;
                 width: 95%;
 
+                &_selec{
+                    width: 100%;
+                    color: rgba(0, 0, 0, 0.7) !important;
+                    padding: 15px 10px ;
+                    border-radius: 12px;
+                    font-family: 'Montserrat';
+                    font-style: normal;
+                    font-weight: 400;
+                    font-size: 24px;
+                    line-height: 50px;
+                }
+
             }
 
             &_flex{

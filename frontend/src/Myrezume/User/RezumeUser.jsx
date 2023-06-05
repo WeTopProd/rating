@@ -11,8 +11,7 @@ export default function RezumeUser ({auth, setAuth , uservaka , ...mycardId }) {
 
     return (
 
-        <>
-        
+        <>  
 
         <Header
         
@@ -61,7 +60,7 @@ export default function RezumeUser ({auth, setAuth , uservaka , ...mycardId }) {
                     {mas.FullName} {mas.data} лет, город {mas.city}
                     </p>
     
-                    <Link to='/otzivuser' className="recomendation__top_left_blue">
+                    <Link to={`/otzivuser/${mas.id}`} className="recomendation__top_left_blue">
                     РЕКОМЕНДАЦИИ 
                     </Link>
     
