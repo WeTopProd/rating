@@ -24,6 +24,7 @@ class ResumeSerializer(serializers.ModelSerializer):
             'AddEducation',
             'placeWork',
             'postWork',
+            'busyness',
             'DataStart',
             'DataEnd',
             'About',

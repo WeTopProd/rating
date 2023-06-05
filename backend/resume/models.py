@@ -41,9 +41,10 @@ class Resume(models.Model):
         'Должность',
         max_length=500
     )
+    busyness = models.CharField(max_length=300)
     DataStart = models.DateField('Дата начала')
     DataEnd = models.DateField('Дата окончания')
-    About = models.CharField('О себе', max_length=500)
+    About = models.CharField('О себе', max_length=2000)
     skills = models.CharField('Ключевые навыки', max_length=500)
     startSalary = models.IntegerField('Зарплата от')
     endSalary = models.IntegerField('Зарплата до')
