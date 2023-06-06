@@ -27,6 +27,7 @@ class ResumeSerializer(serializers.ModelSerializer):
             'busyness',
             'DataStart',
             'DataEnd',
+            'experience',
             'About',
             'skills',
             'startSalary',
