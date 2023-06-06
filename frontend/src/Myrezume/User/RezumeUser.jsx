@@ -3,11 +3,15 @@ import { useEffect, useState } from 'react';
 import Header from '../../components/header/Header'
 import './RezumeUser.scss' 
 import { Link, useParams } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 
 export default function RezumeUser ({auth, setAuth , uservaka , ...mycardId }) {
     const params = useParams()
     const userId = mycardId.mycardId.findIndex(user => user.id === +params.userId)
-    const mas = mycardId.mycardId[userId]   
+    const mas = mycardId.mycardId[userId]
+    
+    const location = useLocation()
+
 
     return (
 
@@ -66,7 +70,7 @@ export default function RezumeUser ({auth, setAuth , uservaka , ...mycardId }) {
     
                 </div>
 
-                <img src={mas.foto} width='120px'  alt="svg" />
+                <img src={mas.foto} width='120px' className='avatar'  alt="svg" />
 
     
             </div>
@@ -120,7 +124,7 @@ export default function RezumeUser ({auth, setAuth , uservaka , ...mycardId }) {
                         </p>
     
                         <p className="recomendation__top_left_text">
-                             {/* {result === null ? '' : result.zynytost} */}
+                            {mas.busyness}
                         </p>
 
     
@@ -163,9 +167,9 @@ export default function RezumeUser ({auth, setAuth , uservaka , ...mycardId }) {
                     
                      </div>
                     
-                    <div><p className="recomendation__speciality_leftS_specializ_text1">{mas.education}</p></div>
+                    <div><p className="recomendation__speciality_leftS_specializ_text1">Образование</p></div>
         
-                    <div> <p className="recomendation__top_left_text"> {mas.AddEducation}</p></div>
+                    <div> <p className="recomendation__top_left_text">{mas.education} <br /> Дополнительно : {mas.AddEducation}</p></div>
     
                 </div>
     
@@ -188,17 +192,31 @@ export default function RezumeUser ({auth, setAuth , uservaka , ...mycardId }) {
 
     </div>
 
+
     
 
-            {!uservaka ? 
+            {uservaka ?
+            
+        <div className="recomendation__number">
+            <p className="recomendation__number_text">
+                Телефон 
+            </p>
+            <span className="recomendation__number_text">
+                {mas.PhoneNumber}
+            </span>
+        </div>
+
+
+            :
+
             <>
 
             <div className="recomendation__number">
                 <p className="recomendation__number_text">
-                    Телефон +7
+                    Телефон 
                 </p>
                 <span className="recomendation__number_blur">
-                    #########
+                    {mas.PhoneNumber}
                 </span>
             </div>
     
@@ -214,10 +232,6 @@ export default function RezumeUser ({auth, setAuth , uservaka , ...mycardId }) {
             
 
             </>
-
-            :
-
-            ''
             
         }
     

@@ -12,7 +12,7 @@ import Mycard from '../Myrezume/Mycard';
 // import Mycard from '../Myvakan/Mycard';
 
 
-export default function PoiksRezume ({onClick, setAuth, auth}) {
+export default function PoiksRezume ({onClick, setAuth, auth, mycardId}) {
 
     const [show, setShow] = useState(false);
 
@@ -394,7 +394,7 @@ export default function PoiksRezume ({onClick, setAuth, auth}) {
 
             </form> 
 
-                        {MyDataCard.map( (info, index) => { 
+                        {mycardId.map( (info, index) => { 
                             return <Mycard onClick={onClick} {...info}  key={index} />
                         } ) }
 

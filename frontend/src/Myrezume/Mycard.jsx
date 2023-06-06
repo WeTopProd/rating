@@ -26,7 +26,7 @@ export default function Mycard({onClick, CardId, deletePost, applicants, ...info
     const [currentId, setCurrentId] = useState('')
 
 
-    console.log(info.id);
+    
 
 
 
@@ -139,7 +139,7 @@ export default function Mycard({onClick, CardId, deletePost, applicants, ...info
 
             <img className="mini__outer_botline_change_pics_other" src={izmen} alt="" />
 
-            <Link  to='/preapload' className="mini__outer_botline_change_pics_blue">
+            <Link  to={`/preapload/${info.id}`} className="mini__outer_botline_change_pics_blue">
                 Изменить
             </Link>
 
@@ -152,6 +152,7 @@ export default function Mycard({onClick, CardId, deletePost, applicants, ...info
             {/* <div onClick={toggleModal} className="mini__outer_botline_change_pics_delete">
                 <span id={info.id} onClick={(e) => setCurrentId(e.currentTarget.id)}>Удалить</span>
             </div> */}
+
             <div id={info.id} onClick={(event) => deletePost(event.currentTarget.id)} className="mini__outer_botline_change_pics_delete">
                 Удалить
             </div>

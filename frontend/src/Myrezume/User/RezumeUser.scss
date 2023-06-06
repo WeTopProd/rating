@@ -1,3 +1,8 @@
+.avatar{
+    width: 120px;
+    border-radius: 12px;
+}
+
 .sectionRec {
     padding: 150px 0px;
 
@@ -237,7 +242,8 @@
                 border: none;
                 background: none;
                 border: 1px solid #000000;
-                border-radius: 100px;
+                border-radius: 12px;
+                max-width: 400px;
 
                 font-family: 'Montserrat';
                 font-style: normal;
@@ -248,7 +254,8 @@
                 margin: 0;
                 
                 width: fit-content;
-                padding: 5px 23px;
+                padding: 20px 23px;
+                text-transform: uppercase;
                 
 
                 }
@@ -293,6 +300,8 @@
 
         &__number{
             display: flex;
+            align-items: center;
+            gap: 10px;
             width: 100%;
             align-items: center;
             padding-bottom: 8px;

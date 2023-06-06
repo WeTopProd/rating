@@ -229,7 +229,7 @@ const ClickIdTwo = (id) => {
 
           <Route path='/preap'  element={<Preap  auth={auth} setAuth={setAuth}/>} />
 
-          <Route path='/preapload'  element={<PreapLoad auth={auth} setAuth={setAuth} />} />
+          <Route path='/preapload/:userId'  element={<PreapLoad mycardId={mycardId} auth={auth} setAuth={setAuth} />} />
 
 
 
@@ -241,7 +241,7 @@ const ClickIdTwo = (id) => {
 
           <Route path='/poiksvakan'  element={<PoiksVakan auth={auth} setAuth={setAuth} cardMassivTwo={cardMassivTwo} onClick={ClickIdTwo} />} /> 
 
-          <Route path='/poiksrezume'  element={<PoiksRezume auth={auth} setAuth={setAuth}  />} /> 
+          <Route path='/poiksrezume'  element={<PoiksRezume mycardId={mycardId} auth={auth} setAuth={setAuth}  />} /> 
 
           <Route path='/myvakan' element={<MyVakan auth={auth} setAuth={setAuth}  onClick={ClickIdTwo}  />} />
         

@@ -10,8 +10,6 @@ export default function Otziv ({auth, setAuth, ...mycardId}) {
     const userId = mycardId.mycardId.findIndex(user => user.id === +params.userId)
     const mas = mycardId.mycardId[userId]
 
-    console.log(mycardId);
-
     return (
 
         <>
