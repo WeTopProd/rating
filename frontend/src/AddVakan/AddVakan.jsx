@@ -1,18 +1,17 @@
 
-import { useContext, useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import m from '../AddVakan/addvakan.module.scss'
 import Header from '../components/header/Header'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { contextVakan } from '../ContextVakan'
+import axios from 'axios'
 
 export default function AddVakan ({auth, setAuth}) {
 
-    const [notesTwo, setNotesTwo] = useState([])
 
     const [
 
         NameVakan, setNameVakan,
-        Spec, 
         NameKompany, setNameKompany,
         AboutKompany, setAboutKompany,
         Requirement, setRequirement,
@@ -21,38 +20,85 @@ export default function AddVakan ({auth, setAuth}) {
         ZpDo, setZpDo,
         Experience, setExperience,
         ExperienceDo, setExperienceDo,
-
+        designations, setdesignations,
         Type, setType,
         Grafic, SetGrafic,
         Logo, setLogo ,
     
     ] = useContext(contextVakan)
 
-    function formVakan (){
+    const fotoUpload = (e) => {
+        setLogo(e.target.files[0])
+    }
 
-        let objTwo = {
+    const token = JSON.parse(localStorage.getItem('token'))
 
-            NameVakan: NameVakan  ,
-            Spec: Spec  ,
-            NameKompany: NameKompany  ,
-            AboutKompany: AboutKompany  ,
-            Requirement: Requirement  ,
-            conditions: conditions  ,
-            ZpOt: ZpOt  ,
-            ZpDo: ZpDo  ,
-            Experience: Experience  ,
-            ExperienceDo: ExperienceDo  ,
-            Type: Type  ,
-            Grafic: Grafic ,
-            Logo: setLogo ,
-      
-   
+    const navigate = useNavigate('')
+
+    const [userId, setUserId] = useState()
+
+    // useEffect(() => {
+    //     axios.get('http://localhost:8001/api/users/',{
+
+    //          headers: {
+    //             'Content-Type': 'application/json ',
+    //             authorization: `Token ${token}`
+    //          }
             
+    //         })
+
+    //     .then(res => {setUserId(res.data[0].id)
+    //         // window.location.reload()
+            
+    //     })
+
+    // }, [])
+
+    const PreapVakan = () => {       
+    
+        axios.post('http://localhost:8001/api/resume/', {
+
+        NameVakan: NameVakan,
+        NameKompany: NameKompany,
+        AboutKompany: AboutKompany, //об компании
+        Requirement: Requirement, // Требования
+        conditions: conditions, // Условия
+        ZpOt: ZpOt, // заработная плата от 
+        ZpDo: ZpDo, // заработная плата до 
+        Experience: Experience, // Опыт работы от
+        ExperienceDo: ExperienceDo, // Опыт работы до
+        designations: designations, // Тип оформления ,  select выподающий список сделай у себя просто текст 
+        Type: Type, // Тип занятости , select тоже
+        Grafic: Grafic, // График работы 
+        Logo: Logo , // лого компании 
+
+        user: userId // айдишка пользвателя 
+            
+        },
+        
+        {
+            headers : {
+            'Content-Type': 'application/json , multipart/form-data',
+            authorization: `Token ${token}`
+            }            
         }
 
-        setNotesTwo(...notesTwo, objTwo)
+        
+        )
 
-    }
+        .then(res => { res.request.status === 201 ? navigate('/tarifvakan') : navigate('/addvakan')
+           window.location.reload()
+        } )
+
+        .catch(err => alert('Неправильно ввели данные или не до конца заполнили форму'));
+
+
+
+    };
+
+
+
+
 
     return(
 
@@ -132,7 +178,7 @@ setAuth={setAuth}
 
                         <div className={m.sectionCreateVaccancy__outer_inner_right_logo}>
 
-                            <input type="file" onChange={Logo}  />
+                            <input type="file" onChange={fotoUpload}  />
 
                             <p className={m.sectionCreateVaccancy__outer_inner_right_logo_textLogo}>
                                 Логотип компании*
@@ -183,12 +229,15 @@ setAuth={setAuth}
                             </p>
 
 
-                            <div className={m.sectionCreateVaccancy__outer_inner_right_otDo_input}>
-
-                                <input value={Type} onChange={(event) => setType(event.target.value)} type="number" className={m.sectionCreateVaccancy__outer_inner_right_otDo_input_inp}
-                                    placeholder="" />
-
-                            </div>
+                            <select type="text" value={Type} onChange={(event) => setType(event.target.value)} >
+                            
+                            <option value="Полная занятость">Полная занятость</option>
+                            <option value="Частичная занятость">Частичная занятость</option>
+                            <option value="Среднее специальное">Среднее специальное</option>
+                            <option value="Проектная работа">Проектная работа</option>
+                            <option value="Волонтерство">Волонтерство</option>
+                            <option value="Стажировка">Стажировка</option>
+                            </select>
 
                         </div>
 
@@ -201,8 +250,8 @@ setAuth={setAuth}
 
 <div className={m.sectionCreateVaccancy__outer_inner_right_otDo_input}>
 
-<input value={Grafic} onChange={(event) => SetGrafic(event.target.value)} type="number" className={m.sectionCreateVaccancy__outer_inner_right_otDo_input_inp}
-    placeholder="" />
+<input value={Grafic} onChange={(event) => SetGrafic(event.target.value)} type="text" className={m.sectionCreateVaccancy__outer_inner_right_otDo_input_inp}
+    placeholder="с 9:00 до 20:00 " />
 
 </div>
 
@@ -218,28 +267,17 @@ setAuth={setAuth}
                                 Тип оформления*
                             </p>
 
-                            <label className={m.sectionCreateVaccancy__outer_inner_right_checking_kk}>
+                            <select type="text" value={designations} onChange={(event) => setdesignations(event.target.value)}>
+                                <option value="По трудовой">По трудовой</option>
+                                <option value="По контракту">По контракту</option>
+                            </select>
 
-                            <p className={m.sectionCreateVaccancy__outer_inner_right_checking_kk_cont}>По трудовой</p>
-
-                            <input type="checkbox" className={m.sectionCreateVaccancy__outer_inner_right_checking_kk_checkbox} />
-
-                            </label>
-
-                            <label className={m.sectionCreateVaccancy__outer_inner_right_checking_kk}>
-
-                            <p className={m.sectionCreateVaccancy__outer_inner_right_checking_kk_cont}>По контракту
-                            </p>
-
-                            <input type="checkbox" className={m.sectionCreateVaccancy__outer_inner_right_checking_kk_checkbox} />
-
-                            </label>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <Link to='/tarifvakan' onClick={formVakan} className={m.sectionCreateVaccancy__link}>Разместить</Link>
+            <Link to='/tarifvakan'  className={m.sectionCreateVaccancy__link}>Разместить</Link>
             
         </div>
     </div>

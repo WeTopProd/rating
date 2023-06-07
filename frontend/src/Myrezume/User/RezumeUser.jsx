@@ -145,7 +145,7 @@ export default function RezumeUser ({auth, setAuth , uservaka , ...mycardId }) {
         
                     
                     <p className="recomendation__experience_vi_exp1">
-                        {/* {result === null ? '' : result.opetrabot} */}
+                    {mas.experience} года
                     </p>
     
                 </div>

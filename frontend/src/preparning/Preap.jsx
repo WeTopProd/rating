@@ -32,13 +32,18 @@ import axios from 'axios'
         recommendation, setRecommendation,
         certificate, setCertificate,
 
-        busyness, setbusyness
+        busyness, setbusyness,
+        experience, setexperience
     
     ] = useContext(myContext)
 
+
     const fotoUpload = (e) => {
         setFoto(e.target.files[0])
+      
     }
+
+    
 
     const recommendationUpload = (e) => {
         setRecommendation(e.target.files[0])
@@ -64,7 +69,7 @@ import axios from 'axios'
              }
             
             })
-            
+
         .then(res => {setUserId(res.data[0].id)
             // window.location.reload()
             
@@ -100,7 +105,8 @@ import axios from 'axios'
             foto: foto , 
             recommendation: recommendation,
             certificate: certificate,
-            busyness: busyness, //Занятость 
+            busyness: busyness, 
+            experience: experience
             
         },
         
@@ -124,6 +130,8 @@ import axios from 'axios'
 
     };
 
+   console.log(foto);
+    
   
     return (
 
@@ -230,6 +238,8 @@ import axios from 'axios'
                                 
                         </div>
 
+                        <input value={experience} onChange={(event) => setexperience(event.target.value)} type="number" placeholder='Опыт работы' className={l.preap__form_input} />
+
 
                         <select value={busyness} onChange={(event) => setbusyness(event.target.value)} type="text" placeholder='Занятость' className={l.preap__form_input_selec}>
                             
@@ -268,7 +278,7 @@ import axios from 'axios'
 
             <p className={l.file__info_text}>
 
-            ФОТО
+            фото
 
             </p>
 

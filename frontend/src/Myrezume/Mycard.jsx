@@ -26,7 +26,7 @@ export default function Mycard({onClick, CardId, deletePost, applicants, ...info
     const [currentId, setCurrentId] = useState('')
 
 
-    
+
 
 
 
@@ -84,7 +84,7 @@ export default function Mycard({onClick, CardId, deletePost, applicants, ...info
             </p>
 
             <p className="mini__outer_inside_near_age_pshka">
-                {/* {opetrabot} */}
+                 {info.experience} года
             </p>
 
             <p className="mini__outer_inside_near_age_pshka2">

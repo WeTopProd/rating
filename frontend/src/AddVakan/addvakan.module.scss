@@ -252,6 +252,23 @@
                         margin-top: 30px;
                     }
 
+
+                    & select{
+                        width: 100%;
+                        padding: 10px 10px;
+                        font-family: 'Montserrat';
+                        font-style: normal;
+                        font-weight: 500;
+                        font-size: 20px;
+                        line-height: 160%;
+                        color: rgba(0, 0, 0, 0.5) !important;
+                        border-radius: 12px;
+
+                        & option{
+                            border-radius: 12px;
+                        }
+                    }
+
                     &_para {
                         font-family: 'Montserrat';
                         font-style: normal;
@@ -303,6 +320,22 @@
                         flex-direction: column;
                         justify-content: center;
                         align-items: center;
+                    }
+
+                    & select{
+                        width: 100%;
+                        padding: 10px 10px;
+                        font-family: 'Montserrat';
+                        font-style: normal;
+                        font-weight: 500;
+                        font-size: 20px;
+                        line-height: 160%;
+                        color: rgba(0, 0, 0, 0.5) !important;
+                        border-radius: 12px;
+
+                        & option{
+                            border-radius: 12px;
+                        }
                     }
 
                     &_typeZ {

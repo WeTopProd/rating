@@ -34,6 +34,8 @@ export default function ContextTwo(props) {
 
     const [Logo, setLogo] = useState ()
 
+    const [designations, setdesignations] = useState('')
+
 
 
     return <contextVakan.Provider value={[
@@ -52,6 +54,7 @@ export default function ContextTwo(props) {
         TypeDo, setTypeDo,
         Grafic, setGrafic,
         Logo, setLogo,
+        designations, setdesignations
        
 
     
