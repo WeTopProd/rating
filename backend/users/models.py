@@ -7,9 +7,15 @@ from phonenumber_field.modelfields import PhoneNumberField
 from .managers import UserManager
 from .validators import validate_phone_number
 from resume.models import Resume
+from vacancy.models import Vacancy
 
 
 class User(AbstractBaseUser, PermissionsMixin):
+    USER_TYPES = (
+        ('employer', 'Работодатель'),
+        ('job_seeker', 'Соискатель'),
+    )
+
     email = models.EmailField(
         db_index=True,
         max_length=254,
@@ -39,7 +45,11 @@ class User(AbstractBaseUser, PermissionsMixin):
     is_active = models.BooleanField(default=True)
     is_staff = models.BooleanField(default=False)
     date_joined = models.DateTimeField(auto_now_add=True)
-
+    user_type = models.CharField(
+        verbose_name='Тип пользователя',
+        max_length=15,
+        choices=USER_TYPES
+    )
     resume = models.ForeignKey(
         Resume,
         verbose_name='Резюме',
@@ -49,10 +59,19 @@ class User(AbstractBaseUser, PermissionsMixin):
         null=True
     )
 
+    vacancy = models.ForeignKey(
+        Vacancy,
+        verbose_name='Вакансия',
+        related_name='user_vacancy',
+        on_delete=models.CASCADE,
+        blank=True,
+        null=True
+    )
+
     objects = UserManager()
 
     USERNAME_FIELD = 'email'
-    REQUIRED_FIELDS = ['phone', 'first_name', 'last_name']
+    REQUIRED_FIELDS = ['user_type', 'first_name', 'last_name', 'phone']
 
     class Meta:
         verbose_name = 'Пользователь'
@@ -61,3 +80,9 @@ class User(AbstractBaseUser, PermissionsMixin):
 
     def __str__(self):
         return self.email
+
+    def save(self, *args, **kwargs):
+        if self.user_type == 'job_seeker':
+            self.vacancy = None
+
+        super().save(*args, **kwargs)

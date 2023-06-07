@@ -2,10 +2,10 @@ from django.urls import include, path
 
 from rest_framework import routers
 
-from .views import ResumeViewSet
+from .views import VacancyViewSet
 
 router = routers.DefaultRouter()
-router.register('resume', ResumeViewSet, basename='resume')
+router.register('vacancy', VacancyViewSet, basename='vacancy')
 
 urlpatterns = [
     path('', include(router.urls)),

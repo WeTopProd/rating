@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'phonenumber_field',
     'users.apps.UsersConfig',
     'resume.apps.ResumeConfig',
+    'vacancy.apps.VacancyConfig',
 ]
 
 MIDDLEWARE = [

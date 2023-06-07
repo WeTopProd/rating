@@ -6,11 +6,9 @@ from rest_framework import serializers
 class UserCreateSerializer(UserCreateSerializer):
     phone = PhoneNumberField()
 
-    def validate_phone(self, value):
-        return value.replace('8', '+7', 1)
-
     class Meta(UserCreateSerializer.Meta):
         fields = (
+            'user_type',
             'email',
             'first_name',
             'last_name',
@@ -18,6 +16,7 @@ class UserCreateSerializer(UserCreateSerializer):
             'password',
             're_password',
             'resume',
+            'vacancy'
         )
 
 
