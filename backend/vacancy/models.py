@@ -57,3 +57,29 @@ class Vacancy(models.Model):
 
     def __str__(self):
         return self.job_title
+
+
+class Favorite(models.Model):
+    user = models.ForeignKey(
+        'users.User',
+        related_name='favorites',
+        on_delete=models.CASCADE
+    )
+    vacancy = models.ForeignKey(
+        Vacancy,
+        related_name='users_favorites',
+        on_delete=models.CASCADE
+    )
+
+    class Meta:
+        verbose_name = 'Избранное'
+        verbose_name_plural = 'Избранные'
+        constraints = [
+            models.UniqueConstraint(
+                fields=['vacancy', 'user'],
+                name='favorite_unique'
+            )
+        ]
+
+    def __str__(self):
+        return f'{self.user} added {self.vacancy} to favorite'

@@ -45,11 +45,13 @@ class User(AbstractBaseUser, PermissionsMixin):
     is_active = models.BooleanField(default=True)
     is_staff = models.BooleanField(default=False)
     date_joined = models.DateTimeField(auto_now_add=True)
+
     user_type = models.CharField(
         verbose_name='Тип пользователя',
         max_length=15,
         choices=USER_TYPES
     )
+
     resume = models.ForeignKey(
         Resume,
         verbose_name='Резюме',
@@ -86,3 +88,6 @@ class User(AbstractBaseUser, PermissionsMixin):
             self.vacancy = None
 
         super().save(*args, **kwargs)
+
+
+CustomUser = User

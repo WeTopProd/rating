@@ -1,9 +1,15 @@
-FROM node:18.16.0-alpine as build
+FROM node:19.8.1-alpine as build
+
 WORKDIR /app
+
 COPY package*.json ./
+
 RUN npm install
-COPY . ./
+
+COPY . .
+
 RUN npm run build
 CMD cp -r build result_build
+ENV NODE_ENV=production
 
 CMD ["npm", "start"]
