@@ -9,7 +9,7 @@ import MyDataCard from './my.data.card'
 import Mycard from './Mycard'
 
 
-export default function MyVakan({onClick, setAuth, auth}) {
+export default function MyVakan({onClick, deletePostVakan, setAuth, auth, myVakanId}) {
 
     
 
@@ -55,11 +55,11 @@ setAuth={setAuth}
              Мои вакасии
          </p>
 
-         {MyDataCard.map( (info, index) => { 
-                return <Mycard onClick={onClick} {...info}  key={index} />
+         {myVakanId.map( (info, index) => { 
+                return <Mycard deletePostVakan={deletePostVakan} onClick={onClick} {...info}  key={index} />
          } ) }
 
-         <Link to='/preap' className='plus'>
+         <Link to='/addVakan' className='plus'>
                 <img src={plus} alt="svg" />
         </Link>
 

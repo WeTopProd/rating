@@ -48,6 +48,9 @@ function App() {
 
   const [mycardId , setMycardId] = useState([])
 
+  const [myVakanId , setmyVakanId] = useState([])
+
+
   useEffect(() => {
 
     axios.get('http://localhost:8001/api/resume/', {
@@ -67,10 +70,50 @@ function App() {
 
 }, [])
 
+useEffect(() => {
+
+  axios.get('http://localhost:8001/api/vacancy/', {
+  
+  headers: {
+      'Content-Type': 'application/json , multipart/form-data',
+      'authorization': `Token ${tokenTwo}`
+  }
+
+  })
+
+  .then((res) => {
+    setmyVakanId(res.data)
+    //  window.location.reload()
+    })
+  .catch((err) => console.error(err))
+
+}, [])
+
+
 
 const deletePost = (id) => {
 
   axios.delete(`http://localhost:8001/api/resume/${id}`,
+  
+  {
+
+    headers: {
+      'Content-Type': 'application/json',
+      'authorization': `Token ${tokenTwo}`
+
+  }
+
+
+  }
+
+  )
+    .then(() => window.location.reload() )
+    .catch(err => console.error(err))
+};
+
+const deletePostVakan = (id) => {
+
+  axios.delete(`http://localhost:8001/api/vacancy/${id}`,
   
   {
 
@@ -243,7 +286,7 @@ const ClickIdTwo = (id) => {
 
           <Route path='/poiksrezume'  element={<PoiksRezume mycardId={mycardId} auth={auth} setAuth={setAuth}  />} /> 
 
-          <Route path='/myvakan' element={<MyVakan auth={auth} setAuth={setAuth}  onClick={ClickIdTwo}  />} />
+          <Route path='/myvakan' element={<MyVakan deletePostVakan={deletePostVakan} auth={auth} setAuth={setAuth}  onClick={ClickIdTwo} myVakanId={myVakanId}  />} />
         
           <Route path='/tarifvakan'  element={<TarifVakan
           
@@ -272,7 +315,7 @@ const ClickIdTwo = (id) => {
 
           <Route path='/otzivuser/:userId'  element={<Otziv auth={auth} setAuth={setAuth} mycardId={mycardId}   />} />
 
-          <Route path='/vakanuser'  element={<UserVakan auth={auth} setAuth={setAuth}  cardMassivTwo={cardMassivTwo} />} />
+          <Route path='/vakanuser/:userVakanId'  element={<UserVakan auth={auth} setAuth={setAuth}  myVakanId={myVakanId} />} />
 
           <Route path='/otzivuservakan'  element={<OtzivVakan auth={auth} setAuth={setAuth}  cardMassivTwo={cardMassivTwo} />} />
 

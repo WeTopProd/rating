@@ -37,40 +37,40 @@ export default function AddVakan ({auth, setAuth}) {
 
     const [userId, setUserId] = useState()
 
-    // useEffect(() => {
-    //     axios.get('http://localhost:8001/api/users/',{
+    useEffect(() => {
+        axios.get('http://localhost:8001/api/vacancy/',{
 
-    //          headers: {
-    //             'Content-Type': 'application/json ',
-    //             authorization: `Token ${token}`
-    //          }
+             headers: {
+                'Content-Type': 'application/json ',
+                authorization: `Token ${token}`
+             }
             
-    //         })
+            })
 
-    //     .then(res => {setUserId(res.data[0].id)
-    //         // window.location.reload()
+        .then(res => {setUserId(res.data[0].id)
+            // window.location.reload()
             
-    //     })
+        })
 
-    // }, [])
+    }, [])
 
     const PreapVakan = () => {       
     
-        axios.post('http://localhost:8001/api/resume/', {
+        axios.post('http://localhost:8001/api/vacancy/', {
 
-        NameVakan: NameVakan,
-        NameKompany: NameKompany,
-        AboutKompany: AboutKompany, //об компании
-        Requirement: Requirement, // Требования
+        job_title: NameVakan,
+        company_name: NameKompany,
+        about_company: AboutKompany, //об компании
+        requirements: Requirement, // Требования
         conditions: conditions, // Условия
-        ZpOt: ZpOt, // заработная плата от 
-        ZpDo: ZpDo, // заработная плата до 
-        Experience: Experience, // Опыт работы от
-        ExperienceDo: ExperienceDo, // Опыт работы до
-        designations: designations, // Тип оформления ,  select выподающий список сделай у себя просто текст 
-        Type: Type, // Тип занятости , select тоже
-        Grafic: Grafic, // График работы 
-        Logo: Logo , // лого компании 
+        start_salary: ZpOt, // заработная плата от 
+        final_salary: ZpDo, // заработная плата до 
+        start_experience: Experience, // Опыт работы от
+        final_experience: ExperienceDo, // Опыт работы до
+        application_type: designations, // Тип оформления ,  select выподающий список сделай у себя просто текст 
+        employment_type: Type, // Тип занятости , select тоже
+        schedule: Grafic, // График работы 
+        logo: Logo , // лого компании 
 
         user: userId // айдишка пользвателя 
             
@@ -148,7 +148,7 @@ setAuth={setAuth}
                     Заполнить все пункты отмеченные*
                 </p>
 
-                <div className={m.sectionCreateVaccancy__outer_inner}>
+                <form onSubmit={PreapVakan} className={m.sectionCreateVaccancy__outer_inner}>
 
                     <div className={m.sectionCreateVaccancy__outer_inner_form}>
 
@@ -230,6 +230,8 @@ setAuth={setAuth}
 
 
                             <select type="text" value={Type} onChange={(event) => setType(event.target.value)} >
+
+                            <option value="Выберите">Выберите</option>
                             
                             <option value="Полная занятость">Полная занятость</option>
                             <option value="Частичная занятость">Частичная занятость</option>
@@ -268,16 +270,19 @@ setAuth={setAuth}
                             </p>
 
                             <select type="text" value={designations} onChange={(event) => setdesignations(event.target.value)}>
+                                <option value="Выберите">Выберите</option>
                                 <option value="По трудовой">По трудовой</option>
                                 <option value="По контракту">По контракту</option>
                             </select>
 
                         </div>
                     </div>
-                </div>
+                </form>
+
             </div>
 
-            <Link to='/tarifvakan'  className={m.sectionCreateVaccancy__link}>Разместить</Link>
+            {/* <Link to='/tarifvakan'  className={m.sectionCreateVaccancy__link}>Разместить</Link> */}
+            <button type='submit' onClick={PreapVakan}  className={m.sectionCreateVaccancy__link}>Разместить</button>
             
         </div>
     </div>

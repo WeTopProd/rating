@@ -70,7 +70,7 @@ export default function RezumeUser ({auth, setAuth , uservaka , ...mycardId }) {
     
                 </div>
 
-                <img src={mas.foto} width='120px' className='avatar'  alt="svg" />
+                <img src={mas.foto}  width='120px' className='avatar'  alt="svg" />
 
     
             </div>

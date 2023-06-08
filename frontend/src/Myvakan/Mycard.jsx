@@ -7,25 +7,10 @@ import { Link, useLocation, useNavigate } from 'react-router-dom'
 import FooterCard from './FooterCard';
 import { useState } from 'react';
 
-export default function Mycard ({
+import deletet from '../components/img/delete.svg'
+import izmen from '../components/img/izmen.svg'
 
-    vakan,
-    otSena,
-    doSena,
-    opetrabot,
-    proves,
-    provesTwo,
-    provesThree,
-    zynytost,
-    pros,
-    logo,
-    glaz,
-    izmen,
-    deletet,
-    onClick,
-    CardIdTwo
-
-}) {
+export default function Mycard ({deletePostVakan ,...info}) {
 
     const [isShowingModal, toggleModal] = useModal();
 
@@ -37,10 +22,10 @@ export default function Mycard ({
 
     const history = useNavigate();
 
+    const [currentId, setCurrentId] = useState('')
 
 
-    
-
+    console.log(info.id);
 
     return (
 
@@ -51,7 +36,7 @@ export default function Mycard ({
         
         
 
-        <div className="VAC" id={CardIdTwo}  onClick={ (event) => onClick(event.currentTarget.id)}>
+        <div className="VAC"  >
             <div className="VAC__out"  >
 
                 <div className="VAC__out_in">
@@ -71,16 +56,18 @@ export default function Mycard ({
                 }
                     
 
-                    <Link to='/vakanuser'  className="VAC__out_in_title">
-                        {vakan}
+                    <Link to={`/vakanuser/${info.id}`}  className="VAC__out_in_title">
+                      {info.job_title}
                     </Link>
+
+                    <p className='VAC__out_in_two_sal_text'>Компания: {info.company_name}</p>
 
                     <div className="VAC__out_in_two">
                          
                     <div className="VAC__out_in_two_sal">
 
                         <p className="VAC__out_in_two_sal_text">
-                            от {otSena} - {doSena} руб
+                            от {info.start_salary} - {info.final_salary} руб
                         </p>
 
                         <p className="VAC__out_in_two_sal_exp">
@@ -88,25 +75,25 @@ export default function Mycard ({
                         </p>
 
                         <p className="VAC__out_in_two_sal_text">
-                            {opetrabot}
+                            от {info.start_experience} до {info.final_experience} года
                         </p>
                     </div>
 
                     <div className="VAC__out_in_two_sing">
 
                         <p className="VAC__out_in_two_sal_text">
-                            Вакансии: {proves} <span id="yellow"> {provesTwo}</span>  {provesThree}
+                            Вакансии: {info.job_title}
                         </p>
 
                         <p className="VAC__out_in_two_sal_text">
-                              {zynytost}
+                            Занятость: {info.employment_type}
                         </p>
 
                     </div>
                     </div>
 
 
-                    <img className='VAC__out_in_logo' src={logo} alt=""/>
+                    <img className='VAC__out_in_logo' src={info.logo} alt=""/>
 
                     
 
@@ -118,7 +105,7 @@ export default function Mycard ({
               
                 :
                             
-            <FooterCard glaz={glaz} pros={pros} izmen={izmen} deletet={deletet} toggleModal={toggleModal}  />
+            <FooterCard izmen={izmen} {...info}  deletet={deletet} deletePostVakan={deletePostVakan} currentId={currentId} toggleModal={toggleModal}  />
                 
                 }
 

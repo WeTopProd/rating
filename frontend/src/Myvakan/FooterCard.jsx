@@ -2,14 +2,14 @@ import { Link } from "react-router-dom";
 import './myvakan.scss'
  
 
-export default function FooterCard ({glaz, pros, izmen, deletet,toggleModal}) {
+export default function FooterCard ({izmen, deletet,toggleModal, deletePostVakan, currentId, ...info}) {
     return (
 
         <>
         
         <div className="VAC__out_botline">
 
-<div className="VAC__out_botline_eyeDiv">
+{/* <div className="VAC__out_botline_eyeDiv">
 
          <img className="mini__outer_botline_eyeDiv_eye" src={glaz} alt="" />
 
@@ -17,7 +17,7 @@ export default function FooterCard ({glaz, pros, izmen, deletet,toggleModal}) {
         {pros}
     </p>
 
-</div>
+</div> */}
 
 <div className="VAC__out_botline_change">
     <div className="VAC__out_botline_change_pics">
@@ -34,7 +34,7 @@ export default function FooterCard ({glaz, pros, izmen, deletet,toggleModal}) {
 
     <img className="mini__outer_botline_change_pics_other" src={deletet} alt="" />
 
-        <div  onClick={toggleModal} className="VAC__out_botline_change_pics_delete">
+        <div id={info.id}  onClick={((event) => deletePostVakan(event.currentTarget.id))} className="VAC__out_botline_change_pics_delete">
             Удалить
         </div>
 
