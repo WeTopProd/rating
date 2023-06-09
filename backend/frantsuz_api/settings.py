@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'rest_framework.authtoken',
     'djoser',
     'corsheaders',
+    'django_filters',
     'phonenumber_field',
     'users.apps.UsersConfig',
     'resume.apps.ResumeConfig',

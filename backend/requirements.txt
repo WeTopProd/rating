@@ -13,6 +13,7 @@ django-cors-headers==3.14.0
 django-phonenumber-field==7.0.2
 django-phonenumbers==1.0.1
 django-templated-mail==1.1.1
+django-filter==23.2
 djangorestframework==3.12.4
 djangorestframework-simplejwt==4.7.2
 djoser==2.1.0

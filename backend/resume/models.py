@@ -75,3 +75,29 @@ class Resume(models.Model):
 
     def __str__(self):
         return self.FullName
+
+
+class Favorite(models.Model):
+    user = models.ForeignKey(
+        'users.User',
+        related_name='favorites_resume',
+        on_delete=models.CASCADE
+    )
+    resume = models.ForeignKey(
+        Resume,
+        related_name='users_favorites_resume',
+        on_delete=models.CASCADE
+    )
+
+    class Meta:
+        verbose_name = 'Избранное'
+        verbose_name_plural = 'Избранные'
+        constraints = [
+            models.UniqueConstraint(
+                fields=['resume', 'user'],
+                name='favorite_unique_resume'
+            )
+        ]
+
+    def __str__(self):
+        return f'{self.user} added {self.resume} to favorite'

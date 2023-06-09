@@ -2,16 +2,20 @@ from django.shortcuts import get_object_or_404
 from rest_framework import status, views, viewsets
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
+from django_filters.rest_framework import DjangoFilterBackend
 
 from .models import Vacancy, Favorite
 from .serializers import VacancySerializer, FavoriteSerializer
 from .permissions import IsOwnerOrReadOnly
+from .filters import VacancyFilter
 
 
 class VacancyViewSet(viewsets.ModelViewSet):
     queryset = Vacancy.objects.all()
     serializer_class = VacancySerializer
     permission_classes = (IsOwnerOrReadOnly, )
+    filter_backends = (DjangoFilterBackend,)
+    filterset_class = VacancyFilter
 
     def perform_create(self, serializer):
         serializer.save(user=self.request.user)
