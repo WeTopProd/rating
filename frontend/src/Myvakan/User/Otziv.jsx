@@ -1,22 +1,16 @@
 
 
-import { useEffect, useState } from 'react'
 import Header from '../../components/header/Header'
 
 import '../../Myrezume/User/Otziv.scss'
+import { useParams } from 'react-router-dom'
 
-export default function OtzivVakan ({ auth, setAuth, ...cardMassivTwo}) {
+export default function OtzivVakan ({ auth, setAuth, ...myVakanId}) {
 
-    const [mas, setMas] = useState(cardMassivTwo.cardMassivTwo)
-    const [result, setResult] = useState(null)
+    const params = useParams()
+    const userVakanId = myVakanId.myVakanId.findIndex(user => user.id === +params.userVakanId)
+    const mas = myVakanId.myVakanId[userVakanId]
 
-    // setMas(cardMassiv)
-
-    useEffect(() => {
-        if(mas) {
-            setResult(mas[0]) 
-        }
-    }, [mas])
 
     return (
 
@@ -48,7 +42,11 @@ export default function OtzivVakan ({ auth, setAuth, ...cardMassivTwo}) {
         auth={auth}
         setAuth={setAuth}
         />
+        
 
+        {mas && 
+        
+        
 <section className="sectionRecomendation">
 
     <div className="container">
@@ -59,16 +57,12 @@ export default function OtzivVakan ({ auth, setAuth, ...cardMassivTwo}) {
 
                 <div className="recomendation__box_avatarAnd">
 
-                    <img className="recomendation__box_avatarAnd_avatar" src={result === null ? '' : result.logo} alt="" />
+                    <img className="recomendation__box_avatarAnd_avatar" src={mas.logo} alt="" />
 
                     <div className="recomendation__box_avatarAnd_pshki">
 
                     <p className="recomendation__box_avatarAnd_pshki_bold">
-                        {result === null ? '' : result.NameKopmany}  
-                    </p>
-
-                    <p className="recomendation__box_avatarAnd_pshki_text">
-                    {result === null ? '' : result.years} {result === null ? '' : result.vakan}
+                        {mas.company_name}  
                     </p>
                     
                     </div>
@@ -173,6 +167,9 @@ export default function OtzivVakan ({ auth, setAuth, ...cardMassivTwo}) {
     </div>
 
 </section>
+        
+        }
+
 
 </>
 

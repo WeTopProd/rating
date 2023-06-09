@@ -165,56 +165,15 @@ const deletePostVakan = (id) => {
   const [priceThree, setPriceThree] = useState('')
 
 
-  const [
-
-    FullName, setFullName,
-    data , setData,
-    city , setCity,
-    address , setAddress,
-    education , setEducation,
-    AddEducation , setAddEducation,
-    placeWork , setPlaceWork,
-    postwork , setPostwork,
-    DataStart , setDataStart,
-    DataEnd , setDataEnd,
-    About , setAbout,
-    skills , setSkills,
-    startSalary , setStartSalary,
-    endSalary , setEndSalary,
-
-] = useContext(myContext)
-
-
-
-// const [cardMassiv, setCardMassiv] = useState(mycardId)
-
 const [cardMassivTwo, setCardMassivTwo] = useState(MyDataCardTwo)
 
-
-
-
-
- 
-
-// const ClickId = (id) => {
-
-//   setMycardId(mycardId.filter((info) => info.id === +id ) )
- 
-// };
-
-
-
-
 const ClickIdTwo = (id) => {
-          
-             
+                       
   setCardMassivTwo(MyDataCardTwo.filter((info) => info.CardIdTwo === +id ) )
-      
- 
+    
 };
 
   const [uservaka,setUservakan] = useState(false)
-
 
   function applicants () {
     setUservakan(true)
@@ -228,6 +187,7 @@ const ClickIdTwo = (id) => {
 
 
   const tokenTwo = JSON.parse(localStorage.getItem('token'))
+
 
 
   return (
@@ -268,7 +228,7 @@ const ClickIdTwo = (id) => {
           <Route path='/oplatanumber'  element={<OplataNumber priceThree={priceThree} auth={auth} setAuth={setAuth} />} />
 
 
-          <Route path='/leadvakan'  element={<LeadVakan auth={auth} setAuth={setAuth}/>} />
+          <Route path='/leadvakan/:userVakanId'  element={<LeadVakan myVakanId={myVakanId} auth={auth} setAuth={setAuth}/>} />
 
           <Route path='/preap'  element={<Preap  auth={auth} setAuth={setAuth}/>} />
 
@@ -282,11 +242,11 @@ const ClickIdTwo = (id) => {
 
 
 
-          <Route path='/poiksvakan'  element={<PoiksVakan auth={auth} setAuth={setAuth} cardMassivTwo={cardMassivTwo} onClick={ClickIdTwo} />} /> 
+          <Route path='/poiksvakan'  element={<PoiksVakan  auth={auth} setAuth={setAuth} myVakanId={myVakanId} onClick={ClickIdTwo} />} /> 
 
           <Route path='/poiksrezume'  element={<PoiksRezume mycardId={mycardId} auth={auth} setAuth={setAuth}  />} /> 
 
-          <Route path='/myvakan' element={<MyVakan deletePostVakan={deletePostVakan} auth={auth} setAuth={setAuth}  onClick={ClickIdTwo} myVakanId={myVakanId}  />} />
+          <Route path='/myvakan' element={<MyVakan deletePostVakan={deletePostVakan} auth={auth} setAuth={setAuth}  onClick={ClickIdTwo} myVakanId={myVakanId} applicants={applicants}  />} />
         
           <Route path='/tarifvakan'  element={<TarifVakan
           
@@ -315,11 +275,11 @@ const ClickIdTwo = (id) => {
 
           <Route path='/otzivuser/:userId'  element={<Otziv auth={auth} setAuth={setAuth} mycardId={mycardId}   />} />
 
-          <Route path='/vakanuser/:userVakanId'  element={<UserVakan auth={auth} setAuth={setAuth}  myVakanId={myVakanId} />} />
+          <Route path='/vakanuser/:userVakanId'  element={<UserVakan uservaka={uservaka}  auth={auth} setAuth={setAuth}  myVakanId={myVakanId} />} />
 
-          <Route path='/otzivuservakan'  element={<OtzivVakan auth={auth} setAuth={setAuth}  cardMassivTwo={cardMassivTwo} />} />
+          <Route path='/otzivuservakan/:userVakanId'  element={<OtzivVakan auth={auth} setAuth={setAuth}  myVakanId={myVakanId} />} />
 
-          <Route path='/mylivevakan'  element={<MyLiveVakan auth={auth} setAuth={setAuth} onClick={ClickIdTwo} />} />
+          <Route path='/mylivevakan'  element={<MyLiveVakan myVakanId={myVakanId} auth={auth} setAuth={setAuth} onClick={ClickIdTwo} />} />
 
           <Route path='/myliverezume'  element={<MyLiveRezume auth={auth} setAuth={setAuth}  />} />
 

@@ -1,7 +1,6 @@
 
 import { useState } from 'react'
 import Mycard from '../Myvakan/Mycard'
-import MyDataCardTwo from '../Myvakan/my.data.card'
 
 import Header from '../components/header/Header'
 import svg from '../components/img/search-normal.svg'
@@ -9,8 +8,19 @@ import { AiOutlineMenu } from "react-icons/ai";
 
 
 import './Poisk.scss'
+import { useLocation } from 'react-router-dom'
 
-export default function PoiksVakan ({onClick, auth, setAuth}) {
+export default function PoiksVakan ({ auth, setAuth, myVakanId}) {
+
+
+
+
+  
+
+
+
+
+
 
     const [show, setShow] = useState(false);
 
@@ -81,6 +91,7 @@ export default function PoiksVakan ({onClick, auth, setAuth}) {
     const openAcc = () => {
       setAccordian(!accordian)
     }
+
 
     return (
         <>
@@ -391,8 +402,8 @@ export default function PoiksVakan ({onClick, auth, setAuth}) {
 
             </form> 
 
-                        {MyDataCardTwo.map( (info, index) => { 
-                            return <Mycard onClick={onClick} {...info}  key={index} />
+                        {myVakanId.map( (info, index) => { 
+                            return <Mycard {...info}  key={index} />
                         } ) }
 
                     </div>

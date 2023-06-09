@@ -1,12 +1,46 @@
+import axios from 'axios'
 import Mycard from '../Myvakan/Mycard'
 import MyDataCardTwo from '../Myvakan/my.data.card'
 import Header from '../components/header/Header'
 import './MyLiveVakan.scss'
+import { useEffect, useState } from 'react'
 
 
 
 
-export default function MyLiveVakan({auth, setAuth ,onClick}) {
+export default function MyLiveVakan({auth, setAuth ,onClick, myVakanId}) {
+    
+    const token = JSON.parse(localStorage.getItem("token"));
+
+    const [final , setFinal] = useState([])
+
+    const getId = localStorage.getItem('headrd')
+
+
+    useEffect(() => {
+
+        axios.get(`http://127.0.0.1:8001/api/vacancy/?is_favorited=true`, {
+
+        headers: {
+          "content-type": "application/json",
+          authorization: `Token ${token}`,
+        },
+
+      })
+
+      // .then(res => getId(res) )
+
+      .then(res => setFinal(res.data))
+      .catch(err => console.error(err))
+
+
+    },[])
+
+
+
+
+
+
     return (
         <>
 
@@ -48,10 +82,16 @@ myLiveVakan = '/myLiveVakan'
 
                 <div className="mylive">
 
-                {MyDataCardTwo.map( (info, index) => { 
-                            return <Mycard onClick={onClick} {...info}  key={index} />
+                {/* final.filter(item => item.is_favorited == 'true').map((item)  */}
+
+                {/* {final.filter(item => item.is_favorited === 'true').map( (info, index) => { 
+                        return <Mycard {...info}  key={index} />
+                } ) } */}
+                        
+                {final.map( (info, index) => { 
+                        return <Mycard {...info}  key={index} />
                 } ) }
-                    
+
                 </div>
                 
 

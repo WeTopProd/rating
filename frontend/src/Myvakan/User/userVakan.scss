@@ -4,6 +4,39 @@
     padding: 0px 20px;
 }
 
+.button{
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 50px;
+    text-align: center;
+    color: #282828;
+    background: #FFD600;
+    border-radius: 100px;
+    border: none;
+    outline: none;
+
+    width: 300px;
+    height: 55px;
+
+    display: flex;
+    align-self: center;
+    justify-content: center;
+    cursor: pointer;
+
+    margin: 0 auto;
+    margin-top: 70px;
+    transition: all ease .3s;
+
+    &:hover{
+    background: #c8a700;
+
+    }
+
+    
+}
+
 .bigTheater {
     padding: 150px 0px;
     width: 100%;

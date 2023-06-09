@@ -14,7 +14,6 @@ import izmen from '../components/img/izmen.svg'
 export default function Mycard({onClick, CardId, deletePost, applicants, ...info}) {
 
 
-    
     const [isShowingModal, toggleModal] = useModal();
 
     const location = useLocation ()
@@ -24,12 +23,6 @@ export default function Mycard({onClick, CardId, deletePost, applicants, ...info
     const [heart, setHeart] = useState(false)
 
     const [currentId, setCurrentId] = useState('')
-
-
-
-
-
-
 
     return(
 

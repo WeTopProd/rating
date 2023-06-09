@@ -9,8 +9,9 @@ import { useState } from 'react';
 
 import deletet from '../components/img/delete.svg'
 import izmen from '../components/img/izmen.svg'
+import axios from 'axios';
 
-export default function Mycard ({deletePostVakan ,...info}) {
+export default function Mycard ({deletePostVakan ,applicants ,...info}) {
 
     const [isShowingModal, toggleModal] = useModal();
 
@@ -20,12 +21,86 @@ export default function Mycard ({deletePostVakan ,...info}) {
 
     const heartLove = useLocation();
 
-    const history = useNavigate();
-
     const [currentId, setCurrentId] = useState('')
 
+    const token = JSON.parse(localStorage.getItem("token"));
 
-    console.log(info.id);
+    // const HeadrdToken = () => {
+    //   (localStorage.setItem("heard" , !heart))
+    // } 
+
+    const [HeadrdToken, setHeadrdToken] = useState((localStorage.setItem("heard" , heart)))
+
+  
+
+    async function favorites(id) {
+
+        setHeart(!heart);
+
+        await axios
+
+          .post(`http://127.0.0.1:8001/api/vacancy/${info.id}/favorite/`, null, {
+
+            headers: {
+              "content-type": "application/json",
+              authorization: `Token ${token}`,
+            },
+
+          })
+
+          .then( res => setHeadrdToken(heart))
+
+          .catch(err => console.error(err))
+
+
+          await axios.get('http://127.0.0.1:8001/api/vacancy/?is_favorited=true', {
+
+          headers: {
+            "content-type": "application/json",
+            authorization: `Token ${token}`,
+          }
+
+        })
+        
+        .catch(err => console.error(err))
+
+      }
+
+      async function favoritesDelete(id) {
+
+        setHeart(!heart);
+
+        await axios
+
+          .delete(`http://127.0.0.1:8001/api/vacancy/${info.id}/favorite/`, {
+
+            headers: {
+              "content-type": "application/json",
+              authorization: `Token ${token}`,
+            },
+
+          })
+
+          .then( res => (localStorage.removeItem('heard')) )
+
+          .catch(err => console.error(err))
+
+          await axios.get('http://127.0.0.1:8001/api/vacancy/?is_favorited=1', {
+
+          headers: {
+            "content-type": "application/json",
+            authorization: `Token ${token}`,
+          }
+
+        })
+        
+        .catch(err => console.error(err))
+
+
+
+      }
+
+    
 
     return (
 
@@ -45,7 +120,11 @@ export default function Mycard ({deletePostVakan ,...info}) {
 
                     <div>
 
-<svg  onClick={() => setHeart(!heart)} fill={heart ? '#ce1616' : '000'} className='svg' width="30px" height="30px" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.808,11.079C19.829,16.132,12,20.5,12,20.5s-7.829-4.368-8.808-9.421C2.227,6.1,5.066,3.5,8,3.5a4.444,4.444,0,0,1,4,2,4.444,4.444,0,0,1,4-2C18.934,3.5,21.773,6.1,20.808,11.079Z"/></svg>
+<svg  id={info.id}
+
+onClick={ !heart  ? (event) => favorites(event.currentTarget.id) : (event) => favoritesDelete(event.currentTarget.id) }
+
+fill={heart || HeadrdToken ? '#ce1616' : '000'} className='svg' width="30px" height="30px" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.808,11.079C19.829,16.132,12,20.5,12,20.5s-7.829-4.368-8.808-9.421C2.227,6.1,5.066,3.5,8,3.5a4.444,4.444,0,0,1,4,2,4.444,4.444,0,0,1,4-2C18.934,3.5,21.773,6.1,20.808,11.079Z"/></svg>
 
                     </div>
 

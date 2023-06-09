@@ -24,7 +24,7 @@ export default function FooterCard ({izmen, deletet,toggleModal, deletePostVakan
 
     <img className="mini__outer_botline_change_pics_other" src={izmen} alt="" />
 
-        <Link to='/leadvakan' className="VAC__out_botline_change_pics_blue">
+        <Link to={`/leadvakan/${info.id}`} id={info.id}  className="VAC__out_botline_change_pics_blue">
             Изменить
         </Link>
 

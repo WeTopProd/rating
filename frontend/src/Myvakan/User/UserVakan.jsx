@@ -4,7 +4,7 @@ import Header from '../../components/header/Header'
 import './userVakan.scss' 
 import { Link, useParams } from 'react-router-dom';
 
-export default function UserVakan ({auth, setAuth , ...myVakanId}) {
+export default function UserVakan ({auth, setAuth, uservaka, ...myVakanId}) {
 
     const params = useParams()
     const userVakanId = myVakanId.myVakanId.findIndex(user => user.id === +params.userVakanId)
@@ -58,7 +58,7 @@ setAuth={setAuth}
                  <br />
 
 
-                 <Link to='/otzivuservakan' className='' >Отзывы сотрудников</Link>
+                 <Link to={`/otzivuservakan/${mas.id}`} className='' >Отзывы сотрудников</Link>
  
                  </p>
                  <img className="bigTheater__top_pic" src={mas.logo}  alt="" />
@@ -142,7 +142,15 @@ setAuth={setAuth}
                  
              </div>
  
- 
+ {uservaka ?
+
+ <button className='button'>Отклик</button>
+
+ :
+
+ ""
+
+ }
      
  
  

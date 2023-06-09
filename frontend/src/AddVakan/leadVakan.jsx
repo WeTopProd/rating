@@ -1,18 +1,22 @@
 
-import { useContext, useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import m from '../AddVakan/addvakan.module.scss'
 import Header from '../components/header/Header'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate, useParams } from 'react-router-dom'
 import { contextVakan } from '../ContextVakan'
+import axios from 'axios'
 
-export default function LeadVakan ({auth, setAuth}) {
+export default function LeadVakan ({auth, setAuth, ...myVakanId}) {
 
-    const [notesTwo, setNotesTwo] = useState([])
+    const params = useParams()
+    const userVakanId = myVakanId.myVakanId.findIndex(user => user.id === +params.userVakanId)
+    const mas = myVakanId.myVakanId[userVakanId]
+
+
 
     const [
 
         NameVakan, setNameVakan,
-        Spec, setSpec,
         NameKompany, setNameKompany,
         AboutKompany, setAboutKompany,
         Requirement, setRequirement,
@@ -21,36 +25,82 @@ export default function LeadVakan ({auth, setAuth}) {
         ZpDo, setZpDo,
         Experience, setExperience,
         ExperienceDo, setExperienceDo,
-
+        designations, setdesignations,
         Type, setType,
         Grafic, SetGrafic,
         Logo, setLogo ,
     
     ] = useContext(contextVakan)
 
-    function formVakan (){
+    const fotoUpload = (e) => {
+        setLogo(e.target.files[0])
+    }
 
-        let objTwo = {
+    const token = JSON.parse(localStorage.getItem('token'))
 
-            NameVakan: NameVakan  ,
-            Spec: Spec  ,
-            NameKompany: NameKompany  ,
-            AboutKompany: AboutKompany  ,
-            Requirement: Requirement  ,
-            conditions: conditions  ,
-            ZpOt: ZpOt  ,
-            ZpDo: ZpDo  ,
-            Experience: Experience  ,
-            ExperienceDo: ExperienceDo  ,
-            Type: Type  ,
-            Grafic: Grafic ,
-            Logo: Logo ,
+    const navigate = useNavigate('')
+
+    const [userId, setUserId] = useState()
+
+    useEffect(() => {
+        axios.get('http://localhost:8001/api/vacancy/',{
+
+             headers: {
+                'Content-Type': 'application/json ',
+                authorization: `Token ${token}`
+             }
             
+            })
+
+        .then(res => {setUserId(res.data[0].id)
+            // window.location.reload()
+            
+        })
+
+    }, [])
+
+    const PreapVakan = () => {       
+    
+        axios.patch(`http://localhost:8001/api/vacancy/${mas.id}/`, {
+
+        job_title: NameVakan,
+        company_name: NameKompany,
+        about_company: AboutKompany, //об компании
+        requirements: Requirement, // Требования
+        conditions: conditions, // Условия
+        start_salary: ZpOt, // заработная плата от 
+        final_salary: ZpDo, // заработная плата до 
+        start_experience: Experience, // Опыт работы от
+        final_experience: ExperienceDo, // Опыт работы до
+        application_type: designations, // Тип оформления ,  select выподающий список сделай у себя просто текст 
+        employment_type: Type, // Тип занятости , select тоже
+        schedule: Grafic, // График работы 
+        logo: Logo , // лого компании 
+
+        user: userId // айдишка пользвателя 
+            
+        },
+        
+        {
+            headers : {
+            'Content-Type': 'application/json , multipart/form-data',
+            authorization: `Token ${token}`
+            }            
         }
 
-        setNotesTwo(...notesTwo, objTwo)
+        
+        )
 
-    }
+        .then(res => { res.request.status === 200 ? navigate('/tarifvakan') : navigate(navigate.pathname)
+           window.location.reload()
+        } )
+
+        .catch(err => alert('Неправильно ввели данные или не до конца заполнили форму'));
+
+
+
+    };
+
 
     return(
 
@@ -99,7 +149,7 @@ setAuth={setAuth}
                     Заполнить все пункты отмеченные*
                 </p>
 
-                <div className={m.sectionCreateVaccancy__outer_inner}>
+                <form onSubmit={PreapVakan} className={m.sectionCreateVaccancy__outer_inner}>
 
                     <div className={m.sectionCreateVaccancy__outer_inner_form}>
 
@@ -129,7 +179,7 @@ setAuth={setAuth}
 
                         <div className={m.sectionCreateVaccancy__outer_inner_right_logo}>
 
-                            <input type="file" onChange={Logo}  />
+                            <input type="file" onChange={fotoUpload}  />
 
                             <p className={m.sectionCreateVaccancy__outer_inner_right_logo_textLogo}>
                                 Логотип компании*
@@ -180,12 +230,17 @@ setAuth={setAuth}
                             </p>
 
 
-                            <div className={m.sectionCreateVaccancy__outer_inner_right_otDo_input}>
+                            <select type="text" value={Type} onChange={(event) => setType(event.target.value)} >
 
-                                <input value={Type} onChange={(event) => setType(event.target.value)} type="number" className={m.sectionCreateVaccancy__outer_inner_right_otDo_input_inp}
-                                    placeholder="" />
-
-                            </div>
+                            <option value="Выберите">Выберите</option>
+                            
+                            <option value="Полная занятость">Полная занятость</option>
+                            <option value="Частичная занятость">Частичная занятость</option>
+                            <option value="Среднее специальное">Среднее специальное</option>
+                            <option value="Проектная работа">Проектная работа</option>
+                            <option value="Волонтерство">Волонтерство</option>
+                            <option value="Стажировка">Стажировка</option>
+                            </select>
 
                         </div>
 
@@ -198,8 +253,8 @@ setAuth={setAuth}
 
 <div className={m.sectionCreateVaccancy__outer_inner_right_otDo_input}>
 
-<input value={Grafic} onChange={(event) => SetGrafic(event.target.value)} type="number" className={m.sectionCreateVaccancy__outer_inner_right_otDo_input_inp}
-    placeholder="" />
+<input value={Grafic} onChange={(event) => SetGrafic(event.target.value)} type="text" className={m.sectionCreateVaccancy__outer_inner_right_otDo_input_inp}
+    placeholder="с 9:00 до 20:00 " />
 
 </div>
 
@@ -215,29 +270,20 @@ setAuth={setAuth}
                                 Тип оформления*
                             </p>
 
-                            <label className={m.sectionCreateVaccancy__outer_inner_right_checking_kk}>
+                            <select type="text" value={designations} onChange={(event) => setdesignations(event.target.value)}>
+                                <option value="Выберите">Выберите</option>
+                                <option value="По трудовой">По трудовой</option>
+                                <option value="По контракту">По контракту</option>
+                            </select>
 
-                            <p className={m.sectionCreateVaccancy__outer_inner_right_checking_kk_cont}>По трудовой</p>
-
-                            <input type="checkbox" className={m.sectionCreateVaccancy__outer_inner_right_checking_kk_checkbox} />
-
-                            </label>
-
-                            <label className={m.sectionCreateVaccancy__outer_inner_right_checking_kk}>
-
-                            <p className={m.sectionCreateVaccancy__outer_inner_right_checking_kk_cont}>По контракту
-                            </p>
-
-                            <input type="checkbox" className={m.sectionCreateVaccancy__outer_inner_right_checking_kk_checkbox} />
-
-                            </label>
                         </div>
                     </div>
-                    
-                </div>
+                </form>
+
             </div>
 
-            <Link to='/myvakan' onClick={formVakan} className={m.sectionCreateVaccancy__link}>Изменить</Link>
+            {/* <Link to='/tarifvakan'  className={m.sectionCreateVaccancy__link}>Разместить</Link> */}
+            <button type='submit' onClick={PreapVakan}  className={m.sectionCreateVaccancy__link}>Разместить</button>
             
         </div>
     </div>
