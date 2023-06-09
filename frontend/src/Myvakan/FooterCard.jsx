@@ -20,6 +20,15 @@ export default function FooterCard ({izmen, deletet,toggleModal, deletePostVakan
 </div> */}
 
 <div className="VAC__out_botline_change">
+
+<div className="VAC__out_botline_change_pics">
+
+    <p  className="VAC__out_botline_change_pics_blue">
+        Скрыть вакансию
+    </p>
+
+</div>
+
     <div className="VAC__out_botline_change_pics">
 
     <img className="mini__outer_botline_change_pics_other" src={izmen} alt="" />

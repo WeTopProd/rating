@@ -1,5 +1,5 @@
 
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import Mycard from '../Myvakan/Mycard'
 
 import Header from '../components/header/Header'
@@ -9,18 +9,9 @@ import { AiOutlineMenu } from "react-icons/ai";
 
 import './Poisk.scss'
 import { useLocation } from 'react-router-dom'
+import axios from 'axios';
 
 export default function PoiksVakan ({ auth, setAuth, myVakanId}) {
-
-
-
-
-  
-
-
-
-
-
 
     const [show, setShow] = useState(false);
 
@@ -90,6 +81,38 @@ export default function PoiksVakan ({ auth, setAuth, myVakanId}) {
 
     const openAcc = () => {
       setAccordian(!accordian)
+    }
+
+    const token = JSON.parse(localStorage.getItem("token"));
+
+    const [ poiskvalue, setpoiskvalue] = useState('')
+
+    const [postVakan, setPostVakan] = useState([])
+
+    const [postLoading, setPostLoading] = useState(false)
+
+  
+
+    const PoiskValueVakan = (event) => {
+
+      event.preventDefault()
+
+      axios.get(`http://127.0.0.1:8001/api/vacancy/?job_title=${poiskvalue}&company_name=&final_salary=&start_experience=&final_experience=&is_favorited=`, {
+
+      headers: {
+        "content-type": "application/json",
+        authorization: `Token ${token}`,
+      },
+
+    })
+
+    .then(res => {
+       setPostVakan(res.data)
+       setPostLoading(true)
+     })
+
+    .catch(err => console.error(err))
+
     }
 
 
@@ -394,23 +417,33 @@ export default function PoiksVakan ({ auth, setAuth, myVakanId}) {
 
                     <div className="poisk__item">
                         
-            <form className="poisk__item_form">
+            <form className="poisk__item_form" onSubmit={PoiskValueVakan} >
 
-                <input name='poisk' type="text" placeholder='Специальность' className="poisk__item_form_input" />
+                <input value={poiskvalue} onChange={(event) => setpoiskvalue(event.target.value)} name='poisk' type="text" placeholder='Специальность' className="poisk__item_form_input" />
 
                 <img src={svg} className="poisk__item_form_svg" alt="svg" />
 
             </form> 
 
-                        {myVakanId.map( (info, index) => { 
-                            return <Mycard {...info}  key={index} />
-                        } ) }
+            {postLoading ?
+            
+                postVakan.map( (info, index) => { 
+                    return <Mycard {...info}  key={index} />
+                } ) 
+  
+            :
+ 
+                myVakanId.map( (info, index) => { 
+                  return <Mycard {...info}  key={index} />
+                } ) 
+            
+            }
 
                     </div>
 
                 </div>
 
-          
+                {/* myVakanId */}
 
         </section>
         

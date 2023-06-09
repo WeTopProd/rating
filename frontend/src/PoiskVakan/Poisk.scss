@@ -1,9 +1,11 @@
 
 .section__posk{
+    height: 60vh;
     padding: 150px 20px;
 
     @media screen and (max-width: 750px) {
         padding: 100px 20px;
+        height: 0vh;
     }
 
     @media screen and (max-width: 500px) {

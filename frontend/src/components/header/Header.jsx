@@ -250,11 +250,7 @@ function Header (
 
                     ''
                     :
-                    
-                    <div className={h.user}>
-                        <img src={nast} alt="svg" />
-                        <Link to='/nast'>Настройки</Link>
-                    </div>
+''
 
                     }
                     

@@ -15,7 +15,7 @@ export default function Mycard ({deletePostVakan ,applicants ,...info}) {
 
     const [isShowingModal, toggleModal] = useModal();
 
-    const [heart, setHeart] = useState(false)
+    const [heart, setHeart] = useState(true)
     
     const footerCard = useLocation();
 
@@ -27,11 +27,7 @@ export default function Mycard ({deletePostVakan ,applicants ,...info}) {
 
     // const HeadrdToken = () => {
     //   (localStorage.setItem("heard" , !heart))
-    // } 
-
-    const [HeadrdToken, setHeadrdToken] = useState((localStorage.setItem("heard" , heart)))
-
-  
+    // }   
 
     async function favorites(id) {
 
@@ -47,8 +43,6 @@ export default function Mycard ({deletePostVakan ,applicants ,...info}) {
             },
 
           })
-
-          .then( res => setHeadrdToken(heart))
 
           .catch(err => console.error(err))
 
@@ -80,8 +74,6 @@ export default function Mycard ({deletePostVakan ,applicants ,...info}) {
             },
 
           })
-
-          .then( res => (localStorage.removeItem('heard')) )
 
           .catch(err => console.error(err))
 
@@ -116,23 +108,35 @@ export default function Mycard ({deletePostVakan ,applicants ,...info}) {
 
                 <div className="VAC__out_in">
 
-                    {heartLove.pathname === '/poiksvakan' || footerCard.pathname === '/myLiveVakan' ?
+                    {heartLove.pathname === '/poiksvakan' &&
+
+
 
                     <div>
 
 <svg  id={info.id}
 
-onClick={ !heart  ? (event) => favorites(event.currentTarget.id) : (event) => favoritesDelete(event.currentTarget.id) }
+onClick={ heart  ? (event) => favorites(event.currentTarget.id) : (event) => favoritesDelete(event.currentTarget.id) }
 
-fill={heart || HeadrdToken ? '#ce1616' : '000'} className='svg' width="30px" height="30px" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.808,11.079C19.829,16.132,12,20.5,12,20.5s-7.829-4.368-8.808-9.421C2.227,6.1,5.066,3.5,8,3.5a4.444,4.444,0,0,1,4,2,4.444,4.444,0,0,1,4-2C18.934,3.5,21.773,6.1,20.808,11.079Z"/></svg>
+fill={ !heart ? '#ce1616' : '000'} className='svg' width="30px" height="30px" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.808,11.079C19.829,16.132,12,20.5,12,20.5s-7.829-4.368-8.808-9.421C2.227,6.1,5.066,3.5,8,3.5a4.444,4.444,0,0,1,4,2,4.444,4.444,0,0,1,4-2C18.934,3.5,21.773,6.1,20.808,11.079Z"/></svg>
 
                     </div>
-
-                     :
-                     
-                     ''
                     
                 }
+
+{footerCard.pathname === '/myLiveVakan' &&
+
+<div>
+
+<svg  id={info.id}
+
+onClick={ !heart  ? (event) => favorites(event.currentTarget.id) : (event) => favoritesDelete(event.currentTarget.id) }
+
+fill={ heart ? '#ce1616' : '000'} className='svg' width="30px" height="30px" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.808,11.079C19.829,16.132,12,20.5,12,20.5s-7.829-4.368-8.808-9.421C2.227,6.1,5.066,3.5,8,3.5a4.444,4.444,0,0,1,4,2,4.444,4.444,0,0,1,4-2C18.934,3.5,21.773,6.1,20.808,11.079Z"/></svg>
+
+</div>
+
+}
                     
 
                     <Link to={`/vakanuser/${info.id}`}  className="VAC__out_in_title">

@@ -208,7 +208,7 @@ const ClickIdTwo = (id) => {
 
           <Route path='/vakan'  element={<Vakan auth={auth} setAuth={setAuth} />} />
 
-          <Route path='/nast'  element={<Nast auth={auth} setAuth={setAuth} />} />
+          {/* <Route path='/nast'  element={<Nast auth={auth} setAuth={setAuth} />} /> */}
           
           <Route path='/addvakan'  element={<AddVakan auth={auth} setAuth={setAuth} />} />
 
@@ -281,7 +281,7 @@ const ClickIdTwo = (id) => {
 
           <Route path='/mylivevakan'  element={<MyLiveVakan myVakanId={myVakanId} auth={auth} setAuth={setAuth} onClick={ClickIdTwo} />} />
 
-          <Route path='/myliverezume'  element={<MyLiveRezume auth={auth} setAuth={setAuth}  />} />
+          <Route path='/myliverezume'  element={<MyLiveRezume mycardId={mycardId} auth={auth} setAuth={setAuth}  />} />
 
           <Route path='/tarifnumber'  element={<TarifNumber auth={auth} setAuth={setAuth} priceThree={priceThree} setPriceThree={setPriceThree}  />} />
 

@@ -19,7 +19,7 @@ export default function MyLiveVakan({auth, setAuth ,onClick, myVakanId}) {
 
     useEffect(() => {
 
-        axios.get(`http://127.0.0.1:8001/api/vacancy/?is_favorited=true`, {
+        axios.get(`http://127.0.0.1:8001/api/vacancy/?is_favorited=1`, {
 
         headers: {
           "content-type": "application/json",
@@ -82,15 +82,20 @@ myLiveVakan = '/myLiveVakan'
 
                 <div className="mylive">
 
-                {/* final.filter(item => item.is_favorited == 'true').map((item)  */}
+                  {final === null ? <p>нечего нет </p>
+                  
+                  :
+                  
+                  <>
 
-                {/* {final.filter(item => item.is_favorited === 'true').map( (info, index) => { 
-                        return <Mycard {...info}  key={index} />
-                } ) } */}
+                  {final.map( (info, index) => { 
+                          return <Mycard {...info}  key={index} />
+                  } ) }
+
+                  </>
+                  
+                  }
                         
-                {final.map( (info, index) => { 
-                        return <Mycard {...info}  key={index} />
-                } ) }
 
                 </div>
                 

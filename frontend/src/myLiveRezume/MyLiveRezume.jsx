@@ -1,12 +1,41 @@
+import { useEffect, useState } from 'react';
 import Header from '../components/header/Header'
 import '../myLiveVakan/MyLiveVakan.scss'
 import MyDataCard from '../Myrezume/my.data.card';
 import Mycard from '../Myrezume/Mycard';
+import axios from 'axios';
 
 
 
 
-export default function MyLiveRezume ({auth,setAuth, onClick}) {
+export default function MyLiveRezume ({auth,setAuth, onClick , mycardId}) {
+
+    const token = JSON.parse(localStorage.getItem("token"));
+
+    const [final , setFinal] = useState([])
+
+    const [finesh , setFinesh] = useState(true)
+
+    useEffect(() => {
+
+        axios.get(`http://127.0.0.1:8001/api/resume/?is_favorited=1`, {
+
+        headers: {
+          "content-type": "application/json",
+          authorization: `Token ${token}`,
+        },
+
+      })
+
+      // .then(res => getId(res) )
+
+      .then(res => setFinal(res.data))
+      .catch(err => console.error(err))
+      .finally( () => setFinesh(true) )
+
+
+    },[])
+
     return (
         <>
 
@@ -45,10 +74,10 @@ setAuth={setAuth}
 
                 <div className="mylive">
 
-                {MyDataCard.map( (info, index) => { 
-                            return <Mycard onClick={onClick} {...info}  key={index} />
-                } ) }
-                    
+                  {final.map( (info, index) => { 
+                          return <Mycard {...info}  key={index} />
+                  } ) }
+
                 </div>
                 
 

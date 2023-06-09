@@ -10,8 +10,74 @@ import { useState } from 'react';
 
 import deletet from '../components/img/delete.svg'
 import izmen from '../components/img/izmen.svg'
+import axios from 'axios';
 
 export default function Mycard({onClick, CardId, deletePost, applicants, ...info}) {
+
+    const token = JSON.parse(localStorage.getItem("token"));
+
+    async function favorites(id) {
+
+        setHeart(!heart);
+
+        await axios
+
+          .post(`http://127.0.0.1:8001/api/resume/${info.id}/favorite/`, null, {
+
+            headers: {
+              "content-type": "application/json",
+              authorization: `Token ${token}`,
+            },
+
+          })
+
+          .catch(err => console.error(err))
+
+
+          await axios.get('http://127.0.0.1:8001/api/resume/?is_favorited=true', {
+
+          headers: {
+            "content-type": "application/json",
+            authorization: `Token ${token}`,
+          }
+
+        })
+        
+        .catch(err => console.error(err))
+
+      }
+
+      async function favoritesDelete(id) {
+
+        setHeart(!heart);
+
+        await axios
+
+          .delete(`http://127.0.0.1:8001/api/resume/${info.id}/favorite/`, {
+
+            headers: {
+              "content-type": "application/json",
+              authorization: `Token ${token}`,
+            },
+
+          })
+
+          .catch(err => console.error(err))
+
+          await axios.get('http://127.0.0.1:8001/api/resume/?is_favorited=1', {
+
+          headers: {
+            "content-type": "application/json",
+            authorization: `Token ${token}`,
+          }
+
+        })
+        
+        .catch(err => console.error(err))
+
+
+
+      }
 
 
     const [isShowingModal, toggleModal] = useModal();
@@ -20,7 +86,7 @@ export default function Mycard({onClick, CardId, deletePost, applicants, ...info
 
     const heartLove = useLocation();
 
-    const [heart, setHeart] = useState(false)
+    const [heart, setHeart] = useState(true)
 
     const [currentId, setCurrentId] = useState('')
 
@@ -37,11 +103,19 @@ export default function Mycard({onClick, CardId, deletePost, applicants, ...info
         <div className="mini__outer_inside">
 
              
-                    {heartLove.pathname === '/poiksrezume' || location.pathname === '/myliverezume' ?
+                    {heartLove.pathname === '/poiksrezume' ?
 
                     <div>
 
-<svg  onClick={() => setHeart(!heart)} fill={heart ? '#ce1616' : '000'} className='svg' width="30px" height="30px" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.808,11.079C19.829,16.132,12,20.5,12,20.5s-7.829-4.368-8.808-9.421C2.227,6.1,5.066,3.5,8,3.5a4.444,4.444,0,0,1,4,2,4.444,4.444,0,0,1,4-2C18.934,3.5,21.773,6.1,20.808,11.079Z"/></svg>
+<svg 
+
+id={info.id}
+
+fill={ !heart ? '#ce1616' : '000'}
+
+onClick={ heart  ? (event) => favorites(event.currentTarget.id) : (event) => favoritesDelete(event.currentTarget.id) }
+
+className='svg' width="30px" height="30px" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.808,11.079C19.829,16.132,12,20.5,12,20.5s-7.829-4.368-8.808-9.421C2.227,6.1,5.066,3.5,8,3.5a4.444,4.444,0,0,1,4,2,4.444,4.444,0,0,1,4-2C18.934,3.5,21.773,6.1,20.808,11.079Z"/></svg>
 
                     </div>
 
@@ -50,6 +124,28 @@ export default function Mycard({onClick, CardId, deletePost, applicants, ...info
                      ''
                     
                 }  
+
+{location.pathname === '/myliverezume' ?
+
+<div>
+
+<svg 
+
+id={info.id}
+
+fill={ heart ? '#ce1616' : '000'}
+
+onClick={ !heart  ? (event) => favorites(event.currentTarget.id) : (event) => favoritesDelete(event.currentTarget.id) }
+
+className='svg' width="30px" height="30px" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.808,11.079C19.829,16.132,12,20.5,12,20.5s-7.829-4.368-8.808-9.421C2.227,6.1,5.066,3.5,8,3.5a4.444,4.444,0,0,1,4,2,4.444,4.444,0,0,1,4-2C18.934,3.5,21.773,6.1,20.808,11.079Z"/></svg>
+
+</div>
+
+ :
+ 
+ ''
+
+}  
 
     <Link to={`/rezumeuser/${info.id}`} onClick={applicants} className="mini__outer_inside_blueTitle">
         {info.postWork}
@@ -128,6 +224,15 @@ export default function Mycard({onClick, CardId, deletePost, applicants, ...info
     </div>
 
     <div className="mini__outer_botline_change">
+
+    <div className="mini__outer_botline_change_pics">
+
+<p className="mini__outer_botline_change_pics_blue">
+    Скрыть резюме
+</p>
+
+</div>
+
         <div className="mini__outer_botline_change_pics">
 
             <img className="mini__outer_botline_change_pics_other" src={izmen} alt="" />
