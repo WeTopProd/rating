@@ -16,13 +16,11 @@ class VacancyFilter(filters.FilterSet):
         lookup_expr='icontains',
         field_name='company_name'
     )
-    start_salary = filters.NumberFilter(
-        field_name='start_salary',
-        lookup_expr='gte',
+    start_salary = filters.RangeFilter(
+        field_name='start_salary'
     )
-    final_salary = filters.NumberFilter(
-        field_name='final_salary',
-        lookup_expr='lte'
+    final_salary = filters.RangeFilter(
+        field_name='final_salary'
     )
     start_experience = filters.NumberFilter(
         field_name='start_experience',
@@ -30,7 +28,7 @@ class VacancyFilter(filters.FilterSet):
     )
     final_experience = filters.NumberFilter(
         field_name='final_experience',
-        lookup_expr='lte'
+        lookup_expr='lt'
     )
     employment_type = filters.CharFilter(
         lookup_expr='icontains',
