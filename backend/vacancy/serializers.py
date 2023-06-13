@@ -16,6 +16,7 @@ class VacancySerializer(serializers.ModelSerializer):
             'id',
             'user',
             'job_title',
+            'city',
             'company_name',
             'about_company',
             'requirements',
@@ -48,6 +49,7 @@ class ShortVacancySerializer(serializers.ModelSerializer):
         fields = (
             'id',
             'job_title',
+            'city',
             'company_name',
             'requirements',
             'conditions',
