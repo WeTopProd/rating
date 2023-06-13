@@ -73,7 +73,7 @@ setAuth={setAuth}
                      </p>
  
                      <p className="bigTheater__top_title">
-                         От {mas.start_salary} - {mas.final_salary} на руки
+                         От {mas.start_salary} - {mas.final_salary} руб на руки
                      </p>
                  </div>
                  

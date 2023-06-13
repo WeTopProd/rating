@@ -245,7 +245,6 @@ import axios from 'axios'
                             
         <option value="Полная занятость">Полная занятость</option>
         <option value="Частичная занятость">Частичная занятость</option>
-        <option value="Среднее специальное">Среднее специальное</option>
         <option value="Проектная работа">Проектная работа</option>
         <option value="Волонтерство">Волонтерство</option>
         <option value="Стажировка">Стажировка</option>

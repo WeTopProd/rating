@@ -33,7 +33,7 @@ function Poisk() {
 
                 <Link to={textPoisk.pathname === '/rezume' ? '/poiksvakan' : '/poiksrezume'}>
 
-                <input name='poisk' type="text" placeholder='Специальность' className={p.poisk__form_input} />
+                <input name='poisk' type="text" placeholder='Поиск' className={p.poisk__form_input} />
 
                 </Link>
 

@@ -165,7 +165,7 @@ className='svg' width="30px" height="30px" viewBox="0 0 24 24" xmlns="http://www
 
             <p className="mini__outer_inside_near_age_pshka">
                  Желаемая зарплата <br />
-                от {info.startSalary} до {info.endSalary} 
+                от {info.startSalary} до {info.endSalary} руб
             </p>
 
             <p className="mini__outer_inside_near_age_pshka2">

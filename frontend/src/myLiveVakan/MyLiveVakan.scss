@@ -1,5 +1,6 @@
 .section__mylive{
     padding: 170px 0px;
+    min-height: 55vh;
    
 
     display: flex;
@@ -8,6 +9,7 @@
 
     @media screen and (max-width: 700px ) {
         padding: 100px 10px;
+        min-height: 0vh;
         
     }
 

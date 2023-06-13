@@ -165,7 +165,7 @@ fill={ heart ? '#ce1616' : '000'} className='svg' width="30px" height="30px" vie
                     <div className="VAC__out_in_two_sing">
 
                         <p className="VAC__out_in_two_sal_text">
-                            Вакансии: {info.job_title}
+                            Вакансия: {info.job_title}
                         </p>
 
                         <p className="VAC__out_in_two_sal_text">

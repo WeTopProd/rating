@@ -24,6 +24,7 @@ export default function AddVakan ({auth, setAuth}) {
         Type, setType,
         Grafic, SetGrafic,
         Logo, setLogo ,
+        city, setCity
     
     ] = useContext(contextVakan)
 
@@ -60,6 +61,7 @@ export default function AddVakan ({auth, setAuth}) {
 
         job_title: NameVakan,
         company_name: NameKompany,
+        city: city, // Город
         about_company: AboutKompany, //об компании
         requirements: Requirement, // Требования
         conditions: conditions, // Условия
@@ -71,6 +73,7 @@ export default function AddVakan ({auth, setAuth}) {
         employment_type: Type, // Тип занятости , select тоже
         schedule: Grafic, // График работы 
         logo: Logo , // лого компании 
+
 
         user: userId // айдишка пользвателя 
             
@@ -95,10 +98,6 @@ export default function AddVakan ({auth, setAuth}) {
 
 
     };
-
-
-
-
 
     return(
 
@@ -163,6 +162,11 @@ setAuth={setAuth}
 
                         <input value={NameKompany} onChange={(event) => setNameKompany(event.target.value)} type="text" className={m.sectionCreateVaccancy__outer_inner_form_CN}
                             placeholder="Название компании*" />
+
+
+                        <input value={city} onChange={(event) => setCity(event.target.value)} type="text" className={m.sectionCreateVaccancy__outer_inner_form_CN}
+                            placeholder="Город*" />
+                            
 
 
                         <textarea value={AboutKompany} onChange={(event) => setAboutKompany(event.target.value)} placeholder='О компании*' className={m.sectionCreateVaccancy__outer_inner_form_textArea}></textarea>

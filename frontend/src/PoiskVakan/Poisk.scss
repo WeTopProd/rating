@@ -1,15 +1,19 @@
 
+.anumation{
+    animation: fadein linear .3s;
+}
+
 .section__posk{
-    height: 60vh;
+    min-height: 75vh;
     padding: 150px 20px;
 
     @media screen and (max-width: 750px) {
         padding: 100px 20px;
-        height: 0vh;
+        min-height: 0vh;
     }
 
     @media screen and (max-width: 500px) {
-        padding: 70px 20px;
+        padding: 90px 20px;
     }
 
     & .poisk{
@@ -23,19 +27,72 @@
         }
 
         
-        &__accordian{
+        &__accordion{
             width: 280px;
             height: 100%;
             background: #00000000;
             border-radius: 0px 0px 12px 0px;
-            padding: 30px 20px;
+            padding: 5px 0px;
             display: flex;
             flex-direction: column;
+            align-items: flex-start;
             gap: 10px;
 
-            @media screen and (max-width: 700px) {
-                padding: 15px 0px;
-                margin-top: 30px;
+
+            &_text{
+                font-family: 'Montserrat';
+                font-style: normal;
+                font-weight: 700;
+                font-size: 18px;
+                line-height: 36px;
+                letter-spacing: 0.02em;
+                color: #282828 !important;
+                margin: 0;
+
+            }
+
+            &_select{
+                width: 100%;
+                padding: 7px;
+                font-family: 'Montserrat';
+                font-style: normal;
+                font-weight: 400;
+                font-size: 18px;
+                line-height: 36px;
+                letter-spacing: 0.02em;
+                color: #282828 !important;
+                border: 2px solid #000 !important;
+                background-color: #00000000 !important;
+                border-radius: 10px;
+                outline: none;
+                border: none !important;
+                transition: all ease 1s;
+
+                &:hover{
+                    background: #000;
+                }
+            }
+
+            &_btn{
+                padding: 15px 20px;
+                width: 100%;
+                border-radius: 10px;
+                margin-top: 20px;
+                outline: none;
+                background-color: #FFD600;
+                border: none;
+                font-family: 'Montserrat';
+                font-style: normal;
+                font-weight: 600;
+                font-size: 17px;
+                line-height: 16px;
+                text-align: center;
+                transition: all ease .3s;
+                cursor: pointer;
+
+                &:hover{
+                background-color: #d7b300;
+                }
             }
 
 
@@ -186,6 +243,7 @@
                     position: absolute;
                     right: 15px;
                     top:15px;
+                    cursor: pointer;
     
                     @media screen and (max-width: 550px){
                         right: 10px;
@@ -207,13 +265,13 @@
 
     0% {
         opacity: 0;
-        transform: translateX(-100px);
+        transform: translateY(100px);
 
     }
 
     100% {
         opacity: 1;
-        transform: translateX(0px);
+        transform: translateY(0px);
 
     }
 
