@@ -8,6 +8,7 @@ class Vacancy(models.Model):
         related_name='job_user',
         on_delete=models.CASCADE
     )
+    city = models.CharField('Город', max_length=255)
     job_title = models.CharField(
         'Название вакансии',
         max_length=300

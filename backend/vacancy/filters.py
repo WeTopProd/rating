@@ -4,6 +4,10 @@ from .models import Vacancy
 
 
 class VacancyFilter(filters.FilterSet):
+    city = filters.CharFilter(
+        lookup_expr='icontains',
+        field_name='city'
+    )
     job_title = filters.CharFilter(
         lookup_expr='icontains',
         field_name='job_title'
@@ -28,17 +32,23 @@ class VacancyFilter(filters.FilterSet):
         field_name='final_experience',
         lookup_expr='lte'
     )
+    employment_type = filters.CharFilter(
+        lookup_expr='icontains',
+        field_name='employment_type'
+    )
     is_favorited = filters.BooleanFilter(method='get_is_favorited')
 
     class Meta:
         model = Vacancy
         fields = (
+            'city',
             'job_title',
             'company_name',
             'start_salary',
             'final_salary',
             'start_experience',
             'final_experience',
+            'employment_type',
             'is_favorited',
         )
 
