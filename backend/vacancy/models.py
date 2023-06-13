@@ -29,7 +29,8 @@ class Vacancy(models.Model):
         'Условия',
         max_length=5000
     )
-    salary = models.IntegerField('Зарплата от')
+    start_salary = models.IntegerField('Зарплата от')
+    final_salary = models.IntegerField('Зарплата до')
     start_experience = models.FloatField('Опыт от')
     final_experience = models.FloatField('Опыт до')
     application_type = models.CharField(
