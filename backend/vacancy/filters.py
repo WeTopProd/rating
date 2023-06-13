@@ -22,13 +22,11 @@ class VacancyFilter(filters.FilterSet):
     final_salary = filters.RangeFilter(
         field_name='final_salary'
     )
-    start_experience = filters.NumberFilter(
-        field_name='start_experience',
-        lookup_expr='gte'
+    start_experience = filters.RangeFilter(
+        field_name='start_experience'
     )
-    final_experience = filters.NumberFilter(
-        field_name='final_experience',
-        lookup_expr='lt'
+    final_experience = filters.RangeFilter(
+        field_name='final_experience'
     )
     employment_type = filters.CharFilter(
         lookup_expr='icontains',
