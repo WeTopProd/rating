@@ -31,8 +31,8 @@ class Vacancy(models.Model):
     )
     start_salary = models.IntegerField('Зарплата от')
     final_salary = models.IntegerField('Зарплата до')
-    start_experience = models.FloatField('Опыт от')
-    final_experience = models.FloatField('Опыт до')
+    start_experience = models.IntegerField('Опыт от')
+    final_experience = models.IntegerField('Опыт до')
     application_type = models.CharField(
         'Тип оформления',
         max_length=100
