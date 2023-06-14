@@ -157,7 +157,7 @@ export default function RezumeUser ({auth, setAuth , uservaka , ...mycardId }) {
 
                     <div> <p className="recomendation__speciality_leftS_specializ_text1">Прошлое место работы:</p> </div>
         
-                    <div><p className="recomendation__top_left_text">{mas.placeWork} От {mas.DataStart} До  {mas.DataEnd}</p> </div>
+                    <div><p className="recomendation__top_left_text">{mas.placeWork} с {mas.DataStart} До  {mas.DataEnd}</p> </div>
         
                     <div><p className="recomendation__speciality_leftS_specializ_text1">Ключевые навыки:</p></div>
         
@@ -181,7 +181,7 @@ export default function RezumeUser ({auth, setAuth , uservaka , ...mycardId }) {
 
             
     
-    <div style={{marginBottom: '50px', width: '100%'}}>
+    <div style={{marginBottom: '50px'}}>
 
 
         <p className="recomendation__experience_vi_exp">

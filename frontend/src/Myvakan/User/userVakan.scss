@@ -62,7 +62,7 @@
             font-family: 'Montserrat';
             font-style: normal;
             font-weight: 700;
-            font-size: 30px;
+            font-size: 25px;
             line-height: 50px;
             color: #000000;
 
@@ -194,6 +194,8 @@
             font-size: 16px;
             line-height: 27px;
             color: #000000;
+            word-wrap: break-word;
+            white-space: pre-line;
 
             
         }
@@ -208,11 +210,12 @@
             font-style: normal;
             font-weight: 400;
             font-size: 16px;
-            line-height: 19px;
+            line-height: 30px;
             color: #000000;
             margin-left: 0px;
             margin-top: 15px;
-            list-style-type: circle;
+            word-wrap: break-word;
+            white-space: pre-line;
 
             @media screen and (max-width: 700px) {
                 font-size: 14px;

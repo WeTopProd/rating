@@ -25,10 +25,6 @@ export default function Mycard ({deletePostVakan ,applicants ,...info}) {
 
     const token = JSON.parse(localStorage.getItem("token"));
 
-    // const HeadrdToken = () => {
-    //   (localStorage.setItem("heard" , !heart))
-    // }   
-
     async function favorites(id) {
 
         setHeart(!heart);
@@ -92,6 +88,8 @@ export default function Mycard ({deletePostVakan ,applicants ,...info}) {
 
       }
 
+      
+
     
 
     return (
@@ -143,7 +141,9 @@ fill={ heart ? '#ce1616' : '000'} className='svg' width="30px" height="30px" vie
                       {info.job_title}
                     </Link>
 
-                    <p className='VAC__out_in_two_sal_text'>Компания: {info.company_name}</p>
+                    <p className='VAC__out_in_two_sal_text'>Компания: {info.company_name}</p> 
+                    <p className='VAC__out_in_two_sal_text'>Город: {info.city}</p> 
+                     
 
                     <div className="VAC__out_in_two">
                          
@@ -153,7 +153,7 @@ fill={ heart ? '#ce1616' : '000'} className='svg' width="30px" height="30px" vie
                             от {info.start_salary} - {info.final_salary} руб
                         </p>
 
-                        <p className="VAC__out_in_two_sal_exp">
+                        <p className="VAC__out_in_two_sal_text">
                             опыт работы
                         </p>
 

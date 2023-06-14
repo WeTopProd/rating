@@ -17,6 +17,16 @@ export default function PoiksVakan ({ auth, setAuth, myVakanId}) {
       setAccordian(!accordian)
     }
 
+    const throwOff = () => {
+      setpoiskvalue('')
+      setCity('')
+      setExperience('')
+      setExperienceDo('')
+      setIncome('')
+      setIncomeFinaly('')
+      setEmployment('')
+    }
+
     const token = JSON.parse(localStorage.getItem("token"));
 
     const [ poiskvalue, setpoiskvalue] = useState('')
@@ -25,13 +35,24 @@ export default function PoiksVakan ({ auth, setAuth, myVakanId}) {
 
     const [postLoading, setPostLoading] = useState(false)
 
-  
+    const [city , setCity] = useState('') 
+
+    const [experience , setExperience] = useState('') 
+
+    const [experienceDo , setExperienceDo] = useState('') 
+
+    const [income , setIncome] = useState('')
+
+    const [incomeFinaly , setIncomeFinaly] = useState('')
+
+    const [employment , setEmployment] = useState('') 
+    
 
     const PoiskValueVakan = (event) => {
 
       event.preventDefault()
 
-      axios.get(`http://127.0.0.1:8001/api/vacancy/?job_title=${poiskvalue}&company_name=&final_salary=&start_experience=&final_experience=&is_favorited=`, {
+      axios.get(`http://127.0.0.1:8001/api/vacancy/?city=${city}&job_title=${poiskvalue}&company_name=&start_salary=${income}&final_salary_min=${income}&final_salary_max=&start_experience_min=${experience}&start_experience_max=&final_experience_min=${experienceDo}&final_experience_max=&employment_type=${employment}&is_favorited=&salary_min=&salary_max=`,{
 
       headers: {
         "content-type": "application/json",
@@ -48,6 +69,8 @@ export default function PoiksVakan ({ auth, setAuth, myVakanId}) {
     .catch(err => console.error(err))
 
     }
+
+    
 
 
     return (
@@ -90,13 +113,15 @@ export default function PoiksVakan ({ auth, setAuth, myVakanId}) {
 
         {accordian &&
         
-        <div className='anumation'>
+        <form onSubmit={PoiskValueVakan} className='anumation'>
+
+          
 
         <div className='poisk__accordion' >
         <p className='poisk__accordion_text'>Регион</p>
 
 
-          <select className='poisk__accordion_select'>
+          <select className='poisk__accordion_select' value={city} onChange={(event) => setCity(event.target.value)} >
             <option  value="выберите подходящий">Выберите подходящий</option>
             <option  value="Москва">Москва</option>
             <option  value="Московская область">Московская область</option>
@@ -109,7 +134,7 @@ export default function PoiksVakan ({ auth, setAuth, myVakanId}) {
         <p className='poisk__accordion_text'>Специализация</p>
 
 
-          <select className='poisk__accordion_select'>
+          <select className='poisk__accordion_select' value={poiskvalue} onChange={(event) => setpoiskvalue(event.target.value)} >
             <option  value="выберите подходящий">Выберите подходящий</option>
             <option  value="Актерское мастерство">Актерское мастерство</option>
             <option  value="Веб-разработчик">Веб-разработчик</option>
@@ -124,16 +149,17 @@ export default function PoiksVakan ({ auth, setAuth, myVakanId}) {
 
         </div>
 
+
         <div className='poisk__accordion' >
+
         <p className='poisk__accordion_text'>Опыт работы</p>
 
+        <input type="number" value={experience} onChange={(event) => setExperience(event.target.value)} className='poisk__accordion_selectTwo' placeholder='От'
+        />
 
-          <select className='poisk__accordion_select'>
-            <option  value="выберите подходящий">Выберите подходящий</option>
-            <option  value="от 1 до 3 года">от 1 до 3 года</option>
-            <option  value="от 3 до 6 года">от 3 до 6 года</option>
-            <option  value="от 6 года">от 6 года</option>
-          </select>
+        <input type="number" className='poisk__accordion_selectTwo' placeholder='До'
+               value={experienceDo} onChange={(event) => setExperienceDo(event.target.value)}
+        />
 
         </div>
 
@@ -141,88 +167,19 @@ export default function PoiksVakan ({ auth, setAuth, myVakanId}) {
 
         <p className='poisk__accordion_text'>Уровень дохода</p>
 
+        <input type="number" className='poisk__accordion_selectTwo' placeholder='От'
+               value={income} onChange={(event) => setIncome(event.target.value)}
+        />
 
-          <select className='poisk__accordion_select'>
-            <option  value="выберите подходящий">Выберите подходящий</option>
-            <option  value="До 100 000 руб">До 100 000 руб</option>
-            <option  value="от 100 000 руб">от 100 000 руб</option>
-          </select>
 
         </div>               
 
-        {/* <div >
-
-          <p className='poisk__accordian_title' onClick={handleOpen5} >Возраст </p>
-
-        {show5 && (
-
-            <>
-
-          <p className="poisk__accordian_subtitle">
-          От 18 до 30 
-          </p>
-
-          <p className="poisk__accordian_subtitle">
-          От 30 лет
-          </p>
-      
-            </>
-          
-        )}
-
-        </div>  */}
-
-        {/* <div >
-
-          <p className='poisk__accordian_title' onClick={handleOpen6} >Образование </p>
-
-        {show6 && (
-
-            <>
-
-          <p className="poisk__accordian_subtitle">
-          Среднее
-          </p>
-
-          <p className="poisk__accordian_subtitle">
-          Среднее специальное
-          </p>
-
-          <p className="poisk__accordian_subtitle">
-          Неоконченное высшее
-          </p>
-
-          <p className="poisk__accordian_subtitle">
-          Высшее
-          </p>
-
-          <p className="poisk__accordian_subtitle">
-          Бакалавр
-          </p>
-
-          <p className="poisk__accordian_subtitle">
-          Магистр
-          </p>
-
-          <p className="poisk__accordian_subtitle">
-          Кандидат наук
-          </p>
-
-          <p className="poisk__accordian_subtitle">
-          Доктор наук
-          </p>
-      
-            </>
-          
-        )}
-
-        </div>  */}
 
         <div className='poisk__accordion' >
 
           <p className='poisk__accordion_text'>Тип занятости</p>
 
-          <select className='poisk__accordion_select'>
+          <select className='poisk__accordion_select' value={employment} onChange={(event) => setEmployment(event.target.value)}>
             <option  value="выберите подходящий">Выберите подходящий</option>
             <option  value="Полная занятость">Полная занятость</option>
             <option  value="Частичная занятость">Частичная занятость</option>
@@ -234,14 +191,15 @@ export default function PoiksVakan ({ auth, setAuth, myVakanId}) {
 
         </div>
 
-        <button className='poisk__accordion_btn'>Применить</button>
+        <button  onClick={PoiskValueVakan} className='poisk__accordion_btn'>Применить</button>
 
-        </div>
+        <button onClick={throwOff} className='poisk__accordion_btn'>Сбросить</button>
+
+
+        </form>
         
-        }
-
-
-
+      }
+      
     </div>
 
                     <div className="poisk__item">

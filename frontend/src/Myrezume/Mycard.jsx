@@ -164,6 +164,10 @@ className='svg' width="30px" height="30px" viewBox="0 0 24 24" xmlns="http://www
             </p>
 
             <p className="mini__outer_inside_near_age_pshka">
+            Регион: {info.city}
+            </p>
+
+            <p className="mini__outer_inside_near_age_pshka">
                  Желаемая зарплата <br />
                 от {info.startSalary} до {info.endSalary} руб
             </p>
@@ -196,8 +200,13 @@ className='svg' width="30px" height="30px" viewBox="0 0 24 24" xmlns="http://www
                 {info.postWork}
             </p>
 
+
             <p className="mini__outer_inside_near_spec_bold">
-                {/* Занятость: {zynytost} */}
+                 Занятость:
+            </p>
+
+            <p className="mini__outer_inside_near_spec_bold">
+                {info.busyness}
             </p>
 
         </div>

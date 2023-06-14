@@ -91,6 +91,8 @@ useEffect(() => {
 
 
 
+
+
 const deletePost = (id) => {
 
   axios.delete(`http://localhost:8001/api/resume/${id}`,

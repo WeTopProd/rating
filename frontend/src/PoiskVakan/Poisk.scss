@@ -19,7 +19,7 @@
     & .poisk{
         display: flex;
         justify-content: center;
-        gap: 30px;
+        gap: 100px;
 
         @media screen and (max-width: 700px) {
             flex-direction: column;
@@ -66,6 +66,27 @@
                 border-radius: 10px;
                 outline: none;
                 border: none !important;
+                transition: all ease 1s;
+
+                &:hover{
+                    background: #000;
+                }
+            }
+
+            &_selectTwo{
+                width: 100%;
+                padding: 0px 10px;
+                font-family: 'Montserrat';
+                font-style: normal;
+                font-weight: 400;
+                font-size: 18px;
+                line-height: 36px;
+                letter-spacing: 0.02em;
+                color: #282828 !important;
+                border: 2px solid #000 !important;
+                background-color: #00000000 !important;
+                border-radius: 10px;
+                outline: none;
                 transition: all ease 1s;
 
                 &:hover{
@@ -172,8 +193,6 @@
             &_form{
 
                 position: relative;
-                margin-top: 23px;
-
                 display: flex;
                 align-items: center;
                 width: calc(100% - 0px);

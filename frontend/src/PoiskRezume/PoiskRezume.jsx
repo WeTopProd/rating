@@ -1,88 +1,73 @@
 import { useState } from 'react'
-
-
 import Header from '../components/header/Header'
 import svg from '../components/img/search-normal.svg'
 import { AiOutlineMenu } from "react-icons/ai";
 
-
 import '../PoiskVakan/Poisk.scss'
-import MyDataCard from '../Myrezume/my.data.card'
 import Mycard from '../Myrezume/Mycard';
-// import Mycard from '../Myvakan/Mycard';
+import axios from 'axios';
 
 
 export default function PoiksRezume ({onClick, setAuth, auth, mycardId}) {
 
-    const [show, setShow] = useState(false);
+  const [accordian, setAccordian] = useState(false)
 
-    const handleOpen = () => {
+  const openAcc = () => {
+    setAccordian(!accordian)
+  }
 
-      setShow(!show); 
+  const throwOff = () => {
+    setpoiskvalue('')
+    setCity('')
+    setExperience('')
+    setExperienceDo('')
+    setIncome('')
+    setIncomeFinaly('')
+    setEmployment('')
+  }
 
-    };
+  const token = JSON.parse(localStorage.getItem("token"));
 
-    const [show2, setShow2] = useState(false);
+  const [ poiskvalue, setpoiskvalue] = useState('')
 
-    const handleOpen2 = () => {
+  const [postVakan, setPostVakan] = useState([])
 
-      setShow2(!show2); 
+  const [postLoading, setPostLoading] = useState(false)
 
-    };
+  const [city , setCity] = useState('') 
 
-    const [show3, setShow3] = useState(false);
+  const [experience , setExperience] = useState('') 
 
-    const handleOpen3 = () => {
+  const [experienceDo , setExperienceDo] = useState('') 
 
-      setShow3(!show3); 
+  const [income , setIncome] = useState('')
 
-    };
+  const [incomeFinaly , setIncomeFinaly] = useState('')
 
-    const [show4, setShow4] = useState(false);
+  const [employment , setEmployment] = useState('')
 
-    const handleOpen4 = () => {
+  const PoiskValueVakan = (event) => {
 
-      setShow4(!show4); 
+    event.preventDefault()
 
-    };
+    axios.get(`http://127.0.0.1:8001/api/resume/?city=${city}&job_title=${poiskvalue}&company_name=&start_salary_min=${income}&final_salary_max=${incomeFinaly}&start_experience_max=${experience}&final_experience_min=${experienceDo}&employment_type=${employment}&is_favorited=`,{
 
-    const [show5, setShow5] = useState(false);
+    headers: {
+      "content-type": "application/json",
+      authorization: `Token ${token}`,
+    },
 
-    const handleOpen5 = () => {
+  })
 
-      setShow5(!show5); 
+  .then(res => {
+     setPostVakan(res.data)
+     setPostLoading(true)
+     console.log(res.data)
+   })
 
-    };
+  .catch(err => console.error(err))
 
-    const [show6, setShow6] = useState(false);
-
-    const handleOpen6 = () => {
-
-      setShow6(!show6); 
-
-    };
-
-    const [show7, setShow7] = useState(false);
-
-    const handleOpen7 = () => {
-
-      setShow7(!show7); 
-
-    };
-
-    const [show8, setShow8] = useState(false);
-
-    const handleOpen8 = () => {
-
-      setShow8(!show8); 
-
-    };
-
-    const [accordian, setAccordian] = useState(false)
-
-    const openAcc = () => {
-      setAccordian(!accordian)
-    }
+  }
 
     return (
         <>
@@ -119,286 +104,195 @@ export default function PoiksRezume ({onClick, setAuth, auth, mycardId}) {
                 
                 <div className="poisk">
                     
-    <div className="poisk__accordian">
+                <div className="poisk__accordion">
 
-        <div className='poisk__accordian_burger' onClick={openAcc} ><AiOutlineMenu /> Фильтр </div>
+<div className='poisk__accordion_burger' onClick={openAcc} ><AiOutlineMenu /> Фильтр </div>
 
-        {accordian &&
-        
-        <div>
+{accordian &&
 
-        <div className='poisk__accordion_arr' >
+<form onSubmit={PoiskValueVakan} className='anumation'>
 
-          <p className='poisk__accordian_title' onClick={handleOpen} >Регион</p>
+  
 
-        {show && (
+<div className='poisk__accordion' >
+<p className='poisk__accordion_text'>Регион</p>
 
-            <>
 
-          <p className="poisk__accordian_subtitle">
-            Москва
-          </p>
+  <select className='poisk__accordion_select' value={city} onChange={(event) => setCity(event.target.value)} >
+    <option  value="выберите подходящий">Выберите подходящий</option>
+    <option  value="Москва">Москва</option>
+    <option  value="Московская область">Московская область</option>
+  </select>
 
-         <p className="poisk__accordian_subtitle">
-            Московская область
-          </p>
-            
-            </>
-          
-        )}
+</div>
 
-        </div>
+<div className='poisk__accordion' >
 
-        <div >
+<p className='poisk__accordion_text'>Специализация</p>
 
-          <p className='poisk__accordian_title' onClick={handleOpen2} >Специализация</p>
 
-        {show2 && (
+  <select className='poisk__accordion_select' value={poiskvalue} onChange={(event) => setpoiskvalue(event.target.value)} >
+    <option  value="выберите подходящий">Выберите подходящий</option>
+    <option  value="Актерское мастерство">Актерское мастерство</option>
+    <option  value="Веб-разработчик">Веб-разработчик</option>
+    <option  value="Веб-дизайнер">Веб-дизайнер</option>
+    <option  value="Пантомима">Пантомима</option>
+    <option  value="Клоунада">Клоунада</option>
+    <option  value="Ведущий">Ведущий</option>
+    <option  value="Бармен">Бармен</option>
+    <option  value="Блогер">Блогер</option>
+    <option  value="Вокал">Вокал</option>
+  </select>
 
-            <>
+</div>
 
-          <p className="poisk__accordian_subtitle">
-            Актерское мастерство
-          </p>
+<div className='poisk__accordion' >
 
-          <p className="poisk__accordian_subtitle">
-          Веб-разработчик
-          </p>
+<p className='poisk__accordion_text'>Опыт работы</p>
 
-          <p className="poisk__accordian_subtitle">
-          Веб-дизайнер
-          </p>
+<input type="number" className='poisk__accordion_selectTwo' placeholder='От'
+       value={experience} onChange={(event) => setExperience(event.target.value)}
+/>
 
-          <p className="poisk__accordian_subtitle">
-          Пантомима
-          </p>
+<input type="number" className='poisk__accordion_selectTwo' placeholder='До'
+       value={experienceDo} onChange={(event) => setExperienceDo(event.target.value)} 
+/>
 
-          <p className="poisk__accordian_subtitle">
-          Клоунада
-          </p>
+</div>
 
-          <p className="poisk__accordian_subtitle">
-          Ведущий
-          </p>
+<div className='poisk__accordion' >
 
-          <p className="poisk__accordian_subtitle">
-          Бильярд
-          </p>
+<p className='poisk__accordion_text'>Уровень дохода</p>
 
-          <p className="poisk__accordian_subtitle">
-          Стендап
-          </p>
+<input type="number" className='poisk__accordion_selectTwo' placeholder='От'
+       value={income} onChange={(event) => setIncome(event.target.value)}
+/>
 
-          <p className="poisk__accordian_subtitle">
-          Бармен
-          </p>
 
-          <p className="poisk__accordian_subtitle">
-          Блогер
-          </p>
+</div>               
 
-          <p className="poisk__accordian_subtitle">
-          Вокал
-          </p>
 
-          <p className="poisk__accordian_subtitle">
-          Степ
-          </p>
-      
-            </>
-          
-        )}
+<div className='poisk__accordion' >
 
-        </div>
+  <p className='poisk__accordion_text'>Тип занятости</p>
 
-        <div >
+  <select className='poisk__accordion_select' value={employment} onChange={(event) => setEmployment(event.target.value)}>
+    <option  value="выберите подходящий">Выберите подходящий</option>
+    <option  value="Полная занятость">Полная занятость</option>
+    <option  value="Частичная занятость">Частичная занятость</option>
+    <option  value="Проектная работа">Проектная работа</option>
+    <option  value="Волонтерство">Волонтерство</option>
+    <option  value="Частичная">Частичная</option>
+    <option  value="Стажировка">Стажировка</option>
+  </select>
 
-          <p className='poisk__accordian_title' onClick={handleOpen3} >Опыт работы</p>
+</div>
 
-        {show3 && (
+<button  onClick={PoiskValueVakan} className='poisk__accordion_btn'>Применить</button>
 
-            <>
+<button onClick={throwOff} className='poisk__accordion_btn'>Сбросить</button>
 
-          <p className="poisk__accordian_subtitle">
-          Без опыта
-          </p>
 
-          <p className="poisk__accordian_subtitle">
-          1 год
-          </p>
+</form>
 
-          <p className="poisk__accordian_subtitle">
-          2 года
-          </p>
+}
 
-          <p className="poisk__accordian_subtitle">
-          3 года
-          </p>
-      
-            </>
-          
-        )}
+{/* <div >
 
-        </div> 
+<p className='poisk__accordian_title' onClick={handleOpen5} >Возраст </p>
 
-        <div >
+{show5 && (
 
-          <p className='poisk__accordian_title' onClick={handleOpen4} >Уровень дохода</p>
+  <>
 
-        {show4 && (
+<p className="poisk__accordian_subtitle">
+От 18 до 30 
+</p>
 
-            <>
+<p className="poisk__accordian_subtitle">
+От 30 лет
+</p>
 
-          <p className="poisk__accordian_subtitle">
-          До 100 000 руб
-          </p>
+  </>
 
-          <p className="poisk__accordian_subtitle">
-           от 100 000 руб
-          </p>
-      
-            </>
-          
-        )}
+)}
 
-        </div>                
+</div>  */}
 
-        <div >
+{/* <div >
 
-          <p className='poisk__accordian_title' onClick={handleOpen5} >Возраст </p>
+<p className='poisk__accordian_title' onClick={handleOpen6} >Образование </p>
 
-        {show5 && (
+{show6 && (
 
-            <>
+  <>
 
-          <p className="poisk__accordian_subtitle">
-          От 18 до 30 
-          </p>
+<p className="poisk__accordian_subtitle">
+Среднее
+</p>
 
-          <p className="poisk__accordian_subtitle">
-          От 30 лет
-          </p>
-      
-            </>
-          
-        )}
+<p className="poisk__accordian_subtitle">
+Среднее специальное
+</p>
 
-        </div> 
+<p className="poisk__accordian_subtitle">
+Неоконченное высшее
+</p>
 
-        <div >
+<p className="poisk__accordian_subtitle">
+Высшее
+</p>
 
-          <p className='poisk__accordian_title' onClick={handleOpen6} >Образование </p>
+<p className="poisk__accordian_subtitle">
+Бакалавр
+</p>
 
-        {show6 && (
+<p className="poisk__accordian_subtitle">
+Магистр
+</p>
 
-            <>
+<p className="poisk__accordian_subtitle">
+Кандидат наук
+</p>
 
-          <p className="poisk__accordian_subtitle">
-          Высшее
-          </p>
+<p className="poisk__accordian_subtitle">
+Доктор наук
+</p>
 
-          <p className="poisk__accordian_subtitle">
-          Неоконченное высшее
-          </p>
+  </>
 
-          <p className="poisk__accordian_subtitle">
-          Среднее
-          </p>
+)}
 
-          <p className="poisk__accordian_subtitle">
-          Средне-специальное
-          </p>
-      
-            </>
-          
-        )}
+</div>  */}
 
-        </div> 
 
-        <div >
+                </div>
 
-          <p className='poisk__accordian_title' onClick={handleOpen7} >Тип занятости </p>
-
-        {show7 && (
-
-            <>
-
-          <p className="poisk__accordian_subtitle">
-          Полная занятость
-          </p>
-
-          <p className="poisk__accordian_subtitle">
-          Частичная занятость
-          </p>
-
-          <p className="poisk__accordian_subtitle">
-          Частичная занятость
-          </p>
-
-          <p className="poisk__accordian_subtitle">
-          Проектная работа
-          </p>
-      
-            </>
-          
-        )}
-
-        </div>
-
-        <div >
-
-          <p className='poisk__accordian_title' onClick={handleOpen8} >График работы </p>
-
-        {show8 && (
-
-            <>
-
-          <p className="poisk__accordian_subtitle">
-          Полный день
-          </p>
-
-          <p className="poisk__accordian_subtitle">
-          Удаленная работа
-          </p>
-
-          <p className="poisk__accordian_subtitle">
-          Частичная занятость
-          </p>
-
-          <p className="poisk__accordian_subtitle">
-          Гибкий график
-          </p>
-      
-            </>
-          
-        )}
-
-        </div> 
-
-
-        </div>
-        
-        }
-
-
-
-    </div>
-
-                    <div className="poisk__item">
+                <div className="poisk__item">
                         
-            <form className="poisk__item_form">
-
-                <input name='poisk' type="text" placeholder='Специальность' className="poisk__item_form_input" />
-
-                <img src={svg} className="poisk__item_form_svg" alt="svg" />
-
-            </form> 
-
-                        {mycardId.map( (info, index) => { 
-                            return <Mycard onClick={onClick} {...info}  key={index} />
-                        } ) }
-
-                    </div>
+                        <form className="poisk__item_form" onSubmit={PoiskValueVakan} >
+            
+                            <input value={poiskvalue} onChange={(event) => setpoiskvalue(event.target.value)} name='poisk' type="text" placeholder='Поиск' className="poisk__item_form_input" />
+            
+                            <img src={svg} onClick={PoiskValueVakan} className="poisk__item_form_svg" alt="svg" />
+            
+                        </form> 
+            
+                        {postLoading ?
+                        
+                            postVakan.map( (info, index) => { 
+                                return <Mycard {...info}  key={index} />
+                            } ) 
+              
+                        :
+             
+                        mycardId.map( (info, index) => { 
+                              return <Mycard {...info}  key={index} />
+                            } ) 
+                        
+                        }
+            
+                                </div>
 
                 </div>
 
