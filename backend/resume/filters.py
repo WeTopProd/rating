@@ -4,14 +4,6 @@ from .models import Resume
 
 
 class ResumeFilter(filters.FilterSet):
-    full_name = filters.CharFilter(
-        lookup_expr='icontains',
-        field_name='FullName'
-    )
-    phone_number = filters.CharFilter(
-        lookup_expr='icontains',
-        field_name='PhoneNumber'
-    )
     city = filters.CharFilter(
         lookup_expr='icontains',
         field_name='city'
@@ -20,35 +12,23 @@ class ResumeFilter(filters.FilterSet):
         lookup_expr='exact',
         field_name='education'
     )
-    place_work = filters.CharFilter(
-        lookup_expr='icontains',
-        field_name='placeWork'
-    )
-    post_work = filters.CharFilter(
-        lookup_expr='icontains',
-        field_name='postWork'
-    )
     start_salary = filters.NumberFilter(
         field_name='startSalary',
         lookup_expr='gte',
     )
-    end_salary = filters.NumberFilter(
+    final_salary = filters.NumberFilter(
         field_name='endSalary',
-        lookup_expr='lte'
+        lookup_expr='gte'
     )
     is_favorited = filters.BooleanFilter(method='get_is_favorited')
 
     class Meta:
         model = Resume
         fields = (
-            'full_name',
-            'phone_number',
             'city',
             'education',
-            'place_work',
-            'post_work',
             'start_salary',
-            'end_salary',
+            'final_salary',
             'is_favorited',
         )
 
