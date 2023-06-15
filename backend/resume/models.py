@@ -72,6 +72,7 @@ class Resume(models.Model):
 
     class Meta:
         verbose_name = 'Резюме'
+        verbose_name_plural = 'Резюме'
         ordering = ('PhoneNumber',)
 
     def __str__(self):

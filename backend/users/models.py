@@ -70,6 +70,13 @@ class User(AbstractBaseUser, PermissionsMixin):
         null=True
     )
 
+    chats = models.ManyToManyField(
+        'chat.Chat',
+        related_name='chat_participants',
+        db_table='user_chats_user',
+        blank=True
+    )
+
     objects = UserManager()
 
     USERNAME_FIELD = 'email'
