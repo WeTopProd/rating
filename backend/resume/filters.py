@@ -20,11 +20,16 @@ class ResumeFilter(filters.FilterSet):
         field_name='endSalary',
         lookup_expr='gte'
     )
+    post_work = filters.CharFilter(
+        lookup_expr='icontains',
+        field_name='postWork'
+    )
     is_favorited = filters.BooleanFilter(method='get_is_favorited')
 
     class Meta:
         model = Resume
         fields = (
+            'post_work',
             'city',
             'education',
             'start_salary',
