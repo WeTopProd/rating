@@ -1,5 +1,6 @@
 from django.shortcuts import get_object_or_404
 from rest_framework import status, views, viewsets
+from rest_framework.decorators import action
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 from django_filters.rest_framework import DjangoFilterBackend
@@ -17,11 +18,25 @@ class ResumeViewSet(viewsets.ModelViewSet):
     filter_backends = (DjangoFilterBackend,)
     filterset_class = ResumeFilter
 
-    def get_queryset(self):
-        return Resume.objects.filter(user=self.request.user)
+    # def get_queryset(self):
+    #     return Resume.objects.filter(user=self.request.user)
 
     def perform_create(self, serializer):
         serializer.save(user=self.request.user)
+
+    @action(detail=True, methods=['post'])
+    def activate(self, request, pk=None):
+        resume = self.get_object()
+        resume.is_active = True
+        resume.save()
+        return Response({'status': 'activated'})
+
+    @action(detail=True, methods=['post'])
+    def deactivate(self, request, pk=None):
+        resume = self.get_object()
+        resume.is_active = False
+        resume.save()
+        return Response({'status': 'deactivated'})
 
 
 class FavoriteView(views.APIView):

@@ -36,6 +36,7 @@ class ResumeSerializer(serializers.ModelSerializer):
             'foto',
             'recommendation',
             'certificate',
+            'is_active',
             'is_favorited'
         )
 
@@ -65,6 +66,7 @@ class ShortResumeSerializer(serializers.ModelSerializer):
             'startSalary',
             'endSalary',
             'foto',
+            'is_active'
         )
 
 

@@ -50,6 +50,7 @@ class Vacancy(models.Model):
         'Логотип компании',
         upload_to='backend_media/logo_company/',
     )
+    is_active = models.BooleanField(default=True)
 
     class Meta:
         verbose_name = 'Вакансия'

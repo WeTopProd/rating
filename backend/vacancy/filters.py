@@ -37,6 +37,7 @@ class VacancyFilter(filters.FilterSet):
         field_name='employment_type'
     )
     is_favorited = filters.BooleanFilter(method='get_is_favorited')
+    is_active = filters.BooleanFilter(field_name='is_active')
 
     class Meta:
         model = Vacancy
@@ -50,6 +51,7 @@ class VacancyFilter(filters.FilterSet):
             'final_experience',
             'employment_type',
             'is_favorited',
+            'is_active'
         )
 
     def get_is_favorited(self, queryset, name, value):

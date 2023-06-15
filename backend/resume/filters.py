@@ -25,6 +25,7 @@ class ResumeFilter(filters.FilterSet):
         field_name='postWork'
     )
     is_favorited = filters.BooleanFilter(method='get_is_favorited')
+    is_active = filters.BooleanFilter(field_name='is_active')
 
     class Meta:
         model = Resume
@@ -35,9 +36,12 @@ class ResumeFilter(filters.FilterSet):
             'start_salary',
             'final_salary',
             'is_favorited',
+            'is_active'
         )
 
     def get_is_favorited(self, queryset, name, value):
         if self.request.user.is_authenticated and value is True:
-            return queryset.filter(users_favorites_resume__user=self.request.user)
+            return queryset.filter(
+                users_favorites_resume__user=self.request.user
+            )
         return queryset

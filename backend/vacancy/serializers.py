@@ -30,6 +30,7 @@ class VacancySerializer(serializers.ModelSerializer):
             'schedule',
             'logo',
             'is_favorited',
+            'is_active'
         )
 
     def in_list(self, obj, model):
@@ -59,7 +60,8 @@ class ShortVacancySerializer(serializers.ModelSerializer):
             'final_experience',
             'employment_type',
             'schedule',
-            'logo'
+            'logo',
+            'is_active'
         )
 
 

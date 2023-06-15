@@ -68,6 +68,7 @@ class Resume(models.Model):
         blank=True,
         null=True
     )
+    is_active = models.BooleanField(default=True)
 
     class Meta:
         verbose_name = 'Резюме'
