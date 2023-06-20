@@ -31,14 +31,14 @@ class VacancyViewSet(viewsets.ModelViewSet):
         serializer = JobPostingSerializer(job_postings, many=True)
         return Response(serializer.data)
 
-    @action(detail=True, methods=['post'],
-            permission_classes=[IsAuthenticated])
+    @action(detail=True, methods=['post'])
     def add_job_posting(self, request, pk):
         vacancy = self.get_object()
-        resume = get_object_or_404(Resume, pk=pk)
+        resume_id = request.data.get('resume_id')
+        resume = get_object_or_404(Resume, pk=resume_id)
         serializer = JobPostingSerializer(data=request.data)
         if JobPosting.objects.filter(
-                resume=resume, user=request.user
+                resume=resume, vacancy=vacancy
         ).exists():
             raise ValidationError('Отклик уже отправлен!')
         if serializer.is_valid():
