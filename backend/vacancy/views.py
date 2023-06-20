@@ -56,29 +56,6 @@ class VacancyViewSet(viewsets.ModelViewSet):
         return Response({'status': 'deactivated'})
 
 
-class JobPostingViewSet(viewsets.ModelViewSet):
-    queryset = JobPosting.objects.all()
-    serializer_class = JobPostingSerializer
-    permission_classes = (IsAuthenticated,)
-
-    def perform_create(self, serializer):
-        vacancy_id = self.kwargs.get('vacancy_id')
-        vacancy = get_object_or_404(Vacancy, id=vacancy_id)
-        resume = get_object_or_404(Resume, user=self.request.user)
-        serializer.save(user=self.request.user, vacancy=vacancy, resume=resume)
-
-    @action(detail=True, methods=['get'])
-    def by_vacancy(self, request, pk):
-        job_postings = self.get_queryset().filter(vacancy=pk)
-        serializer = self.get_serializer(job_postings, many=True)
-        return Response(serializer.data)
-
-    def destroy(self, request, *args, **kwargs):
-        instance = self.get_object()
-        self.perform_destroy(instance)
-        return Response(status=status.HTTP_404_NOT_FOUND)
-
-
 class FavoriteView(views.APIView):
     permission_classes = (IsAuthenticated, )
 

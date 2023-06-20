@@ -1,7 +1,7 @@
 from django.urls import include, path
 from rest_framework import routers
 
-from .views import FavoriteView, VacancyViewSet, JobPostingViewSet
+from .views import FavoriteView, VacancyViewSet
 
 router = routers.DefaultRouter()
 router.register('vacancy', VacancyViewSet, basename='vacancy')
