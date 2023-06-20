@@ -4,10 +4,11 @@ from django.core.validators import validate_email
 from django.db import models
 from phonenumber_field.modelfields import PhoneNumberField
 
-from .managers import UserManager
-from .validators import validate_phone_number
 from resume.models import Resume
 from vacancy.models import Vacancy
+
+from .managers import UserManager
+from .validators import validate_phone_number
 
 
 class User(AbstractBaseUser, PermissionsMixin):
@@ -68,13 +69,6 @@ class User(AbstractBaseUser, PermissionsMixin):
         on_delete=models.CASCADE,
         blank=True,
         null=True
-    )
-
-    chats = models.ManyToManyField(
-        'chat.Chat',
-        related_name='chat_participants',
-        db_table='user_chats_user',
-        blank=True
     )
 
     objects = UserManager()

@@ -1,8 +1,7 @@
 from django.urls import include, path
-
 from rest_framework import routers
 
-from .views import ResumeViewSet, FavoriteView
+from .views import FavoriteView, ResumeViewSet
 
 router = routers.DefaultRouter()
 router.register('resume', ResumeViewSet, basename='resume')

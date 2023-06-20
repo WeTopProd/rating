@@ -1,6 +1,6 @@
 from rest_framework import serializers, validators
 
-from .models import Vacancy, Favorite
+from .models import Favorite, JobPosting, Vacancy
 
 
 class VacancySerializer(serializers.ModelSerializer):
@@ -62,6 +62,23 @@ class ShortVacancySerializer(serializers.ModelSerializer):
             'schedule',
             'logo',
             'is_active'
+        )
+
+
+class JobPostingSerializer(serializers.ModelSerializer):
+    user = serializers.StringRelatedField()
+    vacancy = serializers.StringRelatedField()
+    resume = serializers.StringRelatedField()
+
+    class Meta:
+        model = JobPosting
+        fields = (
+            'id',
+            'user',
+            'vacancy',
+            'cover_letter',
+            'resume',
+            'applied_at'
         )
 
 

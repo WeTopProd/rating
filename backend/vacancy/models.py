@@ -61,6 +61,41 @@ class Vacancy(models.Model):
         return self.job_title
 
 
+class JobPosting(models.Model):
+    user = models.ForeignKey(
+        'users.User',
+        verbose_name='Пользователь',
+        related_name='applications',
+        on_delete=models.CASCADE
+    )
+    vacancy = models.ForeignKey(
+        Vacancy,
+        verbose_name='Вакансия',
+        related_name='applications',
+        on_delete=models.CASCADE
+    )
+    cover_letter = models.TextField(
+        'Сопроводительное письмо',
+        max_length=5000,
+        blank=True,
+        null=True
+    )
+    resume = models.ForeignKey(
+        'resume.Resume',
+        verbose_name='Резюме',
+        related_name='applications',
+        on_delete=models.CASCADE
+    )
+    applied_at = models.DateTimeField('Дата и время подачи', auto_now_add=True)
+
+    class Meta:
+        verbose_name = 'Отклик'
+        verbose_name_plural = 'Отклики'
+
+    def __str__(self):
+        return f'Отклик от {self.user} на вакансию {self.vacancy}'
+
+
 class Favorite(models.Model):
     user = models.ForeignKey(
         'users.User',

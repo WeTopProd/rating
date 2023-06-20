@@ -1,7 +1,7 @@
 from phonenumber_field.serializerfields import PhoneNumberField
 from rest_framework import serializers, validators
 
-from .models import Resume, Favorite
+from .models import Favorite, Resume
 
 
 class ResumeSerializer(serializers.ModelSerializer):

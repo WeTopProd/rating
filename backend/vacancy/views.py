@@ -1,14 +1,17 @@
 from django.shortcuts import get_object_or_404
+from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework import status, views, viewsets
 from rest_framework.decorators import action
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
-from django_filters.rest_framework import DjangoFilterBackend
 
-from .models import Vacancy, Favorite
-from .serializers import VacancySerializer, FavoriteSerializer
-from .permissions import IsOwnerOrReadOnly
 from .filters import VacancyFilter
+from .models import Favorite, JobPosting, Vacancy
+from .permissions import IsOwnerOrReadOnly
+from .serializers import (FavoriteSerializer, JobPostingSerializer,
+                          VacancySerializer)
+
+from resume.models import Resume
 
 
 class VacancyViewSet(viewsets.ModelViewSet):
@@ -21,19 +24,59 @@ class VacancyViewSet(viewsets.ModelViewSet):
     def perform_create(self, serializer):
         serializer.save(user=self.request.user)
 
+    @action(detail=True, methods=['get'], permission_classes=[IsAuthenticated])
+    def get_job_posting(self, request, pk):
+        job_postings = JobPosting.objects.filter(vacancy=pk)
+        serializer = JobPostingSerializer(job_postings, many=True)
+        return Response(serializer.data)
+
+    @action(detail=True, methods=['post'],
+            permission_classes=[IsAuthenticated])
+    def add_job_posting(self, request, pk):
+        vacancy = self.get_object()
+        resume = get_object_or_404(Resume, user=request.user)
+        serializer = JobPostingSerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save(user=request.user, vacancy=vacancy, resume=resume)
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
     @action(detail=True, methods=['post'])
     def activate(self, request, pk=None):
-        resume = self.get_object()
-        resume.is_active = True
-        resume.save()
+        vacancy = self.get_object()
+        vacancy.is_active = True
+        vacancy.save()
         return Response({'status': 'activated'})
 
     @action(detail=True, methods=['post'])
     def deactivate(self, request, pk=None):
-        resume = self.get_object()
-        resume.is_active = False
-        resume.save()
+        vacancy = self.get_object()
+        vacancy.is_active = False
+        vacancy.save()
         return Response({'status': 'deactivated'})
+
+
+class JobPostingViewSet(viewsets.ModelViewSet):
+    queryset = JobPosting.objects.all()
+    serializer_class = JobPostingSerializer
+    permission_classes = (IsAuthenticated,)
+
+    def perform_create(self, serializer):
+        vacancy_id = self.kwargs.get('vacancy_id')
+        vacancy = get_object_or_404(Vacancy, id=vacancy_id)
+        resume = get_object_or_404(Resume, user=self.request.user)
+        serializer.save(user=self.request.user, vacancy=vacancy, resume=resume)
+
+    @action(detail=True, methods=['get'])
+    def by_vacancy(self, request, pk):
+        job_postings = self.get_queryset().filter(vacancy=pk)
+        serializer = self.get_serializer(job_postings, many=True)
+        return Response(serializer.data)
+
+    def destroy(self, request, *args, **kwargs):
+        instance = self.get_object()
+        self.perform_destroy(instance)
+        return Response(status=status.HTTP_404_NOT_FOUND)
 
 
 class FavoriteView(views.APIView):

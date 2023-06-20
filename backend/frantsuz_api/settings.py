@@ -39,7 +39,6 @@ INSTALLED_APPS = [
     'corsheaders',
     'django_filters',
     'phonenumber_field',
-    'chat.apps.ChatConfig',
     'users.apps.UsersConfig',
     'resume.apps.ResumeConfig',
     'vacancy.apps.VacancyConfig',
