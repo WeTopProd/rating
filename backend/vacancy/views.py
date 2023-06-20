@@ -4,6 +4,7 @@ from rest_framework import status, views, viewsets
 from rest_framework.decorators import action
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
+from rest_framework.validators import ValidationError
 
 from .filters import VacancyFilter
 from .models import Favorite, JobPosting, Vacancy
@@ -36,6 +37,10 @@ class VacancyViewSet(viewsets.ModelViewSet):
         vacancy = self.get_object()
         resume = get_object_or_404(Resume, pk=pk)
         serializer = JobPostingSerializer(data=request.data)
+        if JobPosting.objects.filter(
+                resume=resume, user=request.user
+        ).exists():
+            raise ValidationError('Отклик уже отправлен!')
         if serializer.is_valid():
             serializer.save(user=request.user, vacancy=vacancy, resume=resume)
             return Response(serializer.data, status=status.HTTP_201_CREATED)
