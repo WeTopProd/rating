@@ -34,7 +34,7 @@ class VacancyViewSet(viewsets.ModelViewSet):
             permission_classes=[IsAuthenticated])
     def add_job_posting(self, request, pk):
         vacancy = self.get_object()
-        resume = get_object_or_404(Resume, user=request.user)
+        resume = get_object_or_404(Resume, pk=pk)
         serializer = JobPostingSerializer(data=request.data)
         if serializer.is_valid():
             serializer.save(user=request.user, vacancy=vacancy, resume=resume)
