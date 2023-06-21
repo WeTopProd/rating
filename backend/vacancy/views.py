@@ -31,7 +31,11 @@ class VacancyViewSet(viewsets.ModelViewSet):
         serializer = JobPostingSerializer(job_postings, many=True)
         return Response(serializer.data)
 
-    @action(detail=True, methods=['post'])
+    @action(
+        detail=True,
+        methods=['post'],
+        permission_classes=[IsAuthenticated]
+    )
     def add_job_posting(self, request, pk):
         vacancy = self.get_object()
         resume_id = request.data.get('resume_id')
