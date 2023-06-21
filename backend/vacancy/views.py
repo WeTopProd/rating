@@ -40,7 +40,7 @@ class VacancyViewSet(viewsets.ModelViewSet):
         if JobPosting.objects.filter(
                 resume=resume, vacancy=vacancy
         ).exists():
-            raise ValidationError('Отклик уже отправлен!')
+            raise ValidationError({'status': False})
         if serializer.is_valid():
             serializer.save(user=request.user, vacancy=vacancy, resume=resume)
             return Response(serializer.data, status=status.HTTP_201_CREATED)
