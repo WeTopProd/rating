@@ -6,13 +6,13 @@ from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 from rest_framework.validators import ValidationError
 
+from resume.models import Resume
+
 from .filters import VacancyFilter
 from .models import Favorite, JobPosting, Vacancy
 from .permissions import IsOwnerOrReadOnly
 from .serializers import (FavoriteSerializer, JobPostingSerializer,
                           VacancySerializer)
-
-from resume.models import Resume
 
 
 class VacancyViewSet(viewsets.ModelViewSet):

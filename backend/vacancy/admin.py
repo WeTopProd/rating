@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import Vacancy, JobPosting
+from .models import JobPosting, Vacancy
 
 
 class UserAdmin(admin.ModelAdmin):
