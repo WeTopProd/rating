@@ -3,7 +3,9 @@ version: '3.8'
 services:
 
   frontend:
-    image: y4r1k/rating-frontend:latest
+    build:
+      context: ../frontend
+      dockerfile: Dockerfile
     ports:
       - "3002:3002"
     volumes:
@@ -13,7 +15,9 @@ services:
     restart: always
 
   backend:
-    image: y4r1k/rating-backend:latest
+    build:
+      context: ../backend
+      dockerfile: Dockerfile
     restart: always
     ports:
       - "8002:8002"
