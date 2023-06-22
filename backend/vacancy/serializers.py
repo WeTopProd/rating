@@ -4,8 +4,9 @@ from rest_framework import serializers, validators
 
 from .models import Favorite, JobPosting, Vacancy
 
-from resume.serializers import ResumeSerializer
+from resume.serializers import ShortResumeSerializer
 from resume.models import Resume
+
 
 class VacancySerializer(serializers.ModelSerializer):
     user = serializers.PrimaryKeyRelatedField(
@@ -72,7 +73,7 @@ class ShortVacancySerializer(serializers.ModelSerializer):
 class JobPostingSerializer(serializers.ModelSerializer):
     user = serializers.StringRelatedField()
     vacancy = serializers.StringRelatedField()
-    resume = ResumeSerializer(required=False)
+    resume = ShortResumeSerializer(required=False)
     resume_id = serializers.IntegerField()
 
     class Meta:
@@ -89,7 +90,7 @@ class JobPostingSerializer(serializers.ModelSerializer):
 
     def to_representation(self, instance):
         data = super().to_representation(instance)
-        resume_data = ResumeSerializer(instance.resume).data
+        resume_data = ShortResumeSerializer(instance.resume).data
         data['resume'] = resume_data
         return data
 
