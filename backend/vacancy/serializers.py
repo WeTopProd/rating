@@ -68,7 +68,6 @@ class ShortVacancySerializer(serializers.ModelSerializer):
 class JobPostingSerializer(serializers.ModelSerializer):
     user = serializers.StringRelatedField()
     vacancy = serializers.StringRelatedField()
-    resume = serializers.StringRelatedField()
 
     class Meta:
         model = JobPosting
