@@ -104,7 +104,6 @@ const deletePost = (id) => {
 
   }
 
-
   }
 
   )
@@ -277,7 +276,7 @@ const ClickIdTwo = (id) => {
 
           <Route path='/tarifnumber'  element={<TarifNumber auth={auth} setAuth={setAuth} priceThree={priceThree} setPriceThree={setPriceThree}  />} />
 
-          <Route path='/responsesvakan' element={<ResponsesVakan applicants={applicants} mycardId={mycardId} />} />
+          <Route path='/responsesvakan' element={<ResponsesVakan myVakanId={myVakanId} applicants={applicants} mycardId={mycardId} />} />
 
         </Routes>  
 

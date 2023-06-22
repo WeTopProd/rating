@@ -2,18 +2,10 @@ version: '3.8'
 
 services:
 
-  frontend:
-    image: y4r1k/rating-frontend:latest
-    ports:
-      - "3002:3002"
-    volumes:
-      - frontend_build:/app/result_build/
-    environment:
-      NODE_ENV: production
-    restart: always
-
   backend:
-    image: y4r1k/rating-backend:latest
+    build:
+      context: ../backend
+      dockerfile: Dockerfile
     restart: always
     ports:
       - "8002:8002"
@@ -35,7 +27,6 @@ services:
     restart: always
     depends_on:
       - backend
-      - frontend
 
 volumes:
   frontend_build:

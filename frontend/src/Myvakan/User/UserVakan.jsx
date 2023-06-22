@@ -19,7 +19,7 @@ export default function UserVakan ({auth, setAuth, uservaka, mycardId , ...myVak
 
     const [Text, setText] = useState(false)
 
-    // console.log(mas.id);
+  
 
 
     useEffect(() => {
@@ -35,6 +35,8 @@ export default function UserVakan ({auth, setAuth, uservaka, mycardId , ...myVak
             .catch((err) => console.error(err));
         }
       }, [mas?.id]);
+
+      
 
     
     async function handleOtklik (e) {
@@ -66,13 +68,15 @@ export default function UserVakan ({auth, setAuth, uservaka, mycardId , ...myVak
 
           )
 
+          .then(res => window.location.reload())
+
           .catch(err => console.error(err))
 
     }
 
     const [getClick, setGetClick] = useState([])
 
-    console.log(getClick.applied_at);
+    // console.log(getClick);
 
 
     
@@ -89,11 +93,8 @@ export default function UserVakan ({auth, setAuth, uservaka, mycardId , ...myVak
       const fromPage = params.get('fromPage');
 
       const email = JSON.parse(localStorage.getItem('user')).email
-    
 
-    //   console.log(getClick);
-
-
+      console.log(getClick);
     return (
 
         <>
@@ -224,31 +225,19 @@ setAuth={setAuth}
 
  {fromPage === 'poisk' &&
 
+
  <>
 
- {getClick.applied_at ?(
+{getClick?.applied_at ? (
+  <div className='button'>
+    Отправлено
+  </div>
+) : (
+  <button onClick={() => setselectTrue(true)} className='button'>
+    Откликнуться
+  </button>
+)}
 
-<div className='button'>
-Отправлено 
-</div>
-
- ) : (
-
- ''
-
- )}
-
- {getClick && getClick?.applied_at === undefined ? 
- 
- <button onClick={() => setselectTrue(true)} className='button'>
-   Откликнуться
-  </button> 
-
-  :
-
-  ''
-
-}
 
 
 
