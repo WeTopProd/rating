@@ -55,7 +55,7 @@ export default function PoiksVakan ({ auth, setAuth, myVakanId}) {
 
       event.preventDefault()
 
-      axios.get(`http://127.0.0.1:8002/api/vacancy/?city=${city}&job_title=${poiskvalue}&company_name=&start_salary=${income}&final_salary_min=&final_salary_max=&start_experience=${experience}&start_experience_max=&final_experience=${experienceDo}&final_experience_max=&employment_type=${employment}&is_favorited=&salary_min=&salary_max=`, {
+      axios.get(`http://reiting.moscow/api/vacancy/?city=${city}&job_title=${poiskvalue}&company_name=&start_salary=${income}&final_salary_min=&final_salary_max=&start_experience=${experience}&start_experience_max=&final_experience=${experienceDo}&final_experience_max=&employment_type=${employment}&is_favorited=&salary_min=&salary_max=`, {
 
       headers: {
         "content-type": "application/json",
@@ -80,7 +80,7 @@ export default function PoiksVakan ({ auth, setAuth, myVakanId}) {
 
     useEffect(() => {
   
-      axios.get('http://localhost:8002/api/vacancy/?&is_active=true', {
+      axios.get('http://reiting.moscow/api/vacancy/?&is_active=true', {
       
       headers: {
           'Content-Type': 'application/json , multipart/form-data',

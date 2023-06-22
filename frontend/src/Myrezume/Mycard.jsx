@@ -23,7 +23,7 @@ export default function Mycard({onClick, CardId, employer, deletePost, applicant
 
         await axios
 
-          .post(`http://127.0.0.1:8002/api/resume/${info.id}/favorite/`, null, {
+          .post(`http://reiting.moscow/api/resume/${info.id}/favorite/`, null, {
 
             headers: {
               "content-type": "application/json",
@@ -42,7 +42,7 @@ export default function Mycard({onClick, CardId, employer, deletePost, applicant
 
         await axios
 
-          .delete(`http://127.0.0.1:8002/api/resume/${info.id}/favorite/`, {
+          .delete(`http://reiting.moscow/api/resume/${info.id}/favorite/`, {
 
             headers: {
               "content-type": "application/json",
@@ -77,7 +77,7 @@ export default function Mycard({onClick, CardId, employer, deletePost, applicant
 
         await axios
 
-          .post(`http://127.0.0.1:8002/api/resume/${info.id}/deactivate/`, null, {
+          .post(`http://reiting.moscow/api/resume/${info.id}/deactivate/`, null, {
 
             headers: {
               "content-type": "application/json",
@@ -96,7 +96,7 @@ export default function Mycard({onClick, CardId, employer, deletePost, applicant
 
         await axios
 
-        .post(`http://127.0.0.1:8002/api/resume/${info.id}/activate/`, null, {
+        .post(`http://reiting.moscow/api/resume/${info.id}/activate/`, null, {
 
             headers: {
             "content-type": "application/json",

@@ -17,7 +17,7 @@ export default function FooterCard ({izmen, deletet,toggleModal, deletePostVakan
 
       await axios
 
-        .post(`http://127.0.0.1:8002/api/vacancy/${info.id}/deactivate/`, null, {
+        .post(`http://reiting.moscow/api/vacancy/${info.id}/deactivate/`, null, {
 
           headers: {
             "content-type": "application/json",
@@ -37,7 +37,7 @@ export default function FooterCard ({izmen, deletet,toggleModal, deletePostVakan
 
       await axios
 
-      .post(`http://127.0.0.1:8002/api/vacancy/${info.id}/activate/`, null, {
+      .post(`http://reiting.moscow/api/vacancy/${info.id}/activate/`, null, {
 
           headers: {
           "content-type": "application/json",

@@ -54,7 +54,7 @@ function App() {
 
   useEffect(() => {
 
-    axios.get('http://localhost:8002/api/resume/', {
+    axios.get('http://reiting.moscow/api/resume/', {
     
     headers: {
         'Content-Type': 'application/json , multipart/form-data',
@@ -75,7 +75,7 @@ function App() {
 
 useEffect(() => {
 
-  axios.get('http://localhost:8002/api/vacancy/', {
+  axios.get('http://reiting.moscow/api/vacancy/', {
   
   headers: {
       'Content-Type': 'application/json , multipart/form-data',
@@ -95,7 +95,7 @@ useEffect(() => {
 
 const deletePost = (id) => {
 
-  axios.delete(`http://localhost:8002/api/resume/${id}`,
+  axios.delete(`http://reiting.moscow/api/resume/${id}`,
   
   {
 
@@ -114,7 +114,7 @@ const deletePost = (id) => {
 
 const deletePostVakan = (id) => {
 
-  axios.delete(`http://localhost:8002/api/vacancy/${id}`,
+  axios.delete(`http://reiting.moscow/api/vacancy/${id}`,
   
   {
 

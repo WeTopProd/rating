@@ -58,6 +58,7 @@ MIDDLEWARE = [
 ROOT_URLCONF = 'frantsuz_api.urls'
 
 TEMPLATES_DIR = os.path.join(BASE_DIR, 'templates')
+
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
@@ -75,6 +76,7 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'frantsuz_api.wsgi.application'
+
 
 if DEBUG:
     DATABASES = {
@@ -94,6 +96,7 @@ else:
             'PORT': '5432'
         }
     }
+
 
 AUTH_PASSWORD_VALIDATORS = [
     {

@@ -10,6 +10,42 @@ import Mycard from '../Myvakan/Mycard';
 
 export default function ResponsesVakan ({ applicants, myVakanId}) {
 
+<<<<<<< HEAD
+=======
+
+    const [mycardId , setMycardId] = useState([])
+
+    const tokenTwo = JSON.parse(localStorage.getItem('token'))
+
+
+    console.log(myVakanId);
+
+    // const paramss = useParams()
+    // const userVakanId = myVakanId.myVakanId.findIndex(user => user.id === +paramss.userVakanId)
+    // const mas = myVakanId.myVakanId[userVakanId]
+
+
+    useEffect(() => {
+  
+      axios.get(`http://reiting.moscow/api/vacancy/3/get_job_posting/`, {
+      
+      headers: {
+          'Content-Type': 'application/json , multipart/form-data',
+          'authorization': `Token ${tokenTwo}`
+      }
+  
+      })
+  
+      .then((res) => {
+         setMycardId(res.data)
+        //  window.location.reload()
+        })
+      .catch((err) => console.error(err))
+  
+  }, [])
+
+
+>>>>>>> 64879f538f33aaae63820e628e5a49f6adeb9086
     return (
 
         <>
