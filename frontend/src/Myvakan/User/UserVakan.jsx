@@ -52,7 +52,7 @@ export default function UserVakan ({auth, setAuth, uservaka, mycardId , ...myVak
 
           {
 
-            resume_id: selectedId 
+            resume: selectedId 
 
           },
 

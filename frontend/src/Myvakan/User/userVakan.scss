@@ -356,7 +356,7 @@ body {
 
 
     .footer__form{
-        width: 100%;
+        max-width: 100%;
         background-color: #FFC350;
         border-radius: 30px;
         margin-top: 30px;
@@ -376,13 +376,11 @@ body {
             border-radius: 12px;
             cursor: pointer;
             transition: ALL ease-in-out .5s;
-            width: 200px;
-            height: 35px;
-
+            width: 300px;
             font-family: 'Montserrat';
             font-style: normal;
             font-weight: 600;
-            font-size: 18px;
+            font-size: 20px;
             line-height: 120%;
             text-align: center;
             color: #282828;
@@ -392,7 +390,7 @@ body {
             justify-content: center;
             max-width: 300px;
             height: 55px;
-            margin-top: 50px;
+            margin-top: 10px;
             transition: all ease .3s;
 
         }

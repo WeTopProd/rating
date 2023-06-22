@@ -42,6 +42,7 @@ import OplataNumber from './Myrezume/tarifnumber/OplataNumber';
 import SuccessFive from './Myrezume/tarifnumber/seccessFive';
 import axios from 'axios';
 import ResponsesVakan from './responses/ResponsesVakan';
+import ResponsesVakanClicks from './Myvakan/Reaponses/Responses';
 
 
 function App() {
@@ -277,6 +278,8 @@ const ClickIdTwo = (id) => {
           <Route path='/tarifnumber'  element={<TarifNumber auth={auth} setAuth={setAuth} priceThree={priceThree} setPriceThree={setPriceThree}  />} />
 
           <Route path='/responsesvakan' element={<ResponsesVakan myVakanId={myVakanId} applicants={applicants} mycardId={mycardId} />} />
+
+          <Route path='/responsesvakanclicks/:vakanId' element={<ResponsesVakanClicks myVakanId={myVakanId} applicants={applicants} mycardId={mycardId} />} />
 
         </Routes>  
 

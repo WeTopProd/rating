@@ -1,46 +1,14 @@
 
 import { useEffect, useState } from "react"
-import Mycard from "../Myrezume/Mycard"
+// import Mycard from "../Myrezume/Mycard"
 import Header from "../components/header/Header"
 import h from "../components/header/header.module.scss"
 import r from "./ResponsesVakan.module.scss"
 import axios from "axios"
 import { useParams } from "react-router-dom"
+import Mycard from '../Myvakan/Mycard';
 
 export default function ResponsesVakan ({ applicants, myVakanId}) {
-
-
-    const [mycardId , setMycardId] = useState([])
-
-    const tokenTwo = JSON.parse(localStorage.getItem('token'))
-
-
-    console.log(myVakanId);
-
-    // const paramss = useParams()
-    // const userVakanId = myVakanId.myVakanId.findIndex(user => user.id === +paramss.userVakanId)
-    // const mas = myVakanId.myVakanId[userVakanId]
-
-
-    useEffect(() => {
-  
-      axios.get(`http://127.0.0.1:8002/api/vacancy/3/get_job_posting/`, {
-      
-      headers: {
-          'Content-Type': 'application/json , multipart/form-data',
-          'authorization': `Token ${tokenTwo}`
-      }
-  
-      })
-  
-      .then((res) => {
-         setMycardId(res.data)
-        //  window.location.reload()
-        })
-      .catch((err) => console.error(err))
-  
-  }, [])
-
 
     return (
 
@@ -86,7 +54,7 @@ responses__link = '/responsesvakan'
 
                 <div className={r.respons}>
                     
-        {mycardId.map( (info, index) => { 
+        {myVakanId.map( (info, index) => { 
                 return <Mycard {...info} applicants={applicants}  key={index} />
          } ) }
 

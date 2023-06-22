@@ -15,6 +15,7 @@ import axios from 'axios';
 export default function Mycard({onClick, CardId, employer, deletePost, applicants, ...info}) {
 
 
+    console.log(info);
 
     async function favorites(id) {
 
@@ -240,7 +241,7 @@ className='svg' width="30px" height="30px" viewBox="0 0 24 24" xmlns="http://www
 
         </div>
 
-        {location.pathname === '/poiksrezume' || location.pathname === '/myliverezume' || location.pathname === '/responsesvakan' ? 
+        {location.pathname === '/responsesvakanclicks' ||location.pathname === '/poiksrezume' || location.pathname === '/myliverezume' ? 
         
         ''
         
@@ -308,7 +309,7 @@ className='svg' width="30px" height="30px" viewBox="0 0 24 24" xmlns="http://www
 
         }
 
-{location.pathname === '/responsesvakan' ? 
+{location.pathname === '/responsesvakanclicks' ? 
 
         <div className="mini__outer_botline">
 
