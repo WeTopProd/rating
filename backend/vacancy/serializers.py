@@ -1,7 +1,11 @@
+from django.shortcuts import get_object_or_404
 from rest_framework import serializers, validators
+
 
 from .models import Favorite, JobPosting, Vacancy
 
+from resume.serializers import ResumeSerializer
+from resume.models import Resume
 
 class VacancySerializer(serializers.ModelSerializer):
     user = serializers.PrimaryKeyRelatedField(
@@ -68,6 +72,8 @@ class ShortVacancySerializer(serializers.ModelSerializer):
 class JobPostingSerializer(serializers.ModelSerializer):
     user = serializers.StringRelatedField()
     vacancy = serializers.StringRelatedField()
+    resume = ResumeSerializer(required=False)
+    resume_id = serializers.IntegerField()
 
     class Meta:
         model = JobPosting
@@ -77,8 +83,24 @@ class JobPostingSerializer(serializers.ModelSerializer):
             'vacancy',
             'cover_letter',
             'resume',
+            'resume_id',
             'applied_at'
         )
+
+    def to_representation(self, instance):
+        data = super().to_representation(instance)
+        resume_data = ResumeSerializer(instance.resume).data
+        data['resume'] = resume_data
+        return data
+
+    def create(self, validated_data):
+        resume_id = validated_data.pop('resume_id', None)
+        instance = super().create(validated_data)
+        if resume_id:
+            resume = get_object_or_404(Resume, pk=resume_id)
+            instance.resume = resume
+            instance.save()
+        return instance
 
 
 class FavoriteSerializer(serializers.ModelSerializer):

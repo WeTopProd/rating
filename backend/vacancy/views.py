@@ -38,9 +38,9 @@ class VacancyViewSet(viewsets.ModelViewSet):
     )
     def add_job_posting(self, request, pk):
         vacancy = self.get_object()
-        resume_id = request.data.get('resume')
+        resume_id = request.data.get('resume_id')
         if resume_id is None:
-            raise ValidationError('Поле "resume" не найдено!')
+            raise ValidationError('Поле "resume_id" не найдено!')
         resume = get_object_or_404(Resume, pk=resume_id)
         serializer = JobPostingSerializer(data=request.data)
         if JobPosting.objects.filter(
