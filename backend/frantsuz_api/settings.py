@@ -77,6 +77,7 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'frantsuz_api.wsgi.application'
 
+
 if DEBUG:
     DATABASES = {
         'default': {
@@ -95,6 +96,7 @@ else:
             'PORT': '5432'
         }
     }
+
 
 AUTH_PASSWORD_VALIDATORS = [
     {
