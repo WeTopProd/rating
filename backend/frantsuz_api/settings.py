@@ -12,7 +12,7 @@ SECRET_KEY = os.getenv(
     default='django-insecure-u3cj2p@gd4&pzj7br(5jq_*3z^oz3k-k!y=l^@r6nq*-58wpc5'
 )
 
-DEBUG = True
+DEBUG = False
 
 if DEBUG:
     ALLOWED_HOSTS = [
@@ -22,7 +22,7 @@ if DEBUG:
     ]
 else:
     ALLOWED_HOSTS = [
-        'frantsuz.ru',
+        'reiting.moscow',
         '37.140.195.3',
     ]
 
@@ -90,7 +90,7 @@ else:
             'NAME': 'rating',
             'USER': 'rating_user',
             'PASSWORD': '20031956tAA',
-            'HOST': 'db',
+            'HOST': '37.140.195.3',
             'PORT': '5432'
         }
     }
@@ -144,10 +144,10 @@ if DEBUG:
     CORS_ORIGIN_ALLOW_ALL = True
 else:
     CORS_ALLOWED_ORIGINS = [
-        'https://frantsuz.ru',
-        'https://37.140.195.3',
-        'https://37.140.195.3:3000',
-        'https://37.140.195.3:8000',
+        'http://reiting.moscow',
+        'http://37.140.195.3',
+        'http://37.140.195.3:3002',
+        'http://37.140.195.3:8002',
     ]
 
 DJOSER = {

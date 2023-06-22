@@ -6,13 +6,13 @@ from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 from rest_framework.validators import ValidationError
 
+from resume.models import Resume
+
 from .filters import VacancyFilter
 from .models import Favorite, JobPosting, Vacancy
 from .permissions import IsOwnerOrReadOnly
 from .serializers import (FavoriteSerializer, JobPostingSerializer,
                           VacancySerializer)
-
-from resume.models import Resume
 
 
 class VacancyViewSet(viewsets.ModelViewSet):
@@ -31,7 +31,11 @@ class VacancyViewSet(viewsets.ModelViewSet):
         serializer = JobPostingSerializer(job_postings, many=True)
         return Response(serializer.data)
 
-    @action(detail=True, methods=['post'])
+    @action(
+        detail=True,
+        methods=['post'],
+        permission_classes=[IsAuthenticated]
+    )
     def add_job_posting(self, request, pk):
         vacancy = self.get_object()
         resume_id = request.data.get('resume_id')
@@ -40,7 +44,7 @@ class VacancyViewSet(viewsets.ModelViewSet):
         if JobPosting.objects.filter(
                 resume=resume, vacancy=vacancy
         ).exists():
-            raise ValidationError('Отклик уже отправлен!')
+            raise ValidationError({'status': False})
         if serializer.is_valid():
             serializer.save(user=request.user, vacancy=vacancy, resume=resume)
             return Response(serializer.data, status=status.HTTP_201_CREATED)
