@@ -11,7 +11,10 @@ import axios from 'axios';
 
 export default function PoiksVakan ({ auth, setAuth, myVakanId}) {
 
+
     const [accordian, setAccordian] = useState(false)
+
+
 
     const openAcc = () => {
       setAccordian(!accordian)
@@ -52,7 +55,7 @@ export default function PoiksVakan ({ auth, setAuth, myVakanId}) {
 
       event.preventDefault()
 
-      axios.get(`http://127.0.0.1:8001/api/vacancy/?city=${city}&job_title=${poiskvalue}&company_name=&start_salary=${income}&final_salary_min=${income}&final_salary_max=&start_experience_min=${experience}&start_experience_max=&final_experience_min=${experienceDo}&final_experience_max=&employment_type=${employment}&is_favorited=&salary_min=&salary_max=`,{
+      axios.get(`http://127.0.0.1:8002/api/vacancy/?city=${city}&job_title=${poiskvalue}&company_name=&start_salary=${income}&final_salary_min=&final_salary_max=&start_experience=${experience}&start_experience_max=&final_experience=${experienceDo}&final_experience_max=&employment_type=${employment}&is_favorited=&salary_min=&salary_max=`, {
 
       headers: {
         "content-type": "application/json",
@@ -69,6 +72,31 @@ export default function PoiksVakan ({ auth, setAuth, myVakanId}) {
     .catch(err => console.error(err))
 
     }
+
+    const tokenTwo = JSON.parse(localStorage.getItem('token'))
+
+    const [ myVakanPoisk, setmyVakanPoisk] = useState([])
+     
+
+    useEffect(() => {
+  
+      axios.get('http://localhost:8002/api/vacancy/?&is_active=true', {
+      
+      headers: {
+          'Content-Type': 'application/json , multipart/form-data',
+          'authorization': `Token ${tokenTwo}`
+      }
+    
+      })
+    
+      .then((res) => {
+        setmyVakanPoisk(res.data)
+        //  window.location.reload()
+        })
+      .catch((err) => console.error(err))
+    
+    }, [])
+
 
     
 
@@ -123,11 +151,19 @@ export default function PoiksVakan ({ auth, setAuth, myVakanId}) {
 
           <select className='poisk__accordion_select' value={city} onChange={(event) => setCity(event.target.value)} >
             <option  value="выберите подходящий">Выберите подходящий</option>
-            <option  value="Москва">Москва</option>
-            <option  value="Московская область">Московская область</option>
+        
+        <option value="Москва">Москва</option>
+        <option value="Санкт-Петербург">Санкт-Петербург</option>
+        <option value="Сочи">Сочи</option>
+        <option value="Екатеринбург">Екатеринбург</option>
+        <option value="Саратов">Саратов</option>
+        <option value="Нижний Новгород">Нижний Новгород</option>
+        <option value="Новосибирск">Новосибирск</option>
+        <option value="Ростов-на-Дону">Ростов-на-Дону</option>
+        <option value="Краснодар">Краснодар</option>
           </select>
 
-        </div>
+        </div>  
 
         <div className='poisk__accordion' >
 
@@ -199,7 +235,7 @@ export default function PoiksVakan ({ auth, setAuth, myVakanId}) {
         </form>
         
       }
-      
+
     </div>
 
                     <div className="poisk__item">
@@ -220,7 +256,7 @@ export default function PoiksVakan ({ auth, setAuth, myVakanId}) {
   
             :
  
-                myVakanId.map( (info, index) => { 
+                myVakanPoisk.map( (info, index) => { 
                   return <Mycard {...info}  key={index} />
                 } ) 
             

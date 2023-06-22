@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import Header from '../components/header/Header'
 import svg from '../components/img/search-normal.svg'
 import { AiOutlineMenu } from "react-icons/ai";
@@ -10,6 +10,31 @@ import axios from 'axios';
 
 export default function PoiksRezume ({onClick, setAuth, auth, mycardId}) {
 
+
+  const [myCardPoisk, setMyCardPoisk] = useState([])
+
+  useEffect(() => {
+
+    axios.get('http://localhost:8002/api/resume/?&is_active=true', {
+    
+    headers: {
+        'Content-Type': 'application/json , multipart/form-data',
+        'authorization': `Token ${token}`
+    }
+
+    })
+
+    .then((res) => {
+      setMyCardPoisk(res.data)
+      //  window.location.reload()
+      })
+    .catch((err) => console.error(err))
+
+}, [])
+
+    console.log(myCardPoisk);
+
+
   const [accordian, setAccordian] = useState(false)
 
   const openAcc = () => {
@@ -19,11 +44,7 @@ export default function PoiksRezume ({onClick, setAuth, auth, mycardId}) {
   const throwOff = () => {
     setpoiskvalue('')
     setCity('')
-    setExperience('')
-    setExperienceDo('')
     setIncome('')
-    setIncomeFinaly('')
-    setEmployment('')
   }
 
   const token = JSON.parse(localStorage.getItem("token"));
@@ -34,23 +55,17 @@ export default function PoiksRezume ({onClick, setAuth, auth, mycardId}) {
 
   const [postLoading, setPostLoading] = useState(false)
 
-  const [city , setCity] = useState('') 
-
-  const [experience , setExperience] = useState('') 
-
-  const [experienceDo , setExperienceDo] = useState('') 
+  const [city , setCity] = useState('')  
 
   const [income , setIncome] = useState('')
-
-  const [incomeFinaly , setIncomeFinaly] = useState('')
-
-  const [employment , setEmployment] = useState('')
 
   const PoiskValueVakan = (event) => {
 
     event.preventDefault()
 
-    axios.get(`http://127.0.0.1:8001/api/resume/?city=${city}&job_title=${poiskvalue}&company_name=&start_salary_min=${income}&final_salary_max=${incomeFinaly}&start_experience_max=${experience}&final_experience_min=${experienceDo}&employment_type=${employment}&is_favorited=`,{
+    // http://127.0.0.1:8002/api/resume/?post_work=${poiskvalue}&city=${city}&education=&start_salary=${income}&final_salary=${income}&is_favorited=
+
+    axios.get(`http://127.0.0.1:8002/api/resume/?city=${city}&post_work=${poiskvalue}&company_name=&start_salary=${income}&final_salary_min=${income}&final_salary_max=&start_experience_min=&start_experience_max=&final_experience_min=&final_experience_max=&employment_type=&is_favorited=&salary_min=${income}&salary_max=&is_active=true`,{
 
     headers: {
       "content-type": "application/json",
@@ -69,7 +84,10 @@ export default function PoiksRezume ({onClick, setAuth, auth, mycardId}) {
 
   }
 
+  
+
     return (
+      
         <>
         
         <Header
@@ -120,8 +138,15 @@ export default function PoiksRezume ({onClick, setAuth, auth, mycardId}) {
 
   <select className='poisk__accordion_select' value={city} onChange={(event) => setCity(event.target.value)} >
     <option  value="выберите подходящий">Выберите подходящий</option>
-    <option  value="Москва">Москва</option>
-    <option  value="Московская область">Московская область</option>
+        <option value="Москва">Москва</option>
+        <option value="Санкт-Петербург">Санкт-Петербург</option>
+        <option value="Сочи">Сочи</option>
+        <option value="Екатеринбург">Екатеринбург</option>
+        <option value="Саратов">Саратов</option>
+        <option value="Нижний Новгород">Нижний Новгород</option>
+        <option value="Новосибирск">Новосибирск</option>
+        <option value="Ростов-на-Дону">Ростов-на-Дону</option>
+        <option value="Краснодар">Краснодар</option>
   </select>
 
 </div>
@@ -148,20 +173,6 @@ export default function PoiksRezume ({onClick, setAuth, auth, mycardId}) {
 
 <div className='poisk__accordion' >
 
-<p className='poisk__accordion_text'>Опыт работы</p>
-
-<input type="number" className='poisk__accordion_selectTwo' placeholder='От'
-       value={experience} onChange={(event) => setExperience(event.target.value)}
-/>
-
-<input type="number" className='poisk__accordion_selectTwo' placeholder='До'
-       value={experienceDo} onChange={(event) => setExperienceDo(event.target.value)} 
-/>
-
-</div>
-
-<div className='poisk__accordion' >
-
 <p className='poisk__accordion_text'>Уровень дохода</p>
 
 <input type="number" className='poisk__accordion_selectTwo' placeholder='От'
@@ -172,22 +183,6 @@ export default function PoiksRezume ({onClick, setAuth, auth, mycardId}) {
 </div>               
 
 
-<div className='poisk__accordion' >
-
-  <p className='poisk__accordion_text'>Тип занятости</p>
-
-  <select className='poisk__accordion_select' value={employment} onChange={(event) => setEmployment(event.target.value)}>
-    <option  value="выберите подходящий">Выберите подходящий</option>
-    <option  value="Полная занятость">Полная занятость</option>
-    <option  value="Частичная занятость">Частичная занятость</option>
-    <option  value="Проектная работа">Проектная работа</option>
-    <option  value="Волонтерство">Волонтерство</option>
-    <option  value="Частичная">Частичная</option>
-    <option  value="Стажировка">Стажировка</option>
-  </select>
-
-</div>
-
 <button  onClick={PoiskValueVakan} className='poisk__accordion_btn'>Применить</button>
 
 <button onClick={throwOff} className='poisk__accordion_btn'>Сбросить</button>
@@ -196,74 +191,6 @@ export default function PoiksRezume ({onClick, setAuth, auth, mycardId}) {
 </form>
 
 }
-
-{/* <div >
-
-<p className='poisk__accordian_title' onClick={handleOpen5} >Возраст </p>
-
-{show5 && (
-
-  <>
-
-<p className="poisk__accordian_subtitle">
-От 18 до 30 
-</p>
-
-<p className="poisk__accordian_subtitle">
-От 30 лет
-</p>
-
-  </>
-
-)}
-
-</div>  */}
-
-{/* <div >
-
-<p className='poisk__accordian_title' onClick={handleOpen6} >Образование </p>
-
-{show6 && (
-
-  <>
-
-<p className="poisk__accordian_subtitle">
-Среднее
-</p>
-
-<p className="poisk__accordian_subtitle">
-Среднее специальное
-</p>
-
-<p className="poisk__accordian_subtitle">
-Неоконченное высшее
-</p>
-
-<p className="poisk__accordian_subtitle">
-Высшее
-</p>
-
-<p className="poisk__accordian_subtitle">
-Бакалавр
-</p>
-
-<p className="poisk__accordian_subtitle">
-Магистр
-</p>
-
-<p className="poisk__accordian_subtitle">
-Кандидат наук
-</p>
-
-<p className="poisk__accordian_subtitle">
-Доктор наук
-</p>
-
-  </>
-
-)}
-
-</div>  */}
 
 
                 </div>
@@ -286,8 +213,8 @@ export default function PoiksRezume ({onClick, setAuth, auth, mycardId}) {
               
                         :
              
-                        mycardId.map( (info, index) => { 
-                              return <Mycard {...info}  key={index} />
+                           myCardPoisk.map( (info, index) => { 
+                                return <Mycard {...info}  key={index} />
                             } ) 
                         
                         }

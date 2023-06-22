@@ -18,7 +18,7 @@ export default function MyLiveRezume ({auth,setAuth, onClick , mycardId}) {
 
     useEffect(() => {
 
-        axios.get(`http://127.0.0.1:8001/api/resume/?is_favorited=1`, {
+        axios.get(`http://127.0.0.1:8002/api/resume/?is_favorited=1`, {
 
         headers: {
           "content-type": "application/json",
@@ -34,7 +34,7 @@ export default function MyLiveRezume ({auth,setAuth, onClick , mycardId}) {
       .finally( () => setFinesh(true) )
 
 
-    },[])
+    }, [])
 
     return (
         <>
@@ -58,6 +58,8 @@ myRezume = 'Мои вакансии'
 myRezume_link = '/myvakan'
 
 tarif_link= '/tarifvakan'
+responses = 'Отклики'
+responses__link = '/responsesvakan'
 
 myLiveVakan = '/myliverezume'
 auth={auth}

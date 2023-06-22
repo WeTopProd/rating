@@ -61,7 +61,7 @@ import axios from 'axios'
     const navigate = useNavigate('')
   
     useEffect(() => {
-        axios.get('http://localhost:8001/api/users/',{
+        axios.get('http://localhost:8002/api/users/',{
 
              headers: {
                 'Content-Type': 'application/json ',
@@ -82,7 +82,7 @@ import axios from 'axios'
     
     const PreapRezume = () => {       
     
-        axios.post('http://localhost:8001/api/resume/', {
+        axios.post('http://localhost:8002/api/resume/', {
 
             FullName: FullName,
             PhoneNumber: PhoneNumber,
@@ -186,7 +186,20 @@ import axios from 'axios'
 
                         <div  className={l.preap__form_flex}>
                             
-                        <input value={city} onChange={(event) => setCity(event.target.value)} type="text" placeholder='Город' className={l.preap__form_flex_arr} />
+                        {/* <input value={city} onChange={(event) => setCity(event.target.value)} type="text" placeholder='Город' className={l.preap__form_flex_arr} /> */}
+
+      <select value={city} onChange={(event) => setCity(event.target.value)} className={l.preap__form_flex_select} >
+        <option value="Город">Город</option>
+        <option value="Москва">Москва</option>
+        <option value="Санкт-Петербург">Санкт-Петербург</option>
+        <option value="Сочи">Сочи</option>
+        <option value="Екатеринбург">Екатеринбург</option>
+        <option value="Саратов">Саратов</option>
+        <option value="Нижний Новгород">Нижний Новгород</option>
+        <option value="Новосибирск">Новосибирск</option>
+        <option value="Ростов-на-Дону">Ростов-на-Дону</option>
+        <option value="Краснодар">Краснодар</option>
+      </select>                        
 
                         <input value={address} onChange={(event) => setAddress(event.target.value)} type="text" placeholder='Адрес проживания' className={l.preap__form_flex_arr} />
                             
@@ -207,7 +220,7 @@ import axios from 'axios'
       </select>
 
       <select onChange={(event) => setAddEducation(event.target.value)} value={AddEducation}  className={l.preap__form_flex_select} >
-        <option value="Образование">Образование</option>
+        <option value="Образование">Доп образование</option>
         <option value="Среднее">Среднее</option>
         <option value="Среднее специальное">Среднее специальное</option>
         <option value="Неоконченное высшее">Неоконченное высшее</option>
@@ -242,12 +255,14 @@ import axios from 'axios'
 
 
                         <select value={busyness} onChange={(event) => setbusyness(event.target.value)} type="text" placeholder='Занятость' className={l.preap__form_input_selec}>
-                            
+
+        <option value="Занятость">Занятость</option>
         <option value="Полная занятость">Полная занятость</option>
         <option value="Частичная занятость">Частичная занятость</option>
         <option value="Проектная работа">Проектная работа</option>
         <option value="Волонтерство">Волонтерство</option>
         <option value="Стажировка">Стажировка</option>
+
                         </select>
 
                         <textarea value={About} onChange={(event) => setAbout(event.target.value)} className={l.preap__form_textarea} placeholder='Расскажите о себе'></textarea>

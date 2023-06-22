@@ -47,6 +47,10 @@ tarif_link= '/tarifvakan'
 
 myLiveVakan = '/myliverezume'
 
+responses = 'Отклики'
+
+responses__link = '/responsesvakan'
+
         auth={auth}
         setAuth={setAuth}
 

@@ -205,9 +205,10 @@
 
         &_botline {
             display: flex;
-            justify-content: space-between;
+            justify-content: flex-end;
             width: 100%;
             margin-top: 25px;
+           
 
             &_eyeDiv{
                 display: flex;
@@ -236,6 +237,10 @@
             &_change {
                 
                 display: flex;
+                flex-wrap: wrap;
+                align-items: center;
+                justify-content: flex-end;
+                
                 gap: 22px;
 
                 &_pics {
@@ -250,16 +255,17 @@
                         font-weight: 400;
                         font-size: 14px;
                         line-height: 16px;
-                        color: #1877EE;
+                        color: #fff;
+
                         cursor: pointer;
                         margin: 0;
                         transition: .4s all ease;
                         text-decoration: none;
 
-
-                        &:hover {
-                            color: #0b4489;
-                        }
+                        border: none;
+                        padding: 8px 10px;
+                        border-radius: 10px;
+                        background-color: #1262B3;
                     }
 
                     &_delete {
@@ -268,14 +274,16 @@
                         font-weight: 400;
                         font-size: 14px;
                         line-height: 16px;
-                        color: #282828;
+                        color: #fff;
                         cursor: pointer;
                         margin: 0;
                         transition: .4s all ease;
 
-                        &:hover {
-                            color: #000000;
-                        }
+                        border: none;
+                        padding: 8px 20px;
+                        border-radius: 10px;
+                        background-color: #970000;
+
                     }
 
                     &_other {

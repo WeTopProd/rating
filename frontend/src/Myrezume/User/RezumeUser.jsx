@@ -10,9 +10,6 @@ export default function RezumeUser ({auth, setAuth , uservaka , ...mycardId }) {
     const userId = mycardId.mycardId.findIndex(user => user.id === +params.userId)
     const mas = mycardId.mycardId[userId]
     
-    const location = useLocation()
-
-
     return (
 
         <>  
@@ -63,10 +60,7 @@ export default function RezumeUser ({auth, setAuth , uservaka , ...mycardId }) {
 
                     {mas.FullName} {mas.data} лет, город {mas.city}
                     </p>
-    
-                    <Link to={`/otzivuser/${mas.id}`} className="recomendation__top_left_blue">
-                    РЕКОМЕНДАЦИИ 
-                    </Link>
+
     
                 </div>
 
@@ -195,7 +189,10 @@ export default function RezumeUser ({auth, setAuth , uservaka , ...mycardId }) {
 
     
 
-            {uservaka ?
+        {uservaka ?
+
+        <>
+    
             
         <div className="recomendation__number">
             <p className="recomendation__number_text">
@@ -204,7 +201,11 @@ export default function RezumeUser ({auth, setAuth , uservaka , ...mycardId }) {
             <span className="recomendation__number_text">
                 {mas.PhoneNumber}
             </span>
+            
         </div>
+        
+
+        </>
 
 
             :
