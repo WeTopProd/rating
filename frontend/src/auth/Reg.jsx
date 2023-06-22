@@ -40,7 +40,7 @@ function RegAuth () {
     const hanClick =  (e) => {
 
         e.preventDefault()
-        axios.post('http://localhost:8002/api/users/', {
+        axios.post('http://37.140.195.3:8002/api/users/', {
 
        phone: ValueTel ,
        first_name: ValueLast,
