@@ -63,7 +63,7 @@ import axios from 'axios'
     const navigate = useNavigate('')
   
     useEffect(() => {
-        axios.get('http://37.140.195.3:8002/api/users/',{
+        axios.get('http://reiting.moscow:8002/api/users/',{
 
              headers: {
                 'Content-Type': 'application/json ',
@@ -85,7 +85,7 @@ import axios from 'axios'
     
     const PreapRezumeLoad = () => {       
     
-        axios.patch(`http://37.140.195.3:8002/api/resume/${mas.id}/`, {
+        axios.patch(`http://reiting.moscow:8002/api/resume/${mas.id}/`, {
 
             FullName: FullName,
             PhoneNumber: PhoneNumber,

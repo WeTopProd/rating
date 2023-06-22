@@ -24,7 +24,7 @@ export default function ResponsesVakan ({ applicants, myVakanId}) {
 
     useEffect(() => {
   
-      axios.get(`http://37.140.195.3:8002/api/vacancy/3/get_job_posting/`, {
+      axios.get(`http://reiting.moscow:8002/api/vacancy/3/get_job_posting/`, {
       
       headers: {
           'Content-Type': 'application/json , multipart/form-data',
