@@ -61,7 +61,7 @@ import axios from 'axios'
     const navigate = useNavigate('')
   
     useEffect(() => {
-        axios.get('http://localhost:8001/api/users/',{
+        axios.get('http://localhost:8002/api/users/',{
 
              headers: {
                 'Content-Type': 'application/json ',
@@ -82,7 +82,7 @@ import axios from 'axios'
     
     const PreapRezume = () => {       
     
-        axios.post('http://localhost:8001/api/resume/', {
+        axios.post('http://localhost:8002/api/resume/', {
 
             FullName: FullName,
             PhoneNumber: PhoneNumber,

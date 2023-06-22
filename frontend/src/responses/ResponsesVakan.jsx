@@ -16,7 +16,7 @@ export default function ResponsesVakan ({ applicants}) {
 
     useEffect(() => {
   
-      axios.get('http://localhost:8001/api/resume/', {
+      axios.get('http://localhost:8002/api/resume/', {
       
       headers: {
           'Content-Type': 'application/json , multipart/form-data',

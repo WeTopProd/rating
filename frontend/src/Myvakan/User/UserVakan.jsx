@@ -25,7 +25,7 @@ export default function UserVakan ({auth, setAuth, uservaka, mycardId , ...myVak
     useEffect(() => {
         if (mas) {
           axios
-            .get(`http://127.0.0.1:8001/api/vacancy/${mas.id}/get_job_posting/`, {
+            .get(`http://127.0.0.1:8002/api/vacancy/${mas.id}/get_job_posting/`, {
               headers: {
                 "content-type": "application/json",
                 authorization: `Token ${token}`,
@@ -46,7 +46,7 @@ export default function UserVakan ({auth, setAuth, uservaka, mycardId , ...myVak
 
         await axios
     
-          .post(`http://127.0.0.1:8001/api/vacancy/${mas.id}/add_job_posting/` ,
+          .post(`http://127.0.0.1:8002/api/vacancy/${mas.id}/add_job_posting/` ,
 
           {
 
