@@ -27,7 +27,8 @@ function Header (
      link5, title5,
      myRezume,myRezume_link,
      tarif_link,
-     myLiveVakan,mylive,auth, setAuth
+     myLiveVakan,mylive,auth, setAuth,
+     responses__link , responses
     
     }) {
 
@@ -202,7 +203,7 @@ function Header (
 
                      <>
 
-<div className={h.user}>
+<div  className={h.user}>
     <img src={log} alt="svg" />
     <Link to='/login'>вход</Link>
 </div>
@@ -237,6 +238,26 @@ function Header (
                         <img src={like} alt="svg" />
                         <Link to={myLiveVakan}>Мои избранные {mylive}</Link>
                     </div>
+
+                    {location.pathname === '/vakan' ||
+                    location.pathname === '/addvakan' ||
+                    location.pathname === '/tarifvakan' ||
+                    location.pathname === '/oplatavakan' ||
+                    location.pathname === '/myvakan' ||
+                    location.pathname === '/myliverezume'
+                    ?
+                    
+                    <div className={h.user}>
+                        <img src={contact} alt="svg" />
+                        <Link to={responses__link}>{responses}</Link>
+                    </div>
+
+                    : 
+                    
+                    ''
+                    
+                    }
+
 
                     {location.pathname === '/vakan'||
                      location.pathname === '/tarifvakan' ||

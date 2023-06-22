@@ -1,7 +1,6 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { useContext, useEffect, useState } from 'react';
 
-
 import Home from './components/home/Home'
 import Footer from './components/footer/Footer';
 import Rezume from './components/rezume/Rezume'
@@ -42,6 +41,7 @@ import TarifNumber from './Myrezume/tarifnumber/TarifNumber';
 import OplataNumber from './Myrezume/tarifnumber/OplataNumber';
 import SuccessFive from './Myrezume/tarifnumber/seccessFive';
 import axios from 'axios';
+import ResponsesVakan from './responses/ResponsesVakan';
 
 
 function App() {
@@ -70,6 +70,8 @@ function App() {
 
 }, [])
 
+
+
 useEffect(() => {
 
   axios.get('http://localhost:8001/api/vacancy/', {
@@ -88,9 +90,6 @@ useEffect(() => {
   .catch((err) => console.error(err))
 
 }, [])
-
-
-
 
 
 const deletePost = (id) => {
@@ -124,15 +123,13 @@ const deletePostVakan = (id) => {
       'authorization': `Token ${tokenTwo}`
 
   }
-
-
+  
   }
 
   )
     .then(() => window.location.reload() )
     .catch(err => console.error(err))
 };
-
 
 
   const [auth, setAuth] = useState(false)
@@ -175,7 +172,7 @@ const ClickIdTwo = (id) => {
     
 };
 
-  const [uservaka,setUservakan] = useState(false)
+  const [uservaka, setUservakan] = useState(false)
 
   function applicants () {
     setUservakan(true)
@@ -229,20 +226,13 @@ const ClickIdTwo = (id) => {
 
           <Route path='/oplatanumber'  element={<OplataNumber priceThree={priceThree} auth={auth} setAuth={setAuth} />} />
 
-
           <Route path='/leadvakan/:userVakanId'  element={<LeadVakan myVakanId={myVakanId} auth={auth} setAuth={setAuth}/>} />
 
           <Route path='/preap'  element={<Preap  auth={auth} setAuth={setAuth}/>} />
 
           <Route path='/preapload/:userId'  element={<PreapLoad mycardId={mycardId} auth={auth} setAuth={setAuth} />} />
 
-
-
-          <Route path='/myrezume'  element={<MyRezume  applicants={applicants} deletePost={deletePost}  auth={auth} setAuth={setAuth}  mycardId={mycardId} />} />
-
-
-
-
+          <Route path='/myrezume'  element={<MyRezume employer={employer} applicants={applicants} deletePost={deletePost}  auth={auth} setAuth={setAuth}  mycardId={mycardId} />} />
 
           <Route path='/poiksvakan'  element={<PoiksVakan  auth={auth} setAuth={setAuth} myVakanId={myVakanId} onClick={ClickIdTwo} />} /> 
 
@@ -275,17 +265,19 @@ const ClickIdTwo = (id) => {
 
           <Route path='/rezumeuser/:userId'   element={<RezumeUser mycardId={mycardId}  auth={auth} setAuth={setAuth} uservaka={uservaka}  />} />
 
-          <Route path='/otzivuser/:userId'  element={<Otziv auth={auth} setAuth={setAuth} mycardId={mycardId}   />} />
+          {/* <Route path='/otzivuser/:userId'  element={<Otziv auth={auth} setAuth={setAuth} mycardId={mycardId}   />} /> */}
 
-          <Route path='/vakanuser/:userVakanId'  element={<UserVakan uservaka={uservaka}  auth={auth} setAuth={setAuth}  myVakanId={myVakanId} />} />
+          <Route path='/vakanuser/:userVakanId'  element={<UserVakan uservaka={uservaka}  auth={auth} setAuth={setAuth}  myVakanId={myVakanId} mycardId={mycardId} />} />
 
-          <Route path='/otzivuservakan/:userVakanId'  element={<OtzivVakan auth={auth} setAuth={setAuth}  myVakanId={myVakanId} />} />
+          {/* <Route path='/otzivuservakan/:userVakanId'  element={<OtzivVakan auth={auth} setAuth={setAuth}  myVakanId={myVakanId} />} /> */}
 
           <Route path='/mylivevakan'  element={<MyLiveVakan myVakanId={myVakanId} auth={auth} setAuth={setAuth} onClick={ClickIdTwo} />} />
 
           <Route path='/myliverezume'  element={<MyLiveRezume mycardId={mycardId} auth={auth} setAuth={setAuth}  />} />
 
           <Route path='/tarifnumber'  element={<TarifNumber auth={auth} setAuth={setAuth} priceThree={priceThree} setPriceThree={setPriceThree}  />} />
+
+          <Route path='/responsesvakan' element={<ResponsesVakan applicants={applicants} mycardId={mycardId} />} />
 
         </Routes>  
 

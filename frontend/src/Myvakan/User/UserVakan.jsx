@@ -2,15 +2,97 @@ import { useEffect, useState } from 'react';
 import Header from '../../components/header/Header'
 
 import './userVakan.scss' 
-import { Link, useParams } from 'react-router-dom';
+import { Link, useParams, useLocation, useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
-export default function UserVakan ({auth, setAuth, uservaka, ...myVakanId}) {
+export default function UserVakan ({auth, setAuth, uservaka, mycardId , ...myVakanId}) {
 
-    const params = useParams()
-    const userVakanId = myVakanId.myVakanId.findIndex(user => user.id === +params.userVakanId)
+    const paramss = useParams()
+    const userVakanId = myVakanId.myVakanId.findIndex(user => user.id === +paramss.userVakanId)
     const mas = myVakanId.myVakanId[userVakanId]
 
-    console.log(mas);
+    
+
+    const token = JSON.parse(localStorage.getItem("token"));
+
+    const [selectTrue, setselectTrue] = useState(false)
+
+    const [Text, setText] = useState(false)
+
+    // console.log(mas.id);
+
+
+    useEffect(() => {
+        if (mas) {
+          axios
+            .get(`http://127.0.0.1:8001/api/vacancy/${mas.id}/get_job_posting/`, {
+              headers: {
+                "content-type": "application/json",
+                authorization: `Token ${token}`,
+              },
+            })
+            .then((res) => setGetClick(res.data[0]))
+            .catch((err) => console.error(err));
+        }
+      }, [mas?.id]);
+
+    
+    async function handleOtklik (e) {
+
+        setText(!Text)
+        setselectTrue(!selectTrue)
+
+        e.preventDefault()
+
+        await axios
+    
+          .post(`http://127.0.0.1:8001/api/vacancy/${mas.id}/add_job_posting/` ,
+
+          {
+
+            resume_id: selectedId 
+
+          },
+
+          {
+
+              headers: {
+                "content-type": "application/json",
+                authorization: `Token ${token}`,
+              },
+
+          }
+
+
+          )
+
+          .catch(err => console.error(err))
+
+    }
+
+    const [getClick, setGetClick] = useState([])
+
+    console.log(getClick.applied_at);
+
+
+    
+
+      const [selectedId, setSelectedId] = useState()
+
+      const handleSelectChange = (event) => {
+        setSelectedId(event.target.value);
+      };
+      
+      const location = useLocation();
+      
+      const params = new URLSearchParams(location.search);
+      const fromPage = params.get('fromPage');
+
+      const email = JSON.parse(localStorage.getItem('user')).email
+    
+
+    //   console.log(getClick);
+
 
     return (
 
@@ -57,9 +139,6 @@ setAuth={setAuth}
 
                  <br />
 
-
-                 <Link to={`/otzivuservakan/${mas.id}`} className='' >Отзывы сотрудников</Link>
- 
                  </p>
                  <img className="bigTheater__top_pic" src={mas.logo}  alt="" />
              </div>
@@ -141,16 +220,92 @@ setAuth={setAuth}
                  </ul>
                  
              </div>
+
+
+ {fromPage === 'poisk' &&
+
+ <>
+
+ {getClick.applied_at ?(
+
+<div className='button'>
+Отправлено 
+</div>
+
+ ) : (
+
+ ''
+
+ )}
+
+ {getClick && getClick?.applied_at === undefined ? 
  
- {uservaka ?
+ <button onClick={() => setselectTrue(true)} className='button'>
+   Откликнуться
+  </button> 
 
- <button className='button'>Отклик</button>
+  :
 
+  ''
+
+}
+
+
+
+
+
+
+
+{ selectTrue ? 
+
+<form onSubmit={handleOtklik} className='footer__form'>
+<select value={selectedId} onChange={handleSelectChange}>
+  <option
+    value=''
+    style={{
+      color: '#282828',
+      background: '#fff',
+      fontSize: '20px',
+      fontWeight: '600',
+      padding: '20px 0px',
+      lineHeight: '160%',
+    }}
+  >
+    Выберите резюме
+  </option>
+  {mycardId.map((info) => (
+    <option
+      key={info.id}
+      value={info.id}
+      style={{
+        color: '#282828',
+        background: '#fff',
+        fontSize: '20px',
+        fontWeight: '600',
+        padding: '20px 0px',
+        lineHeight: '160%',
+      }}
+    >
+      {info.id} {info.postWork}
+    </option>
+  ))}
+</select>
+
+<button onClick={(e) => handleOtklik(e)}>Отправить</button>
+
+</form>
  :
 
- ""
+ ''
 
  }
+
+ 
+ </>
+
+ }
+
+
      
  
  
@@ -169,3 +324,5 @@ setAuth={setAuth}
 
     )
 }
+
+

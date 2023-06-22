@@ -20,7 +20,9 @@ function RegAuth () {
 
     const [ValuePasswEnd, setValuePasswEnd] = useState(''); 
     
-    const [ValueTel, setValueTel] = useState('');   
+    const [ValueTel, setValueTel] = useState('');  
+    
+    const [ValueType, setValueType] = useState('');   
 
     const [modal, setmodal] = useState(false)
 
@@ -46,6 +48,7 @@ function RegAuth () {
        email: ValuePocht,
        password: ValuePassw,
        re_password: ValuePasswEnd,
+       user_type: ValueType ,
 
     },  {
 
@@ -62,6 +65,7 @@ function RegAuth () {
     
     err.message === 'Request failed with status code 400' ? setmodal(true) : setmodal(false) } )
 }
+
 
 
 
@@ -126,6 +130,12 @@ function RegAuth () {
             <input type="password" className={f.form__input} placeholder="Повторите пароль"
             value={ValuePasswEnd} onChange={event => setValuePasswEnd(event.target.value)}
             />
+
+            <select className={f.form__inputtwo} value={ValueType} onChange={event => setValueType(event.target.value)}>
+                <option style={{fontSize: '20px', border: 'none'}} value="">Вибирете</option>
+                <option style={{fontSize: '20px', border: 'none'}} value="employer">Работадатель</option>
+                <option style={{fontSize: '20px', border: 'none'}} value="job_seeker">Соискатель</option>
+            </select>
 
             </div>
             

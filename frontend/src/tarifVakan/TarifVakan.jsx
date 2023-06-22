@@ -32,6 +32,8 @@ myRezume = 'Мои вакансии'
 myRezume_link = '/myvakan'
 
 tarif_link= '/tarifvakan'
+responses = 'Отклики'
+responses__link = '/responsesvakan'
 
 myLiveVakan = '/myliverezume'
 auth={auth}

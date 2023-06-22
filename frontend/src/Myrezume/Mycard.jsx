@@ -12,9 +12,9 @@ import deletet from '../components/img/delete.svg'
 import izmen from '../components/img/izmen.svg'
 import axios from 'axios';
 
-export default function Mycard({onClick, CardId, deletePost, applicants, ...info}) {
+export default function Mycard({onClick, CardId, employer, deletePost, applicants, ...info}) {
 
-    const token = JSON.parse(localStorage.getItem("token"));
+
 
     async function favorites(id) {
 
@@ -32,18 +32,6 @@ export default function Mycard({onClick, CardId, deletePost, applicants, ...info
           })
 
           .catch(err => console.error(err))
-
-
-          await axios.get('http://127.0.0.1:8001/api/resume/?is_favorited=true', {
-
-          headers: {
-            "content-type": "application/json",
-            authorization: `Token ${token}`,
-          }
-
-        })
-        
-        .catch(err => console.error(err))
 
       }
 
@@ -64,19 +52,6 @@ export default function Mycard({onClick, CardId, deletePost, applicants, ...info
 
           .catch(err => console.error(err))
 
-          await axios.get('http://127.0.0.1:8001/api/resume/?is_favorited=1', {
-
-          headers: {
-            "content-type": "application/json",
-            authorization: `Token ${token}`,
-          }
-
-        })
-        
-        .catch(err => console.error(err))
-
-
-
       }
 
 
@@ -86,9 +61,54 @@ export default function Mycard({onClick, CardId, deletePost, applicants, ...info
 
     const heartLove = useLocation();
 
-    const [heart, setHeart] = useState(true)
+    const [heart, setHeart] = useState(info.is_favorited)
 
     const [currentId, setCurrentId] = useState('')
+
+    const [ hide, setHide ] = useState(info.is_active)
+
+
+
+    
+    async function hideHandle (id) {
+
+        setHide(!hide);
+
+        await axios
+
+          .post(`http://127.0.0.1:8001/api/resume/${info.id}/deactivate/`, null, {
+
+            headers: {
+              "content-type": "application/json",
+              authorization: `Token ${token}`,
+            },
+
+          })
+
+          .catch(err => console.error(err))
+
+      }
+
+      async function hideHandleFalse(id) {
+
+        setHide(!hide);
+
+        await axios
+
+        .post(`http://127.0.0.1:8001/api/resume/${info.id}/activate/`, null, {
+
+            headers: {
+            "content-type": "application/json",
+            authorization: `Token ${token}`,
+          },
+  
+        })
+
+        .catch(err => console.error(err))
+
+      }
+
+      const token = JSON.parse(localStorage.getItem("token"));
 
     return(
 
@@ -111,9 +131,9 @@ export default function Mycard({onClick, CardId, deletePost, applicants, ...info
 
 id={info.id}
 
-fill={ !heart ? '#ce1616' : '000'}
+fill={ heart ? '#ce1616' : '000'}
 
-onClick={ heart  ? (event) => favorites(event.currentTarget.id) : (event) => favoritesDelete(event.currentTarget.id) }
+onClick={ !heart  ? (event) => favorites(event.currentTarget.id) : (event) => favoritesDelete(event.currentTarget.id) }
 
 className='svg' width="30px" height="30px" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.808,11.079C19.829,16.132,12,20.5,12,20.5s-7.829-4.368-8.808-9.421C2.227,6.1,5.066,3.5,8,3.5a4.444,4.444,0,0,1,4,2,4.444,4.444,0,0,1,4-2C18.934,3.5,21.773,6.1,20.808,11.079Z"/></svg>
 
@@ -147,9 +167,14 @@ className='svg' width="30px" height="30px" viewBox="0 0 24 24" xmlns="http://www
 
 }  
 
-    <Link to={`/rezumeuser/${info.id}`} onClick={applicants} className="mini__outer_inside_blueTitle">
+<Link to={`/rezumeuser/${info.id}`}
+    onClick={applicants} 
+    className="mini__outer_inside_blueTitle">
+    
         {info.postWork}
-    </Link>
+
+</Link>  
+
 
     <img className="mini__outer_inside_avatar" src={info.foto} alt="" />
 
@@ -215,7 +240,7 @@ className='svg' width="30px" height="30px" viewBox="0 0 24 24" xmlns="http://www
 
         </div>
 
-        {location.pathname === '/poiksrezume' || location.pathname === '/myliverezume' ? 
+        {location.pathname === '/poiksrezume' || location.pathname === '/myliverezume' || location.pathname === '/responsesvakan' ? 
         
         ''
         
@@ -236,9 +261,22 @@ className='svg' width="30px" height="30px" viewBox="0 0 24 24" xmlns="http://www
 
     <div className="mini__outer_botline_change_pics">
 
-<p className="mini__outer_botline_change_pics_blue">
-    Скрыть резюме
-</p>
+<button className="mini__outer_botline_change_pics_blue" 
+
+       onClick={ hide  ? (event) => hideHandle(event.currentTarget.id) : (event) => hideHandleFalse(event.currentTarget.id) }
+       id={info.id}
+>
+    { hide ? 
+
+    "Скрыть резюме"
+
+    :
+
+    "Показать резюме"
+    
+    }
+
+</button>
 
 </div>
 
@@ -256,10 +294,6 @@ className='svg' width="30px" height="30px" viewBox="0 0 24 24" xmlns="http://www
 
             <img className="mini__outer_botline_change_pics_other" src={deletet} alt="" />
 
-            {/* <div onClick={toggleModal} className="mini__outer_botline_change_pics_delete">
-                <span id={info.id} onClick={(e) => setCurrentId(e.currentTarget.id)}>Удалить</span>
-            </div> */}
-
             <div id={info.id} onClick={(event) => deletePost(event.currentTarget.id)} className="mini__outer_botline_change_pics_delete">
                 Удалить
             </div>
@@ -273,6 +307,41 @@ className='svg' width="30px" height="30px" viewBox="0 0 24 24" xmlns="http://www
        
 
         }
+
+{location.pathname === '/responsesvakan' ? 
+
+        <div className="mini__outer_botline">
+
+    <div className="mini__outer_botline_change">
+
+        <div className="mini__outer_botline_change_pics">
+
+            <button className="mini__outer_botline_change_pics_blue">
+                Принять
+            </button>
+
+        </div>
+
+        <div className="mini__outer_botline_change_pics">
+
+
+            <button className="mini__outer_botline_change_pics_delete">
+                Отклонить
+            </button>
+
+        </div>
+    </div>
+
+
+
+        </div>
+        
+        :
+
+        ''
+
+        }
+
 
 
     </div>

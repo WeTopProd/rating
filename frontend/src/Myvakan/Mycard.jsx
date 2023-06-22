@@ -15,7 +15,7 @@ export default function Mycard ({deletePostVakan ,applicants ,...info}) {
 
     const [isShowingModal, toggleModal] = useModal();
 
-    const [heart, setHeart] = useState(true)
+    const [heart, setHeart] = useState(info.is_favorited)
     
     const footerCard = useLocation();
 
@@ -88,8 +88,9 @@ export default function Mycard ({deletePostVakan ,applicants ,...info}) {
 
       }
 
-      
-
+      const location = useLocation();
+      const navigate = useNavigate(); 
+    
     
 
     return (
@@ -114,9 +115,9 @@ export default function Mycard ({deletePostVakan ,applicants ,...info}) {
 
 <svg  id={info.id}
 
-onClick={ heart  ? (event) => favorites(event.currentTarget.id) : (event) => favoritesDelete(event.currentTarget.id) }
+onClick={ !heart  ? (event) => favorites(event.currentTarget.id) : (event) => favoritesDelete(event.currentTarget.id) }
 
-fill={ !heart ? '#ce1616' : '000'} className='svg' width="30px" height="30px" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.808,11.079C19.829,16.132,12,20.5,12,20.5s-7.829-4.368-8.808-9.421C2.227,6.1,5.066,3.5,8,3.5a4.444,4.444,0,0,1,4,2,4.444,4.444,0,0,1,4-2C18.934,3.5,21.773,6.1,20.808,11.079Z"/></svg>
+fill={ heart ? '#ce1616' : '000'} className='svg' width="30px" height="30px" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.808,11.079C19.829,16.132,12,20.5,12,20.5s-7.829-4.368-8.808-9.421C2.227,6.1,5.066,3.5,8,3.5a4.444,4.444,0,0,1,4,2,4.444,4.444,0,0,1,4-2C18.934,3.5,21.773,6.1,20.808,11.079Z"/></svg>
 
                     </div>
                     
@@ -136,10 +137,27 @@ fill={ heart ? '#ce1616' : '000'} className='svg' width="30px" height="30px" vie
 
 }
                     
+{heartLove.pathname === '/poiksvakan' ?
 
-                    <Link to={`/vakanuser/${info.id}`}  className="VAC__out_in_title">
-                      {info.job_title}
-                    </Link>
+<Link to={`/vakanuser/${info.id}?fromPage=poisk`}
+
+className="mini__outer_inside_blueTitle">
+
+    {info.job_title}
+
+</Link>  
+
+:
+
+<Link to={`/vakanuser/${info.id}?fromPage=myvakan`}
+
+className="mini__outer_inside_blueTitle">
+
+    {info.job_title}
+
+</Link> 
+
+} 
 
                     <p className='VAC__out_in_two_sal_text'>Компания: {info.company_name}</p> 
                     <p className='VAC__out_in_two_sal_text'>Город: {info.city}</p> 
@@ -150,7 +168,7 @@ fill={ heart ? '#ce1616' : '000'} className='svg' width="30px" height="30px" vie
                     <div className="VAC__out_in_two_sal">
 
                         <p className="VAC__out_in_two_sal_text">
-                            от {info.start_salary} - {info.final_salary} руб
+                            от {info.start_salary} - {info.final_salary} руб  на руки
                         </p>
 
                         <p className="VAC__out_in_two_sal_text">

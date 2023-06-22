@@ -127,6 +127,9 @@ tarif_link= '/tarifvakan'
 
 myLiveVakan = '/myliverezume'
 
+responses = 'Отклики'
+responses__link = '/responsesvakan'
+
 auth={auth}
 setAuth={setAuth}
 
@@ -166,8 +169,18 @@ setAuth={setAuth}
                             placeholder="Название компании*" />
 
 
-                        <input value={city} onChange={(event) => setCity(event.target.value)} type="text" className={m.sectionCreateVaccancy__outer_inner_form_CN}
-                            placeholder="Город*" />
+<select value={city} onChange={(event) => setCity(event.target.value)}  className={m.sectionCreateVaccancy__outer_inner_form_CN} >
+        <option value="Город">Город</option>
+        <option value="Москва">Москва</option>
+        <option value="Санкт-Петербург">Санкт-Петербург</option>
+        <option value="Сочи">Сочи</option>
+        <option value="Екатеринбург">Екатеринбург</option>
+        <option value="Саратов">Саратов</option>
+        <option value="Нижний Новгород">Нижний Новгород</option>
+        <option value="Новосибирск">Новосибирск</option>
+        <option value="Ростов-на-Дону">Ростов-на-Дону</option>
+        <option value="Краснодар">Краснодар</option>
+      </select> 
                             
 
 
