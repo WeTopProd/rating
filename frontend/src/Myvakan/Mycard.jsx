@@ -190,8 +190,23 @@ className="mini__outer_inside_blueTitle">
                             Занятость: {info.employment_type}
                         </p>
 
+                       
+
                     </div>
+
+                    
                     </div>
+
+                    {location.pathname === '/responsesvakan' ?
+
+                    <Link to={`/responsesvakanclicks/${info.id}`}>Посмотреть Отклики</Link>
+
+                    :
+                    
+                    ''
+                    
+                    }
+
 
 
                     <img className='VAC__out_in_logo' src={info.logo} alt=""/>
@@ -200,7 +215,7 @@ className="mini__outer_inside_blueTitle">
 
                 </div>
 
-                {footerCard.pathname === '/poiksvakan' || footerCard.pathname === '/myLiveVakan'   ?
+                {footerCard.pathname === '/poiksvakan' || footerCard.pathname === '/myLiveVakan' ?
 
               ''     
               

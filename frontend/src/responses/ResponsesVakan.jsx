@@ -1,14 +1,17 @@
 
 import { useEffect, useState } from "react"
-import Mycard from "../Myrezume/Mycard"
+// import Mycard from "../Myrezume/Mycard"
 import Header from "../components/header/Header"
 import h from "../components/header/header.module.scss"
 import r from "./ResponsesVakan.module.scss"
 import axios from "axios"
 import { useParams } from "react-router-dom"
+import Mycard from '../Myvakan/Mycard';
 
 export default function ResponsesVakan ({ applicants, myVakanId}) {
 
+<<<<<<< HEAD
+=======
 
     const [mycardId , setMycardId] = useState([])
 
@@ -42,6 +45,7 @@ export default function ResponsesVakan ({ applicants, myVakanId}) {
   }, [])
 
 
+>>>>>>> 64879f538f33aaae63820e628e5a49f6adeb9086
     return (
 
         <>
@@ -86,7 +90,7 @@ responses__link = '/responsesvakan'
 
                 <div className={r.respons}>
                     
-        {mycardId.map( (info, index) => { 
+        {myVakanId.map( (info, index) => { 
                 return <Mycard {...info} applicants={applicants}  key={index} />
          } ) }
 

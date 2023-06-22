@@ -60,6 +60,7 @@ export default function FooterCard ({izmen, deletet,toggleModal, deletePostVakan
 
 <div className="VAC__out_botline_change_pics">
 
+
     <button  className="VAC__out_botline_change_pics_blue"
     onClick={ hide  ? (event) => hideHandle(event.currentTarget.id) : (event) => hideHandleFalse(event.currentTarget.id) }
     id={info.id}
@@ -78,6 +79,9 @@ export default function FooterCard ({izmen, deletet,toggleModal, deletePostVakan
     </button>
 
 </div>
+
+<Link className="VAC__out_botline_change_pics_blue" to={`/responsesvakanclicks/${info.id}`}>Посмотреть Отклики</Link>
+
 
     <div className="VAC__out_botline_change_pics">
 
