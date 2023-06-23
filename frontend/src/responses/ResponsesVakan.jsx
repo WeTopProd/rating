@@ -10,7 +10,10 @@ import Mycard from '../Myvakan/Mycard';
 
 export default function ResponsesVakan ({ applicants, myVakanId}) {
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 5f5d2df22af8b5e6f27a5c85268be71c689ea165
     const [mycardId , setMycardId] = useState([])
 
     const tokenTwo = JSON.parse(localStorage.getItem('token'))
@@ -25,7 +28,7 @@ export default function ResponsesVakan ({ applicants, myVakanId}) {
 
     useEffect(() => {
   
-      axios.get(`http://reiting.moscow/api/vacancy/3/get_job_posting/`, {
+      axios.get(`https://reiting.moscow/api/vacancy/3/get_job_posting/`, {
       
       headers: {
           'Content-Type': 'application/json , multipart/form-data',
@@ -41,7 +44,10 @@ export default function ResponsesVakan ({ applicants, myVakanId}) {
       .catch((err) => console.error(err))
   
   }, [])
+<<<<<<< HEAD
 
+=======
+>>>>>>> 5f5d2df22af8b5e6f27a5c85268be71c689ea165
     return (
 
         <>

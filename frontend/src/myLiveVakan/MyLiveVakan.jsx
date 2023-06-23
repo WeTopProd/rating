@@ -19,7 +19,7 @@ export default function MyLiveVakan({auth, setAuth ,onClick, myVakanId}) {
 
     useEffect(() => {
 
-        axios.get(`http://reiting.moscow/api/vacancy/?is_favorited=1`, {
+        axios.get(`https://reiting.moscow/api/vacancy/?is_favorited=1`, {
 
         headers: {
           "content-type": "application/json",
