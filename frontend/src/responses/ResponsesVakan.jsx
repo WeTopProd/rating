@@ -10,8 +10,6 @@ import Mycard from '../Myvakan/Mycard';
 
 export default function ResponsesVakan ({ applicants, myVakanId}) {
 
-<<<<<<< HEAD
-=======
 
     const [mycardId , setMycardId] = useState([])
 
@@ -44,8 +42,6 @@ export default function ResponsesVakan ({ applicants, myVakanId}) {
   
   }, [])
 
-
->>>>>>> 64879f538f33aaae63820e628e5a49f6adeb9086
     return (
 
         <>
