@@ -122,11 +122,11 @@ USE_I18N = True
 USE_L10N = True
 USE_TZ = True
 
-STATIC_URL = '/backend_static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'backend_static/')
+STATIC_URL = '/backend_static_rating/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'backend_static_rating/')
 
-MEDIA_URL = '/backend_media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'backend_media/')
+MEDIA_URL = '/backend_media_rating/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'backend_media_rating/')
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
