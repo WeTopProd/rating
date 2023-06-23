@@ -91,7 +91,7 @@ else:
             'NAME': 'rating',
             'USER': 'rating_user',
             'PASSWORD': '20031956tAA',
-            'HOST': '37.140.195.3',
+            'HOST': '185.46.10.37',
             'PORT': '5432'
         }
     }
