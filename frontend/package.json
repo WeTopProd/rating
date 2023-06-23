@@ -24,9 +24,9 @@
   },
   "scripts": {
     "start": "PORT=3002 REACT_APP_API_URL=https://reiting.moscow/api react-scripts start",
-    "build": "REACT_APP_API_URL=http://127.0.0.1:8002/api react-scripts build",
-    "test": "REACT_APP_API_URL=http://127.0.0.1:8002/api react-scripts test",
-    "eject": "REACT_APP_API_URL=http://127.0.0.1:8002/api react-scripts eject",
+    "build": "REACT_APP_API_URL=http://127.0.0.1/api react-scripts build",
+    "test": "REACT_APP_API_URL=http://127.0.0.1/api react-scripts test",
+    "eject": "REACT_APP_API_URL=http://127.0.0.1/api react-scripts eject",
     "serve": "serve -s result_build -l 3002"
   },
   "eslintConfig": {
