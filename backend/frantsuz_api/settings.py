@@ -78,7 +78,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'frantsuz_api.wsgi.application'
 
-
 if DEBUG:
     DATABASES = {
         'default': {
