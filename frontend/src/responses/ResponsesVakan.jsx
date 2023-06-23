@@ -10,9 +10,6 @@ import Mycard from '../Myvakan/Mycard';
 
 export default function ResponsesVakan ({ applicants, myVakanId}) {
 
-<<<<<<< HEAD
-=======
-
     const [mycardId , setMycardId] = useState([])
 
     const tokenTwo = JSON.parse(localStorage.getItem('token'))
@@ -43,9 +40,6 @@ export default function ResponsesVakan ({ applicants, myVakanId}) {
       .catch((err) => console.error(err))
   
   }, [])
-
-
->>>>>>> 64879f538f33aaae63820e628e5a49f6adeb9086
     return (
 
         <>
