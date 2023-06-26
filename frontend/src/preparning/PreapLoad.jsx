@@ -63,7 +63,7 @@ import axios from 'axios'
     const navigate = useNavigate('')
   
     useEffect(() => {
-        axios.get('http://localhost/api/users/',{
+        axios.get('https://reiting.moscow/api/users/',{
 
              headers: {
                 'Content-Type': 'application/json ',
@@ -85,7 +85,7 @@ import axios from 'axios'
     
     const PreapRezumeLoad = () => {       
     
-        axios.patch(`http://localhost/api/resume/${mas.id}/`, {
+        axios.patch(`https://reiting.moscow/api/resume/${mas.id}/`, {
 
             FullName: FullName,
             PhoneNumber: PhoneNumber,

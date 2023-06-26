@@ -40,7 +40,7 @@ function RegAuth () {
     const hanClick =  (e) => {
 
         e.preventDefault()
-        axios.post('http://localhost/api/users/', {
+        axios.post('https://reiting.moscow/api/users/', {
 
        phone: ValueTel ,
        first_name: ValueLast,
