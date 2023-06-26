@@ -43,7 +43,7 @@ export default function LeadVakan ({auth, setAuth, ...myVakanId}) {
     const [userId, setUserId] = useState()
 
     useEffect(() => {
-        axios.get('https://reiting.moscow/api/vacancy/',{
+        axios.get('http://localhost/api/vacancy/',{
 
              headers: {
                 'Content-Type': 'application/json ',
@@ -61,7 +61,7 @@ export default function LeadVakan ({auth, setAuth, ...myVakanId}) {
 
     const PreapVakan = () => {       
     
-        axios.patch(`https://reiting.moscow/api/vacancy/${mas.id}/`, {
+        axios.patch(`http://localhost/api/vacancy/${mas.id}/`, {
 
         job_title: NameVakan,
         company_name: NameKompany,
