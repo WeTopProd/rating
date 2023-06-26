@@ -23,7 +23,7 @@ if DEBUG:
 else:
     ALLOWED_HOSTS = [
         'reiting.moscow',
-        '37.140.195.3',
+        '185.46.10.37',
     ]
 
 INSTALLED_APPS = [
@@ -148,15 +148,15 @@ if DEBUG:
 else:
     CORS_ALLOWED_ORIGINS = [
         'https://reiting.moscow',
-        'http://37.140.195.3',
-        'http://37.140.195.3:3002',
-        'http://37.140.195.3:8002',
+        'http://185.46.10.37',
+        'http://185.46.10.37:3002',
+        'http://185.46.10.37:8002',
     ]
 
 DJOSER = {
     'LOGIN_FIELD': 'email',
     'USER_CREATE_PASSWORD_RETYPE': True,
-    'ACTIVATION_URL': 'api/users/activation/{uid}/{token}',
+    'ACTIVATION_URL': 'api/users/activation/?uid={uid}&token={token}',
     'PASSWORD_RESET_CONFIRM_URL': 'reset_password_confirm/?uid={uid}&token={token}',
     'PASSWORD_CHANGED_EMAIL_CONFIRMATION': True,
     'SEND_ACTIVATION_EMAIL': True,
