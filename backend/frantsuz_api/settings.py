@@ -147,9 +147,7 @@ if DEBUG:
 else:
     CORS_ALLOWED_ORIGINS = [
         'https://reiting.moscow',
-        'http://185.46.10.37',
-        'http://185.46.10.37:3002',
-        'http://185.46.10.37:8002',
+        'http://185.46.10.37:3000',
     ]
 
 DJOSER = {
