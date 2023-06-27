@@ -12,7 +12,7 @@ SECRET_KEY = os.getenv(
     default='django-insecure-u3cj2p@gd4&pzj7br(5jq_*3z^oz3k-k!y=l^@r6nq*-58wpc5'
 )
 
-DEBUG = True
+DEBUG = False
 
 if not DEBUG:
     ALLOWED_HOSTS = [
@@ -144,13 +144,13 @@ REST_FRAMEWORK = {
 
 CORS_URLS_REGEX = r'^/api/.*$'
 
-if not DEBUG:
-    CORS_ORIGIN_ALLOW_ALL = True
-else:
-    CORS_ALLOWED_ORIGINS = [
-        'https://reiting.moscow',
-        'http://185.46.10.37:3000',
-    ]
+# if not DEBUG:
+CORS_ORIGIN_ALLOW_ALL = True
+# else:
+#     CORS_ALLOWED_ORIGINS = [
+#         'https://reiting.moscow',
+#         'http://185.46.10.37:3000',
+#     ]
 
 DJOSER = {
     'LOGIN_FIELD': 'email',
