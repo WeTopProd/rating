@@ -121,11 +121,11 @@ USE_I18N = True
 USE_L10N = True
 USE_TZ = True
 
-STATIC_URL = '/backend_static_rating/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'backend_static_rating/')
+STATIC_URL = '/backend_static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'backend_static/')
 
-MEDIA_URL = '/backend_media_rating/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'backend_media_rating/')
+MEDIA_URL = '/backend_media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'backend_media/')
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
@@ -143,7 +143,7 @@ REST_FRAMEWORK = {
 
 CORS_URLS_REGEX = r'^/api/.*$'
 
-if not DEBUG:
+if DEBUG:
     CORS_ORIGIN_ALLOW_ALL = True
 else:
     CORS_ALLOWED_ORIGINS = [
