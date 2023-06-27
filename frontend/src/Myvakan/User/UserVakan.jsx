@@ -25,7 +25,7 @@ export default function UserVakan ({auth, setAuth, uservaka, mycardId , ...myVak
     useEffect(() => {
         if (mas) {
           axios
-            .get(`https://reiting.moscow/api/vacancy/${mas.id}/get_job_posting/`, {
+            .get(`http://37.140.195.3:8002/api/vacancy/${mas.id}/get_job_posting/`, {
               headers: {
                 "content-type": "application/json",
                 authorization: `Token ${token}`,
@@ -48,7 +48,7 @@ export default function UserVakan ({auth, setAuth, uservaka, mycardId , ...myVak
 
         await axios
     
-          .post(`https://reiting.moscow/api/vacancy/${mas.id}/add_job_posting/` ,
+          .post(`http://37.140.195.3:8002/api/vacancy/${mas.id}/add_job_posting/` ,
 
           {
 
