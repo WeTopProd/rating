@@ -141,6 +141,7 @@ REST_FRAMEWORK = {
     ],
 }
 
+
 CORS_URLS_REGEX = r'^/api/.*$'
 
 if not DEBUG:
