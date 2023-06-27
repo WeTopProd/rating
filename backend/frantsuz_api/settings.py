@@ -22,7 +22,7 @@ if DEBUG:
     ]
 else:
     ALLOWED_HOSTS = [
-        '185.46.10.37',
+        '37.140.195.3',
         'reiting.moscow',
     ]
 
@@ -145,12 +145,12 @@ REST_FRAMEWORK = {
 
 CORS_URLS_REGEX = r'^/api/.*$'
 
-if not DEBUG:
+if DEBUG:
     CORS_ORIGIN_ALLOW_ALL = True
 else:
     CORS_ALLOWED_ORIGINS = [
         'https://reiting.moscow',
-        'http://185.46.10.37:3000',
+        'http://37.140.195.3:3000',
     ]
 
 DJOSER = {
