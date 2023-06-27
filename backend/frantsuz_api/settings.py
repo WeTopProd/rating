@@ -22,7 +22,8 @@ if DEBUG:
     ]
 else:
     ALLOWED_HOSTS = [
-        '37.140.195.3',
+        '185.46.10.37',
+        'reiting.moscow',
     ]
 
 INSTALLED_APPS = [
