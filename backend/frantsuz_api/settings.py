@@ -22,8 +22,8 @@ if DEBUG:
     ]
 else:
     ALLOWED_HOSTS = [
-        '185.46.10.37',
         'reiting.moscow',
+        '37.140.195.3'
     ]
 
 INSTALLED_APPS = [
@@ -150,7 +150,7 @@ if DEBUG:
 else:
     CORS_ALLOWED_ORIGINS = [
         'https://reiting.moscow',
-        'http://185.46.10.37:3000',
+        'http://37.140.195.3:3000',
     ]
 
 DJOSER = {
