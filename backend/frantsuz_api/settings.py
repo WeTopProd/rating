@@ -145,13 +145,13 @@ REST_FRAMEWORK = {
 
 CORS_URLS_REGEX = r'^/api/.*$'
 
-# if not DEBUG:
-CORS_ORIGIN_ALLOW_ALL = True
-# else:
-#     CORS_ALLOWED_ORIGINS = [
-#         'https://reiting.moscow',
-#         'http://185.46.10.37:3000',
-#     ]
+if not DEBUG:
+    CORS_ORIGIN_ALLOW_ALL = True
+else:
+    CORS_ALLOWED_ORIGINS = [
+        'https://reiting.moscow',
+        'http://185.46.10.37:3000',
+    ]
 
 DJOSER = {
     'LOGIN_FIELD': 'email',
