@@ -1,11 +1,10 @@
 from django.shortcuts import get_object_or_404
 from rest_framework import serializers, validators
 
+from resume.models import Resume
+from resume.serializers import ShortResumeSerializer
 
 from .models import Favorite, JobPosting, Vacancy
-
-from resume.serializers import ShortResumeSerializer
-from resume.models import Resume
 
 
 class VacancySerializer(serializers.ModelSerializer):

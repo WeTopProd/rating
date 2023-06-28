@@ -18,9 +18,6 @@ class ResumeViewSet(viewsets.ModelViewSet):
     filter_backends = (DjangoFilterBackend,)
     filterset_class = ResumeFilter
 
-    # def get_queryset(self):
-    #     return Resume.objects.filter(user=self.request.user)
-
     def perform_create(self, serializer):
         serializer.save(user=self.request.user)
 
