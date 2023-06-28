@@ -120,4 +120,3 @@ class Favorite(models.Model):
 
     def __str__(self):
         return f'{self.user} added {self.vacancy} to favorite'
-
