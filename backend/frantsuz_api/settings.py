@@ -93,7 +93,7 @@ else:
             'NAME': 'rating',
             'USER': 'rating_user',
             'PASSWORD': '20031956tAA',
-            'HOST': '37.140.195.3',
+            'HOST': '79.132.140.107',
             'PORT': '5432'
         }
     }
@@ -190,8 +190,8 @@ PHONENUMBER_DEFAULT_REGION = 'RU'
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'server61.hosting.reg.ru'
 EMAIL_PORT = 465
-EMAIL_HOST_USER = 'academy@frantsuz.ru'
-EMAIL_HOST_PASSWORD = 'wE6aN6lC6e'
+EMAIL_HOST_USER = 'rating@frantsuz.ru'
+EMAIL_HOST_PASSWORD = 'Ta53SVTHtNMabDa'
 EMAIL_USE_SSL = True
-DEFAULT_FROM_EMAIL = 'academy@frantsuz.ru'
-SERVER_EMAIL = 'academy@frantsuz.ru'
+DEFAULT_FROM_EMAIL = 'rating@frantsuz.ru'
+SERVER_EMAIL = 'rating@frantsuz.ru'
