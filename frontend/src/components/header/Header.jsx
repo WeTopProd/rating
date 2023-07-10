@@ -14,6 +14,7 @@ import nast from '../img/user_nast.svg'
 import reg from '../img/reg.svg'
 import log from '../img/log.svg'
 import box from '../header/box.svg'
+import axios from 'axios';
 
 
 
@@ -76,6 +77,9 @@ function Header (
 
         window.addEventListener("scroll", changeBackground)
 
+        window.addEventListener("scroll", closeWindowsOnScroll)
+
+
       })
 
     const scrollWithOffset = (el) => {
@@ -103,11 +107,55 @@ function Header (
     const [openAi, setOpenai] = useState(false)
 
     const OpenAdd = () => {
-
         setOpenai(!openAi)
         setUserNav(false)
-
     }
+
+    const [ textOpen, setTextOpen] = useState(false)
+
+
+
+    const token = JSON.parse(localStorage.getItem('token'))
+
+    const PreapInfo = (e) => {    
+
+        e.preventDefault()
+    
+        axios.post('http://127.0.0.1:8000/api/send-email/', {
+
+        description: support,
+        file: supportFile,
+            
+        },
+        
+        {
+            headers : {
+            'Content-Type': 'application/json , multipart/form-data',
+            authorization: `Token ${token}`
+            }            
+        }
+
+        
+        )
+
+        .then(res => {
+            
+            setTextOpen(true)
+            setSupport('')
+            setSupportFile('')
+        
+        })
+
+    };
+
+    const closeWindowsOnScroll = () => {
+
+        if (window.scrollY >= 300) {
+
+            setOpenai(false)
+
+        }
+      };
 
     return (
 
@@ -226,8 +274,17 @@ function Header (
                         </p>
 
                     </div>
+            
+            {textOpen && 
+            
+            <p className={h.chat__res}>
+                Ваше сообщение отправлено в поддержку. В ближайшее время с Вами сважется оператор.
+            </p>
+            
+            }
 
-                    <form>
+
+                    <form onSubmit={PreapInfo}>
 
                     <div className={h.chat__info__form}>
 
@@ -245,7 +302,7 @@ function Header (
                         </div>
                     </div>
 
-                    <button className={h.nav__admin__chat__btn}>
+                    <button type='submit' onClick={PreapInfo} className={h.nav__admin__chat__btn}>
                         Отправить
                     </button>
 

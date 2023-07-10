@@ -38,11 +38,6 @@ export default function ResponsesVakanClicks ({ applicants, ...myVakanId}) {
         }
     }, [mas, tokenTwo]);
 
-
-<<<<<<< HEAD
-=======
-
-
     console.log(MyClickId);
 
   const [resumeInfo, setResumeInfo] = useState ([])
@@ -70,9 +65,7 @@ export default function ResponsesVakanClicks ({ applicants, ...myVakanId}) {
   }, [MyClickId, tokenTwo]);
 
   
-  console.log(resumeInfo);
 
->>>>>>> 00c7a398ac24ac2b41c3305d263c718cc2886185
     return (
 
         <>

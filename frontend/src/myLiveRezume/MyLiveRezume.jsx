@@ -18,7 +18,7 @@ export default function MyLiveRezume ({auth,setAuth, onClick , mycardId}) {
 
     useEffect(() => {
 
-        axios.get(`http://127.0.0.1:8002/api/resume/?is_favorited=1`, {
+        axios.get(`http://127.0.0.1:8000/api/resume/?is_favorited=1`, {
 
         headers: {
           "content-type": "application/json",
