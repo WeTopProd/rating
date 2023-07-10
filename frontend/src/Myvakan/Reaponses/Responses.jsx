@@ -22,7 +22,7 @@ export default function ResponsesVakanClicks ({ applicants, ...myVakanId}) {
     useEffect(() => {
         if (mas) {
           axios
-            .get(`http://127.0.0.1:8002/api/vacancy/${mas.id}/get_job_posting/`, {
+            .get(`https://reiting.moscow/api/vacancy/${mas.id}/get_job_posting/`, {
               headers: {
                 'Content-Type': 'application/json , multipart/form-data',
                 'authorization': `Token ${tokenTwo}`
@@ -39,6 +39,40 @@ export default function ResponsesVakanClicks ({ applicants, ...myVakanId}) {
     }, [mas, tokenTwo]);
 
 
+<<<<<<< HEAD
+=======
+
+
+    console.log(MyClickId);
+
+  const [resumeInfo, setResumeInfo] = useState ([])
+
+ 
+
+  useEffect(() => {
+    if (MyClickId.length > 0) {
+      Promise.all(
+        MyClickId.map(id =>
+          axios.get(`https://reiting.moscow/api/resume/${id}/`, {
+            headers: {
+              'Content-Type': 'application/json , multipart/form-data',
+              'authorization': `Token ${tokenTwo}`
+            }
+          })
+        )
+      )
+        .then(responses => {
+          const resumeData = responses.map(res => res.data);
+          setResumeInfo(resumeData);
+        })
+        .catch(err => console.error(err));
+    }
+  }, [MyClickId, tokenTwo]);
+
+  
+  console.log(resumeInfo);
+
+>>>>>>> 00c7a398ac24ac2b41c3305d263c718cc2886185
     return (
 
         <>

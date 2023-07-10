@@ -14,6 +14,7 @@ SECRET_KEY = os.getenv(
 
 DEBUG = True
 
+
 if DEBUG:
     ALLOWED_HOSTS = [
         '*',
@@ -23,7 +24,7 @@ if DEBUG:
 else:
     ALLOWED_HOSTS = [
         'reiting.moscow',
-        '37.140.195.3',
+        '37.140.195.3'
     ]
 
 INSTALLED_APPS = [
@@ -43,6 +44,7 @@ INSTALLED_APPS = [
     'resume.apps.ResumeConfig',
     'vacancy.apps.VacancyConfig',
 ]
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -77,7 +79,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'frantsuz_api.wsgi.application'
 
-
 if DEBUG:
     DATABASES = {
         'default': {
@@ -92,7 +93,7 @@ else:
             'NAME': 'rating',
             'USER': 'rating_user',
             'PASSWORD': '20031956tAA',
-            'HOST': '37.140.195.3',
+            'HOST': '79.132.140.107',
             'PORT': '5432'
         }
     }
@@ -144,23 +145,22 @@ REST_FRAMEWORK = {
 
 
 CORS_URLS_REGEX = r'^/api/.*$'
+
 if DEBUG:
     CORS_ORIGIN_ALLOW_ALL = True
 else:
     CORS_ALLOWED_ORIGINS = [
         'https://reiting.moscow',
-        'http://37.140.195.3',
-        'http://37.140.195.3:3002',
-        'http://37.140.195.3:8002',
+        'http://37.140.195.3:3000',
     ]
 
 DJOSER = {
     'LOGIN_FIELD': 'email',
     'USER_CREATE_PASSWORD_RETYPE': True,
-    'ACTIVATION_URL': 'api/users/activation/{uid}/{token}',
+    'ACTIVATION_URL': 'api/users/activation/?uid={uid}&token={token}',
     'PASSWORD_RESET_CONFIRM_URL': 'reset_password_confirm/?uid={uid}&token={token}',
     'PASSWORD_CHANGED_EMAIL_CONFIRMATION': True,
-    'SEND_ACTIVATION_EMAIL': True,
+    'SEND_ACTIVATION_EMAIL': False,
     'PASSWORD_RESET_CONFIRM_RETYPE': True,
     'PASSWORD_RESET_SHOW_EMAIL_NOT_FOUND': True,
     'LOGOUT_ON_PASSWORD_CHANGE': True,
@@ -190,8 +190,8 @@ PHONENUMBER_DEFAULT_REGION = 'RU'
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'server61.hosting.reg.ru'
 EMAIL_PORT = 465
-EMAIL_HOST_USER = 'academy@frantsuz.ru'
-EMAIL_HOST_PASSWORD = 'wE6aN6lC6e'
+EMAIL_HOST_USER = 'rating@frantsuz.ru'
+EMAIL_HOST_PASSWORD = 'Ta53SVTHtNMabDa'
 EMAIL_USE_SSL = True
-DEFAULT_FROM_EMAIL = 'academy@frantsuz.ru'
-SERVER_EMAIL = 'academy@frantsuz.ru'
+DEFAULT_FROM_EMAIL = 'rating@frantsuz.ru'
+SERVER_EMAIL = 'rating@frantsuz.ru'

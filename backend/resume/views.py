@@ -18,11 +18,15 @@ class ResumeViewSet(viewsets.ModelViewSet):
     filter_backends = (DjangoFilterBackend,)
     filterset_class = ResumeFilter
 
-    # def get_queryset(self):
-    #     return Resume.objects.filter(user=self.request.user)
-
     def perform_create(self, serializer):
         serializer.save(user=self.request.user)
+
+    def get_queryset(self):
+        user = self.request.user
+        if user.is_authenticated:
+            return Resume.objects.filter(user=user)
+        else:
+            return Resume.objects.none()
 
     @action(detail=True, methods=['post'])
     def activate(self, request, pk=None):

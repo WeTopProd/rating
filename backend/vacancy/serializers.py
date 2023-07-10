@@ -1,12 +1,17 @@
 from django.shortcuts import get_object_or_404
 from rest_framework import serializers, validators
 
+from resume.models import Resume
+from resume.serializers import ShortResumeSerializer
 
 from .models import Favorite, JobPosting, Vacancy
 
+<<<<<<< HEAD
 from resume.serializers import ResumeSerializer
 from resume.models import Resume
 
+=======
+>>>>>>> 00c7a398ac24ac2b41c3305d263c718cc2886185
 
 class VacancySerializer(serializers.ModelSerializer):
     user = serializers.PrimaryKeyRelatedField(
