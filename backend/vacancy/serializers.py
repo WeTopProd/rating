@@ -6,6 +6,12 @@ from resume.serializers import ShortResumeSerializer
 
 from .models import Favorite, JobPosting, Vacancy
 
+<<<<<<< HEAD
+from resume.serializers import ResumeSerializer
+from resume.models import Resume
+
+=======
+>>>>>>> 00c7a398ac24ac2b41c3305d263c718cc2886185
 
 class VacancySerializer(serializers.ModelSerializer):
     user = serializers.PrimaryKeyRelatedField(
@@ -72,7 +78,7 @@ class ShortVacancySerializer(serializers.ModelSerializer):
 class JobPostingSerializer(serializers.ModelSerializer):
     user = serializers.StringRelatedField()
     vacancy = serializers.StringRelatedField()
-    resume = ShortResumeSerializer(required=False)
+    resume = ResumeSerializer(required=False)
     resume_id = serializers.IntegerField()
 
     class Meta:
@@ -89,7 +95,7 @@ class JobPostingSerializer(serializers.ModelSerializer):
 
     def to_representation(self, instance):
         data = super().to_representation(instance)
-        resume_data = ShortResumeSerializer(instance.resume).data
+        resume_data = ResumeSerializer(instance.resume).data
         data['resume'] = resume_data
         return data
 

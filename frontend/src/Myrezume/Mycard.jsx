@@ -1,4 +1,4 @@
-
+import { HOST } from '../api';
 
 import { Link, useLocation } from 'react-router-dom'
 import '../Myrezume/Myrezume.scss'
@@ -12,10 +12,7 @@ import deletet from '../components/img/delete.svg'
 import izmen from '../components/img/izmen.svg'
 import axios from 'axios';
 
-export default function Mycard({onClick, CardId, employer, deletePost, applicants, ...info}) {
-
-
-    console.log(info);
+export default function Mycard({onClick, CardId, employer, deletePost, applicants , ...info}) {
 
     async function favorites(id) {
 
@@ -23,7 +20,7 @@ export default function Mycard({onClick, CardId, employer, deletePost, applicant
 
         await axios
 
-          .post(`https://reiting.moscow/api/resume/${info.id}/favorite/`, null, {
+          .post(`http://127.0.0.1:8002/api/resume/${info.id}/favorite/`, null, {
 
             headers: {
               "content-type": "application/json",
@@ -42,7 +39,7 @@ export default function Mycard({onClick, CardId, employer, deletePost, applicant
 
         await axios
 
-          .delete(`https://reiting.moscow/api/resume/${info.id}/favorite/`, {
+          .delete(`http://127.0.0.1:8002/api/resume/${info.id}/favorite/`, {
 
             headers: {
               "content-type": "application/json",
@@ -69,7 +66,6 @@ export default function Mycard({onClick, CardId, employer, deletePost, applicant
     const [ hide, setHide ] = useState(info.is_active)
 
 
-
     
     async function hideHandle (id) {
 
@@ -77,7 +73,7 @@ export default function Mycard({onClick, CardId, employer, deletePost, applicant
 
         await axios
 
-          .post(`https://reiting.moscow/api/resume/${info.id}/deactivate/`, null, {
+          .post(`http://127.0.0.1:8002/api/resume/${info.id}/deactivate/`, null, {
 
             headers: {
               "content-type": "application/json",
@@ -96,7 +92,7 @@ export default function Mycard({onClick, CardId, employer, deletePost, applicant
 
         await axios
 
-        .post(`https://reiting.moscow/api/resume/${info.id}/activate/`, null, {
+        .post(`http://127.0.0.1:8002/api/resume/${info.id}/activate/`, null, {
 
             headers: {
             "content-type": "application/json",
@@ -110,6 +106,8 @@ export default function Mycard({onClick, CardId, employer, deletePost, applicant
       }
 
       const token = JSON.parse(localStorage.getItem("token"));
+
+      console.log(info);
 
     return(
 
@@ -174,10 +172,19 @@ className='svg' width="30px" height="30px" viewBox="0 0 24 24" xmlns="http://www
     
         {info.postWork}
 
-</Link>  
+</Link> 
+
+   {location.pathname.includes('responsesvakanclicks') ?
+   
+   <img className="mini__outer_inside_avatar" src={`${HOST}${info.foto}`} alt="" />
+
+   :
+
+   <img className="mini__outer_inside_avatar" src={info.foto} alt="" />
+   
+   }
 
 
-    <img className="mini__outer_inside_avatar" src={info.foto} alt="" />
 
 
     <div className="mini__outer_inside_near">
@@ -232,7 +239,7 @@ className='svg' width="30px" height="30px" viewBox="0 0 24 24" xmlns="http://www
             </p>
 
             <p className="mini__outer_inside_near_spec_bold">
-                {info.busyness}
+                {info.busyness} 
             </p>
 
         </div>
@@ -241,9 +248,9 @@ className='svg' width="30px" height="30px" viewBox="0 0 24 24" xmlns="http://www
 
         </div>
 
-        {location.pathname === '/responsesvakanclicks' ||location.pathname === '/poiksrezume' || location.pathname === '/myliverezume' ? 
+        {location.pathname.includes('responsesvakanclicks') || location.pathname === '/poiksrezume' || location.pathname === '/myliverezume' ?
         
-        ''
+        null
         
         :
 
@@ -309,7 +316,7 @@ className='svg' width="30px" height="30px" viewBox="0 0 24 24" xmlns="http://www
 
         }
 
-{location.pathname === '/responsesvakanclicks' ? 
+{heartLove.pathname.includes('responsesvakanclicks') ? 
 
         <div className="mini__outer_botline">
 
@@ -339,7 +346,7 @@ className='svg' width="30px" height="30px" viewBox="0 0 24 24" xmlns="http://www
         
         :
 
-        ''
+        null
 
         }
 

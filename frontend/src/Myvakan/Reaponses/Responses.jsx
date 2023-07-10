@@ -9,9 +9,6 @@ import Mycard from "../../Myrezume/Mycard"
 
 export default function ResponsesVakanClicks ({ applicants, ...myVakanId}) {
 
- 
-
-
     const tokenTwo = JSON.parse(localStorage.getItem('token'))
     const paramss = useParams()
     const vakanId = myVakanId.myVakanId.findIndex(user => user.id === +paramss.vakanId)
@@ -42,6 +39,8 @@ export default function ResponsesVakanClicks ({ applicants, ...myVakanId}) {
     }, [mas, tokenTwo]);
 
 
+<<<<<<< HEAD
+=======
 
 
     console.log(MyClickId);
@@ -73,6 +72,7 @@ export default function ResponsesVakanClicks ({ applicants, ...myVakanId}) {
   
   console.log(resumeInfo);
 
+>>>>>>> 00c7a398ac24ac2b41c3305d263c718cc2886185
     return (
 
         <>
@@ -109,16 +109,30 @@ responses__link = '/responsesvakan'
         
         <section className={r.section__respons}>
             <div className={h.container}>
-                
-                <p className={r.respons__title}>
-                    Отклики соискателей  на вашу вакансию
-                </p>
+              
+
+
+              {MyClickId.length === 0 ?
+              
+              <p className={r.respons__title}>Для данной вакансии нету откликов </p>
+
+              :
+
+              <p className={r.respons__title}>
+              Отклики соискателей  на вашу вакансию
+              </p>
+              
+              }
+
+
 
 
                 <div className={r.respons}>
                     
-        {resumeInfo.map( (info, index) => { 
-                return <Mycard {...info} applicants={applicants}  key={index} />
+        {MyClickId.map( (info, index) => { 
+
+                return <Mycard applicants={applicants}  {...info}  key={index} /> 
+
          } ) }
 
 

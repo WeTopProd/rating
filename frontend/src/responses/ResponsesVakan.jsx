@@ -14,7 +14,6 @@ export default function ResponsesVakan ({ applicants, myVakanId}) {
 
     const tokenTwo = JSON.parse(localStorage.getItem('token'))
 
-
     console.log(myVakanId);
 
     // const paramss = useParams()
@@ -24,7 +23,7 @@ export default function ResponsesVakan ({ applicants, myVakanId}) {
 
     useEffect(() => {
   
-      axios.get(`https://reiting.moscow/api/vacancy/3/get_job_posting/`, {
+      axios.get(`http://127.0.0.1:8002/api/vacancy/3/get_job_posting/`, {
       
       headers: {
           'Content-Type': 'application/json , multipart/form-data',
@@ -40,6 +39,7 @@ export default function ResponsesVakan ({ applicants, myVakanId}) {
       .catch((err) => console.error(err))
   
   }, [])
+
     return (
 
         <>

@@ -23,10 +23,18 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
+<<<<<<< HEAD
+    "start": "PORT=3002 REACT_APP_API_URL=http://127.0.0.1:8002/api react-scripts start",
+    "build": "REACT_APP_API_URL=http://127.0.0.1:8002/api react-scripts build",
+    "test": "REACT_APP_API_URL=http://127.0.0.1:8002/api react-scripts test",
+    "eject": "REACT_APP_API_URL=http://127.0.0.1:8002/api react-scripts eject",
+    "serve": "serve -s result_build -l 3002"
+=======
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
+>>>>>>> 00c7a398ac24ac2b41c3305d263c718cc2886185
   },
   "eslintConfig": {
     "extends": [

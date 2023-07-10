@@ -167,12 +167,19 @@
                 gap: 20px;
 
 
+
+
                 &_pics {
                     display: flex;
                     justify-content: space-between;
                     align-items: center;
                     cursor: pointer;
                     gap: 10px;
+
+                    @media screen and (max-width: 500px) {
+                        width: 100%;
+                        text-align: center;
+                     }
 
                     &_blue {
                         font-family: 'Montserrat';
@@ -192,6 +199,11 @@
                         border-radius: 10px;
                         background-color: #1262B3;
 
+                        @media screen and (max-width: 500px) {
+                           width: 100%;
+                           text-align: center;
+                        }
+
                     }
 
                     &_delete{
@@ -209,6 +221,11 @@
                         padding: 8px 20px;
                         border-radius: 10px;
                         background-color: #970000;
+
+                        @media screen and (max-width: 500px) {
+                            width: 100%;
+                            text-align: center;
+                         }
                     }
 
                    

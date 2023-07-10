@@ -31,7 +31,7 @@ export default function Mycard ({deletePostVakan ,applicants ,...info}) {
 
         await axios
 
-          .post(`https://reiting.moscow/api/vacancy/${info.id}/favorite/`, null, {
+          .post(`http://127.0.0.1:8002/api/vacancy/${info.id}/favorite/`, null, {
 
             headers: {
               "content-type": "application/json",
@@ -43,7 +43,7 @@ export default function Mycard ({deletePostVakan ,applicants ,...info}) {
           .catch(err => console.error(err))
 
 
-          await axios.get('https://reiting.moscow/api/vacancy/?is_favorited=true', {
+          await axios.get('http://127.0.0.1:8002/api/vacancy/?is_favorited=true', {
 
           headers: {
             "content-type": "application/json",
@@ -62,7 +62,7 @@ export default function Mycard ({deletePostVakan ,applicants ,...info}) {
 
         await axios
 
-          .delete(`https://reiting.moscow/api/vacancy/${info.id}/favorite/`, {
+          .delete(`http://127.0.0.1:8002/api/vacancy/${info.id}/favorite/`, {
 
             headers: {
               "content-type": "application/json",
@@ -73,7 +73,7 @@ export default function Mycard ({deletePostVakan ,applicants ,...info}) {
 
           .catch(err => console.error(err))
 
-          await axios.get('https://reiting.moscow/api/vacancy/?is_favorited=1', {
+          await axios.get('http://127.0.0.1:8002/api/vacancy/?is_favorited=1', {
 
           headers: {
             "content-type": "application/json",
