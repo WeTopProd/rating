@@ -9,9 +9,6 @@ import Mycard from "../../Myrezume/Mycard"
 
 export default function ResponsesVakanClicks ({ applicants, ...myVakanId}) {
 
- 
-
-
     const tokenTwo = JSON.parse(localStorage.getItem('token'))
     const paramss = useParams()
     const vakanId = myVakanId.myVakanId.findIndex(user => user.id === +paramss.vakanId)
@@ -41,37 +38,6 @@ export default function ResponsesVakanClicks ({ applicants, ...myVakanId}) {
         }
     }, [mas, tokenTwo]);
 
-
-
-
-    console.log(MyClickId);
-
-  const [resumeInfo, setResumeInfo] = useState ([])
-
- 
-
-  useEffect(() => {
-    if (MyClickId.length > 0) {
-      Promise.all(
-        MyClickId.map(id =>
-          axios.get(`http://127.0.0.1:8002/api/resume/${id}/`, {
-            headers: {
-              'Content-Type': 'application/json , multipart/form-data',
-              'authorization': `Token ${tokenTwo}`
-            }
-          })
-        )
-      )
-        .then(responses => {
-          const resumeData = responses.map(res => res.data);
-          setResumeInfo(resumeData);
-        })
-        .catch(err => console.error(err));
-    }
-  }, [MyClickId, tokenTwo]);
-
-  
-  console.log(resumeInfo);
 
     return (
 
@@ -109,16 +75,30 @@ responses__link = '/responsesvakan'
         
         <section className={r.section__respons}>
             <div className={h.container}>
-                
-                <p className={r.respons__title}>
-                    Отклики соискателей  на вашу вакансию
-                </p>
+              
+
+
+              {MyClickId.length === 0 ?
+              
+              <p className={r.respons__title}>Для данной вакансии нету откликов </p>
+
+              :
+
+              <p className={r.respons__title}>
+              Отклики соискателей  на вашу вакансию
+              </p>
+              
+              }
+
+
 
 
                 <div className={r.respons}>
                     
-        {resumeInfo.map( (info, index) => { 
-                return <Mycard {...info} applicants={applicants}  key={index} />
+        {MyClickId.map( (info, index) => { 
+
+                return <Mycard applicants={applicants}  {...info}  key={index} /> 
+
          } ) }
 
 

@@ -53,9 +53,20 @@ setAuth={setAuth}
 
      <div className="mini">
 
-         <p className="mini__title">
-             Мои вакасии
-         </p>
+
+         {myVakanId.length === {} ?
+              
+          <p className="mini__title">
+              У вас пока нет вакансии 
+          </p>
+
+              :
+
+          <p className="mini__title">
+              Мои вакасии
+          </p>
+              
+        }
 
          {myVakanId.map( (info, index) => { 
                 return <Mycard deletePostVakan={deletePostVakan}  applicants={applicants} onClick={onClick} {...info}  key={index} />

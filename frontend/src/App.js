@@ -8,7 +8,6 @@ import Vakan from './components/vakan/Vakan';
 import ScrollToTop from './components/utils/scrollTop'
 import RegAuth from './auth/Reg';
 import LoginAuth from './auth/Login';
-import Nast from './nast/Nast';
 import AddRezume from './AddRezume/AddRezume';
 import TarifRezume from './tarifRezume/TarifRezume';
 import TarifVakan from './tarifVakan/TarifVakan';
@@ -26,13 +25,9 @@ import MyVakan from './Myvakan/Myvakan';
 import SuccessVakan from './preparning/SuccessVakan';
 import LeadVakan from './AddVakan/leadVakan';
 import RezumeUser from './Myrezume/User/RezumeUser';
-import { myContext } from './Context';
-import MyDataCard from './Myrezume/my.data.card';
 import MyDataCardTwo from './Myvakan/my.data.card'
 import ContextTwo from './ContextVakan';
 import UserVakan from './Myvakan/User/UserVakan';
-import Otziv from './Myrezume/User/Otziv';
-import OtzivVakan from './Myvakan/User/Otziv';
 import PoiksVakan from './PoiskVakan/PoiskVakan';
 import PoiksRezume from './PoiskRezume/PoiskRezume';
 import MyLiveVakan from './myLiveVakan/MyLiveVakan';
@@ -43,6 +38,8 @@ import SuccessFive from './Myrezume/tarifnumber/seccessFive';
 import axios from 'axios';
 import ResponsesVakan from './responses/ResponsesVakan';
 import ResponsesVakanClicks from './Myvakan/Reaponses/Responses';
+import OplataInfo from './OplataInfo/OplataInfo';
+import ReturnInfo from './returnInfo/ReturnInfo'
 
 
 function App() {
@@ -54,7 +51,7 @@ function App() {
 
   useEffect(() => {
 
-    axios.get('https://reiting.moscow/api/resume/', {
+    axios.get('http://127.0.0.1:8002/api/resume/', {
     
     headers: {
         'Content-Type': 'application/json , multipart/form-data',
@@ -75,7 +72,7 @@ function App() {
 
 useEffect(() => {
 
-  axios.get('https://reiting.moscow/api/vacancy/', {
+  axios.get('http://127.0.0.1:8002/api/vacancy/', {
   
   headers: {
       'Content-Type': 'application/json , multipart/form-data',
@@ -95,7 +92,7 @@ useEffect(() => {
 
 const deletePost = (id) => {
 
-  axios.delete(`https://reiting.moscow/api/resume/${id}`,
+  axios.delete(`http://127.0.0.1:8002/api/resume/${id}`,
   
   {
 
@@ -114,7 +111,7 @@ const deletePost = (id) => {
 
 const deletePostVakan = (id) => {
 
-  axios.delete(`https://reiting.moscow/api/vacancy/${id}`,
+  axios.delete(`http://127.0.0.1:8002/api/vacancy/${id}`,
   
   {
 
@@ -280,6 +277,12 @@ const ClickIdTwo = (id) => {
           <Route path='/responsesvakan' element={<ResponsesVakan myVakanId={myVakanId} applicants={applicants} mycardId={mycardId} />} />
 
           <Route path='/responsesvakanclicks/:vakanId' element={<ResponsesVakanClicks myVakanId={myVakanId} applicants={applicants} mycardId={mycardId} />} />
+
+          <Route path='/oplatainfo'  element={<OplataInfo />} />
+
+          <Route path='/returninfo'  element={<ReturnInfo />} />
+
+
 
         </Routes>  
 

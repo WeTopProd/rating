@@ -13,6 +13,7 @@ import chat from '../img/user_chat.svg'
 import nast from '../img/user_nast.svg'
 import reg from '../img/reg.svg'
 import log from '../img/log.svg'
+import box from '../header/box.svg'
 
 
 
@@ -44,10 +45,12 @@ function Header (
     const handleClick = () => {
         setNav(!nav)
         setUserNav(false)
+        setOpenai(false)
    }
 
    const TogglehandleClick = () => {
     setNav(false)
+    setOpenai(false)
     setUserNav(!UserNav)
 }
 
@@ -87,10 +90,24 @@ function Header (
         localStorage.setItem('auth', JSON.stringify(setAuth(false)))
     }
 
-    // useEffect(() => signOut, [auth])
-    
-      
 
+    const [ support , setSupport ] = useState('') // отправленный текст >>> support
+
+    const [ supportFile , setSupportFile ] = useState('') // file >>> supportFile
+
+
+    const fotoUpload = (e) => {
+        setSupportFile(e.target.files[0])
+    }
+
+    const [openAi, setOpenai] = useState(false)
+
+    const OpenAdd = () => {
+
+        setOpenai(!openAi)
+        setUserNav(false)
+
+    }
 
     return (
 
@@ -165,14 +182,80 @@ function Header (
                  </HashLink>
             </p>
 
+            <p >
+                 <Link  to='/oplatainfo' className={h.nav__ul__link}  onClick={closeSideBar}>
+
+                 Оплата
+
+                 </Link>
+            </p>
+
+            <p >
+                 <Link  to='/returninfo' className={h.nav__ul__link}  onClick={closeSideBar}>
+
+                 Возврат
+
+                 </Link>
+            </p>
+
             </ul>
 
 
             <div className={h.nav__admin}>
                 
-                <Link to="tel:+79680915552" className={h.nav__admin_button}>
+                <div className={h.nav__admin_button} onClick={OpenAdd} >
                 Обратный звонок
-                </Link>
+                </div>
+
+                <div className={ openAi ? [h.nav__admin__chat, h.nav__admin__chat__active].join(' ') : [h.nav__admin__chat] }>
+
+                    <div className={h.chat__info}>
+                        
+                        <p className={h.chat__info__title}>
+                        Здравствуйте вас приветствует служба поддержки
+                        </p>
+
+                        <p className={h.chat__info__bold}>
+                        Отказ от платных услуг и возврат 
+                        </p>
+
+                        <p className={h.chat__info__text}>
+                        Опишите услугу от каторой 
+                        хотите отказаться и по какой 
+                        причине.
+                        </p>
+
+                    </div>
+
+                    <form>
+
+                    <div className={h.chat__info__form}>
+
+                        <textarea type="text" className={h.chat__info__form__sms}
+                        placeholder='Сообщение...'
+                        value={support} onChange={(event) => setSupport(event.target.value)} 
+                        />
+
+                        <div className={h.chat__info__form__file}>
+
+                        <input type="file" onChange={fotoUpload} className={h.chat__info__form__file__click}  />
+
+                        <img src={box} alt="svg" />
+
+                        </div>
+                    </div>
+
+                    <button className={h.nav__admin__chat__btn}>
+                        Отправить
+                    </button>
+
+                    </form>
+
+
+
+
+
+                </div>
 
                 <div className={h.nav__admin_user} onClick={TogglehandleClick}>
 
@@ -239,24 +322,7 @@ function Header (
                         <Link to={myLiveVakan}>Мои избранные {mylive}</Link>
                     </div>
 
-                    {location.pathname === '/vakan' ||
-                    location.pathname === '/addvakan' ||
-                    location.pathname === '/tarifvakan' ||
-                    location.pathname === '/oplatavakan' ||
-                    location.pathname === '/myvakan' ||
-                    location.pathname === '/myliverezume'
-                    ?
-                    
-                    <div className={h.user}>
-                        <img src={contact} alt="svg" />
-                        <Link to={responses__link}>{responses}</Link>
-                    </div>
-
-                    : 
-                    
-                    ''
-                    
-                    }
+                   
 
 
                     {location.pathname === '/vakan'||
