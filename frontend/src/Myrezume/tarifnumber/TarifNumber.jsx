@@ -65,7 +65,14 @@ setAuth={setAuth}
     
                                 <img src={gal} alt="" width="30px" height="30px" />
     
-                                <p className={l.form__item__text}>Разблокировать один номер телефона для отклика на резюме
+                                <p className={l.form__item__text}>
+                                Разблокировать один номер телефона для отклика на резюме 
+                                <br />
+                                
+                               <span>
+                               Oткрывает доступ к номеру телефона соискателя, после чего можно будет связаться с ним и пригласить его на собеседование.
+                               </span>
+
                                 </p>
     
                             </div> 
@@ -88,22 +95,21 @@ setAuth={setAuth}
     
                             <p className={l.form__item__titleI}> Тариф стандартный</p>
     
-    
-                            <div className={l.form__item__middle2}>
-    
-                                
-                                <div className={l.form__item__two}>
+                            <div className={l.form__item__middle}>
     
                                 <img src={gal} alt="" width="30px" height="30px" />
     
-                                <p className={l.form__item__text}>Разблокировать 10 номеров для отклика на резюме</p>
+                                <p className={l.form__item__text}>
+                                Разблокировать десять  номеров телефона для отклика на резюме 
+                                <br />
+                                
+                               <span>
+                               Oткрывает доступ к номеру телефона в десяти резюме  соискателей, после чего можно будет связаться с ним и пригласить его на собеседование.
+                               </span>
 
-                                </div>
+                                </p>
     
-
-                            
-                            </div>
-    
+                            </div> 
     
                             <button className={l.form__item__link}>400 руб</button>
 
@@ -128,8 +134,17 @@ setAuth={setAuth}
     
                                 <img src={gal} alt="" width="30px" height="30px" />
     
-                                <p className={l.form__item__text}>Безлимитный доступ к номерам на 30 дней</p>
-                            </div>
+                                <p className={l.form__item__text}>
+                                Безлимитный доступ к номерам на 30 дней 
+                                <br />
+                                
+                               <span>
+                               Открывает доступ ко всем номерам телефона соискателей, после чего можно будет связаться с ним и пригласить его на собеседование.
+                               </span>
+
+                                </p>
+    
+                            </div> 
 
     
     

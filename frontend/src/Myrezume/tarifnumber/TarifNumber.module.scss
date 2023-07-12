@@ -106,14 +106,25 @@
             &__middle {
                 display: flex;
                 justify-content: flex-start;
-                align-items: center;
+                // align-items: center;
                 gap: 10px;
+
+
+                & span {
+                    font-weight: 400;
+                    font-size: 13.5px;
+                }
+
+                & img {
+                    transform: translateY(30px);
+                }
             }
 
             &__two {
                 display: flex;
                 justify-content: flex-start;
-                align-items: center;
+                // align-items: center;
+                flex-direction: column;
                 gap: 10px;
             }
 
@@ -121,10 +132,16 @@
 
                 font-family: 'Montserrat';
                 font-style: normal;
-                font-weight: 400;
+                font-weight: 800;
                 font-size: 15px;
                 line-height: 30px;
                 color: #FFFFFF;
+                
+
+                
+                display: flex;
+                flex-direction: column;
+                gap: 10px;
             }
 
             &__link {
