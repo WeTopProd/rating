@@ -9,7 +9,9 @@ RUN npm install
 COPY . .
 
 RUN npm run build
+
 CMD cp -r build result_build_rating
+
 ENV NODE_ENV=production
 
 CMD ["npm", "start"]
