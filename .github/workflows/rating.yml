@@ -42,7 +42,7 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           push: true
-          tags: ${{ secrets.DOCKER_USERNAME }}/tg-backend:latest
+          tags: ${{ secrets.DOCKER_USERNAME }}/rating-backend:latest
           context: backend
           file: backend/Dockerfile
       - name: Push to Docker Hub frontend
@@ -68,7 +68,7 @@ jobs:
             script: |
               cd rating/
               sudo docker-compose down -v
-              sudo docker image rm ${{secrets.DOCKER_USERNAME }}/tg-backend
+              sudo docker image rm ${{secrets.DOCKER_USERNAME }}/rating-backend
               sudo docker image rm ${{secrets.DOCKER_USERNAME }}/rating-frontend
               sudo docker pull ${{ secrets.DOCKER_USERNAME }}/rating-frontend:latest
               sudo docker pull ${{ secrets.DOCKER_USERNAME }}/rating-backend:latest
