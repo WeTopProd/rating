@@ -43,7 +43,7 @@ export default function OplataInfo () {
                 </p>
 
                 <p className={o.oplata__text}>
-                1. На странице сайта выберите раздел который наиболее вам подходит , соискателям или работодателями    
+                1. На странице сайта выберите раздел который наиболее вам подходит, соискателям или работодателями;  
                 </p> 
 
                 <p className={o.oplata__text}>
@@ -51,7 +51,7 @@ export default function OplataInfo () {
                 </p> 
 
                 <p className={o.oplata__text}>
-                3. Выберите интересующую услугу 
+                3. Выберите интересующую услугу;
                 </p> 
 
                 <p className={o.oplata__text}>
@@ -59,7 +59,7 @@ export default function OplataInfo () {
                 </p> 
 
                 <p className={o.oplata__text}>
-                5. Чтобы выбрать нужную вам услугу в нажмите кнопку Выбрать 
+                5. Чтобы выбрать нужную вам услугу в нажмите кнопку «Выбрать».
                 </p> 
 
 
@@ -72,7 +72,7 @@ export default function OplataInfo () {
                 </p>
 
                 <p className={o.oplata__text}>
-                1. Для оформления услуги Вам необходимо нажать на кнопку «Выбрать »
+                1. Для оформления услуги Вам необходимо нажать на кнопку «Выбрать»;
                 </p> 
 
                 <p className={o.oplata__text}>

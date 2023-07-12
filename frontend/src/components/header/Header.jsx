@@ -172,7 +172,15 @@ function Header (
 
             <ul className={nav ? [h.nav__ul, h.nav__ul_active].join(' ') : [h.nav__ul] }>
 
-            <p  >
+            <p>
+                 <Link  to='/services' className={h.nav__ul__link}  onClick={closeSideBar}>
+
+                 Услуги
+
+                 </Link>
+            </p>
+
+            <p>
             <HashLink
 
                  to={`/${link}`}
@@ -231,6 +239,14 @@ function Header (
             </p>
 
             <p >
+                 <Link  to='/oplataprav' className={h.nav__ul__link}  onClick={closeSideBar}>
+
+                 Правила оплаты
+
+                 </Link>
+            </p>
+
+            <p >
                  <Link  to='/oplatainfo' className={h.nav__ul__link}  onClick={closeSideBar}>
 
                  Оплата
@@ -245,6 +261,7 @@ function Header (
 
                  </Link>
             </p>
+
 
             </ul>
 

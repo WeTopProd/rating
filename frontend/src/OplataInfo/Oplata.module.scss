@@ -18,6 +18,13 @@
         flex-direction: column;
         width: 100%;
     }
+
+    &__img{
+        max-width: 100%;
+        width: 100%;
+        height: auto;
+        border-radius: 20px;
+    }
     
     &__title{
         color: #ffffff;
@@ -38,7 +45,7 @@
     }
 
     &__item{
-        max-width: 400px;
+        max-width: 600px;
         padding: 20px;
         background: #a48d38;
         min-height: 500px;
@@ -61,6 +68,12 @@
 
     }
 
+    & ul {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+    }
+
     &__text{
 
         color: var(--white, #FFF);
@@ -69,6 +82,12 @@
         font-style: normal;
         font-weight: 400;
         line-height: 150%;
+        list-style-type: disc !important;
+        
+
+        & span{
+            font-weight: 700;
+        }
 
     }
 

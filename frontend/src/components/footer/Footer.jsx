@@ -95,7 +95,7 @@ function Footer () {
                             
 
                         <img src={Geol} alt="svg" />
-                        <p className={f.footer__info_item_geo_text}>г. Москва ул. Сталеваров, 14к1</p>
+                        <p className={f.footer__info_item_geo_text}>г. Орехово-Зуево ул. Ленина, 36А</p>
 
                         </div>    
 
@@ -190,7 +190,7 @@ function Footer () {
 
 
                     <p className={f.bottom_right}>
-                    <span> Политика конфиденциальности</span>
+                    <Link to='/policy'> Политика конфиденциальности</Link>
                     <span>Не является публичной офертой</span>
                      <span>©Все права защищены</span>
                     </p>

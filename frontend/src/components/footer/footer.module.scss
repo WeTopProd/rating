@@ -287,12 +287,25 @@
              }
 
              &_right{
+
                 font-family: 'Montserrat';
                 font-style: normal;
                 font-weight: 400;
                 font-size: 18px;
                 line-height: 28px;
-                color: #D6D6D6;
+                color: #D6D6D6 !important;
+
+                & a {
+
+                    font-family: 'Montserrat';
+                    font-style: normal;
+                    font-weight: 400;
+                    font-size: 18px;
+                    line-height: 28px;
+                    color: #D6D6D6 !important;
+                    text-decoration: none;
+                    
+                }
     
 
                 display: flex;

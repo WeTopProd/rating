@@ -40,6 +40,9 @@ import ResponsesVakan from './responses/ResponsesVakan';
 import ResponsesVakanClicks from './Myvakan/Reaponses/Responses';
 import OplataInfo from './OplataInfo/OplataInfo';
 import ReturnInfo from './returnInfo/ReturnInfo'
+import Services from './OplataInfo/services';
+import Konfidi from './OplataInfo/konfidi';
+import OplataPrav from './OplataInfo/OplataPrav';
 
 
 function App() {
@@ -280,7 +283,13 @@ const ClickIdTwo = (id) => {
 
           <Route path='/oplatainfo'  element={<OplataInfo />} />
 
+          <Route path='/oplataprav'  element={<OplataPrav />} />
+
           <Route path='/returninfo'  element={<ReturnInfo />} />
+
+          <Route path='/services'  element={<Services />} />
+
+          <Route path='/policy'  element={<Konfidi />} />
 
 
 
