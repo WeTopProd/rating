@@ -1,3 +1,5 @@
+import requests
+import base64
 from django.contrib.auth import authenticate
 from django.core.mail import send_mail, EmailMessage
 from django.utils.decorators import method_decorator
@@ -82,3 +84,62 @@ def send_email(request):
         )
 
     return Response({'success': 'Сообщение успешно отправлено'})
+
+
+@api_view(["POST"])
+@permission_classes([IsAuthenticated])
+def payment(request):
+    # Логин и пароль от личного кабинета PayKeeper
+    user = "admin"
+    password = "268cb05d892c"
+    base64_auth = base64.b64encode(f"{user}:{password}".encode()).decode()
+    headers = {
+        'Content-Type': 'application/x-www-form-urlencoded',
+        'Authorization': f'Basic {base64_auth}'
+    }
+    server_paykeeper = "https://reiting.server.paykeeper.ru"
+
+    price = int(request.data.get('price', ''))
+    num_order = request.data.get('num_order', '')
+    user_data = request.user
+    client_id = user_data.last_name + user_data.first_name
+    client_email = user_data.email
+    service_name = request.data.get('service_name', '')
+    client_phone = user_data.phone
+    payment_data = {
+        "pay_amount": price,
+        "clientid": client_id,
+        "orderid": num_order,
+        "client_email": client_email,
+        "service_name": service_name,
+        "client_phone": f"{client_phone}"
+    }
+
+    # Готовим первый запрос на получение токена безопасности
+    uri = "/info/settings/token/"
+    token_response = requests.get(server_paykeeper + uri, headers=headers)
+    token_data = token_response.json()
+
+    # В ответе должно быть заполнено поле token, иначе - ошибка
+    if 'token' not in token_data:
+        raise Exception("Token not found.")
+    token = token_data['token']
+
+    # Готовим запрос 3.4 JSON API на получение счёта
+    uri = "/change/invoice/preview/"
+
+    # Формируем список POST параметров
+    payment_data['token'] = token
+    invoice_response = requests.post(server_paykeeper + uri, headers=headers,
+                                     data=payment_data)
+    invoice_data = invoice_response.json()
+
+    # В ответе должно быть поле invoice_id, иначе - ошибка
+    if 'invoice_id' not in invoice_data:
+        raise Exception("Invoice ID not found.")
+    invoice_id = invoice_data['invoice_id']
+
+    # В этой переменной прямая ссылка на оплату с заданными параметрами
+    link = f"{server_paykeeper}/bill/{invoice_id}/"
+
+    return Response({'success': f'{link}'})
