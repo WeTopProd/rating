@@ -7,7 +7,7 @@ import cv from '../components/img/cv.png'
 import gal from '../components/img/galka.png'
 import { Link } from 'react-router-dom'
 
-function TarifVakan({setPriceTwo, setAuth, auth}) {
+function TarifVakan({setPrice, setAuth, auth,  setTarifInfo, setNum_order}) {
 
     return (
 
@@ -83,7 +83,10 @@ setAuth={setAuth}
                             
                         </div>
                         
-                        <Link to='/oplatavakan' onClick={() => setPriceTwo('350')} className={l.form__item__link2}>Выбрать</Link>
+                        <Link to='/oplatarezume' onClick={() => setPrice('350')
+                    || setTarifInfo('Вы выбираете из тех, кто откликнулся, и оплачиваете только публикацию на 30 дней , дополнительно до 15 подходящих кандидатов, которых можно пригласить на собеседование') || setNum_order('14')
+
+                    } className={l.form__item__link2}>Выбрать</Link>
 
                     </div>
 
@@ -124,7 +127,9 @@ setAuth={setAuth}
     
                         </div>
 
-                        <Link to='/oplatavakan' onClick={() => setPriceTwo('700')} className={l.form__item__link2}>Выбрать</Link>
+                        <Link to='/oplatarezume' onClick={() => setPrice('700')
+                    || setTarifInfo('Вы выбираете из тех, кто откликнулся, и оплачиваете только публикацию на 30 дней, дополнительно до 15 подходящих кандидатов, которых можно пригласить на собеседование') || setNum_order('15')
+                    } className={l.form__item__link2}>Выбрать</Link>
 
 
                     </div>
@@ -158,7 +163,9 @@ setAuth={setAuth}
     
                         </div>
 
-                        <Link to='/oplatavakan' onClick={() => setPriceTwo('2000')} className={l.form__item__link2}>Выбрать</Link>
+                        <Link to='/oplatarezume' onClick={() => setPrice('2000')
+                                        || setTarifInfo('Вы выбираете из тех, кто откликнулся, и оплачиваете только публикацию на 30 дней, дополнительно до 15 подходящих кандидатов, которых можно пригласить на собеседование') || setNum_order('16')
+                    } className={l.form__item__link2}>Выбрать</Link>
 
 
                     </div>

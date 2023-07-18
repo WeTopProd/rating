@@ -9,11 +9,27 @@
 
         width: 100%;
 
+        &__logo{
+            max-width: 150px;
+        }
+
         &__logos{
             width: 100%;
             display: flex;
             align-items: center;
             justify-content: space-between;
+
+            @media screen and (max-width: 650px){
+                flex-direction: column;
+                gap: 40px;
+            }
+        }
+
+        &__logoTwo{
+            @media screen and (max-width: 650px){
+                width: 100%;
+                height: auto;
+            }
         }
 
         &__info{

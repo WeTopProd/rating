@@ -54,7 +54,7 @@ function App() {
 
   useEffect(() => {
 
-    axios.get('https://reiting.moscow/api/resume/', {
+    axios.get('http://127.0.0.1:8000/api/resume/', {
     
     headers: {
         'Content-Type': 'application/json , multipart/form-data',
@@ -75,7 +75,7 @@ function App() {
 
 useEffect(() => {
 
-  axios.get('https://reiting.moscow/api/vacancy/', {
+  axios.get('http://127.0.0.1:8000/api/vacancy/', {
   
   headers: {
       'Content-Type': 'application/json , multipart/form-data',
@@ -95,7 +95,7 @@ useEffect(() => {
 
 const deletePost = (id) => {
 
-  axios.delete(`https://reiting.moscow/api/resume/${id}`,
+  axios.delete(`http://127.0.0.1:8000/api/resume/${id}`,
   
   {
 
@@ -114,7 +114,7 @@ const deletePost = (id) => {
 
 const deletePostVakan = (id) => {
 
-  axios.delete(`https://reiting.moscow/api/vacancy/${id}`,
+  axios.delete(`http://127.0.0.1:8000/api/vacancy/${id}`,
   
   {
 
@@ -158,6 +158,9 @@ const deletePostVakan = (id) => {
   }, [auth])
 
   const [price, setPrice] = useState('')
+  const [TarifInfo, setTarifInfo] = useState('')
+  const [num_order, setNum_order] = useState('')
+  
 
   const [priceTwo, setPriceTwo] = useState('')
 
@@ -215,16 +218,33 @@ const ClickIdTwo = (id) => {
 
           <Route path='/tarifrezume'  element={<TarifRezume
 
-            price={price} setPrice={setPrice}
+            price={price}
+            TarifInfo={TarifInfo}
+            setTarifInfo={setTarifInfo}
+            setNum_order={setNum_order}
+            setPrice={setPrice}
+
             auth={auth} setAuth={setAuth}
            
            />} />
            
-          <Route path='/oplatarezume'  element={<OplataRezume price={price} auth={auth} setAuth={setAuth} />} />
+          <Route path='/oplatarezume'  element={<OplataRezume 
+          
+          price={price} auth={auth} setAuth={setAuth}
+
+
+          TarifInfo={TarifInfo}
+          setTarifInfo={setTarifInfo}
+          num_order={num_order}
+
+          />} />
 
           <Route path='/oplatavakan'  element={<OplataVakan priceTwo={priceTwo} auth={auth} setAuth={setAuth} />} />
 
-          <Route path='/oplatanumber'  element={<OplataNumber priceThree={priceThree} auth={auth} setAuth={setAuth} />} />
+          <Route path='/oplatanumber'  element={<OplataNumber priceThree={priceThree} auth={auth} setAuth={setAuth}
+          
+          
+          />} />
 
           <Route path='/leadvakan/:userVakanId'  element={<LeadVakan myVakanId={myVakanId} auth={auth} setAuth={setAuth}/>} />
 
@@ -242,8 +262,12 @@ const ClickIdTwo = (id) => {
         
           <Route path='/tarifvakan'  element={<TarifVakan
           
-          priceTwo={priceTwo} setPriceTwo={setPriceTwo}
-          auth={auth} setAuth={setAuth}
+            price={price}
+            TarifInfo={TarifInfo}
+            setTarifInfo={setTarifInfo}
+            setNum_order={setNum_order}
+            setPrice={setPrice}
+            auth={auth} setAuth={setAuth}
           
           />} />
 
@@ -275,7 +299,13 @@ const ClickIdTwo = (id) => {
 
           <Route path='/myliverezume'  element={<MyLiveRezume mycardId={mycardId} auth={auth} setAuth={setAuth}  />} />
 
-          <Route path='/tarifnumber'  element={<TarifNumber auth={auth} setAuth={setAuth} priceThree={priceThree} setPriceThree={setPriceThree}  />} />
+          <Route path='/tarifnumber'  element={<TarifNumber auth={auth} setAuth={setAuth} 
+                      price={price}
+                      TarifInfo={TarifInfo}
+                      setTarifInfo={setTarifInfo}
+                      setNum_order={setNum_order}
+                      setPrice={setPrice}
+          />} />
 
           <Route path='/responsesvakan' element={<ResponsesVakan myVakanId={myVakanId} applicants={applicants} mycardId={mycardId} />} />
 

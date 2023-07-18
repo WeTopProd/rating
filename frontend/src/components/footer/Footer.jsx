@@ -4,8 +4,8 @@ import {Link} from 'react-router-dom'
 import f from '../footer/footer.module.scss'
 import h from '../header/header.module.scss'
 
-import Logo from '../img/logo.svg'
-import Logo2 from '../img/logo2.svg'
+// import Logo from './img/logo.'
+import Logo2 from './img/HorizontalLogos.png'
 import tel from '../img/tel.svg'
 import Mail from '../img/mail.svg'
 import Geol from '../img/bi_geo-alt-fill.svg'
@@ -34,8 +34,8 @@ function Footer () {
             <div className={f.footer}>
 
                 <div className={f.footer__logos}>
-                     <img src={Logo} alt="logo" className={f.footer__logo} />
-                     <img src={Logo2} alt="logo" className={f.footer__logo} />
+                     <img src={img11} alt="logo" className={f.footer__logo} />
+                     <img src={Logo2} alt="logo" className={f.footer__logoTwo} />
                 </div>
                 
                

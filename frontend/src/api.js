@@ -1,2 +1,2 @@
 
-export  const HOST = "https://reiting.moscow";
+export  const HOST = "http://127.0.0.1:8000";

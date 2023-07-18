@@ -26,6 +26,16 @@
             gap: 50px;
         }
 
+        &__subtitle{
+            font-family: 'Montserrat';  
+            font-style: normal;
+            font-weight: 400;
+            font-size: 18px;
+            line-height: 28px;
+            
+            color: #FFFFFF;
+        }
+
         &__button{
             font-family: 'Montserrat';
             font-style: normal;
@@ -120,6 +130,7 @@
                 }
 
                 }
+
             }
 
             &_card{

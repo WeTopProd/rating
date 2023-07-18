@@ -11,7 +11,7 @@ import gal from '../components/img/galka.png'
 
 
 
-function TarifRezume ({setPrice, auth, setAuth}) {
+function TarifRezume ({setPrice, auth, setAuth, setTarifInfo, setNum_order}) {
 
     return (
 
@@ -76,12 +76,14 @@ function TarifRezume ({setPrice, auth, setAuth}) {
                             <input type='submit'
                              value="200 Руб"
                              className={l.form__item__link}
-                              />
+                            />
     
                             
                         </div>
                         
-                        <Link  to="/oplatarezume" onClick={() => setPrice('200')}  className={l.form__item__link2}>Выбрать</Link>
+                        <Link  to="/oplatarezume" onClick={() => setPrice('200')
+                     || setTarifInfo('Составляем за вас правильное резюме') || setNum_order('10')
+                    }  className={l.form__item__link2}>Выбрать</Link>
 
                     </div>
 
@@ -101,7 +103,7 @@ function TarifRezume ({setPrice, auth, setAuth}) {
     
                                 <img src={gal} alt="" width="30px" height="30px" />
     
-                                <p className={l.form__item__text}>Составляем за вас правильное  резюме</p>
+                                <p className={l.form__item__text}>Составляем за вас правильное резюме</p>
 
                                 </div>
     
@@ -125,7 +127,9 @@ function TarifRezume ({setPrice, auth, setAuth}) {
     
                         </div>
 
-                        <Link to="/oplatarezume" onClick={() => setPrice('700')} className={l.form__item__link2}>Выбрать</Link>
+                        <Link to="/oplatarezume" onClick={() => setPrice('700')
+                        || setTarifInfo('Составляем за вас правильное резюме , дополнительно продвигаем ваше резюме в поиске')|| setNum_order('11')
+                    } className={l.form__item__link2}>Выбрать</Link>
 
 
                     </div>
@@ -156,7 +160,11 @@ function TarifRezume ({setPrice, auth, setAuth}) {
     
                         </div>
 
-                        <Link to="/oplatarezume" onClick={() => setPrice('2000')} className={l.form__item__link2}>Выбрать</Link>
+                        <Link to="/oplatarezume" onClick={() => setPrice('2000') 
+
+                        || setTarifInfo('Составляем продвигаем ваше резюме сроком до 6 месяцев') || setNum_order('13')
+                        
+                        } className={l.form__item__link2}>Выбрать</Link>
 
 
                     </div>

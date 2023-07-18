@@ -9,7 +9,7 @@ import gal from '../../components/img/galka.png'
 
 import { Link } from 'react-router-dom'
 
-export default function TarifNumber({ auth, setAuth , setPriceThree}) {
+export default function TarifNumber({ auth, setAuth , setTarifInfo, setNum_order, setPrice}) {
 
     return (
 
@@ -83,7 +83,9 @@ setAuth={setAuth}
                             
                         </div>
                         
-                        <Link to='/oplatanumber' onClick={() => setPriceThree('50')} className={l.form__item__link2}>Выбрать</Link>
+                        <Link to='/oplatarezume' onClick={() => setPrice('50')
+                     || setTarifInfo('Разблокировать один номер телефона для отклика на резюме, открывает доступ к номеру телефона соискателя, после чего можно будет связаться с ним и пригласить его на собеседование.') || setNum_order('17')
+                    } className={l.form__item__link2}>Выбрать</Link>
 
                     </div>
 
@@ -116,7 +118,9 @@ setAuth={setAuth}
     
                         </div>
 
-                        <Link to='/oplatanumber' onClick={() => setPriceThree('400')} className={l.form__item__link2}>Выбрать</Link>
+                        <Link to='/oplatarezume' onClick={() => setPrice('400')
+                     || setTarifInfo('Разблокировать десять номеров телефона для отклика на резюме, открывает доступ к номеру телефона в десяти резюме соискателей, после чего можно будет связаться с ним и пригласить его на собеседование.') || setNum_order('18')
+                    } className={l.form__item__link2}>Выбрать</Link>
 
 
                     </div>
@@ -153,7 +157,9 @@ setAuth={setAuth}
     
                         </div>
 
-                        <Link to='/oplatanumber' onClick={() => setPriceThree('2000')} className={l.form__item__link2}>Выбрать</Link>
+                        <Link to='/oplatarezume' onClick={() => setPrice('2000')
+                                         || setTarifInfo('Безлимитный доступ к номерам на 30 дней, открывает доступ ко всем номерам телефона соискателей, после чего можно будет связаться с ним и пригласить его на собеседование.') || setNum_order('19')
+                    } className={l.form__item__link2}>Выбрать</Link>
 
 
                     </div>
