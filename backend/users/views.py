@@ -103,7 +103,7 @@ def payment(request):
     price = int(request.data.get('price', ''))
     num_order = request.data.get('num_order', '')
     user_data = request.user
-    client_id = user_data.last_name + user_data.first_name
+    client_id = user_data.last_name + ' ' + user_data.first_name
     client_email = user_data.email
     service_name = request.data.get('service_name', '')
     client_phone = user_data.phone
