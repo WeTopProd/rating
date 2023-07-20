@@ -121,7 +121,7 @@ function Header (
 
         e.preventDefault()
     
-        axios.post('https://reiting.moscow/api/send-email/', {
+        axios.post('http://127.0.0.1:8000/api/send-email/', {
 
         description: support,
         file: supportFile,
@@ -268,68 +268,10 @@ function Header (
 
             <div className={h.nav__admin}>
                 
-                <div className={h.nav__admin_button} onClick={OpenAdd} >
+                <Link to="tel:+7(495)9189807" className={h.nav__admin_button} >
                 Обратный звонок
-                </div>
+                </Link>
 
-                <div className={ openAi ? [h.nav__admin__chat, h.nav__admin__chat__active].join(' ') : [h.nav__admin__chat] }>
-
-                    <div className={h.chat__info}>
-                        
-                        <p className={h.chat__info__title}>
-                        Здравствуйте вас приветствует служба поддержки
-                        </p>
-
-                        <p className={h.chat__info__bold}>
-                        Отказ от платных услуг и возврат 
-                        </p>
-
-                        <p className={h.chat__info__text}>
-                        Опишите услугу от каторой 
-                        хотите отказаться и по какой 
-                        причине.
-                        </p>
-
-                    </div>
-            
-            {textOpen && 
-            
-            <p className={h.chat__res}>
-                Ваше сообщение отправлено в поддержку. В ближайшее время с Вами сважется оператор.
-            </p>
-            
-            }
-
-
-                    <form onSubmit={PreapInfo}>
-
-                    <div className={h.chat__info__form}>
-
-                        <textarea type="text" className={h.chat__info__form__sms}
-                        placeholder='Сообщение...'
-                        value={support} onChange={(event) => setSupport(event.target.value)} 
-                        />
-
-                        <div className={h.chat__info__form__file}>
-
-                        <input type="file" onChange={fotoUpload} className={h.chat__info__form__file__click}  />
-
-                        <img src={box} alt="svg" />
-
-                        </div>
-                    </div>
-
-                    <button type='submit' onClick={PreapInfo} className={h.nav__admin__chat__btn}>
-                        Отправить
-                    </button>
-
-                    </form>
-
-
-
-
-
-                </div>
 
                 <div className={h.nav__admin_user} onClick={TogglehandleClick}>
 
@@ -340,7 +282,7 @@ function Header (
 
             
 
-                {location.pathname === '/' ? <> {
+                {location.pathname === '/' || location.pathname === '/returninfo'  ? <> {
 
                     auth ? <>
                     
@@ -407,6 +349,7 @@ function Header (
                      location.pathname === '/successfour' ||
                      location.pathname === '/vakanuser' ||
                      location.pathname === '/addvakan' 
+                     
                     ?
 
                     ''
