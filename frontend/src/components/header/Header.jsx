@@ -121,7 +121,7 @@ function Header (
 
         e.preventDefault()
     
-        axios.post('http://127.0.0.1:8000/api/send-email/', {
+        axios.post('https://reiting.moscow/api/send-email/', {
 
         description: support,
         file: supportFile,

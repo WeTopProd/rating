@@ -39,7 +39,7 @@ export default function AddVakan ({auth, setAuth}) {
     const [userId, setUserId] = useState()
 
     useEffect(() => {
-        axios.get('http://127.0.0.1:8000/api/vacancy/',{
+        axios.get('https://reiting.moscow/api/vacancy/',{
 
              headers: {
                 'Content-Type': 'application/json ',
@@ -59,7 +59,7 @@ export default function AddVakan ({auth, setAuth}) {
 
     const PreapVakan = () => {       
     
-        axios.post('http://127.0.0.1:8000/api/vacancy/', {
+        axios.post('https://reiting.moscow/api/vacancy/', {
 
         job_title: NameVakan,
         company_name: NameKompany,

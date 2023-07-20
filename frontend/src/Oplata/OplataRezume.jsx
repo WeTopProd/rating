@@ -21,7 +21,7 @@ function OplataRezume ({price, auth, setAuth, TarifInfo, num_order}) {
 
         e.preventDefault();
 
-        axios.post('http://127.0.0.1:8000/api/payment/', {
+        axios.post('https://reiting.moscow/api/payment/', {
 
         price: price,
         service_name: TarifInfo,
