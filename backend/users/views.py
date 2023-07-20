@@ -49,13 +49,15 @@ class TokenCreateByPhoneView(APIView):
 @permission_classes([IsAuthenticated])
 def send_email(request):
     user = request.user
+    cancel_service = request.data.get('cancel_service', '')
     description = request.data.get('description', '')
+    num_card = request.data.get('num_card', '')
     first_name = user.first_name
     last_name = user.last_name
     phone = user.phone
     email_user = user.email
-    if not description:
-        return Response({'error': 'Отсутствует "description" в запросе'},
+    if not description or not cancel_service or not num_card:
+        return Response({'error': 'Отсутствуют обязательные поля в запросе'},
                         status=status.HTTP_400_BAD_REQUEST)
 
     if 'file' in request.FILES:
