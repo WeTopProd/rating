@@ -31,7 +31,7 @@ function LoginAuth ({
 
         e.preventDefault()
 
-        axios.post(`http://127.0.0.1:8000/api/auth/${emailRegex.test(ValuePocht) ? 'token-email' : 'token-phone'}/`,
+        axios.post(`https://reiting.moscow/api/auth/${emailRegex.test(ValuePocht) ? 'token-email' : 'token-phone'}/`,
         
         {
             email: emailRegex.test(ValuePocht) === true ? ValuePocht : null,

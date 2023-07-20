@@ -15,7 +15,7 @@ export default function PoiksRezume ({onClick, setAuth, auth, mycardId}) {
 
   useEffect(() => {
 
-    axios.get('http://127.0.0.1:8000/api/resume/?&is_active=true', {
+    axios.get('https://reiting.moscow/api/resume/?&is_active=true', {
     
     headers: {
         'Content-Type': 'application/json , multipart/form-data',
@@ -63,9 +63,9 @@ export default function PoiksRezume ({onClick, setAuth, auth, mycardId}) {
 
     event.preventDefault()
 
-    // http://127.0.0.1:8000/api/resume/?post_work=${poiskvalue}&city=${city}&education=&start_salary=${income}&final_salary=${income}&is_favorited=
+    // https://reiting.moscow/api/resume/?post_work=${poiskvalue}&city=${city}&education=&start_salary=${income}&final_salary=${income}&is_favorited=
 
-    axios.get(`http://127.0.0.1:8000/api/resume/?city=${city}&post_work=${poiskvalue}&company_name=&start_salary=${income}&final_salary_min=${income}&final_salary_max=&start_experience_min=&start_experience_max=&final_experience_min=&final_experience_max=&employment_type=&is_favorited=&salary_min=${income}&salary_max=&is_active=true`,{
+    axios.get(`https://reiting.moscow/api/resume/?city=${city}&post_work=${poiskvalue}&company_name=&start_salary=${income}&final_salary_min=${income}&final_salary_max=&start_experience_min=&start_experience_max=&final_experience_min=&final_experience_max=&employment_type=&is_favorited=&salary_min=${income}&salary_max=&is_active=true`,{
 
     headers: {
       "content-type": "application/json",

@@ -1,15 +1,16 @@
-import requests
 import base64
+
+import requests
 from django.contrib.auth import authenticate
-from django.core.mail import send_mail, EmailMessage
+from django.core.mail import EmailMessage, send_mail
 from django.utils.decorators import method_decorator
 from django.utils.translation import gettext_lazy as _
 from django.views.decorators.csrf import csrf_exempt
 from rest_framework import status
 from rest_framework.authtoken.models import Token
 from rest_framework.decorators import api_view, permission_classes
-from rest_framework.response import Response
 from rest_framework.permissions import IsAuthenticated
+from rest_framework.response import Response
 from rest_framework.views import APIView
 
 from .backends import PhoneBackend
@@ -48,13 +49,15 @@ class TokenCreateByPhoneView(APIView):
 @permission_classes([IsAuthenticated])
 def send_email(request):
     user = request.user
+    cancel_service = request.data.get('cancel_service', '')
     description = request.data.get('description', '')
+    num_card = request.data.get('num_card', '')
     first_name = user.first_name
     last_name = user.last_name
     phone = user.phone
     email_user = user.email
-    if not description:
-        return Response({'error': 'Отсутствует "description" в запросе'},
+    if not description or not cancel_service or not num_card:
+        return Response({'error': 'Отсутствуют обязательные поля в запросе'},
                         status=status.HTTP_400_BAD_REQUEST)
 
     if 'file' in request.FILES:
@@ -102,7 +105,7 @@ def payment(request):
     price = int(request.data.get('price', ''))
     num_order = request.data.get('num_order', '')
     user_data = request.user
-    client_id = user_data.last_name + user_data.first_name
+    client_id = user_data.last_name + ' ' + user_data.first_name
     client_email = user_data.email
     service_name = request.data.get('service_name', '')
     client_phone = user_data.phone
